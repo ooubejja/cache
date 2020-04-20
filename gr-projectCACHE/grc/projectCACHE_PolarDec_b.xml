@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<block>
+  <name>Polar Decoder</name>
+  <key>projectCACHE_PolarDec_b</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.PolarDec_b($N, $K_w, $K_s, $m_files, $b_chunks, $id_user, $n_users, $spack_len, $lengthtagname)</make>
+  <param>
+    <name>CodeWord Length</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Weak Msg Length</name>
+    <key>K_w</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Strong Msg Length</name>
+    <key>K_s</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb Files</name>
+    <key>m_files</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb Chuncks</name>
+    <key>b_chunks</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>User ID</name>
+    <key>id_user</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb Users</name>
+    <key>n_users</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>packet length</name>
+    <key>spack_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Packet Length Name</name>
+    <key>lengthtagname</key>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>complex</type>
+  </sink>
+</block>

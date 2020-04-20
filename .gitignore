@@ -1,0 +1,10 @@
+
+/backup/*
+/old/*
+/gr-projectCACHE/build/*
+/project_caching/cache/UserCache/*
+/project_caching/Shared\ Library/src/obj/*
+/project_caching/trasmissioni/*
+/project_caching_cortexlab/*
+*.so
+*.o
