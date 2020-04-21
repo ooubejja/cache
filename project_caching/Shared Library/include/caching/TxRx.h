@@ -25,10 +25,9 @@
 
 #include <complex.h>
 
-// #include <fstream>
 #include <cstdlib>
-// #include <string>
 #include <iterator>
+#include <sstream>
 
 
 typedef std::complex<float> gr_complex;
@@ -45,6 +44,10 @@ vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> >);
 othmane :
 */
 std::string execute( std::string cmd );
+
+void split(const std::string& str, vector<string> cont, char delim);
+
+bool compareFiles(const std::string& p1, const std::string& p2);
 
 int find_index(vector<unsigned int>, int);
 

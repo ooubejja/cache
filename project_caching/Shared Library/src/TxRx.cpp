@@ -689,19 +689,26 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                     }
 
                     // OTHMANE CHUNK ERROR RATE potentially
-                    // "../cache/UserCache/user_"
-                    // Look for cache file from tx cache
-                    // string tx_pathfile = "../cache/" ;
-                    // string cache_file = to_string(id_file) + "_" + to_string(k) + ".cache" ;
+                    // "ls -lR ../cache/UserCache/*/6_20.cache"
+                    string cmd = "ls -lR ../cache/UserCache/*/" + to_string(id_file) + "_" + to_string(k) + ".cache" ;
+                    string res = execute(cmd) ;
+                    vector<string> result;
+                    char delim = '\n';
+                    // split(res, result, delim);
 
-                    // string pathFilePackage = pathFolder + "/" + to_string(id_file) + "_" + to_string(k) + ".cache";
-                    // cout << endl << "OTHMANE TX PATHFILE : " << endl << pathFilePackage << endl;
-                    // cout << endl << "OTHMANE TX DATA : " << endl << buffer << endl;
-                    // cout << endl << "OTHMANE RX PATHFILE : " << endl << pathFilePackage << endl;
-                    // cout << endl << "OTHMANE RX DATA : " << endl << buffer << endl;
+                    std::stringstream ss(res);
+                    while (std::getline(ss, res, delim))
+                    {
+                        result.push_back(res);
+                    }
+
+                    if(result.size()>1){
+                        cout << "HIP :" << result.size() << endl;
+                        for (int i = 0; i < result.size(); i++)
+                            cout << result.at(i) << "  HOP" << endl;
+                    }
 
                 }
-                cout << endl << execute( "ls -lR ../cache/UserCache" ) << endl ;
 
                 outFile.close();
 
@@ -714,7 +721,7 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
 
 }
 
-// OTHMANE : find file function
+// OTHMANE : execute
 std::string execute( std::string cmd )
 {
     std::string file_name = "result.txt" ;
@@ -725,6 +732,38 @@ std::string execute( std::string cmd )
     return { std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>() } ;
 }
 
+// void split(const std::string& str, vector<string> cont, char delim = ' ')
+// {
+//     // std::stringstream ss(str);
+//     // std::string token;
+//     // while (std::getline(ss, token, delim))
+//     std::stringstream ss(str);
+//     while (std::getline(ss, str, delim))
+//     {
+//         cont.push_back(str);
+//     }
+// }
+
+
+bool compareFiles(const std::string& p1, const std::string& p2) {
+  std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
+  std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);
+
+  if (f1.fail() || f2.fail()) {
+    return false; //file problem
+  }
+
+  if (f1.tellg() != f2.tellg()) {
+    return false; //size mismatch
+  }
+
+  //seek back to beginning and use std::equal to compare contents
+  f1.seekg(0, std::ifstream::beg);
+  f2.seekg(0, std::ifstream::beg);
+  return std::equal(std::istreambuf_iterator<char>(f1.rdbuf()),
+  std::istreambuf_iterator<char>(),
+  std::istreambuf_iterator<char>(f2.rdbuf()));
+}
 
 int find_index(std::vector<unsigned int> v, int value)
 {
@@ -735,6 +774,8 @@ int find_index(std::vector<unsigned int> v, int value)
     }
     return -1;
 }
+
+
 
 
 vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string pathFileDelivery,
