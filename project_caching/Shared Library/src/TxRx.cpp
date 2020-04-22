@@ -391,7 +391,7 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
     //     cout << endl;
     // }
 
-    //cout << ", Strong and/or Weak? " << d_header.strong << ", " << d_header.weak << endl;
+    // cout << endl << ", Strong and/or Weak? " << d_header.strong << ", " << d_header.weak << endl;
     //index = -1;
     if(index != -1 ) {
 
@@ -667,49 +667,27 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
 
                 string repo_file = "../repository/file_0.xml";
                 int size_file1 = getFileSize(repo_file); // 6934 Octets / nb chunks=100 -> chunk size=69 + 34 for the last one
-                ifstream fin (repo_file, ios::binary | ios::in);
                 // int size_chunk = size_file1/NbChunks ;
-                int size_chunk = size_file1/NbChunks + 1 ;
+                int size_chunk = size_file1/NbChunks + 1;   // +1 because cache files are 70 bytes
+                size_file1 = size_chunk*NbChunks;  // Update xml size to match cache file size
                 int size_last_chunk = size_file1%NbChunks ;
+                // ifstream fin (repo_file);
+                ifstream fin (repo_file, ios::binary | ios::in);
 
-                cout << "size_chunk: " << size_chunk << endl;
-                cout << "size_last_chunk: " << size_last_chunk << endl;
+                // cout << "size_chunk: " << size_chunk << endl;
+                // cout << "size_last_chunk: " << size_last_chunk << endl;
 
                 /********************************** READ ALL PACKAGE ********************************/
                 for (unsigned int k = 0; k < NbChunks; k++){
                     // Open file cache for read package
                     string pathFilePackage = pathFolder + "/" + to_string(id_file) + "_" + to_string(k) + ".cache";
 
-                    // OTHMANE CHUNK ERROR RATE potentially
-                    // "ls -lR ../cache/UserCache/*/6_20.cache"
-
-                    /********************** FIND ONE PATH OF TX CACHE FILE (Different from id_user) **********************/
-                    // string cmd = "ls -lR ../cache/UserCache/*/" + to_string(id_file) + "_" + to_string(k) + ".cache" ;
-                    // string res = execute(cmd) ;
-                    //
-                    // if(res.size() > 0 ){
-                    //     vector<string> result;
-                    //     char delim = '\n';
-                    //     std::stringstream ss(res);
-                    //     while (std::getline(ss, res, delim))
-                    //     {
-                    //         result.push_back(res);
-                    //     }
-                    //
-                    //     if(result.size()>=1){
-                    //         cout << "HIP :" << result.size() << endl;
-                    //         for (int i = 0; i < result.size(); i++){
-                    //             cout << result.at(i) << "  HOP" << endl;
-                    //       }
-                    //     }
-                    // }
-
                     /********************************** FILL DECODED_FILE_X.XML ********************************/
 
                     int size_file = getFileSize(pathFilePackage);
                     cout << "size_file: " << size_file << endl;
 
-                    ifstream outFilePackage (pathFilePackage, ifstream::binary);
+                    ifstream outFilePackage (pathFilePackage, ios::binary | ios::in);
 
                     if (size_file > 0){
                         char *buffer = new char[size_file];
@@ -725,20 +703,34 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                         /**********************************************************************************/
                         outFile.write(buffer, size_file);
 
-                        // char buffer1[size_chunk];
-                        char *buffer1 = new char[size_chunk];
+                        // OTHMANE chunk error rate
+                        char *buffer1 = new char[size_file];
                         if (fin){
-                            fin.seekg(k*size_chunk);
-                            if(k == NbChunks-1)
-                                size_chunk = size_last_chunk ;
-                            fin.read(buffer1, size_chunk);
+                            fin.seekg(k*size_file);
+                            // if(k == NbChunks-1)
+                            //     size_chunk = size_last_chunk ;
+                            fin.read(buffer1, size_file);
+                            // fin.read(buffer1, 16); // debug
                             // istringstream string(buffer, buffer+size_chunk);
-                            cout << endl << "TX : " << endl << buffer ;
-                            cout << endl << "RX : " << endl << buffer1 ;
+                            cout << endl << "TX : " << endl << string(buffer1) ;
+                            cout << endl << "----------" ;
+                            cout << endl << "RX : " << endl << string(buffer) ;
                         }
-                        cout << endl << "===================================" <<endl;
+                        // char *buffer1 = new char[size_chunk];
+                        // if (fin){
+                        //     fin.seekg(k*size_chunk);
+                        //     // if(k == NbChunks-1)
+                        //     //     size_chunk = size_last_chunk ;
+                        //     fin.read(buffer1, size_chunk);
+                        //     // istringstream string(buffer, buffer+size_chunk);
+                        //     cout << endl << "TX : " << endl << buffer ;
+                        //     cout << endl << "RX : " << endl << buffer1 ;
+                        // }
+                        cout << endl << "================ " << k << " ===================" <<endl;
                         delete[] buffer;
                         delete[] buffer1;
+                        // if(k==5)
+                        //     exit(0);
 
                     }
 

@@ -153,17 +153,17 @@ namespace gr {
 
 
         /*****STUPID TEST ONLY****/
+        cout << endl << "Hello" << endl;
         cout << "Hello" << endl;
         cout << "Hello" << endl;
         cout << "Hello" << endl;
-        cout << "Hello" << endl;
-        //read header length
-        /*byte=in[i++];
-        conv_byte_to_int(byte, header_len);*/
+
         for(int k=0; k<4; k++)
             buff_4qpsk[k] = in[i++];
         conv_4QPSKsymb_to_int(buff_4qpsk, header_len);
         field_len = (header_len - 4) / 7;
+
+        cout << endl << "A" << endl;
 
         if(DEBUG)
             cout << endl << "Header Length = " << header_len;
