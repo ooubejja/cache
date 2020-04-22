@@ -47,7 +47,7 @@ std::string execute( std::string cmd );
 
 void split(const std::string& str, vector<string> cont, char delim);
 
-bool compareFiles(const std::string& p1, const std::string& p2);
+int compareFiles(const std::string& p1, const std::string& p2);
 
 int find_index(vector<unsigned int>, int);
 

@@ -636,14 +636,23 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
         }
 
     }
+
+    // OTHMANE DEBUG : PC_data or vd is weird
     // cout <<  endl << "HERE" << endl;
-    // cout << endl << data_bits.size() << ", " << N << endl;
-    // for(int j=0; j< data_bits[0].size(); j++)
-    //     cout << data_bits[0][j] << " ";
-    // cout << endl;
-    /*for(int j=0; j< PC_data.size(); j++)
-        cout << PC_data[j].size() << " ";
-    cout << endl;*/
+    // for(int i=0; i< 20; i++){
+    //     cout << endl << "=========================== " <<i<< " ============================="  << endl;
+    //     for(int j=0; j< PC_data[i].size(); j++)
+    //       cout << PC_data[i][j] ;
+    // }
+    //
+    // for(int i=0; i< 20; i++){
+    //     cout << endl << "=========================== " <<i<< " ============================="  << endl;
+    //     cout << vd[i] << endl ;
+    // }
+    //
+    // cout << endl << "END"<< endl;
+    // exit(0);
+
 
     //Encode using polar encoder
     PC PC_w, PC_s;

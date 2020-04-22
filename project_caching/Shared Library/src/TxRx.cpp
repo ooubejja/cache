@@ -660,16 +660,55 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                 decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
             }
             //For testing pourpose
-            if (packet_remain < 5 ){
+            if (packet_remain < 2 ){
                 string name_file;
                 name_file = "../trasmissioni/User_" + to_string(id_user) + "/decoded_file_" + to_string(id_demand) + ".xml"; //"/CachingFile/trasmissioni/User_"
                 ofstream outFile (name_file, ios::out | ios::binary);
 
+                string repo_file = "../repository/file_0.xml";
+                int size_file1 = getFileSize(repo_file); // 6934 Octets / nb chunks=100 -> chunk size=69 + 34 for the last one
+                ifstream fin (repo_file, ios::binary | ios::in);
+                // int size_chunk = size_file1/NbChunks ;
+                int size_chunk = size_file1/NbChunks + 1 ;
+                int size_last_chunk = size_file1%NbChunks ;
+
+                cout << "size_chunk: " << size_chunk << endl;
+                cout << "size_last_chunk: " << size_last_chunk << endl;
+
+                /********************************** READ ALL PACKAGE ********************************/
                 for (unsigned int k = 0; k < NbChunks; k++){
-                    /********************************** READ ALL PACKAGE ********************************/
                     // Open file cache for read package
                     string pathFilePackage = pathFolder + "/" + to_string(id_file) + "_" + to_string(k) + ".cache";
+
+                    // OTHMANE CHUNK ERROR RATE potentially
+                    // "ls -lR ../cache/UserCache/*/6_20.cache"
+
+                    /********************** FIND ONE PATH OF TX CACHE FILE (Different from id_user) **********************/
+                    // string cmd = "ls -lR ../cache/UserCache/*/" + to_string(id_file) + "_" + to_string(k) + ".cache" ;
+                    // string res = execute(cmd) ;
+                    //
+                    // if(res.size() > 0 ){
+                    //     vector<string> result;
+                    //     char delim = '\n';
+                    //     std::stringstream ss(res);
+                    //     while (std::getline(ss, res, delim))
+                    //     {
+                    //         result.push_back(res);
+                    //     }
+                    //
+                    //     if(result.size()>=1){
+                    //         cout << "HIP :" << result.size() << endl;
+                    //         for (int i = 0; i < result.size(); i++){
+                    //             cout << result.at(i) << "  HOP" << endl;
+                    //       }
+                    //     }
+                    // }
+
+                    /********************************** FILL DECODED_FILE_X.XML ********************************/
+
                     int size_file = getFileSize(pathFilePackage);
+                    cout << "size_file: " << size_file << endl;
+
                     ifstream outFilePackage (pathFilePackage, ifstream::binary);
 
                     if (size_file > 0){
@@ -685,32 +724,33 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                         }
                         /**********************************************************************************/
                         outFile.write(buffer, size_file);
+
+                        // char buffer1[size_chunk];
+                        char *buffer1 = new char[size_chunk];
+                        if (fin){
+                            fin.seekg(k*size_chunk);
+                            if(k == NbChunks-1)
+                                size_chunk = size_last_chunk ;
+                            fin.read(buffer1, size_chunk);
+                            // istringstream string(buffer, buffer+size_chunk);
+                            cout << endl << "TX : " << endl << buffer ;
+                            cout << endl << "RX : " << endl << buffer1 ;
+                        }
+                        cout << endl << "===================================" <<endl;
                         delete[] buffer;
-                    }
+                        delete[] buffer1;
 
-                    // OTHMANE CHUNK ERROR RATE potentially
-                    // "ls -lR ../cache/UserCache/*/6_20.cache"
-                    string cmd = "ls -lR ../cache/UserCache/*/" + to_string(id_file) + "_" + to_string(k) + ".cache" ;
-                    string res = execute(cmd) ;
-                    vector<string> result;
-                    char delim = '\n';
-                    // split(res, result, delim);
-
-                    std::stringstream ss(res);
-                    while (std::getline(ss, res, delim))
-                    {
-                        result.push_back(res);
-                    }
-
-                    if(result.size()>1){
-                        cout << "HIP :" << result.size() << endl;
-                        for (int i = 0; i < result.size(); i++)
-                            cout << result.at(i) << "  HOP" << endl;
                     }
 
                 }
-
                 outFile.close();
+                fin.close();
+
+                exit(0);
+
+
+                /********************************** COMPARE TX & RX CACHE FILES ********************************/
+                // cout << endl << "COMPARISON RESULT : " << comparison << endl ;
 
 
             }
@@ -732,38 +772,33 @@ std::string execute( std::string cmd )
     return { std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>() } ;
 }
 
-// void split(const std::string& str, vector<string> cont, char delim = ' ')
-// {
-//     // std::stringstream ss(str);
-//     // std::string token;
-//     // while (std::getline(ss, token, delim))
-//     std::stringstream ss(str);
-//     while (std::getline(ss, str, delim))
-//     {
-//         cont.push_back(str);
-//     }
-// }
 
+int compareFiles(const std::string& p1, const std::string& p2) {
+    std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
+    std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);
 
-bool compareFiles(const std::string& p1, const std::string& p2) {
-  std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
-  std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);
+    if (f1.fail() || f2.fail()) {
+        cout << endl << "Error rate : Error reading files " << endl;
+        return -1; //file problem
+    }
 
-  if (f1.fail() || f2.fail()) {
-    return false; //file problem
-  }
+    if (f1.tellg() != f2.tellg()) {
+        cout << endl << "Error rate : Size mismatch " << endl;
+        // return -2; //size mismatch
+    }
 
-  if (f1.tellg() != f2.tellg()) {
-    return false; //size mismatch
-  }
+    //seek back to beginning and use std::equal to compare contents
+    f1.seekg(0, std::ifstream::beg);
+    f2.seekg(0, std::ifstream::beg);
 
-  //seek back to beginning and use std::equal to compare contents
-  f1.seekg(0, std::ifstream::beg);
-  f2.seekg(0, std::ifstream::beg);
-  return std::equal(std::istreambuf_iterator<char>(f1.rdbuf()),
-  std::istreambuf_iterator<char>(),
-  std::istreambuf_iterator<char>(f2.rdbuf()));
+    bool res = equal(istreambuf_iterator<char>(f1.rdbuf()),
+    istreambuf_iterator<char>(),
+    istreambuf_iterator<char>(f2.rdbuf()));
+
+    return int(res);
 }
+
+
 
 int find_index(std::vector<unsigned int> v, int value)
 {
