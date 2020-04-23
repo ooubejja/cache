@@ -660,90 +660,39 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                 decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
             }
             //For testing pourpose
-            if (packet_remain < 2 ){
+            if (packet_remain < 5 ){
                 string name_file;
                 name_file = "../trasmissioni/User_" + to_string(id_user) + "/decoded_file_" + to_string(id_demand) + ".xml"; //"/CachingFile/trasmissioni/User_"
-                ofstream outFile (name_file, ios::out | ios::binary);
 
                 string repo_file = "../repository/file_0.xml";
-                int size_file1 = getFileSize(repo_file); // 6934 Octets / nb chunks=100 -> chunk size=69 + 34 for the last one
-                // int size_chunk = size_file1/NbChunks ;
-                int size_chunk = size_file1/NbChunks + 1;   // +1 because cache files are 70 bytes
-                size_file1 = size_chunk*NbChunks;  // Update xml size to match cache file size
-                int size_last_chunk = size_file1%NbChunks ;
-                // ifstream fin (repo_file);
-                ifstream fin (repo_file, ios::binary | ios::in);
-
-                // cout << "size_chunk: " << size_chunk << endl;
-                // cout << "size_last_chunk: " << size_last_chunk << endl;
-
+                string B = LoadFile(repo_file.c_str());
                 /********************************** READ ALL PACKAGE ********************************/
                 for (unsigned int k = 0; k < NbChunks; k++){
                     // Open file cache for read package
                     string pathFilePackage = pathFolder + "/" + to_string(id_file) + "_" + to_string(k) + ".cache";
 
-                    /********************************** FILL DECODED_FILE_X.XML ********************************/
+                    string A = LoadFile(pathFilePackage.c_str());
+                    int size_file = (sizeof A);
+                    ofstream outFile;
+                    if(k==0)
+                        outFile.open(name_file, ios::out | ios::binary | ofstream::trunc);
+                    else
+                        outFile.open(name_file, ios::out | ios::binary | ofstream::app);
 
-                    int size_file = getFileSize(pathFilePackage);
-                    cout << "size_file: " << size_file << endl;
+                    outFile << A.c_str();
+                    outFile.close();
 
-                    ifstream outFilePackage (pathFilePackage, ios::binary | ios::in);
+                    string C = B.substr(k*size_file,size_file);
 
-                    if (size_file > 0){
-                        char *buffer = new char[size_file];
-
-                        if (outFilePackage){
-                            outFilePackage.read(buffer, size_file);
-                            outFilePackage.close();
-                        }
-                        else{
-                            cout << endl << "Error reading package: " << pathFilePackage << endl;
-                            exit(0);
-                        }
-                        /**********************************************************************************/
-                        outFile.write(buffer, size_file);
-
-                        // OTHMANE chunk error rate
-                        char *buffer1 = new char[size_file];
-                        if (fin){
-                            fin.seekg(k*size_file);
-                            // if(k == NbChunks-1)
-                            //     size_chunk = size_last_chunk ;
-                            fin.read(buffer1, size_file);
-                            // fin.read(buffer1, 16); // debug
-                            // istringstream string(buffer, buffer+size_chunk);
-                            cout << endl << "TX : " << endl << string(buffer1) ;
-                            cout << endl << "----------" ;
-                            cout << endl << "RX : " << endl << string(buffer) ;
-                        }
-                        // char *buffer1 = new char[size_chunk];
-                        // if (fin){
-                        //     fin.seekg(k*size_chunk);
-                        //     // if(k == NbChunks-1)
-                        //     //     size_chunk = size_last_chunk ;
-                        //     fin.read(buffer1, size_chunk);
-                        //     // istringstream string(buffer, buffer+size_chunk);
-                        //     cout << endl << "TX : " << endl << buffer ;
-                        //     cout << endl << "RX : " << endl << buffer1 ;
-                        // }
-                        cout << endl << "================ " << k << " ===================" <<endl;
-                        delete[] buffer;
-                        delete[] buffer1;
-                        // if(k==5)
-                        //     exit(0);
-
-                    }
-
+                    // cout << endl << C.c_str() << endl;
+                    // cout << "-----------------------" ;
+                    // cout << endl << A.c_str() << endl;
+                    // cout << "================ " << k << " ===================" <<endl;
                 }
-                outFile.close();
-                fin.close();
-
-                exit(0);
-
-
-                /********************************** COMPARE TX & RX CACHE FILES ********************************/
-                // cout << endl << "COMPARISON RESULT : " << comparison << endl ;
-
+                // string repo_file = "../repository/file_0.xml";
+                // name_file = "../trasmissioni/User_" + to_string(d_id_user) + "/decoded_file_" + to_string(d_id_demand) + ".xml";
+                // name_file = "../trasmissioni/User_" + my_to_string(d_id_user) + "/decoded_file_0.xml";
+                mycompare(repo_file, name_file, NbChunks);
 
             }
 
@@ -765,32 +714,89 @@ std::string execute( std::string cmd )
 }
 
 
-int compareFiles(const std::string& p1, const std::string& p2) {
-    std::ifstream f1(p1, std::ifstream::binary|std::ifstream::ate);
-    std::ifstream f2(p2, std::ifstream::binary|std::ifstream::ate);
 
-    if (f1.fail() || f2.fail()) {
-        cout << endl << "Error rate : Error reading files " << endl;
-        return -1; //file problem
+// othmane
+/********************************** COMPARE TX & RX CACHE FILES ********************************/
+void mycompare(string file_name0, string file_name1, int NbChunks){
+    // string file_name0, file_name1;
+    // file_name1 = "../trasmissioni/User_" + to_string(id_user) + "/decoded_file_" + to_string(id_demand) + ".xml"; //"/CachingFile/trasmissioni/User_"
+    // file_name0 = "../repository/file_0.xml";
+    int size_file0 = getFileSize(file_name0); // 6934 Octets | ../repository/file_0.xml
+    int size_file1 = getFileSize(file_name1); // 7000 Octets | ../trasmissioni/User_X/decoded_file_0.xml
+
+    int size_chunk = size_file0/NbChunks;   // +1 because cache files are 70 bytes
+    int size_last_chunk = size_file0%NbChunks ;
+    // size_file0 = size_chunk*NbChunks;  // Update xml size to match cache file size
+    ifstream TX_file (file_name0, ios::binary | ios::in);
+    ifstream RX_file (file_name1, ios::binary | ios::in);
+    cout << "size_chunk: " << size_chunk << endl;
+    cout << "size_last_chunk: " << size_last_chunk << endl;
+    cout << "size_file0: " << size_file0 << endl;
+    cout << "size_file1: " << size_file1 << endl;
+
+    if (TX_file && RX_file){
+      char *buffer0 = new char[size_chunk];
+      char *buffer1 = new char[size_chunk];
+      TX_file.seekg(0, ios::beg);
+      RX_file.seekg(0, ios::beg);
+
+      for (unsigned int k = 0; k < NbChunks; k++){
+        TX_file.seekg(k*size_chunk);
+        RX_file.seekg(k*size_chunk);
+        if(k==NbChunks-1)
+          size_chunk = size_last_chunk;
+        TX_file.read(buffer0, size_chunk);
+        RX_file.read(buffer1, size_chunk);
+
+        string str0(buffer0);
+        string str1(buffer1);
+        str1 = str1.substr(0,str1.length()-1);  // Correct a silly bug with random characters popping
+
+        if(str0.compare(str1) == 0){   // If chunks are equal
+          cout << endl << "================ " << k << " ===================" ;
+          cout << endl << "Chunks " << k << " are EQUAL." ;
+          cout << endl << "TX : " << endl << str0 ;
+          cout << endl << "-----------------------" ;
+          cout << endl << "RX : " << endl << str1 ;
+        }
+        else{
+          cout << endl << "Chunks " << k << " are NOT EQUAL." << endl ;
+        }
+        memset(buffer0, 0, sizeof buffer0);
+        memset(buffer1, 0, sizeof buffer1);
+        // if(k==10)
+        //   break;
+      }
+      TX_file.close();
+      RX_file.close();
+      delete[] buffer0;
+      delete[] buffer1;
     }
-
-    if (f1.tellg() != f2.tellg()) {
-        cout << endl << "Error rate : Size mismatch " << endl;
-        // return -2; //size mismatch
+    else{
+      cout << endl << "Error rate : Error reading files " << endl;
     }
-
-    //seek back to beginning and use std::equal to compare contents
-    f1.seekg(0, std::ifstream::beg);
-    f2.seekg(0, std::ifstream::beg);
-
-    bool res = equal(istreambuf_iterator<char>(f1.rdbuf()),
-    istreambuf_iterator<char>(),
-    istreambuf_iterator<char>(f2.rdbuf()));
-
-    return int(res);
 }
+/***********************************************************************************************/
 
-
+std::string LoadFile(const char* FileLocation)
+{
+    std::ifstream fileStream;
+    std::string fileOutput, currentLine;
+    fileStream.open(FileLocation);
+    if (fileStream.is_open())
+    {
+        while (!fileStream.eof())
+        {
+            std::getline(fileStream, currentLine);
+            if(fileStream.eof())
+                fileOutput.append(currentLine);
+            else
+                fileOutput.append(currentLine + "\n");
+        }
+    }
+    fileStream.close();
+    return fileOutput;
+}
 
 int find_index(std::vector<unsigned int> v, int value)
 {
@@ -801,8 +807,6 @@ int find_index(std::vector<unsigned int> v, int value)
     }
     return -1;
 }
-
-
 
 
 vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string pathFileDelivery,

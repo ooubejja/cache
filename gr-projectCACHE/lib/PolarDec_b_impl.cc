@@ -163,7 +163,7 @@ namespace gr {
         conv_4QPSKsymb_to_int(buff_4qpsk, header_len);
         field_len = (header_len - 4) / 7;
 
-        cout << endl << "A" << endl;
+        // cout << endl << "A" << endl;
 
         if(DEBUG)
             cout << endl << "Header Length = " << header_len;
@@ -419,6 +419,8 @@ namespace gr {
               d_case = 2;
       }
 
+      string repo_file, name_file;
+
       //cout << "Case: " << d_case;
       switch(d_case)
       {
@@ -468,7 +470,8 @@ namespace gr {
               // cout << endl << "OTHMANE DECODED DATA :" << endl;
               // for (int i = 0; i < decoded_data.size(); ++i)
               //     cout << decoded_data[i] ;
-              // cout << endl << "OTHMANE END :" << endl;
+
+              cout << endl << "OTHMANE END :" << endl;
 
               reinitialize(); //Restore the header and the global main variables
 
@@ -564,9 +567,10 @@ namespace gr {
       // if(cnt>=4)
       //     exit(0);
 
-      if(d_packet_remain <1)
+      if(d_packet_remain <5){
         cout << "Remaining packets: " << d_packet_remain << endl;
 
+      }
       d_k++;
 
       // Tell runtime system how many output items we produced.

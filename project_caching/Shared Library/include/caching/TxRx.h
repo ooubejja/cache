@@ -45,11 +45,11 @@ othmane :
 */
 std::string execute( std::string cmd );
 
-void split(const std::string& str, vector<string> cont, char delim);
-
-int compareFiles(const std::string& p1, const std::string& p2);
+std::string LoadFile(const char* FileLocation);
 
 int find_index(vector<unsigned int>, int);
+
+void mycompare(string, string, int);
 
 // othmane
 // void decodeDataStrong(int N,int K_w,int K_s,double d_SNR, gr_complex* coded_symb,string ,PC ,PC, bool ,unsigned int & );

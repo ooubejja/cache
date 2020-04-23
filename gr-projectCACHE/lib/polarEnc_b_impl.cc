@@ -299,6 +299,13 @@ namespace gr {
           cout << "Done!" << endl;
           // cleanVar();
           return -1;  // Done!
+
+          // string repo_file, name_file;
+          // repo_file = "../repository/file_0.xml";
+          // name_file = "../trasmissioni/User_" + to_string(d_id_user) + "/decoded_file_" + to_string(d_id_demand) + ".xml";
+          // // name_file = "../trasmissioni/User_" + my_to_string(d_id_user) + "/decoded_file_0.xml";
+          // mycompare(repo_file, name_file, d_b_chunks);
+          // cout << endl << "OTHMANE END :" << endl;
       }
 
       unsigned int n = std::min((unsigned)d_transmission1.size() - d_offset,

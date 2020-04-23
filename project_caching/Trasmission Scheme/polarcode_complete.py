@@ -27,7 +27,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 15
+        self.snr = snr = 5
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
