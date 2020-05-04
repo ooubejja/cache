@@ -66,6 +66,7 @@ namespace gr {
       float sqrtVariance_w, sqrtVariance_s;
       int * frozen_s, * frozen_w;
       vector<gr_complex> d_coded_packet;
+      vector<char> decoded_data;
 
       double * llr_w;
       //float * recSymbol_w;

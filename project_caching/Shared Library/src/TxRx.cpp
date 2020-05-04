@@ -682,19 +682,15 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                     outFile << A.c_str();
                     outFile.close();
 
-                    string C = B.substr(k*size_file,size_file);
-
-                    // cout << endl << C.c_str() << endl;
-                    // cout << "-----------------------" ;
-                    // cout << endl << A.c_str() << endl;
-                    // cout << "================ " << k << " ===================" <<endl;
                 }
-                // string repo_file = "../repository/file_0.xml";
-                // name_file = "../trasmissioni/User_" + to_string(d_id_user) + "/decoded_file_" + to_string(d_id_demand) + ".xml";
-                // name_file = "../trasmissioni/User_" + my_to_string(d_id_user) + "/decoded_file_0.xml";
-                mycompare(repo_file, name_file, NbChunks);
+
+                // mycompare(repo_file, name_file, NbChunks);
 
             }
+            // string mystr(decoded_data.begin(), decoded_data.end());
+            // cout << endl << "===================================" ;
+            // cout << endl << "ID : " << to_string(id_file) << "_" << to_string(id_chunck);
+            // cout << endl << "RX : " << endl << mystr << endl;
 
        }
    }
@@ -718,21 +714,13 @@ std::string execute( std::string cmd )
 // othmane
 /********************************** COMPARE TX & RX CACHE FILES ********************************/
 void mycompare(string file_name0, string file_name1, int NbChunks){
-    // string file_name0, file_name1;
-    // file_name1 = "../trasmissioni/User_" + to_string(id_user) + "/decoded_file_" + to_string(id_demand) + ".xml"; //"/CachingFile/trasmissioni/User_"
-    // file_name0 = "../repository/file_0.xml";
     int size_file0 = getFileSize(file_name0); // 6934 Octets | ../repository/file_0.xml
     int size_file1 = getFileSize(file_name1); // 7000 Octets | ../trasmissioni/User_X/decoded_file_0.xml
 
     int size_chunk = size_file0/NbChunks;   // +1 because cache files are 70 bytes
     int size_last_chunk = size_file0%NbChunks ;
-    // size_file0 = size_chunk*NbChunks;  // Update xml size to match cache file size
     ifstream TX_file (file_name0, ios::binary | ios::in);
     ifstream RX_file (file_name1, ios::binary | ios::in);
-    cout << "size_chunk: " << size_chunk << endl;
-    cout << "size_last_chunk: " << size_last_chunk << endl;
-    cout << "size_file0: " << size_file0 << endl;
-    cout << "size_file1: " << size_file1 << endl;
 
     if (TX_file && RX_file){
       char *buffer0 = new char[size_chunk];

@@ -27,7 +27,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 5
+        self.snr = snr = 25
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
@@ -50,6 +50,7 @@ class polarcode_complete(gr.top_block):
         self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc((payload_mod.points()), 1)
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_repack_bits_bb_0_1 = blocks.repack_bits_bb(8, 2, packetlength, False, gr.GR_LSB_FIRST)
+        self.blocks_message_debug_0 = blocks.message_debug()
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 

@@ -1,17 +1,17 @@
 /* -*- c++ -*- */
-/* 
+/*
  * Copyright 2018 <+YOU OR YOUR COMPANY+>.
- * 
+ *
  * This is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3, or (at your option)
  * any later version.
- * 
+ *
  * This software is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this software; see the file COPYING.  If not, write to
  * the Free Software Foundation, Inc., 51 Franklin Street,
@@ -31,27 +31,27 @@ namespace gr {
     class polarEnc_b_impl : public polarEnc_b
     {
      private:
-      // Nothing to declare in this block.
+      const pmt::pmt_t d_port;
 
      public:
       polarEnc_b_impl(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);
       ~polarEnc_b_impl();
-      
+
       //polar code parameters
       int d_N, d_t, d_r;
       int d_K_w, d_K_s;
       float d_SNR_s, d_SNR_w;
       bool d_gen,d_stop;
 
-      //Data for polar code	
+      //Data for polar code
       PC PC_w, PC_s;
       float designSNRdb,variance_w, variance_s;
       float sqrtVariance_w, sqrtVariance_s;
-      
+
       int * info_w;
       int * frozen_w;
       float * recSymbol_w;
-      
+
       int * info_s;
       int * frozen_s;
       int * initialMessage;
@@ -70,17 +70,17 @@ namespace gr {
 
       header_transmission *d_header_data;
       header_transmission *d_hdr_sdata;
-    
+
       vector< vector<char> > d_coded_data;
       vector< vector<char> > d_strg_data;
       vector< vector<char> > d_PC_data;
-      vector<header_polar> d_hX; 
+      vector<header_polar> d_hX;
       vector<vector<char> > d_transmission;
       vector<char> d_transmission1;
       vector<vector<bool> > G_edges;
-      vector<vector<int> >  bits_coded;
+      vector<vector<int> >  d_bits_coded;
       vector<int> d_spack_size;
-      
+
       pmt::pmt_t d_packet_len_pmt;
       pmt::pmt_t d_len_tag_key;
       uint64_t d_next_tag_pos;
@@ -99,4 +99,3 @@ namespace gr {
 } // namespace gr
 
 #endif /* INCLUDED_PROJECTCACHE_POLARENC_B_IMPL_H */
-

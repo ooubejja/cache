@@ -31,7 +31,7 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 20.0
+        self.snr = snr = 3
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()

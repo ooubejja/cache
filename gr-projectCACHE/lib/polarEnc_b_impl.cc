@@ -57,8 +57,10 @@ namespace gr {
       d_id_user(id_user),
       d_offset(0),
       d_spack_len(spack_len),
-      d_len_tag_key(pmt::string_to_symbol(len_tag_key))
+      d_len_tag_key(pmt::string_to_symbol(len_tag_key)),
+      d_port(pmt::mp("chunks"))
     {
+      message_port_register_out(d_port);
       d_gen = true; d_stop = false;
       d_t = 0; d_r = N; d_i = 0; d_k=0; // d_r is the nb of remaning symbols to send by the grc block
       d_id_demand = 0;
@@ -134,6 +136,7 @@ namespace gr {
             d_header_data[q].id_chunks.clear();
             d_header_data[q].size_package.clear();
 
+            // OTHMANE : Core dump bug comes from here
             d_hdr_sdata[q].id_utenti.clear();
             d_hdr_sdata[q].id_files.clear();
             d_hdr_sdata[q].id_chunks.clear();
@@ -168,9 +171,9 @@ namespace gr {
         for(int i=0; i<data_size; i++)
             G_edges.at(i).clear();
 
-        data_size = bits_coded.size();
+        data_size = d_bits_coded.size();
         for(int i=0; i<data_size; i++)
-            bits_coded.at(i).clear();
+            d_bits_coded.at(i).clear();
 
         //free transmission vector
         d_transmission1.clear();
@@ -235,22 +238,33 @@ namespace gr {
             //Coding data for transmission
             d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
 
+            // cout << endl << "TX : " << endl << mystr << endl;
+            // cout << endl << "OTHMANE ENCODED DATA :" << endl;
+            //     cout << decoded_data[i] ;
+            // cout << endl << "OTHMANE END :" << endl;
+
             //Coding strong and weak data
             d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes,
                 d_outputForColoring.n_nodi, d_nb_strg, d_data, &d_hdr_sdata, G_edges);
 
-            //Polar codes the weak and strong packets
-            d_PC_data = codingDataPolar(d_coded_data, d_strg_data, bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N);
-            //cout << "The total number of transmitted packet is: " << d_PC_data.size() << endl;
+            // OTHMANE
+            // Create and Send PDU message with chunks
+            pmt::pmt_t dict(pmt::make_dict());
+            for (int i = 0; i < d_strg_data.size(); ++i){
+                string mystr(d_strg_data[i].begin(), d_strg_data[i].end());
+                cout << endl << "OTHMANE SOURCE DATA :" << endl;
+                cout << mystr ;
+                cout << endl << "CHUNK ID : ";
+                // cout << d_header.id_chunks.at(index) ;
+                cout << endl << "OTHMANE END " << endl;
 
+                dict = pmt::dict_add(dict, pmt::from_long(i), pmt::intern(mystr));
+                message_port_pub(d_port, dict);
+            }
+            //Polar codes the weak and strong packets
+            d_PC_data = codingDataPolar(d_coded_data, d_strg_data, d_bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N);
 
             TX_PC_Pack(d_hX, d_PC_data, d_id_demand, d_transmission, d_spack_len, d_spack_size);
-
-            /*int TXdata_size = d_transmission.size();
-
-            for(int i=0; i<TXdata_size; i++){
-              d_packet_size.push_back(d_transmission[i].size());
-            }*/
 
         }/* end if (d_n_col > 0) */
 

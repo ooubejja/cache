@@ -331,6 +331,8 @@ namespace gr {
       d_id_last_spack = 0;
       // OTHMANE
       d_coded_packet.clear();
+      decoded_data.clear();
+
     }
 
     int
@@ -353,7 +355,7 @@ namespace gr {
       int d_case;
       int dummy_bytes;
 
-      vector<char> decoded_data;
+      // vector<char> decoded_data;
 
 
 
@@ -467,13 +469,8 @@ namespace gr {
 
               //Proceed to decoding of the whole packet
               decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
-              // cout << endl << "OTHMANE DECODED DATA :" << endl;
-              // for (int i = 0; i < decoded_data.size(); ++i)
-              //     cout << decoded_data[i] ;
 
-              cout << endl << "OTHMANE END :" << endl;
-
-              reinitialize(); //Restore the header and the global main variables
+              // reinitialize(); //Restore the header and the global main variables
 
               break;
 
@@ -502,12 +499,23 @@ namespace gr {
                   //Proceed to decoding of the whole packet
                   decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
 
+                  // OTHMANE
+                  // Create and Send PDU message with chunks
+                  // pmt::pmt_t dict(pmt::make_dict());
+                  // string mystr(decoded_data.begin(), decoded_data.end());
+                  // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
+                  // cout << mystr ;
+                  // cout << endl << "OTHMANE END " << endl;
+                  // dict = pmt::dict_add(dict, pmt::from_long(i), pmt::intern(mystr));
+                  // message_port_pub(d_port, dict);
+
+
                   // cout << endl << "OTHMANE DECODED DATA :" << endl;
                   // for (int i = 0; i < decoded_data.size(); ++i)
                   //     cout << (int)decoded_data[i] << ", ";
                   // cout << endl << "OTHMANE END :" << endl;
 
-                  reinitialize(); //Restore the header and the global main variables
+                  // reinitialize(); //Restore the header and the global main variables
 
 
               }else if(d_id_spack != d_id_last_spack) //If receive a generic small packet
@@ -537,11 +545,13 @@ namespace gr {
                   d_coded_packet.push_back(aa);
 
               decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
-              // cout << endl << "AAA :" << endl;
-              // for (int i = 0; i < decoded_data.size(); ++i)
-              //     cout << decoded_data[i] ;
-              // cout << endl << "OTHMANE END :" << endl;
-              reinitialize(); //Restore the header and the global main variables
+
+              // string mystr(decoded_data.begin(), decoded_data.end());
+              // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
+              // cout << mystr ;
+              // cout << endl << "OTHMANE END " << endl;
+
+              // reinitialize(); //Restore the header and the global main variables
 
               if(d_id_spack == 0)
               {
@@ -556,12 +566,21 @@ namespace gr {
               break;
       }
 
-      // if(d_case == 3 || d_case == 4 || d_case == 5){
-          // cout << endl << "OTHMANE DECODED DATA :" << endl;
-          // for (int i = 0; i < decoded_data.size(); ++i)
-          //     cout << decoded_data[i] ;
-          // cout << endl << "OTHMANE END :" << endl;
-      // }
+      if(d_case == 3 || d_case == 4 || d_case == 5){
+        int index = find_index(d_header.id_utenti, d_id_user);
+        // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") : ";
+        // cout << index << endl;
+        if(index != -1 ) {
+            string mystr(decoded_data.begin(), decoded_data.end());
+            cout << endl << "OTHMANE RX-BYTES-CODED (Case :"<< d_case << ") :" << endl;
+            cout << mystr ;
+            cout << endl << "CHUNK ID : ";
+            cout << d_header.id_chunks.at(index) ;
+            cout << endl << "OTHMANE END " << endl;
+        }
+        reinitialize();
+          // decoded_data.clear();
+      }
 
       //     cnt++;
       // if(cnt>=4)

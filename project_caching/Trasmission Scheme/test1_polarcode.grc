@@ -437,7 +437,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>5</value>
+      <value>25</value>
     </param>
   </block>
   <block>
@@ -593,7 +593,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(256, 356)</value>
+      <value>(312, 372)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -622,6 +622,37 @@
     <param>
       <key>vlen</key>
       <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_message_debug</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(344, 488)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_message_debug_0</value>
     </param>
   </block>
   <block>
