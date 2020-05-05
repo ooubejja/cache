@@ -204,13 +204,6 @@ namespace gr {
 
         d_data = generateData(d_m_files, d_b_chunks, d_id_demand);
 
-        // OTHMANE
-        // cout << endl << "OTHMANE ENCODED DATA :" << endl;
-        // for (int i = 0; i < decoded_data.size(); ++i)
-        //     cout << decoded_data[i] ;
-        // cout << endl << "OTHMANE END :" << endl;
-
-
         cout << endl << "Conflict-Graph generator process" << endl << "-------------" << endl << endl;
         d_outputForColoring = conflictGraphGenerator(d_data);
         cout << endl << "Numero nodi del grafo: " << d_outputForColoring.n_nodi << endl << endl;

@@ -657,7 +657,7 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
     //Encode using polar encoder
     PC PC_w, PC_s;
     //bits_coded are the bits after being polarly coded
-    std::vector<std::vector<int> > bits_coded (data_bits.size(), std::vector<int> (N,0));
+    vector<vector<int> > bits_coded (data_bits.size(), std::vector<int> (N,0));
 //    bits_coded = vector<vector<int> > (data_bits.size(), std::vector<int> (N,0));
     const int K_w = 8*PC_data[0].size()/2;
     const int K_s = 8*PC_data[0].size();
@@ -677,6 +677,15 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
     // Same for both users
     int sentMessage[N], sentCodeword[N], sentSymbol[data_bits.size()][N];
 
+
+    // OTHMANE DEBUG : Print info_s in a file
+    ofstream debug_file_coded;
+    debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
+    debug_file_coded <<  endl << "==================================" << endl << "TX" << endl << "==================================" << endl;
+    // for (int i = 0; i < K_s; i++){
+    //   debug_file_coded << info_s[i] << " " ;
+    // }
+
     //Polar Encoding
     for (unsigned int k = 0; k < data_bits.size(); ++k)
     {
@@ -692,17 +701,12 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
             frozen_w[k][i-K_w] = sentMessage[i];
 
         // cout <<  endl << "B" << endl;
-
-        for (int i=0; i<K_s; i++)
-            info_s[i] = sentMessage[i];
+        // OTHMANE
+        for (int i=0; i<K_s; i++){
+          info_s[i] = sentMessage[i];
+        }
         for (int i=K_s; i<N; i++)
             frozen_s[k][i-K_w] = sentMessage[i];
-
-        // cout <<  endl << "C" << endl;
-        // othmane : While k <10 output info_w to file
-    //     ofstream data_out;
-    //     data_out.open("NbCombineUsers.txt",ios::app);
-    //     data_out.close()
 
         PC_w.encode(info_w, frozen_w[k], sentMessage, sentCodeword, sentSymbol[k]);
         // cout <<  endl << "D" << endl;
@@ -710,23 +714,19 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
         for (int i=0; i<N; i++){
             //bits_coded[k][i] = sentCodeword[i];
             bits_coded[k][i] = (sentSymbol[k][i]>0) ? 1:0;
-            //sentSymbol[k][i] = 2*bits_coded[k][i]-1;
+            debug_file_coded << bits_coded[k][i] << "" ;
         }
+        debug_file_coded << endl << "----------------------------" << endl ;
         // cout <<  endl << "E" << endl;
     }
 
-    // OTHMANE DEBUG : Print 4 Codewords
-    // ofstream debug_file_coded;
-    // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
-    //
-    // for (int i = 0; i < 4; i++){
-    //     for (int j = 0; j < N; j++){
-    //         debug_file_coded << bits_coded[i][j] ; // << ", ";
-    //     }
-    //     debug_file_coded << endl ;
-    // }
-    // debug_file_coded << "--------" << endl ;
-    // debug_file_coded.close();
+    // debug_file_coded << endl << "================================" << endl ;
+    debug_file_coded << endl << "=============================================================" << endl ;
+    debug_file_coded << "RX Code: " << endl << endl ;
+    debug_file_coded.close();
+
+
+
 
 
     /******************************** Polar Decoding - FOR TEST *********************/

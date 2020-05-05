@@ -811,51 +811,24 @@ vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_comp
         frozen_s[j] = 0;
 
     double variance = pow(10,-(d_SNR/10));
-    //double sqrtVariance = sqrt(variance);
 
-    //No need for the following since we receive symbols-qpsk
-    /*
-    //Convert the data in the received packet to bits
-    int coded_bits [N];
-    for(int j=0; j< (N/8); j++){
-        bb = conv_char_to_bitsInt(coded_data[j]);
-        for(int k=0; k<8; k++)
-            coded_bits[j*8+k] = bb[k];
-    }
-    */
-    // OTHMANE
-    // if(!DEBUG){
-    //     for (int j = 0; j < 20; ++j)
-    //         cout << coded_symb[j] << ", ";
-    //     cout << endl;
-    // }
+
 
     PC_s.computeLLR_qpsk(llr_s,coded_symb,variance);
     PC_s.SC(recMessage_s, recCodeword_s, llr_s, frozen_s);
 
-    // PC_s.printDecodingVariables();
-
-    // OTHMANE DEBUG :
-
-    // ofstream debug_file_coded;
-    // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-    //
-    // for(int i=0; i < N; i++){
-    //     debug_file_coded <<  recCodeword_s[i];
-    // }
-    // debug_file_coded << endl ;
-    // debug_file_coded.close();
-
-    // cout << endl << "OTHMANE HERE " << endl;
-
     recMessage_s[0] = (recMessage_s[0])?0:1;
 
-    /*if(DEBUG){
-        cout << "\n\nThe Strong decoded message is:" << endl;
-        for (int i = 0; i < N; i++)
-            cout << recMessage_s[i] << " ";
-        cout << endl;
-    }*/
+    // cout <<  endl << "==================================" << endl << "RX" << endl << "==================================" << endl;
+    // PC_s.printDecodingVariables();
+    // cout <<  endl << "==================================" << endl ;
+
+    // if(!DEBUG){
+    //     cout << "\n\nThe Strong decoded message is:" << endl;
+    //     for (int i = 0; i < K_s; i++)
+    //         cout << recMessage_s[i] << " ";
+    //     cout << endl;
+    // }
     //Convert bits to char
     int abits[8];
 
@@ -917,32 +890,43 @@ vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_comp
         }
     }
 
+    // OTHMANE DEBUG :
     // coded_packet.clear();
     // coded_symb.clear();
 
-    // // OTHMANE DEBUG : Print 5 Codewords
-    // ofstream debug_file_coded;
-    // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-    //
+    // cout << endl << "CODED_SYMB SIZE : "  << coded_symb.size() << endl; // == 1024
+
+    // PC_s.printDecodingVariables();
+    // cout <<  endl << "==================================" << endl ;
+    // cout <<  endl << "==================================" << endl << "RX" << endl << "==================================" << endl;
+
+    ofstream debug_file_coded;
+    debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+
+    // debug_file_coded << "RX Code: " << endl ;
+    // debug_file_coded << endl << "=============================================================" << endl ;
+    // cout << "CHUNK ID : " << d_header.id_chunks.at(index);
+    for (int i = 0; i < N; i++)
+        debug_file_coded << recCodeword_s[i] << "";
+
+    debug_file_coded << endl << "----------------------------" << endl ;
+    debug_file_coded.close();
+
     // gr_complex buff_4qpsk[4];
     // char resc;
     // vector<unsigned int> res (8,0);
     //
     // for(int i=0; i < coded_symb.size(); i++){
-    //     for(int k=0; k < 4; k++){
+    //     for(int k=0; k < 4; k++)
     //         buff_4qpsk[k] = coded_symb[i++];
-    //     }
     //
     //     conv_4QPSKsymb_to_char(buff_4qpsk, resc);
     //     res = conv_char_to_bitsInt(resc);
-    //     for(int j=0; j<8; j++){
-    //         debug_file_coded <<  res[j];
-    //     }
-    //
+    //     for(int j=0; j<8; j++)
+    //         debug_file_coded <<  res[j] << "";
     // }
-    // debug_file_coded << endl ;
-    // debug_file_coded.close();
-    // cout << endl << "OTHMANE HERE " << endl;
+
+
     // exit(0);
 
 
