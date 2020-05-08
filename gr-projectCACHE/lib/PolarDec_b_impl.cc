@@ -422,6 +422,7 @@ namespace gr {
       }
 
       string repo_file, name_file;
+      int recCodeword_s[d_N], recMessage_s[d_N];
 
       //cout << "Case: " << d_case;
       switch(d_case)
@@ -468,7 +469,7 @@ namespace gr {
                   d_coded_packet.push_back(in[k]);
 
               //Proceed to decoding of the whole packet
-              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
+              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header, recCodeword_s, recMessage_s);
 
               // reinitialize(); //Restore the header and the global main variables
 
@@ -497,7 +498,7 @@ namespace gr {
                     d_coded_packet.push_back(in[k]);
 
                   //Proceed to decoding of the whole packet
-                  decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
+                  decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s, recMessage_s);
 
                   // OTHMANE
                   // Create and Send PDU message with chunks
@@ -544,7 +545,7 @@ namespace gr {
               for(unsigned int k = 0; k < dummy_bytes; k++)
                   d_coded_packet.push_back(aa);
 
-              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header);
+              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s,recMessage_s);
 
               // string mystr(decoded_data.begin(), decoded_data.end());
               // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
@@ -571,12 +572,25 @@ namespace gr {
         // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") : ";
         // cout << index << endl;
         if(index != -1 ) {
-            string mystr(decoded_data.begin(), decoded_data.end());
-            cout << endl << "OTHMANE RX-BYTES-CODED (Case :"<< d_case << ") :" << endl;
-            cout << mystr ;
-            cout << endl << "CHUNK ID : ";
-            cout << d_header.id_chunks.at(index) ;
-            cout << endl << "OTHMANE END " << endl;
+            // string mystr(decoded_data.begin(), decoded_data.end());
+            // cout << endl << "RECEIVED MESSAGE" << endl;
+            // cout << mystr ;
+            // cout << endl << "RX CHUNK ID : ";
+            // cout << d_header.id_chunks.at(index) ;
+            // cout << endl << "OTHMANE END " << endl;
+            ///////////////////////////////////////////////////////////////
+            ofstream debug_file_coded;
+            debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+            debug_file_coded << endl << "RECEIVED MESSAGE ID: " << d_header.id_chunks.at(index) << endl;
+            for (int i = 0; i < d_K_s; i++)
+                debug_file_coded << recMessage_s[i] << "";
+
+            debug_file_coded << endl << "----------------------------" << endl ;
+            // debug_file_coded << "RECEIVED CODEWORD ID: " << d_header.id_chunks.at(index) << endl;
+            // for (int i = 0; i < d_N; i++)
+            //     debug_file_coded << recCodeword_s[i] << "";
+
+            debug_file_coded.close();
         }
         reinitialize();
           // decoded_data.clear();

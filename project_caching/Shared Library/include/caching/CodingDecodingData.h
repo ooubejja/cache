@@ -23,11 +23,11 @@ vector<vector<bool> > maxBPM(vector<vector<bool> > bpGraph);
 
 void gen_rand_request_zipf(int , double , vector<int> & );
 
-vector< vector<char> > MaxBipartiteGraph(int *d_coloring, int d_n_col, nodo *nodes, 
+vector< vector<char> > MaxBipartiteGraph(int *d_coloring, int d_n_col, nodo *nodes,
                 int n_nodi, int nb_strg, data_matrix d_data, header_transmission **d_hdr_sdata, vector<vector<bool> >& );
 
 vector<vector<char> > codingDataPolar(vector<vector<char> > weak_data, vector<vector<char> > strg_data, vector<vector<int> > &,
-    vector<vector<bool> > G_edges, header_transmission *hdr_weak, header_transmission *hdr_strg, vector<header_polar> &, const int);
+    vector<vector<bool> > G_edges, header_transmission *hdr_weak, header_transmission *hdr_strg, vector<header_polar> &, const int, vector<vector<int> > &sentCodewords_all, vector<vector<int> > &sentMessages_all) ;
 
 PC initialize_PC(int ,int);
 

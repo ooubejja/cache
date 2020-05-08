@@ -36,7 +36,7 @@ namespace caching{
 
 void TX_PC_Pack(vector<header_polar> &, vector< vector<char> > coded_data, unsigned int , vector<vector<char> > &, int, vector<int> &);//vector<char> &
 
-vector<char> Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , int , int , double , PC, PC, header_polar);
+vector<char> Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , int , int , double , PC, PC, header_polar, int *, int *);
 
 vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> >);
 
@@ -53,7 +53,7 @@ void mycompare(string, string, int);
 
 // othmane
 // void decodeDataStrong(int N,int K_w,int K_s,double d_SNR, gr_complex* coded_symb,string ,PC ,PC, bool ,unsigned int & );
-vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string ,PC ,PC, bool ,unsigned int & );
+vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string ,PC ,PC, bool ,unsigned int &, int *, int *);
 
 void toHeaderWeak(header_polar , header_transmission &header);
 

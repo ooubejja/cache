@@ -347,7 +347,7 @@ vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vec
 
 
 vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remain, int Nbfiles, int NbChunks,
-    bool isStr, int N, int K_s, int K_w, double d_SNR, PC PC_w, PC PC_s, header_polar d_header){
+    bool isStr, int N, int K_s, int K_w, double d_SNR, PC PC_w, PC PC_s, header_polar d_header, int *recCodeword_s, int *recMessage_s){
 
     unsigned int field_len = 0;
     unsigned int BeginData, payload_len, SymbPayload_len, i;
@@ -375,7 +375,9 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
     //and take the three cases into account: weak - strong, weak, strong - strong
     double llr_w[N], llr_s[N];
     float recSymbol_w[N], recSymbol_s[N];
-    int recMessage_w[N], recCodeword_w[N], recMessage_s[N], recCodeword_s[N];
+    int recMessage_w[N], recCodeword_w[N];
+    // int recMessage_w[N], recCodeword_w[N], recMessage_s[N];
+    // int recCodeword_s[N];
     //Set Polar Decoding environment
 
 
@@ -523,7 +525,7 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                 //Decode the strong user
                 //Proceed to Polar Decoding
                 string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
-                decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
+                decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain, recCodeword_s, recMessage_s);
 
             }
         }
@@ -640,7 +642,7 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                 if(d_header.id_utenti[1] == id_user){
                     id_chunck = d_header.id_chunks.at(1);
                     string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
-                    decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
+                    decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain, recCodeword_s, recMessage_s);
 
                 }
                 //In this else clause, the requested packet is the first
@@ -653,11 +655,11 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
                 if(d_header.id_utenti[0] == id_user){
                     id_chunck = d_header.id_chunks.at(0);
                     string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
-                    decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,true,packet_remain);
+                    decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,true,packet_remain,recCodeword_s, recMessage_s);
                 }
             }else{
                 string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
-                decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
+                decoded_data = decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain, recCodeword_s, recMessage_s);
             }
             //For testing pourpose
             if (packet_remain < 5 ){
@@ -798,12 +800,13 @@ int find_index(std::vector<unsigned int> v, int value)
 
 
 vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string pathFileDelivery,
-    PC PC_w, PC PC_s, bool loc, unsigned int &packet_remain){
+    PC PC_w, PC PC_s, bool loc, unsigned int &packet_remain, int *recCodeword_s, int *recMessage_s){
 
     int frozen_s[N-K_s];
     double llr_s[N];
     float recSymbol_s[N];
-    int recMessage_s[N], recCodeword_s[N];
+    // int recMessage_s[N];
+    // int recCodeword_s[N];
     double designSNRdb = 0;
     bool DEBUG = false;
 
@@ -900,17 +903,17 @@ vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_comp
     // cout <<  endl << "==================================" << endl ;
     // cout <<  endl << "==================================" << endl << "RX" << endl << "==================================" << endl;
 
-    ofstream debug_file_coded;
-    debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-
-    // debug_file_coded << "RX Code: " << endl ;
-    // debug_file_coded << endl << "=============================================================" << endl ;
-    // cout << "CHUNK ID : " << d_header.id_chunks.at(index);
-    for (int i = 0; i < N; i++)
-        debug_file_coded << recCodeword_s[i] << "";
-
-    debug_file_coded << endl << "----------------------------" << endl ;
-    debug_file_coded.close();
+    // ofstream debug_file_coded;
+    // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+    //
+    // // debug_file_coded << "RX Code: " << endl ;
+    // // debug_file_coded << endl << "=============================================================" << endl ;
+    // // cout << "CHUNK ID : " << d_header.id_chunks.at(index);
+    // for (int i = 0; i < N; i++)
+    //     debug_file_coded << recCodeword_s[i] << "";
+    //
+    // debug_file_coded << endl << "----------------------------" << endl ;
+    // debug_file_coded.close();
 
     // gr_complex buff_4qpsk[4];
     // char resc;

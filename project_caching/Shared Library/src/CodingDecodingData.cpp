@@ -453,7 +453,7 @@ vector<vector<char>> MaxBipartiteGraph(int *coloring, int n_col, nodo *nodi, int
             This can be reducd to 1d vector, however this would complicate the header combination (to be verified later)
 */
 vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vector<char>> strg_data, vector<vector<int> > &data_bits,
-    vector<vector<bool>> G_edges, header_transmission *hdr_weak, header_transmission *hdr_strg, vector<header_polar> &hX, const int N){
+    vector<vector<bool>> G_edges, header_transmission *hdr_weak, header_transmission *hdr_strg, vector<header_polar> &hX, const int N, vector<vector<int> > &sentCodewords_all, vector<vector<int> > &sentMessages_all){
 
     bool DEBUG = false;
     int nodeweak_size = weak_data.size();
@@ -637,28 +637,20 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
 
     }
 
-    // OTHMANE DEBUG : PC_data or vd is weird
-    // cout <<  endl << "HERE" << endl;
-    // for(int i=0; i< 20; i++){
-    //     cout << endl << "=========================== " <<i<< " ============================="  << endl;
-    //     for(int j=0; j< PC_data[i].size(); j++)
-    //       cout << PC_data[i][j] ;
-    // }
-    //
-    // for(int i=0; i< 20; i++){
-    //     cout << endl << "=========================== " <<i<< " ============================="  << endl;
-    //     cout << vd[i] << endl ;
-    // }
-    //
-    // cout << endl << "END"<< endl;
-    // exit(0);
-
 
     //Encode using polar encoder
     PC PC_w, PC_s;
-    //bits_coded are the bits after being polarly coded
     vector<vector<int> > bits_coded (data_bits.size(), std::vector<int> (N,0));
-//    bits_coded = vector<vector<int> > (data_bits.size(), std::vector<int> (N,0));
+
+
+    //OTHMANE : Transfer msgs and CW out of function as an input to handle it in GNU Radio block
+    // sentMessages_all.resize(data_bits.size());
+    // sentCodewords_all.resize(data_bits.size());
+    // for (int i = 0; i < sentMessages_all.size(); ++i){
+    //     sentMessages_all[i].resize(N);
+    //     sentCodewords_all[i].resize(N);
+    // }
+
     const int K_w = 8*PC_data[0].size()/2;
     const int K_s = 8*PC_data[0].size();
 
@@ -675,16 +667,8 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
     int info_w [K_w], info_s[K_s], frozen_s[data_bits.size()][N-K_s], frozen_w[data_bits.size()][N-K_w];
 
     // Same for both users
+    // int sentSymbol[data_bits.size()][N];
     int sentMessage[N], sentCodeword[N], sentSymbol[data_bits.size()][N];
-
-
-    // OTHMANE DEBUG : Print info_s in a file
-    ofstream debug_file_coded;
-    debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
-    debug_file_coded <<  endl << "==================================" << endl << "TX" << endl << "==================================" << endl;
-    // for (int i = 0; i < K_s; i++){
-    //   debug_file_coded << info_s[i] << " " ;
-    // }
 
     //Polar Encoding
     for (unsigned int k = 0; k < data_bits.size(); ++k)
@@ -708,23 +692,45 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
         for (int i=K_s; i<N; i++)
             frozen_s[k][i-K_w] = sentMessage[i];
 
+        // OTHMANE : Ouptut sent message before combination
+        vector<int> tmp_msg(sentMessage, sentMessage + N);
+        sentMessages_all.push_back(tmp_msg);
+
+
         PC_w.encode(info_w, frozen_w[k], sentMessage, sentCodeword, sentSymbol[k]);
         // cout <<  endl << "D" << endl;
 
         for (int i=0; i<N; i++){
             //bits_coded[k][i] = sentCodeword[i];
             bits_coded[k][i] = (sentSymbol[k][i]>0) ? 1:0;
-            debug_file_coded << bits_coded[k][i] << "" ;
         }
-        debug_file_coded << endl << "----------------------------" << endl ;
-        // cout <<  endl << "E" << endl;
+
+        vector<int> tmp_cw(sentCodeword, sentCodeword + N);
+        sentCodewords_all.push_back(tmp_cw);
+
+        // if(k<5){
+        //   cout << endl << endl << "****************************" << endl;
+        //   for (int i = 0; i < tmp_msg.size(); i++)
+        //     std::cout << tmp_msg.at(i) ;
+        //   cout << endl << endl << "****************************" << endl;
+        // }
+
+        // if(k==5){
+        //   for(int j=0 ; j < 5 ; j++)
+        //   {
+        //     cout << endl << endl << "****************************" << endl;
+        //     for (int i = 0; i < sentMessages_all.at(j).size(); i++)
+        //       std::cout << sentMessages_all.at(j).at(i) ;
+        //     cout << endl << endl << "****************************" << endl;
+        //   }
+        //   exit(0);
+        // }
+        tmp_msg.clear();
+        tmp_cw.clear();
+
+
+
     }
-
-    // debug_file_coded << endl << "================================" << endl ;
-    debug_file_coded << endl << "=============================================================" << endl ;
-    debug_file_coded << "RX Code: " << endl << endl ;
-    debug_file_coded.close();
-
 
 
 
