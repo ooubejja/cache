@@ -59,6 +59,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Connections
         ##################################################
+        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'chunks'), (self.blocks_message_debug_0, 'print'))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0_0, 0))
         self.connect((self.blocks_repack_bits_bb_0_1, 0), (self.digital_chunks_to_symbols_xx_0_0, 0))

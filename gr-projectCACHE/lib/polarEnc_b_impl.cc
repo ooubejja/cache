@@ -235,55 +235,90 @@ namespace gr {
             d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes,
                 d_outputForColoring.n_nodi, d_nb_strg, d_data, &d_hdr_sdata, G_edges);
 
-            // OTHMANE
-            // Create and Send PDU message with chunks
-            // pmt::pmt_t dict(pmt::make_dict());
-            // for (int i = 0; i < d_strg_data.size(); ++i){
-            //     string mystr(d_strg_data[i].begin(), d_strg_data[i].end());
-            //     cout << endl << "OTHMANE SOURCE DATA :" << endl;
-            //     cout << mystr ;
-            //     cout << endl << "TX CHUNK ID : " << i ;
-            //     // cout << d_header.id_chunks.at(index) ;
-            //     cout << endl << "OTHMANE END " << endl;
-            //     dict = pmt::dict_add(dict, pmt::from_long(i), pmt::intern(mystr));
-            //     message_port_pub(d_port, dict);
-            // }
-
             vector<vector<int>> sentCodewords_all, sentMessages_all;
             //Polar codes the weak and strong packets
             d_PC_data = codingDataPolar(d_coded_data, d_strg_data, d_bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N, sentCodewords_all, sentMessages_all);
 
-            /////////////////////////////////////////////////// OTHMANE
+            /////////////////////////////////////////////////// OTHMANE Error rate debug
             ofstream debug_file_coded;
             debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
             debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
             debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
-            debug_file_coded << " sentMessages_all.size() : "<< sentMessages_all.size() << endl;
+            debug_file_coded << " sentCodewords_all.size() : "<< sentCodewords_all.size() << endl;
             debug_file_coded << "==================================" << endl;
-            // debug_file_coded <<  endl << "==================================" << endl << " TX "<< endl << "==================================" << endl;
 
-            for (int j = 0; j < d_hX.size(); ++j){
-                // if(d_hX[j].strong && !d_hX[j].weak){   // Search for Strong only headers
-                if(d_hX[j].strong){   // Search for Strong and Weak+Strong headers
-                  for (int k = 0; k < d_hX[j].id_chunks.size(); ++k)
-                      debug_file_coded << d_hX[j].id_chunks[k] << " " ;
-                  debug_file_coded <<  endl << "***********************" << endl;
+            for (int k = 0; k < d_hX.size(); k++){
+              if(d_hX[k].strong){
+                if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
+                  int n = d_hX[k].id_chunks.size();
+                  debug_file_coded  << "SENT CW : " << d_hX[k].id_chunks[n-1] << endl;
                 }
-
-            }
-
-            debug_file_coded << endl ;
-
-            for (int k = 0; k < sentMessages_all.size(); k++){
-              debug_file_coded  << "SENT MESSAGE : " << k << endl;
-              for (int i=0; i<d_K_s; i++){
-                debug_file_coded << sentMessages_all[k][i] << "" ;
+                else    // Polar header concerns Strictly Strong Packet
+                  debug_file_coded  << "SENT CW : " << d_hX[k].id_chunks[0] << endl;
+                for (int i=0; i<d_N; i++){
+                  debug_file_coded << sentCodewords_all[k][i] ;
+                }
+                debug_file_coded << endl << "----------------------------" << endl ;
               }
-              debug_file_coded << endl << "----------------------------" << endl ;
             }
-
             debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
             debug_file_coded.close();
+            /////////////////////////////////////////////////////
+
+
+            // /////////////////////////////////////////////////// OTHMANE Error rate debug
+            // ofstream debug_file_coded;
+            // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
+            // debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
+            // debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
+            // debug_file_coded << " sentMessages_all.size() : "<< sentMessages_all.size() << endl;
+            // debug_file_coded << "==================================" << endl;
+            //
+            // for (int k = 0; k < d_hX.size(); k++){
+            //   if(d_hX[k].strong){
+            //     if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
+            //       int n = d_hX[k].id_chunks.size();
+            //       debug_file_coded  << "SENT MESSAGE : " << d_hX[k].id_chunks[n-1] << endl;
+            //     }
+            //     else    // Polar header concerns Strictly Strong Packet
+            //       debug_file_coded  << "SENT MESSAGE : " << d_hX[k].id_chunks[0] << endl;
+            //     for (int i=0; i<d_K_s; i++){
+            //       debug_file_coded << sentMessages_all[k][i] << "" ;
+            //     }
+            //     debug_file_coded << endl << "----------------------------" << endl ;
+            //   }
+            // }
+            // debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
+            // debug_file_coded.close();
+            // /////////////////////////////////////////////////////
+
+
+            // OTHMANE
+            // Create and Send PDU message with sent messages and CWs
+
+            for (int k = 0; k < d_hX.size(); k++){
+              if(d_hX[k].strong){
+                pmt::pmt_t dict(pmt::make_dict());
+                // pmt::pmt_t str0 = pmt::string_to_symbol(std::string("some string"));
+                stringstream mystr;
+                int strg_ind;
+
+                if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
+                  int n = d_hX[k].id_chunks.size();
+                  strg_ind = d_hX[k].id_chunks[n-1];
+                }
+                else    // Polar header concerns Strictly Strong Packet
+                  strg_ind = d_hX[k].id_chunks[0];
+
+                for (int i=0; i<d_K_s; i++)
+                  mystr << sentMessages_all[k][i] ;
+
+                dict = pmt::dict_add(dict, pmt::from_long(strg_ind), pmt::intern(mystr.str()));
+                message_port_pub(d_port, dict);
+              }
+            }
+            // exit(0);
+
             /////////////////////////////////////////////////////
 
             TX_PC_Pack(d_hX, d_PC_data, d_id_demand, d_transmission, d_spack_len, d_spack_size);

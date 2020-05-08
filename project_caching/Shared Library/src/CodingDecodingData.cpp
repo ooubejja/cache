@@ -706,7 +706,8 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
         }
 
         vector<int> tmp_cw(sentCodeword, sentCodeword + N);
-        sentCodewords_all.push_back(tmp_cw);
+        // sentCodewords_all.push_back(tmp_cw);
+        sentCodewords_all.push_back(bits_coded[k]);
 
         // if(k<5){
         //   cout << endl << endl << "****************************" << endl;

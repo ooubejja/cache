@@ -1498,6 +1498,12 @@
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>
+    <sink_block_id>blocks_message_debug_0</sink_block_id>
+    <source_key>chunks</source_key>
+    <sink_key>print</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>
     <sink_block_id>blocks_head_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
