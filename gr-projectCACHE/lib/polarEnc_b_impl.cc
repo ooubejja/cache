@@ -58,9 +58,11 @@ namespace gr {
       d_offset(0),
       d_spack_len(spack_len),
       d_len_tag_key(pmt::string_to_symbol(len_tag_key)),
-      d_port(pmt::mp("chunks"))
+      msg_port(pmt::mp("TX_MSG")),
+      cw_port(pmt::mp("TX_CW"))
     {
-      message_port_register_out(d_port);
+      message_port_register_out(msg_port);
+      message_port_register_out(cw_port);
       d_gen = true; d_stop = false;
       d_t = 0; d_r = N; d_i = 0; d_k=0; // d_r is the nb of remaning symbols to send by the grc block
       d_id_demand = 0;
@@ -249,7 +251,7 @@ namespace gr {
 
             for (int k = 0; k < d_hX.size(); k++){
               if(d_hX[k].strong){
-                if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
+                if(d_hX[k].weak){   // If Polar header concerns combined packet (weak+strong)
                   int n = d_hX[k].id_chunks.size();
                   debug_file_coded  << "SENT CW : " << d_hX[k].id_chunks[n-1] << endl;
                 }
@@ -298,9 +300,9 @@ namespace gr {
 
             for (int k = 0; k < d_hX.size(); k++){
               if(d_hX[k].strong){
-                pmt::pmt_t dict(pmt::make_dict());
-                // pmt::pmt_t str0 = pmt::string_to_symbol(std::string("some string"));
-                stringstream mystr;
+                pmt::pmt_t dict_msg(pmt::make_dict());
+                pmt::pmt_t dict_cw(pmt::make_dict());
+                stringstream str_msg, str_cw;
                 int strg_ind;
 
                 if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
@@ -310,11 +312,17 @@ namespace gr {
                 else    // Polar header concerns Strictly Strong Packet
                   strg_ind = d_hX[k].id_chunks[0];
 
-                for (int i=0; i<d_K_s; i++)
-                  mystr << sentMessages_all[k][i] ;
+                // Fill Tx CWs and Msgs in the same loop to optimize runtime
+                for (int i=0; i<d_N; i++){
+                  str_cw << sentCodewords_all[k][i] ;
+                  if(i<d_K_s)
+                    str_msg << sentMessages_all[k][i] ;
+                }
 
-                dict = pmt::dict_add(dict, pmt::from_long(strg_ind), pmt::intern(mystr.str()));
-                message_port_pub(d_port, dict);
+                dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
+                dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+                message_port_pub(msg_port, dict_msg);
+                message_port_pub(cw_port, dict_cw);
               }
             }
             // exit(0);

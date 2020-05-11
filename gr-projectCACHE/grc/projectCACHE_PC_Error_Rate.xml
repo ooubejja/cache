@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<block>
+  <name>PC Error Rate</name>
+  <key>projectCACHE_PC_Error_Rate</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.PC_Error_Rate()</make>
+
+
+  <sink>
+    <name>TX_MSG</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <sink>
+    <name>TX_CW</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <sink>
+    <name>RX_MSG</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <sink>
+    <name>RX_CW</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <source>
+    <name>ERROR_MSG</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
+  <source>
+    <name>ERROR_CW</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
+</block>

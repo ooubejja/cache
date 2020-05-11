@@ -55,7 +55,12 @@
     <type>byte</type>
   </source>
   <source>
-    <name>chunks</name>
+    <name>TX_MSG</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+  <source>
+    <name>TX_CW</name>
     <type>message</type>
     <optional>1</optional>
   </source>

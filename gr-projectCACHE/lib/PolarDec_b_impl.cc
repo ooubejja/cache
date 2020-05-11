@@ -58,8 +58,12 @@ namespace gr {
       d_id_user(id_user),
       d_n_users(n_users),
       d_spack_len(spack_len),
-      d_m_files(m_files)
+      d_m_files(m_files),
+      msg_port(pmt::mp("RX_MSG")),
+      cw_port(pmt::mp("RX_CW"))
     {
+      message_port_register_out(msg_port);
+      message_port_register_out(cw_port);
       d_stop = false;
       designSNRdb = 0;
       d_k=0;
@@ -570,26 +574,43 @@ namespace gr {
       if(d_case == 3 || d_case == 4 || d_case == 5){
         int index = find_index(d_header.id_utenti, d_id_user);
         if(index != -1 ) {
-            ///////////////////////////////////////////////////////////////
-            ofstream debug_file_coded;
-            debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-            // debug_file_coded << endl << "RECEIVED MESSAGE ID: " << d_header.id_chunks.at(index) << endl;
-            // for (int i = 0; i < d_K_s; i++)
-            //     debug_file_coded << recMessage_s[i] << "";
-            //
-            // debug_file_coded << endl << "----------------------------" << endl ;
+          pmt::pmt_t dict_msg(pmt::make_dict());
+          pmt::pmt_t dict_cw(pmt::make_dict());
+          stringstream str_msg, str_cw;
+          int strg_ind;
 
-            debug_file_coded << endl << "RECEIVED CW ID: " << d_header.id_chunks.at(index) << endl;
-            for (int i = 0; i < d_N; i++)
-                debug_file_coded << recCodeword_s[i];
+          // Fill Rx CWs and Msgs in the same loop to optimize runtime
+          for (int i=0; i<d_N; i++){
+            str_cw << recCodeword_s[i] ;
+            if(i<d_K_s)
+              str_msg << recMessage_s[i] ;
+          }
+          dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
+          dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+          message_port_pub(msg_port, dict_msg);
+          message_port_pub(cw_port, dict_cw);
 
-            debug_file_coded << endl << "----------------------------" << endl ;
-            debug_file_coded.close();
+          ///////////////////////////////////////////////////////////////
+          ofstream debug_file_coded;
+          debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+          // debug_file_coded << endl << "RECEIVED MESSAGE ID: " << d_header.id_chunks.at(index) << endl;
+          // for (int i = 0; i < d_K_s; i++)
+          //     debug_file_coded << recMessage_s[i] << "";
+          //
+          // debug_file_coded << endl << "----------------------------" << endl ;
+
+          debug_file_coded << endl << "RECEIVED CW ID: " << d_header.id_chunks.at(index) << endl;
+          for (int i = 0; i < d_N; i++)
+              debug_file_coded << recCodeword_s[i];
+
+          debug_file_coded << endl << "----------------------------" << endl ;
+          debug_file_coded.close();
         }
         reinitialize();
           // decoded_data.clear();
       }
 
+      // exit(0);
       //     cnt++;
       // if(cnt>=4)
       //     exit(0);

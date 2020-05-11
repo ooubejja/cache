@@ -31,4 +31,5 @@ except ImportError:
 	pass
 
 # import any pure python here
+from PC_Error_Rate import PC_Error_Rate
 #

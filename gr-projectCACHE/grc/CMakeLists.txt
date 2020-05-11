@@ -25,5 +25,6 @@ install(FILES
     projectCACHE_PolarDec_b.xml
     #projectCACHE_PolarDecStrong_b.xml
     projectCACHE_crc32_1_bb.xml
-    projectCACHE_ofdm_frame_equalizer1_vcvc.xml   DESTINATION share/gnuradio/grc/blocks
+    projectCACHE_ofdm_frame_equalizer1_vcvc.xml
+    projectCACHE_PC_Error_Rate.xml DESTINATION share/gnuradio/grc/blocks
 )

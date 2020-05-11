@@ -54,4 +54,15 @@
     <name>in</name>
     <type>complex</type>
   </sink>
+  <source>
+    <name>RX_MSG</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+  <source>
+    <name>RX_CW</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
 </block>

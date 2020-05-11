@@ -437,7 +437,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>25</value>
+      <value>15</value>
     </param>
   </block>
   <block>
@@ -644,7 +644,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(344, 488)</value>
+      <value>(672, 472)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -946,6 +946,45 @@
     </param>
   </block>
   <block>
+    <key>projectCACHE_PC_Error_Rate</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(240, 448)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>projectCACHE_PC_Error_Rate_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>projectCACHE_PolarDec_b</key>
     <param>
       <key>alias</key>
@@ -969,7 +1008,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1064, 252)</value>
+      <value>(1040, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -978,6 +1017,14 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PolarDec_b_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
     </param>
     <param>
       <key>b_chunks</key>
@@ -1498,9 +1545,9 @@
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>
-    <sink_block_id>blocks_message_debug_0</sink_block_id>
-    <source_key>chunks</source_key>
-    <sink_key>print</sink_key>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>TX_MSG</source_key>
+    <sink_key>TX_MSG</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>

@@ -27,7 +27,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 25
+        self.snr = snr = 15
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
@@ -47,6 +47,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         self.projectCACHE_polarEnc_b_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, "packet_len")
         self.projectCACHE_PolarDec_b_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, n_users, small_packet_len, packetlength)
+        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
         self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc((payload_mod.points()), 1)
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_repack_bits_bb_0_1 = blocks.repack_bits_bb(8, 2, packetlength, False, gr.GR_LSB_FIRST)
@@ -59,7 +60,7 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'chunks'), (self.blocks_message_debug_0, 'print'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0_0, 0))
         self.connect((self.blocks_repack_bits_bb_0_1, 0), (self.digital_chunks_to_symbols_xx_0_0, 0))
