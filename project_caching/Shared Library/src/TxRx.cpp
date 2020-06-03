@@ -7,7 +7,6 @@ typedef std::complex< float > gr_complex;
 namespace caching{
 
 
-
 void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, unsigned int id_demand, vector<vector<char> > &tx, int spack_len, vector<int> &spack_size)//vector<char> &tx_data
 {
     unsigned short int id_header = 0;
@@ -48,9 +47,12 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             cout << endl << " ID for the header (" << id_transmission << ") = " << y;
         }
 
+
         //write header_len
+        // CRC ?
         field_len = hX[id_transmission].id_utenti.size();
         header_len = (7 * field_len) + 4;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength
+        // header_len = (7 * field_len) + 4 + 1;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength + CRC byte
         conv_int_to_byte(header_len, byte);
         tx_data.push_back(byte);
         if(DEBUG && id_transmission<5)
@@ -65,6 +67,13 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             cout << endl << "ERROR: header_len > small_packet_len " << endl;
             exit(0);
         }
+
+        // OTHMANE : 8bits (4 QPSK symbols) CRC prefix for the first 3 bytes :
+        // pkt_id+hdl_len = 3 bytes = 24 bits = 12 QPSK symbols
+        // Then insert it in the beginning --> total 32 bits = 16 QPSK Symbols
+        // char my_crc = compute_CRC8(tx_data);
+        // tx_data.insert(tx_data.begin(), my_crc);
+
 
         //write id of request
         conv_int_to_byte(id_demand, byte);
@@ -148,6 +157,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         }
 
         //write the two byte that mentions if the packet contains weak and/or strong
+        // CRC ?
         if (hX[id_transmission].strong==true && hX[id_transmission].weak==true){
             buff_short[0] = 0x01;
             buff_short[1] = 0x01;
@@ -255,6 +265,8 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             }
         }
 
+
+
         tx.push_back(tx_data);
 
     }/* end (for(int id_transmission=0; id_transmission < n_col; id_transmission++)) */
@@ -262,6 +274,24 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
     //cout << endl << " Size of Transmission = " << tx_data.size() << endl << endl;
 }
 
+char compute_CRC8(vector<char> input)
+{
+    const char generator = 0x1D;
+    char crc = 0; /* start with 0 so first byte can be 'xored' in */
+
+    for(int j = 0; j < input.size(); j++ )
+    {
+        crc ^= input[j]; /* XOR-in the next input byte */
+        for (int i = 0; i < 8; i++)
+        {
+            if ((crc & 0x80) != 0)
+                crc = (char)((crc << 1) ^ generator);
+            else
+                crc <<= 1;
+        }
+    }
+    return crc;
+}
 
 
 vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vector<int> data_bits
@@ -347,7 +377,7 @@ vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vec
 
 
 vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remain, int Nbfiles, int NbChunks,
-    bool isStr, int N, int K_s, int K_w, double d_SNR, PC PC_w, PC PC_s, header_polar d_header, int *recCodeword_s, int *recMessage_s){
+    bool isStr, int N, int K_s, int K_w, double d_SNR, PC PC_w, PC PC_s, header_polar d_header, int *recCodeword_s, int *recMessage_s, vector<unsigned int> &cw_raw){
 
     unsigned int field_len = 0;
     unsigned int BeginData, payload_len, SymbPayload_len, i;
@@ -397,9 +427,46 @@ vector<char> Process_Data(vector<gr_complex> in, int id_user, unsigned int &pack
     //index = -1;
     if(index != -1 ) {
 
+
         int id_file = d_header.id_files.at(index);
         int id_chunck = d_header.id_chunks.at(index);
         int id_demand = 0;
+
+
+        gr_complex buff_4qpsk[4];
+        char resc;
+        // vector<unsigned int> res (8,0);
+        vector<unsigned int> res (8,0);
+
+        // ofstream debug_file_coded;
+        // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+        // //
+        // debug_file_coded << endl << "RECEIVED NEW CW ID : " << id_chunck << endl ;
+
+
+        // OTHMANE debug
+        // cout << "RX SYMBOLS " << id_chunck << ": " << endl ;
+
+
+        for(int i=0; i < coded_symb.size(); i+=4){
+            for(int k=0; k < 4; k++){
+              buff_4qpsk[k] = coded_symb[i+k];
+              // cout << coded_symb[i+k] ;
+            }
+
+            conv_4QPSKsymb_to_char(buff_4qpsk, resc);
+            res = conv_char_to_bitsInt(resc);
+
+            // Recuperer symboles recus demodules
+            cw_raw.insert(cw_raw.begin()+2*i, res.begin(), res.end());
+
+        }
+        // cout << endl;
+        // debug_file_coded << endl << "----------------------------" << endl ;
+        //
+        // debug_file_coded.close();
+
+
 
         //This is the directory of the cached files
         string pathFolder = "../cache/UserCache/user_" + to_string(id_user); //"/CachingFile/cache/UserCache/user_"
@@ -905,8 +972,8 @@ vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_comp
 
     // ofstream debug_file_coded;
     // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-    //
-    // // debug_file_coded << "RX Code: " << endl ;
+    // //
+    // debug_file_coded << endl << "TEST : " << endl ;
     // // debug_file_coded << endl << "=============================================================" << endl ;
     // // cout << "CHUNK ID : " << d_header.id_chunks.at(index);
     // for (int i = 0; i < N; i++)
@@ -928,8 +995,10 @@ vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_comp
     //     for(int j=0; j<8; j++)
     //         debug_file_coded <<  res[j] << "";
     // }
-
-
+    //
+    // debug_file_coded << endl << "----------------------------" << endl ;
+    // debug_file_coded.close();
+    //
     // exit(0);
 
 

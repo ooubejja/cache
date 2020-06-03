@@ -4,52 +4,10 @@
 
 namespace caching{
 
-//CONVERSION: 8 BPSK symbos ---> INT
-void conv_8BPSKsymb_to_int(gr_complex *buff_bpsk, unsigned int &x)
-{    
-    x=0;
-    for(int i=0; i<8; i++){
-        x += (real(buff_bpsk[i]) > 0 ? 1 : 0)*pow(2,i);
-    }
-
-}
-
-//CONVERSION: 8 BPSK symbos ---> CHAR
-void conv_8BPSKsymb_to_char(gr_complex *buff_bpsk, char &x)
-{    
-    unsigned int s;
-    conv_8BPSKsymb_to_int(buff_bpsk, s);
-    x = (char) s;
-
-}
-
-
-//CONVERSION: 16 BPSK symbos ---> INT
-void conv_16BPSKsymb_to_int(gr_complex *buff_bpsk, unsigned int &x)
-{    
-    gr_complex buff_bpsk_c[16];
-    x=0;
-
-    //Preliminary process because of convert to short int 
-    //swap the least and most significant bytes
-    for(int i=0; i<8; i++)
-        buff_bpsk_c[i] = buff_bpsk[i+8];
-    for(int i=0; i<8; i++)
-        buff_bpsk_c[i+8] = buff_bpsk[i];
-    
-
-    for(int i=0; i<16; i++){
-        //s[i] = real(buff_bpsk[i])>0?1:0;
-        x += (real(buff_bpsk_c[i]) > 0 ? 1 : 0)*pow(2,i);
-    }
-
-}
-
-
 
 //CONVERSION: 4 QPSK symbos ---> INT
 void conv_4QPSKsymb_to_int(gr_complex *buff_qpsk, unsigned int &x)
-{    
+{
     unsigned int s[4];
     x=0;
     for(int i=0; i<4; i++){
@@ -61,7 +19,7 @@ void conv_4QPSKsymb_to_int(gr_complex *buff_qpsk, unsigned int &x)
 
 //CONVERSION: 4 QPSK symbos ---> CHAR
 void conv_4QPSKsymb_to_char(gr_complex *buff_qpsk, char &x)
-{    
+{
     unsigned int s;
     conv_4QPSKsymb_to_int(buff_qpsk, s);
     x = (char) s;
@@ -72,10 +30,10 @@ void conv_4QPSKsymb_to_char(gr_complex *buff_qpsk, char &x)
 
 //CONVERSION: 8 QPSK symbos ---> INT
 void conv_8QPSKsymb_to_int(gr_complex *buff_qpsk, unsigned int &x)
-{    
+{
     gr_complex buff_qpsk_c[8];
     unsigned int s[8];
-    //Preliminary process becasue convert to short int 
+    //Preliminary process becasue convert to short int
     //swap the least and most significant bytes
     for(int i=0; i<4; i++)
         buff_qpsk_c[i] = buff_qpsk[i+4];
@@ -87,7 +45,7 @@ void conv_8QPSKsymb_to_int(gr_complex *buff_qpsk, unsigned int &x)
     for(int i=0; i<8; i++){
         s[i] = 2*(imag(buff_qpsk_c[i])>0) + (real(buff_qpsk_c[i])>0);
         x += s[i]*pow(2,2*i);
-        //cout << s[i] << ", ";
+        // cout << s[i] << ", ";
     }
     //cout << endl;
 }
@@ -104,6 +62,7 @@ std::vector<unsigned int> conv_char_to_bitsInt(unsigned char c)
 
 }
 
+
 //CONVERSION: INT ---> CHAR
 void conv_int_to_char(unsigned int n, char* bytes)
 {
@@ -116,7 +75,7 @@ void conv_int_to_char(unsigned int n, char* bytes)
 }
 //CONVERSION: CHAR ---> INT
 void conv_char_to_int(char* bytes, unsigned int &x)
-{   
+{
     char change[4];
 
     change[0]=bytes[3];
@@ -147,21 +106,8 @@ void conv_char_to_short_int(char* bytes, unsigned short int &x)
     x = *((unsigned short int*) change);
 }
 
-//Convert a stream of chars to stream of bits
-std::vector<unsigned int> conv_stream_char_to_bits(const char *in, int packetSize){
 
-    std::vector<unsigned int> bb (8,0);
-    std::vector<unsigned int> data_bits;
 
-    for(int j=0; j<packetSize; j++){
-        bb = conv_char_to_bitsInt(in[j]);
-        for(int k=0; k<8; k++)
-            data_bits.push_back(bb[k]);
-
-    }
-    return data_bits;
-
-}
 
 void conv_int_to_byte(unsigned int integer, char &b)
 {

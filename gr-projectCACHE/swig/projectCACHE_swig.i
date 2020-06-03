@@ -17,6 +17,7 @@
 //#include "projectCACHE/PolarDecStrong_b.h"
 #include "projectCACHE/crc32_1_bb.h"
 #include "projectCACHE/ofdm_frame_equalizer1_vcvc.h"
+#include "projectCACHE/map_header_payload_bc.h"
 %}
 
 
@@ -36,3 +37,5 @@ GR_SWIG_BLOCK_MAGIC2(projectCACHE, PolarDec_b);
 GR_SWIG_BLOCK_MAGIC2(projectCACHE, crc32_1_bb);
 %include "projectCACHE/ofdm_frame_equalizer1_vcvc.h"
 GR_SWIG_BLOCK_MAGIC2(projectCACHE, ofdm_frame_equalizer1_vcvc);
+%include "projectCACHE/map_header_payload_bc.h"
+GR_SWIG_BLOCK_MAGIC2(projectCACHE, map_header_payload_bc);

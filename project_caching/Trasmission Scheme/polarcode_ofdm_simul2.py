@@ -9,7 +9,6 @@
 
 from gnuradio import analog
 from gnuradio import blocks
-from gnuradio import channels
 from gnuradio import digital
 from gnuradio import eng_notation
 from gnuradio import fft
@@ -19,13 +18,12 @@ from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
 from gnuradio.filter import firdes
 from optparse import OptionParser
-from scipy import fftpack
 import numpy
 import projectCACHE
 import random
 
 
-class polarcode_ofdm_simul(gr.top_block):
+class polarcode_ofdm_simul2(gr.top_block):
 
     def __init__(self):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
@@ -33,7 +31,7 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = -3+ 20*numpy.log10(4)
+        self.snr = snr = 25.0
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -44,19 +42,17 @@ class polarcode_ofdm_simul(gr.top_block):
         self.fft_len = fft_len = 64
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
-        self.taps_0 = taps_0 = fftpack.ifft([0,1,0])
-        self.taps = taps = fftpack.ifftshift(fftpack.ifft([0.1, 1, 0.2]))
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
         self.small_packet_len = small_packet_len = 52
-        self.samp_rate = samp_rate = int(1e6)
+        self.samp_rate = samp_rate = 32000
         self.payload_equalizer = payload_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, payload_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.id_user = id_user = 5
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.Users = Users = 5
         self.Nbfiles = Nbfiles = 20
-        self.NbStrgUsers = NbStrgUsers = 1
+        self.NbStrgUsers = NbStrgUsers = 2
         self.NbChuncks = NbChuncks = 100
         self.N = N = 2048
         self.Ks = Ks = 2*Kw
@@ -66,9 +62,9 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
-        self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
+        self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(1, 2, packet_length_tag_key)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
+        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate()
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
@@ -96,22 +92,17 @@ class polarcode_ofdm_simul(gr.top_block):
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
         self.digital_chunks_to_symbols_xx_0_1 = digital.chunks_to_symbols_bc((header_mod.points()), 1)
-        self.channels_channel_model_1 = channels.channel_model(
-        	noise_voltage=numpy.sqrt(variance),
-        	frequency_offset=0.0,
-        	epsilon=1.0,
-        	taps=(taps),
-        	noise_seed=numpy.random.randint(0,500,None),
-        	block_tags=False
-        )
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, packet_length_tag_key, 0)
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
+        self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, payload_mod.bits_per_symbol(), packet_length_tag_key, False, gr.GR_LSB_FIRST)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/taps[-1], ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1, ))
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
+        self.blocks_add_xx_0 = blocks.add_vcc(1)
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
 
 
@@ -120,19 +111,21 @@ class polarcode_ofdm_simul(gr.top_block):
         # Connections
         ##################################################
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
+        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0_0, 'RX_CW'))
+        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0_0, 'RX_MSG'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0_0, 'TX_CW'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0_0, 'TX_MSG'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
+        self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
+        self.connect((self.blocks_add_xx_0, 0), (self.blocks_delay_0, 0))
+        self.connect((self.blocks_add_xx_0, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0_0, 0))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
+        self.connect((self.blocks_repack_bits_bb_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_tagged_stream_mux_0, 0), (self.digital_ofdm_carrier_allocator_cvc_0, 0))
-        self.connect((self.blocks_throttle_0_0, 0), (self.channels_channel_model_1, 0))
-        self.connect((self.channels_channel_model_1, 0), (self.blocks_delay_0, 0))
-        self.connect((self.channels_channel_model_1, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
+        self.connect((self.blocks_throttle_0_0, 0), (self.blocks_add_xx_0, 0))
         self.connect((self.digital_chunks_to_symbols_xx_0_1, 0), (self.blocks_tagged_stream_mux_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_header_payload_demux_0, 0), (self.fft_vxx_0, 0))
@@ -151,8 +144,8 @@ class polarcode_ofdm_simul(gr.top_block):
         self.connect((self.fft_vxx_1, 0), (self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0))
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_tagged_stream_mux_0, 1))
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
+        self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.blocks_repack_bits_bb_0_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
-        self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
 
     def get_snr(self):
         return self.snr
@@ -234,21 +227,7 @@ class polarcode_ofdm_simul(gr.top_block):
 
     def set_variance(self, variance):
         self.variance = variance
-        self.channels_channel_model_1.set_noise_voltage(numpy.sqrt(self.variance))
-
-    def get_taps_0(self):
-        return self.taps_0
-
-    def set_taps_0(self, taps_0):
-        self.taps_0 = taps_0
-
-    def get_taps(self):
-        return self.taps
-
-    def set_taps(self, taps):
-        self.taps = taps
-        self.channels_channel_model_1.set_taps((self.taps))
-        self.blocks_multiply_const_vxx_1.set_k((1/self.taps[-1], ))
+        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance))
 
     def get_sync_word2(self):
         return self.sync_word2
@@ -336,7 +315,7 @@ class polarcode_ofdm_simul(gr.top_block):
         self.Ks = Ks
 
 
-def main(top_block_cls=polarcode_ofdm_simul, options=None):
+def main(top_block_cls=polarcode_ofdm_simul2, options=None):
 
     tb = top_block_cls()
     tb.start()

@@ -31,7 +31,7 @@
     <optional>1</optional>
   </sink>
 
-  <source>
+  <!-- <source>
     <name>ERROR_MSG</name>
     <type>message</type>
     <optional>1</optional>
@@ -41,6 +41,6 @@
     <name>ERROR_CW</name>
     <type>message</type>
     <optional>1</optional>
-  </source>
+  </source> -->
 
 </block>

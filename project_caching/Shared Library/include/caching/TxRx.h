@@ -36,13 +36,17 @@ namespace caching{
 
 void TX_PC_Pack(vector<header_polar> &, vector< vector<char> > coded_data, unsigned int , vector<vector<char> > &, int, vector<int> &);//vector<char> &
 
-vector<char> Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , int , int , double , PC, PC, header_polar, int *, int *);
+
+vector<char> Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , int , int , double , PC, PC, header_polar, int *, int *, vector<unsigned int> &cw_raw);
 
 vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> >);
 
 /*
-othmane :
+// othmane :
 */
+
+char compute_CRC8(vector<char> input);
+
 std::string execute( std::string cmd );
 
 std::string LoadFile(const char* FileLocation);

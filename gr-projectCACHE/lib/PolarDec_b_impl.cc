@@ -347,25 +347,51 @@ namespace gr {
     {
       //const float *in = (const float *) input_items[0];
       const gr_complex *in = (const gr_complex *) input_items[0];
+      // const gr_complex *in_crc = (const gr_complex *) input_items[0];
 
       int d_sSymb = ninput_items[0];
       gr_complex v[d_spack_len];
       double num;
       double snr_avg;
       vector<int> vt(d_N, 0);
-      gr_complex buff_qpsk[8];
+      gr_complex buff_qpsk[16];
       gr_complex aa = gr_complex(-SQRT_TWO, -SQRT_TWO);
       bool DEBUG = true;
       int d_case;
       int dummy_bytes;
 
-      // vector<char> decoded_data;
+
+
+
+      // OTHMANE : CRC processes
+      // Header starts with a 4QPSK=1byte=8bits CRC linked to the next 12QPSK=3bytes=24bits
+      // --> total for CRC check 32 bits = 16 QPSK Symbols
+
+      // unsigned int crc_symb_len = 4; // first 4 QPSK symbols are for CRC
+      // char crc;
+      // /*------------------------ Check CRC --------------------------*/
+      // vector<char> hdr_plusCRC;
+      // for(int i=0; i<4; i++){
+      //   for(int j=0; j<crc_symb_len; j++)
+      //     buff_qpsk[j] = in_crc[j];
+      //   conv_4QPSKsymb_to_char(buff_qpsk, crc);
+      //   hdr_plusCRC.push_back(crc);
+      // }
+      // crc = compute_CRC8(hdr_plusCRC);
+      // cout << endl << "CRC CHECK : " << int(crc) << endl;
+
+      // To keep the preexisting code intact and avoid a debug nightmare, (*in) is replaced with (*in_crc)
+      // (*in) is declared later and contains input values of (*in_crc) without the 4 CRC symbols
+      // d_sSymb -= 4;
+      // gr_complex *in;
+      // memcpy(in, in_crc, d_sSymb*sizeof(gr_complex));
+      /*------------------------------------------------------------*/
 
 
 
       cout << "\n" << d_k << ", ";
-      std::vector<gr::tag_t> tags;
-      get_tags_in_range(tags, 0, nitems_read(0), nitems_read(0)+d_sSymb,pmt::string_to_symbol("packet_num"));
+      // std::vector<gr::tag_t> tags;
+      // get_tags_in_range(tags, 0, nitems_read(0), nitems_read(0)+d_sSymb,pmt::string_to_symbol("packet_num"));
       //cout << tags.size() << endl;
       //cout << pmt::to_long(tags[0].value) << endl;
       cout << "Size: " << d_sSymb << ", ";
@@ -382,7 +408,8 @@ namespace gr {
       for (int i = 0; i < d_snr.size(); ++i)
         num += d_snr[i]*d_size[i];
 
-      snr_avg = (double) num/accumulate(d_size.begin(), d_size.end(),0);
+      // snr_avg = (double) num/accumulate(d_size.begin(), d_size.end(),0);
+      snr_avg = 10;
       cout << "avg snr = " << snr_avg << endl;
 
       /*---------------------------------------------------------------*/
@@ -427,6 +454,7 @@ namespace gr {
 
       string repo_file, name_file;
       int recCodeword_s[d_N], recMessage_s[d_N];
+      vector<unsigned int> cw_raw(d_N);
 
       //cout << "Case: " << d_case;
       switch(d_case)
@@ -473,7 +501,7 @@ namespace gr {
                   d_coded_packet.push_back(in[k]);
 
               //Proceed to decoding of the whole packet
-              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header, recCodeword_s, recMessage_s);
+              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header, recCodeword_s, recMessage_s, cw_raw);
 
               // reinitialize(); //Restore the header and the global main variables
 
@@ -502,23 +530,7 @@ namespace gr {
                     d_coded_packet.push_back(in[k]);
 
                   //Proceed to decoding of the whole packet
-                  decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s, recMessage_s);
-
-                  // OTHMANE
-                  // Create and Send PDU message with chunks
-                  // pmt::pmt_t dict(pmt::make_dict());
-                  // string mystr(decoded_data.begin(), decoded_data.end());
-                  // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
-                  // cout << mystr ;
-                  // cout << endl << "OTHMANE END " << endl;
-                  // dict = pmt::dict_add(dict, pmt::from_long(i), pmt::intern(mystr));
-                  // message_port_pub(d_port, dict);
-
-
-                  // cout << endl << "OTHMANE DECODED DATA :" << endl;
-                  // for (int i = 0; i < decoded_data.size(); ++i)
-                  //     cout << (int)decoded_data[i] << ", ";
-                  // cout << endl << "OTHMANE END :" << endl;
+                  decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s, recMessage_s, cw_raw);
 
                   // reinitialize(); //Restore the header and the global main variables
 
@@ -549,7 +561,7 @@ namespace gr {
               for(unsigned int k = 0; k < dummy_bytes; k++)
                   d_coded_packet.push_back(aa);
 
-              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s,recMessage_s);
+              decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s,recMessage_s, cw_raw);
 
               // string mystr(decoded_data.begin(), decoded_data.end());
               // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
@@ -572,54 +584,78 @@ namespace gr {
       }
 
       if(d_case == 3 || d_case == 4 || d_case == 5){
+      // if(d_case == 3 || d_case == 4 ){
         int index = find_index(d_header.id_utenti, d_id_user);
         if(index != -1 ) {
           pmt::pmt_t dict_msg(pmt::make_dict());
           pmt::pmt_t dict_cw(pmt::make_dict());
           stringstream str_msg, str_cw;
-          int strg_ind;
+          int strg_ind = d_header.id_chunks.at(index);
 
           // Fill Rx CWs and Msgs in the same loop to optimize runtime
-          for (int i=0; i<d_N; i++){
-            str_cw << recCodeword_s[i] ;
-            if(i<d_K_s)
-              str_msg << recMessage_s[i] ;
+          // for (int i=0; i<d_N; i++){
+          //   // str_cw << recCodeword_s[i] ;
+          //   str_cw << cw_raw[i] ;
+          //   // if(i<d_K_s)
+          //   //   str_msg << recMessage_s[i] ;
+          //   if (recCodeword_s[i]!=0 && recCodeword_s[i]!=1)   // Bug : In PC.cpp, recCodeword is sometimes different than 0 or 1
+          //     str_msg << "X" ;
+          //   else
+          //     str_msg << recCodeword_s[i] ;
+          // }
+
+          ///////////////////////////////////////////////////////////////
+          ofstream debug_file_coded;
+          debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
+          /***************************************************************************/
+          debug_file_coded << endl << "RECEIVED MESSAGE : " << d_header.id_chunks.at(index) << endl;
+          for (int i = 0; i < d_K_s; i++)
+              debug_file_coded << recMessage_s[i] << "";
+          /***************************************************************************/
+          debug_file_coded << endl << "----------------------------" << endl ;
+          debug_file_coded << endl << "RECEIVED CW : " << d_header.id_chunks.at(index) << endl;
+          for (int i = 0; i < d_N; i++){
+            // Correcting a bug where some walues are corrupt :
+            // It is a bug in PC.cpp, recCodeword is sometimes different than 0 or 1
+            str_cw << cw_raw[i] ;
+            if (recCodeword_s[i]!=0 && recCodeword_s[i]!=1){
+              debug_file_coded << "X" ;
+              str_msg << "X" ;
+            }
+            else{
+              debug_file_coded << recCodeword_s[i];
+              str_msg << recCodeword_s[i];
+            }
           }
+          /***************************************************************************/
+          debug_file_coded << endl << "----------------------------" << endl ;
+          debug_file_coded << endl << "RECEIVED SYMBOLS : " << d_header.id_chunks.at(index) << endl;
+          for (int i = 0; i < d_N; i++){
+            debug_file_coded << cw_raw[i];
+          }
+          debug_file_coded << endl << "----------------------------" << endl ;
+          debug_file_coded.close();
+          /***************************************************************************/
           dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
           dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
           message_port_pub(msg_port, dict_msg);
           message_port_pub(cw_port, dict_cw);
 
-          ///////////////////////////////////////////////////////////////
-          ofstream debug_file_coded;
-          debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
-          // debug_file_coded << endl << "RECEIVED MESSAGE ID: " << d_header.id_chunks.at(index) << endl;
-          // for (int i = 0; i < d_K_s; i++)
-          //     debug_file_coded << recMessage_s[i] << "";
-          //
-          // debug_file_coded << endl << "----------------------------" << endl ;
-
-          debug_file_coded << endl << "RECEIVED CW ID: " << d_header.id_chunks.at(index) << endl;
-          for (int i = 0; i < d_N; i++)
-              debug_file_coded << recCodeword_s[i];
-
-          debug_file_coded << endl << "----------------------------" << endl ;
-          debug_file_coded.close();
         }
-        reinitialize();
-          // decoded_data.clear();
-      }
 
-      // exit(0);
-      //     cnt++;
-      // if(cnt>=4)
-      //     exit(0);
+        // cw_raw.clear();
+        // reinitialize();
+      }
+      if(d_case >= 3){
+        cw_raw.clear();
+        reinitialize();
+      }
 
       if(d_packet_remain <5){
         cout << "Remaining packets: " << d_packet_remain << endl;
-
       }
       d_k++;
+
 
       // Tell runtime system how many output items we produced.
       return noutput_items;

@@ -23,12 +23,6 @@
 
 namespace caching{
 
-void conv_8BPSKsymb_to_int(gr_complex *buff_bpsk, unsigned int &x);
-
-void conv_8BPSKsymb_to_char(gr_complex *buff_bpsk, char &x);
-
-void conv_16BPSKsymb_to_int(gr_complex *buff_bpsk, unsigned int &x);
-
 void conv_4QPSKsymb_to_char(gr_complex *buff_qpsk, char &x);
 
 void conv_4QPSKsymb_to_int(gr_complex *buff_qpsk, unsigned int &x);
@@ -44,8 +38,6 @@ void conv_char_to_int(char* bytes, unsigned int &x);
 void conv_short_int_to_char(unsigned short int n, char* bytes);
 
 void conv_char_to_short_int(char* bytes, unsigned short int &x);
-
-std::vector<unsigned int> conv_stream_char_to_bits(const char *in, int packetSize);
 
 void conv_int_to_byte(unsigned int integer, char &b);
 

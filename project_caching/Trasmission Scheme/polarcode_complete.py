@@ -27,7 +27,8 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 15
+        self.boost = boost = 20*numpy.log10(4)
+        self.snr = snr = boost + 0.5
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
@@ -36,6 +37,7 @@ class polarcode_complete(gr.top_block):
         self.packetlength = packetlength = "packet_len"
         self.n_users = n_users = 5
         self.id_user = id_user = 5
+        self.header_mod = header_mod = digital.constellation_bpsk()
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 100
@@ -46,12 +48,10 @@ class polarcode_complete(gr.top_block):
         # Blocks
         ##################################################
         self.projectCACHE_polarEnc_b_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, "packet_len")
+        self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.projectCACHE_PolarDec_b_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, n_users, small_packet_len, packetlength)
         self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
-        self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc((payload_mod.points()), 1)
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
-        self.blocks_repack_bits_bb_0_1 = blocks.repack_bits_bb(8, 2, packetlength, False, gr.GR_LSB_FIRST)
-        self.blocks_message_debug_0 = blocks.message_debug()
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 
@@ -60,13 +60,22 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Connections
         ##################################################
+        self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
+        self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
         self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0_0, 0))
-        self.connect((self.blocks_repack_bits_bb_0_1, 0), (self.digital_chunks_to_symbols_xx_0_0, 0))
         self.connect((self.blocks_throttle_0_0, 0), (self.projectCACHE_PolarDec_b_0, 0))
-        self.connect((self.digital_chunks_to_symbols_xx_0_0, 0), (self.blocks_add_xx_0, 0))
-        self.connect((self.projectCACHE_polarEnc_b_0, 0), (self.blocks_repack_bits_bb_0_1, 0))
+        self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_add_xx_0, 0))
+        self.connect((self.projectCACHE_polarEnc_b_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
+
+    def get_boost(self):
+        return self.boost
+
+    def set_boost(self, boost):
+        self.boost = boost
+        self.set_snr(self.boost + 0.5)
 
     def get_snr(self):
         return self.snr
@@ -125,6 +134,12 @@ class polarcode_complete(gr.top_block):
 
     def set_id_user(self, id_user):
         self.id_user = id_user
+
+    def get_header_mod(self):
+        return self.header_mod
+
+    def set_header_mod(self, header_mod):
+        self.header_mod = header_mod
 
     def get_Nbfiles(self):
         return self.Nbfiles

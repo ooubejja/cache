@@ -29,5 +29,6 @@ install(FILES
     PolarDec_b.h
     #PolarDecStrong_b.h
     crc32_1_bb.h
-    ofdm_frame_equalizer1_vcvc.h DESTINATION include/projectCACHE
+    ofdm_frame_equalizer1_vcvc.h
+    map_header_payload_bc.h DESTINATION include/projectCACHE
 )

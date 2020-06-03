@@ -251,23 +251,34 @@ namespace gr {
 
             for (int k = 0; k < d_hX.size(); k++){
               if(d_hX[k].strong){
+                int id_pos = 0;
                 if(d_hX[k].weak){   // If Polar header concerns combined packet (weak+strong)
                   int n = d_hX[k].id_chunks.size();
-                  debug_file_coded  << "SENT CW : " << d_hX[k].id_chunks[n-1] << endl;
+                  id_pos = d_hX[k].id_chunks[n-1];
                 }
                 else    // Polar header concerns Strictly Strong Packet
-                  debug_file_coded  << "SENT CW : " << d_hX[k].id_chunks[0] << endl;
+                  id_pos = d_hX[k].id_chunks[0];
+
+                debug_file_coded  << "SENT MESSAGE : " << id_pos << endl;
+                for (int i=0; i<d_K_s; i++){
+                  debug_file_coded << sentMessages_all[k][i] ;
+                }
+                debug_file_coded << endl << "----------------------------" << endl ;
+
+                debug_file_coded  << "SENT CW : " << id_pos << endl;
                 for (int i=0; i<d_N; i++){
                   debug_file_coded << sentCodewords_all[k][i] ;
                 }
                 debug_file_coded << endl << "----------------------------" << endl ;
+
               }
             }
             debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
             debug_file_coded.close();
-            /////////////////////////////////////////////////////
 
-
+            // /////////////////////////////////////////////////////
+            //
+            //
             // /////////////////////////////////////////////////// OTHMANE Error rate debug
             // ofstream debug_file_coded;
             // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
@@ -275,7 +286,7 @@ namespace gr {
             // debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
             // debug_file_coded << " sentMessages_all.size() : "<< sentMessages_all.size() << endl;
             // debug_file_coded << "==================================" << endl;
-            //
+
             // for (int k = 0; k < d_hX.size(); k++){
             //   if(d_hX[k].strong){
             //     if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
@@ -292,7 +303,7 @@ namespace gr {
             // }
             // debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
             // debug_file_coded.close();
-            // /////////////////////////////////////////////////////
+            /////////////////////////////////////////////////////
 
 
             // OTHMANE
@@ -325,6 +336,9 @@ namespace gr {
                 message_port_pub(cw_port, dict_cw);
               }
             }
+            pmt::pmt_t dict_msg = pmt::dict_add(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
+            message_port_pub(msg_port, dict_msg);
+
             // exit(0);
 
             /////////////////////////////////////////////////////

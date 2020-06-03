@@ -31,6 +31,7 @@ list(APPEND projectCACHE_sources
     ofdm_frame_equalizer1_vcvc_impl.cc
     crc32_1_bb_impl.cc
     #PolarDecStrong_b_impl.cc
+    map_header_payload_bc_impl.cc
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
