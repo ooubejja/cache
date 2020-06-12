@@ -19,7 +19,6 @@ from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
 from gnuradio.filter import firdes
 from optparse import OptionParser
-from scipy import fftpack
 import numpy
 import projectCACHE
 import random
@@ -33,7 +32,7 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = -3+ 20*numpy.log10(4)
+        self.snr = snr =  + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -44,8 +43,6 @@ class polarcode_ofdm_simul(gr.top_block):
         self.fft_len = fft_len = 64
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
-        self.taps_0 = taps_0 = fftpack.ifft([0,1,0])
-        self.taps = taps = fftpack.ifftshift(fftpack.ifft([0.1, 1, 0.2]))
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
         self.small_packet_len = small_packet_len = 52
@@ -96,21 +93,14 @@ class polarcode_ofdm_simul(gr.top_block):
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
         self.digital_chunks_to_symbols_xx_0_1 = digital.chunks_to_symbols_bc((header_mod.points()), 1)
-        self.channels_channel_model_1 = channels.channel_model(
-        	noise_voltage=numpy.sqrt(variance),
-        	frequency_offset=0.0,
-        	epsilon=1.0,
-        	taps=(taps),
-        	noise_seed=numpy.random.randint(0,500,None),
-        	block_tags=False
-        )
+        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 0.01, 1e3, 0.01, 1e3, 8, 2.0, True, 4.0, (0.0,0.1,1.3), (1,0.99,0.97), 2, numpy.sqrt(variance), 0 )
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, packet_length_tag_key, 0)
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/taps[-1], ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1, ))
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
 
@@ -130,9 +120,9 @@ class polarcode_ofdm_simul(gr.top_block):
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_tagged_stream_mux_0, 0), (self.digital_ofdm_carrier_allocator_cvc_0, 0))
-        self.connect((self.blocks_throttle_0_0, 0), (self.channels_channel_model_1, 0))
-        self.connect((self.channels_channel_model_1, 0), (self.blocks_delay_0, 0))
-        self.connect((self.channels_channel_model_1, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
+        self.connect((self.blocks_throttle_0_0, 0), (self.channels_dynamic_channel_model_0, 0))
+        self.connect((self.channels_dynamic_channel_model_0, 0), (self.blocks_delay_0, 0))
+        self.connect((self.channels_dynamic_channel_model_0, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
         self.connect((self.digital_chunks_to_symbols_xx_0_1, 0), (self.blocks_tagged_stream_mux_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_header_payload_demux_0, 0), (self.fft_vxx_0, 0))
@@ -234,21 +224,7 @@ class polarcode_ofdm_simul(gr.top_block):
 
     def set_variance(self, variance):
         self.variance = variance
-        self.channels_channel_model_1.set_noise_voltage(numpy.sqrt(self.variance))
-
-    def get_taps_0(self):
-        return self.taps_0
-
-    def set_taps_0(self, taps_0):
-        self.taps_0 = taps_0
-
-    def get_taps(self):
-        return self.taps
-
-    def set_taps(self, taps):
-        self.taps = taps
-        self.channels_channel_model_1.set_taps((self.taps))
-        self.blocks_multiply_const_vxx_1.set_k((1/self.taps[-1], ))
+        self.channels_dynamic_channel_model_0.set_noise_amp(numpy.sqrt(self.variance))
 
     def get_sync_word2(self):
         return self.sync_word2
@@ -273,6 +249,7 @@ class polarcode_ofdm_simul(gr.top_block):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.channels_dynamic_channel_model_0.set_samp_rate(self.samp_rate)
         self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
 
     def get_payload_equalizer(self):

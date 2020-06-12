@@ -162,12 +162,44 @@ namespace gr {
         cout << "Hello" << endl;
         cout << "Hello" << endl;
 
+        // /*--------------------------------- Check CRC --------------------------------------------------*/
+        // OTHMANE : CRC processes
+        // Header starts with a 4QPSK=1byte=8bits CRC linked to the next 12QPSK=3bytes=24bits
+        // --> total for CRC check 32 bits = 16 QPSK Symbols
+        // |   CRC  |  pkt_id | hdl_len|
+        // | 1-byte | 2-bytes | 1-byte |
+        // | 4-symb |  8-symb | 4-symb |
+        unsigned int crc_symb_len = 4; // first 4 QPSK symbols (8bits) are for CRC
+        char crc;
+        int k = 0;
+        gr_complex buff_qpsk[16];
+        vector<char> hdr_plusCRC;
+
+        // in -= 4 ; // remove offset to include CRC
+
+        for(int t=0; t<4; t++){
+          for(int j=0; j<4; j++)
+            buff_qpsk[j] = in[k++];
+          conv_4QPSKsymb_to_char(buff_qpsk, crc);
+          hdr_plusCRC.push_back(crc);
+          cout << endl << "CRC INPUT : " << int(crc) ;
+        }
+        // rotate(hdr_plusCRC.begin(), hdr_plusCRC.begin()+1, hdr_plusCRC.end());  // Rotate 1 to the left to queue CRC
+        crc = compute_CRC8(hdr_plusCRC);
+        cout << endl << "CRC CHECK : " << int(crc) << endl;
+
+        // /*----------------------------------------------------------------------------------------------*/
+
+        // get rid of CRC symbols by pointer offset
+        i += 4;
+
         for(int k=0; k<4; k++)
             buff_4qpsk[k] = in[i++];
         conv_4QPSKsymb_to_int(buff_4qpsk, header_len);
-        field_len = (header_len - 4) / 7;
 
-        // cout << endl << "A" << endl;
+        header_len--;
+
+        field_len = (header_len - 4) / 7;
 
         if(DEBUG)
             cout << endl << "Header Length = " << header_len;
@@ -192,8 +224,8 @@ namespace gr {
                 buff_4qpsk[k] = in[i++];
             conv_4QPSKsymb_to_int(buff_4qpsk, d_header.id_utenti[j]);
 
-            if(DEBUG)
-                cout << endl << "ID Utenti = " << d_header.id_utenti[j];
+            // if(DEBUG)
+            //     cout << endl << "ID Utenti = " << d_header.id_utenti[j];
         }
 
         //read header.id_files
@@ -206,8 +238,8 @@ namespace gr {
                 buff_4qpsk[k] = in[i++];
             conv_4QPSKsymb_to_int(buff_4qpsk, d_header.id_files[j]);
 
-            if(DEBUG)
-                cout << endl << "ID Files = " << d_header.id_files[j];
+            // if(DEBUG)
+            //     cout << endl << "ID Files = " << d_header.id_files[j];
         }
 
 
@@ -221,8 +253,8 @@ namespace gr {
                 buff_4qpsk[k] = in[i++];
             conv_4QPSKsymb_to_int(buff_4qpsk, d_header.id_chunks[j]);
 
-            if(DEBUG)
-                cout << endl << "ID Chunks = " << d_header.id_chunks[j];
+            // if(DEBUG)
+            //     cout << endl << "ID Chunks = " << d_header.id_chunks[j];
         }
 
 
@@ -241,8 +273,8 @@ namespace gr {
             }
             conv_char_to_int(buff, d_header.size_package[j]);
 
-            if(DEBUG)
-                cout << endl << "Size Package = " << d_header.size_package[j];
+            // if(DEBUG)
+            //     cout << endl << "Size Package = " << d_header.size_package[j];
             //find max_payload_len in the header
             /*if(d_header.size_package[j] > d_payload_len)
                 d_payload_len = d_header.size_package[j];
@@ -311,7 +343,7 @@ namespace gr {
             exit(0);
         }
 
-        //if(DEBUG)
+        if(DEBUG)
         {
             cout << endl << " number_small_packet = " << d_nb_spack;
             cout << endl << " id_last_small_packet_len = " << d_id_last_spack;
@@ -347,7 +379,6 @@ namespace gr {
     {
       //const float *in = (const float *) input_items[0];
       const gr_complex *in = (const gr_complex *) input_items[0];
-      // const gr_complex *in_crc = (const gr_complex *) input_items[0];
 
       int d_sSymb = ninput_items[0];
       gr_complex v[d_spack_len];
@@ -361,39 +392,7 @@ namespace gr {
       int dummy_bytes;
 
 
-
-
-      // OTHMANE : CRC processes
-      // Header starts with a 4QPSK=1byte=8bits CRC linked to the next 12QPSK=3bytes=24bits
-      // --> total for CRC check 32 bits = 16 QPSK Symbols
-
-      // unsigned int crc_symb_len = 4; // first 4 QPSK symbols are for CRC
-      // char crc;
-      // /*------------------------ Check CRC --------------------------*/
-      // vector<char> hdr_plusCRC;
-      // for(int i=0; i<4; i++){
-      //   for(int j=0; j<crc_symb_len; j++)
-      //     buff_qpsk[j] = in_crc[j];
-      //   conv_4QPSKsymb_to_char(buff_qpsk, crc);
-      //   hdr_plusCRC.push_back(crc);
-      // }
-      // crc = compute_CRC8(hdr_plusCRC);
-      // cout << endl << "CRC CHECK : " << int(crc) << endl;
-
-      // To keep the preexisting code intact and avoid a debug nightmare, (*in) is replaced with (*in_crc)
-      // (*in) is declared later and contains input values of (*in_crc) without the 4 CRC symbols
-      // d_sSymb -= 4;
-      // gr_complex *in;
-      // memcpy(in, in_crc, d_sSymb*sizeof(gr_complex));
-      /*------------------------------------------------------------*/
-
-
-
       cout << "\n" << d_k << ", ";
-      // std::vector<gr::tag_t> tags;
-      // get_tags_in_range(tags, 0, nitems_read(0), nitems_read(0)+d_sSymb,pmt::string_to_symbol("packet_num"));
-      //cout << tags.size() << endl;
-      //cout << pmt::to_long(tags[0].value) << endl;
       cout << "Size: " << d_sSymb << ", ";
 
       /*-------------------------SNR Estimation------------------------*/
@@ -414,17 +413,17 @@ namespace gr {
 
       /*---------------------------------------------------------------*/
 
-
       /*------------------------ Read the received data --------------------------*/
+      // in += 4 ; // offset to omit CRC
       //read the ID of the header
-      for(int j=0; j< 8; j++)
-          buff_qpsk[j] = in[j];
+      for(int j=0+4; j< 8+4; j++)
+        buff_qpsk[j] = in[j];
       conv_8QPSKsymb_to_int(buff_qpsk, d_id_spack);
 
       if(DEBUG)
       {
-          cout << "\nID header = " << d_id_spack ;
-          cout << ", ID header expected = " << d_id_expected << ", ";
+          cout << "\nID S_PACKET = " << d_id_spack ;
+          cout << ", ID S_PACKET expected = " << d_id_expected << ", ";
       }
 
       //Check the state of the received packets
@@ -468,6 +467,7 @@ namespace gr {
           case(1): //Header received
 
               decode_header(in);
+              // decode_header(in_crc);
               d_id_expected += 1;
               break;
 
@@ -477,7 +477,8 @@ namespace gr {
 
               if(d_spack_len != (ninput_items[0]/4 - 2))
               {
-                  cout << endl << "ERROR: small_packet_len != input_packet_len" << endl;
+                cout << endl << "ERROR: small_packet_len != input_packet_len" << endl;
+                cout << endl << "ERROR: small_packet_len != input_packet_len" << endl;
                   exit(0);
               }
               for(unsigned int k = 8; k < d_sSymb; k++)

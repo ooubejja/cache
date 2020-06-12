@@ -133,7 +133,8 @@ namespace gr {
                   out[i] = d_constellation[3];
                   break;
           }
-          if((length_subpacket-6)%7 != 0){
+          // if((length_subpacket-6)%7 != 0){
+          if((length_subpacket)%7 != 0){
             if(i>=8)  // boost small packet id too
               out[i] /= 4 ;  // 20log10(8) = 18 dB (difference between hdr and pld)
           }

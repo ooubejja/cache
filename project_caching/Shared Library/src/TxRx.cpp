@@ -51,8 +51,8 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         //write header_len
         // CRC ?
         field_len = hX[id_transmission].id_utenti.size();
-        header_len = (7 * field_len) + 4;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength
-        // header_len = (7 * field_len) + 4 + 1;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength + CRC byte
+        // header_len = (7 * field_len) + 4;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength
+        header_len = (7 * field_len) + 4 + 1;// 1-user,1-files,1-chuncks,4-sizePack + 1-Strg,1-Weak,1-requestID,1-hxLength + CRC byte
         conv_int_to_byte(header_len, byte);
         tx_data.push_back(byte);
         if(DEBUG && id_transmission<5)
@@ -68,11 +68,15 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             exit(0);
         }
 
-        // OTHMANE : 8bits (4 QPSK symbols) CRC prefix for the first 3 bytes :
+        // OTHMANE : 8bits (4 QPSK symbols) CRC prefix, based on the first 3 bytes :
         // pkt_id+hdl_len = 3 bytes = 24 bits = 12 QPSK symbols
         // Then insert it in the beginning --> total 32 bits = 16 QPSK Symbols
-        // char my_crc = compute_CRC8(tx_data);
+        char my_crc = compute_CRC8(tx_data);
         // tx_data.insert(tx_data.begin(), my_crc);
+        tx_data.insert(tx_data.end(), my_crc);
+
+        // cout << endl << " CRC GEN : " << int(my_crc) << endl;
+        // cout << endl << " CRC TEST : " << int(compute_CRC8(tx_data)) << endl;
 
 
         //write id of request
