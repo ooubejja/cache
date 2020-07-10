@@ -26,13 +26,18 @@ import random
 
 class polarcode_ofdm_simul(gr.top_block):
 
-    def __init__(self):
+    def __init__(self, fD=10):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
+
+        ##################################################
+        # Parameters
+        ##################################################
+        self.fD = fD
 
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr =  + 20*numpy.log10(4)
+        self.snr = snr = -12 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -93,7 +98,7 @@ class polarcode_ofdm_simul(gr.top_block):
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
         self.digital_chunks_to_symbols_xx_0_1 = digital.chunks_to_symbols_bc((header_mod.points()), 1)
-        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 0.01, 1e3, 0.01, 1e3, 8, 2.0, True, 4.0, (0.0,0.1,1.3), (1,0.99,0.97), 2, numpy.sqrt(variance), 0 )
+        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 1e-2, 1e2, 1e-2, 1e2, 8, 0, True, 4.0, (0.0,0.1,1.3), (1,0.99,0.90), 3, numpy.sqrt(variance), numpy.random.randint(0,500,None) )
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, packet_length_tag_key, 0)
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
@@ -143,6 +148,12 @@ class polarcode_ofdm_simul(gr.top_block):
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
+
+    def get_fD(self):
+        return self.fD
+
+    def set_fD(self, fD):
+        self.fD = fD
 
     def get_snr(self):
         return self.snr
@@ -313,9 +324,19 @@ class polarcode_ofdm_simul(gr.top_block):
         self.Ks = Ks
 
 
-def main(top_block_cls=polarcode_ofdm_simul, options=None):
+def argument_parser():
+    parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
+    parser.add_option(
+        "", "--fD", dest="fD", type="intx", default=10,
+        help="Set Max Doppler Frequency (Hz) [default=%default]")
+    return parser
 
-    tb = top_block_cls()
+
+def main(top_block_cls=polarcode_ofdm_simul, options=None):
+    if options is None:
+        options, _ = argument_parser().parse_args()
+
+    tb = top_block_cls(fD=options.fD)
     tb.start()
     tb.wait()
 
