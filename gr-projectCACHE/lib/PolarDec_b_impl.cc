@@ -162,47 +162,48 @@ namespace gr {
         cout << "Hello" << endl;
         cout << "Hello" << endl;
 
-        // /*--------------------------------- Check CRC --------------------------------------------------*/
-        // OTHMANE : CRC processes
-        // Header starts with a 4QPSK=1byte=8bits CRC linked to the next 12QPSK=3bytes=24bits
-        // --> total for CRC check 32 bits = 16 QPSK Symbols
-        // |   CRC  |  pkt_id | hdl_len|
-        // | 1-byte | 2-bytes | 1-byte |
-        // | 4-symb |  8-symb | 4-symb |
-        unsigned int crc_symb_len = 4; // first 4 QPSK symbols (8bits) are for CRC
-        char crc;
-        int k = 0;
-        gr_complex buff_qpsk[16];
-        vector<char> hdr_plusCRC;
-
-        // in -= 4 ; // remove offset to include CRC
-
-        for(int t=0; t<4; t++){
-          for(int j=0; j<4; j++)
-            buff_qpsk[j] = in[k++];
-          conv_4QPSKsymb_to_char(buff_qpsk, crc);
-          hdr_plusCRC.push_back(crc);
-          cout << endl << "CRC INPUT : " << int(crc) ;
-        }
-        // rotate(hdr_plusCRC.begin(), hdr_plusCRC.begin()+1, hdr_plusCRC.end());  // Rotate 1 to the left to queue CRC
-        crc = compute_CRC8(hdr_plusCRC);
-        cout << endl << "CRC CHECK : " << int(crc) << endl;
-
-        // /*----------------------------------------------------------------------------------------------*/
-
-        // get rid of CRC symbols by pointer offset
-        i += 4;
-
         for(int k=0; k<4; k++)
             buff_4qpsk[k] = in[i++];
         conv_4QPSKsymb_to_int(buff_4qpsk, header_len);
 
-        header_len--;
+        header_len--; // To ignore CRC byte in next computations
 
         field_len = (header_len - 4) / 7;
 
         if(DEBUG)
             cout << endl << "Header Length = " << header_len;
+
+            // /*--------------------------------- Check CRC --------------------------------------------------*/
+            // OTHMANE : CRC processes
+            // Header starts with a 4QPSK=1byte=8bits CRC linked to the next 12QPSK=3bytes=24bits
+            // --> total for CRC check 32 bits = 16 QPSK Symbols
+            // |   CRC  |  pkt_id | hdl_len|
+            // | 1-byte | 2-bytes | 1-byte |
+            // | 4-symb |  8-symb | 4-symb |
+            unsigned int crc_symb_len = 4; // first 4 QPSK symbols (8bits) are for CRC
+            char crc;
+            int k = 0;
+            gr_complex buff_qpsk[16];
+            vector<char> hdr_plusCRC;
+
+            // in -= 4 ; // remove offset to include CRC
+
+            for(int t=0; t<4; t++){
+              for(int j=0; j<4; j++)
+                buff_qpsk[j] = in[k++];
+              conv_4QPSKsymb_to_char(buff_qpsk, crc);
+              hdr_plusCRC.push_back(crc);
+              cout << endl << "CRC INPUT : " << int(crc) ;
+            }
+            // rotate(hdr_plusCRC.begin(), hdr_plusCRC.begin()+1, hdr_plusCRC.end());  // Rotate 1 to the left to queue CRC
+            crc = compute_CRC8(hdr_plusCRC);
+            cout << endl << "CRC CHECK : " << int(crc) << endl;
+
+            // get rid of CRC symbols by pointer offset
+            i += 4;
+            // /*----------------------------------------------------------------------------------------------*/
+
+
 
         //read id_demands
         /*byte=in[i++];

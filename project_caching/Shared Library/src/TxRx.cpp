@@ -72,8 +72,8 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         // pkt_id+hdl_len = 3 bytes = 24 bits = 12 QPSK symbols
         // Then insert it in the beginning --> total 32 bits = 16 QPSK Symbols
         char my_crc = compute_CRC8(tx_data);
-        // tx_data.insert(tx_data.begin(), my_crc);
         tx_data.insert(tx_data.end(), my_crc);
+        // tx_data.insert(tx_data.begin(), my_crc);
 
         // cout << endl << " CRC GEN : " << int(my_crc) << endl;
         // cout << endl << " CRC TEST : " << int(compute_CRC8(tx_data)) << endl;

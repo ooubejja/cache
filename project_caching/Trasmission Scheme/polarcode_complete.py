@@ -28,7 +28,7 @@ class polarcode_complete(gr.top_block):
         # Variables
         ##################################################
         self.boost = boost = 20*numpy.log10(4)
-        self.snr = snr = boost + 8
+        self.snr = snr = boost + 12
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
@@ -75,7 +75,7 @@ class polarcode_complete(gr.top_block):
 
     def set_boost(self, boost):
         self.boost = boost
-        self.set_snr(self.boost + 8)
+        self.set_snr(self.boost + 12)
 
     def get_snr(self):
         return self.snr
