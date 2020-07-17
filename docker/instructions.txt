@@ -1,0 +1,28 @@
+apt-get install sudo -y
+
+git clone git://github.com/ooubejja/cache.git
+
+mkdir /usr/local/lib/pkgconfig
+
+mkdir /cache/project_caching/trasmissioni
+mkdir /cache/project_caching/cache/UserCache
+
+cd /root/cache/project_caching/Shared\ Library/src/
+make clean ; make && sudo make install
+
+cd /root/cache/project_caching/environment/
+make clean ; make
+
+cd /root/cache/project_caching/cache/
+make clean ; make
+
+cd /root/cache/gr-projectCACHE/
+rm -rf build
+mkdir build && cd build
+
+cmake -DCMAKE_INSTALL_PREFIX="/cortexlab/toolchains/current" ..
+
+make && sudo make install
+
+
+
