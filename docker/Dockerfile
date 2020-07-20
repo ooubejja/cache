@@ -30,7 +30,6 @@ RUN rm -rf build
 RUN mkdir build
 WORKDIR build
 ########
-# RUN cmake -DCMAKE_INSTALL_PREFIX="/cortexlab/toolchains/current" ..
 RUN cmake -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH} ..
 RUN make
 RUN sudo make install
