@@ -3,9 +3,8 @@ apt-get install sudo -y
 git clone git://github.com/ooubejja/cache.git
 
 mkdir /usr/local/lib/pkgconfig
-
-mkdir /cache/project_caching/trasmissioni
-mkdir /cache/project_caching/cache/UserCache
+mkdir /root/cache/project_caching/trasmissioni
+mkdir /root/cache/project_caching/cache/UserCache
 
 cd /root/cache/project_caching/Shared\ Library/src/
 make clean ; make && sudo make install
