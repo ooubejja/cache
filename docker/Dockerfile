@@ -1,6 +1,7 @@
 FROM m1mbert/cxlb-gnuradio-3.7:1.0
 ########
-RUN ${APT} update && ${APT} dist-upgrade
+RUN ${APT} update ; ${APT} dist-upgrade
+# RUN ${APT} update
 RUN ${APT} install unzip
 RUN ${APT} install sudo
 ENV INSTALL_PATH "/cortexlab/toolchains/current"
