@@ -151,9 +151,10 @@ class PC_Error_Rate(gr.basic_block):
                     lines = f.readlines()
                     for i in range(len(lines)):
                         if 'MSG Bit' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.MSG_BER)+ " " +'\n'
+                            # lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.MSG_BER)+ " " +'\n'
+                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.MSG_BER)+ " " +'\n'
                         if 'MSG Error' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.sum_errors_msg)+ " " +'\n'
+                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_msg)+ " " +'\n'
                 with open(self.filename,"w") as f:
                     f.write(''.join(lines))
             except :
@@ -184,9 +185,9 @@ class PC_Error_Rate(gr.basic_block):
                         if 'bits decoded:' in lines[i]:
                             lines[i+1] = str(self.cnt_cw) + " | " + str(self.cnt_cw*self.size_cw) +'\n'
                         if 'CW Bit' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.CW_BER)+ " " +'\n'
+                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.CW_BER)+ " " +'\n'
                         if 'CW Error' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.sum_errors_cw)+ " " +'\n'
+                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_cw)+ " " +'\n'
                 with open(self.filename,"w") as f:
                     f.write(''.join(lines))
 

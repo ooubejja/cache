@@ -68,15 +68,15 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             exit(0);
         }
 
-        // OTHMANE : 8bits (4 QPSK symbols) CRC prefix, based on the first 3 bytes :
-        // pkt_id+hdl_len = 3 bytes = 24 bits = 12 QPSK symbols
-        // Then insert it in the beginning --> total 32 bits = 16 QPSK Symbols
-        char my_crc = compute_CRC8(tx_data);
-        tx_data.insert(tx_data.end(), my_crc);
-        // tx_data.insert(tx_data.begin(), my_crc);
-
-        // cout << endl << " CRC GEN : " << int(my_crc) << endl;
-        // cout << endl << " CRC TEST : " << int(compute_CRC8(tx_data)) << endl;
+        // // OTHMANE : 8bits (4 QPSK symbols) CRC prefix, based on the first 3 bytes :
+        // // pkt_id+hdl_len = 3 bytes = 24 bits = 12 QPSK symbols
+        // // Then insert it in the beginning --> total 32 bits = 16 QPSK Symbols
+        // char my_crc = compute_CRC8(tx_data);
+        // tx_data.insert(tx_data.end(), my_crc);
+        // // tx_data.insert(tx_data.begin(), my_crc);
+        //
+        // // cout << endl << " CRC GEN : " << int(my_crc) << endl;
+        // // cout << endl << " CRC TEST : " << int(compute_CRC8(tx_data)) << endl;
 
 
         //write id of request
@@ -160,8 +160,20 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
 
         }
 
-        //write the two byte that mentions if the packet contains weak and/or strong
         // CRC ?
+        // OTHMANE : 8bits (4 QPSK symbols) CRC prefix :
+
+        char my_crc = compute_CRC8(tx_data);
+        tx_data.insert(tx_data.end(), my_crc);
+
+        for(unsigned int r=0; r<tx_data.size(); r++)
+          cout << endl << "CRC TX DATA : " << int(tx_data[r]) ;
+
+        cout << endl << " CRC GEN : " << int(my_crc) << endl;
+        cout << endl << " CRC CHECK : " << int(compute_CRC8(tx_data)) << endl;
+
+
+        //write the two byte that mentions if the packet contains weak and/or strong
         if (hX[id_transmission].strong==true && hX[id_transmission].weak==true){
             buff_short[0] = 0x01;
             buff_short[1] = 0x01;

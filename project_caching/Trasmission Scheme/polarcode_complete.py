@@ -28,7 +28,7 @@ class polarcode_complete(gr.top_block):
         # Variables
         ##################################################
         self.boost = boost = 20*numpy.log10(4)
-        self.snr = snr = boost + 12
+        self.snr = snr = boost + 15
         self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
@@ -53,7 +53,7 @@ class polarcode_complete(gr.top_block):
         self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance)*0, numpy.random.randint(0,500,None))
 
 
 
@@ -75,7 +75,7 @@ class polarcode_complete(gr.top_block):
 
     def set_boost(self, boost):
         self.boost = boost
-        self.set_snr(self.boost + 12)
+        self.set_snr(self.boost + 15)
 
     def get_snr(self):
         return self.snr
@@ -96,7 +96,7 @@ class polarcode_complete(gr.top_block):
 
     def set_variance(self, variance):
         self.variance = variance
-        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance))
+        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance)*0)
 
     def get_small_packet_len(self):
         return self.small_packet_len
