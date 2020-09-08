@@ -299,10 +299,10 @@ namespace gr {
           k+=4;
           conv_4QPSKsymb_to_char(buff_qpsk, crc);
           hdr_plusCRC.push_back(crc);
-          cout << endl << "CRC INPUT : " << int(crc) ;
+          // cout << endl << "CRC INPUT : " << int(crc) ;
         }
         crc = compute_CRC8(hdr_plusCRC);
-        cout << endl << "CRC CHECK : " << int(crc) << endl;
+        // cout << endl << "CRC CHECK : " << int(crc) << endl;
 
         // get rid of CRC symbols by pointer offset
         i += 4;
@@ -664,10 +664,39 @@ namespace gr {
           debug_file_coded << endl << "----------------------------" << endl ;
           debug_file_coded.close();
           /***************************************************************************/
-          dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
-          dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+          // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
+          // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+          // message_port_pub(msg_port, dict_msg);
+          // message_port_pub(cw_port, dict_cw);
+
+          string str_msg_str = str_msg.str();
+          string str_cw_str = str_cw.str();
+
+          std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
+
+          vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
+          vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
+
+          vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
+          vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
+
+          pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
+          pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
+          // cout << endl << "BBB" << endl;
+          // cout << endl << "OTHMANE :" << strg_ind << endl;
+
+          dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
+          dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
+
           message_port_pub(msg_port, dict_msg);
           message_port_pub(cw_port, dict_cw);
+
+          // intrusive_ptr_release(dict_msg);
+          // intrusive_ptr_release(dict_cw);
+          // cout << endl << "CCC" << endl;
+
+          vec_dict_msg.clear();
+          vec_dict_cw.clear();
 
         }
 

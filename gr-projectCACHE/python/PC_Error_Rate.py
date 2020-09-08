@@ -65,6 +65,7 @@ class PC_Error_Rate(gr.basic_block):
         self.cnt_msg = 0
         self.cnt_cw = 0
         self.total_chunks = 0
+        self.size_cw = 0
 
         self.all_tx_msg = {}
         self.all_tx_cw = {}
@@ -95,104 +96,180 @@ class PC_Error_Rate(gr.basic_block):
     def handle_tx_msg(self, msg_pmt):
         with self.lock :
             self.TX_MSG = pmt.to_python(msg_pmt)
-            try :
-                key, val = self.TX_MSG.items()[0]
-                self.all_tx_msg[key] = val  # Append new chunk
-            except :
-                if self.TX_MSG[0][0] == -1 :  # TX_MSG PDUs were all transmitted
-                    try :
-                        # Compute final metrics (total sent chunks, sizes, etc)
-                        self.total_chunks = len(self.all_tx_msg)
-                        self.size_msg = len(self.all_tx_msg.items()[0][1])
-                        self.size_cw = len(self.all_tx_cw.items()[0][1])
+            # print "OLE MSG : " + str(type(self.TX_MSG))
+            # print "OLE MSG  : " + str(self.TX_MSG[1])
 
-                        with open(self.filename,"r") as f:
-                            lines = f.readlines()
-                            for i in range(len(lines)):
-                                if 'bits sent:' in lines[i]:
-                                    lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
-                        with open(self.filename,"w") as f:
-                            f.write(''.join(lines))
+            # self.TX_MSG =
 
-                    except :
-                        pass
-                        # print "Error rate : Couldn't determine CW or MSG size, check inputs"
+            # exit(1)
+            # try :
+            key, val = self.TX_MSG[1][0],self.TX_MSG[1][1:]
+
+            val = map(chr,val)
+            val = ''.join(val)
+            # print "A MSG KEY : " + str(key)
+            # print "A MSG VAL : " + str(len(val))
+            self.all_tx_msg[key] = val  # Append new chunk
+            # except :
+            if len(self.TX_MSG[1]) == 1 :  # TX_MSG PDUs were all transmitted
+                try :
+                    # print "A FINISH : "
+                    # Compute final metrics (total sent chunks, sizes, etc)
+                    self.total_chunks = len(self.all_tx_msg)
+                    self.size_msg = len(self.all_tx_msg.items()[0][1])
+                    self.size_cw = len(self.all_tx_cw.items()[0][1])
+
+                    with open(self.filename,"r") as f:
+                        lines = f.readlines()
+                        for i in range(len(lines)):
+                            if 'bits sent:' in lines[i]:
+                                lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
+                    with open(self.filename,"w") as f:
+                        f.write(''.join(lines))
+
+                except :
+                    pass
+                    # print "Error rate : Couldn't determine CW or MSG size, check inputs"
 
     def handle_tx_cw(self, msg_pmt):
         with self.lock :
             self.TX_CW = pmt.to_python(msg_pmt)
-            key, val = self.TX_CW.items()[0]
+            # print "OLE CW  : " + str(self.TX_CW[1])
+            # print "OLE OLE : " + str(self.TX_CW)
+            # print "OLE OLE OLE" + str(self.TX_MSG.items()[0])
+            # exit(1)
+            key, val = self.TX_CW[1][0],self.TX_CW[1][1:]
+            val = map(chr,val)
+            val = ''.join(val)
+            # print "CW KEY : " + str(key)
+            # print "CW VAL : " + str(val)
+
             self.all_tx_cw[key] = val
+
+
+
+
+
+    # def handle_tx_msg(self, msg_pmt):
+    #     with self.lock :
+    #         self.TX_MSG = pmt.to_python(msg_pmt)
+    #         print "OLE OL : " + str(type(self.TX_MSG))
+    #         print "OLE OLE : " + str(self.TX_MSG)
+    #         print "OLE OLE OLE" + str(self.TX_MSG.items()[0])
+    #
+    #         # self.TX_MSG =
+    #
+    #         exit(1)
+    #         try :
+    #             key, val = self.TX_MSG.items()[0]
+    #             self.all_tx_msg[key] = val  # Append new chunk
+    #         except :
+    #             if self.TX_MSG[0][0] == -1 :  # TX_MSG PDUs were all transmitted
+    #                 try :
+    #                     # Compute final metrics (total sent chunks, sizes, etc)
+    #                     self.total_chunks = len(self.all_tx_msg)
+    #                     self.size_msg = len(self.all_tx_msg.items()[0][1])
+    #                     self.size_cw = len(self.all_tx_cw.items()[0][1])
+    #
+    #                     with open(self.filename,"r") as f:
+    #                         lines = f.readlines()
+    #                         for i in range(len(lines)):
+    #                             if 'bits sent:' in lines[i]:
+    #                                 lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
+    #                     with open(self.filename,"w") as f:
+    #                         f.write(''.join(lines))
+    #
+    #                 except :
+    #                     pass
+    #                     # print "Error rate : Couldn't determine CW or MSG size, check inputs"
+    #
+    # def handle_tx_cw(self, msg_pmt):
+    #     with self.lock :
+    #         self.TX_CW = pmt.to_python(msg_pmt)
+    #         print "OLE OL : " + str(type(self.TX_CW))
+    #         print "OLE OLE : " + str(self.TX_CW)
+    #         print "OLE OLE OLE" + str(self.TX_MSG.items()[0])
+    #         exit(1)
+    #         key, val = self.TX_CW.items()[0]
+    #         self.all_tx_cw[key] = val
 
 
 
     def handle_rx_msg(self, msg_pmt):
         with self.lock :
             self.RX_MSG = pmt.to_python(msg_pmt)
-            key, val = self.RX_MSG.items()[0]
+            # key, val = self.RX_MSG.items()[0]
+            key, val = self.RX_MSG[1][0],self.RX_MSG[1][1:]
+            val = map(chr,val)
+            val = ''.join(val)
             self.all_rx_msg[key] = val
 
-            try :
-                self.cnt_msg += 1
-                # b = self.all_tx_msg[key]    # Extract respective Tx chunk
-                b = self.all_tx_cw[key]    # Extract respective Tx chunk
-                a = self.xor_two_str(val,b)     # Compare with Rx chunk
-                ##########################################
-                # Most important metric
-                self.sum_errors_msg += sum(map(int,a))
-                # print "MSG SUM OF ERRORS : " + str(self.sum_errors_msg)
-                ##########################################
+            # print "A RX KEY : " + str(key)
+            # print "A RX VAL : " + str(len(val))
+            # try :
+            self.cnt_msg += 1
+            # b = self.all_tx_msg[key]    # Extract respective Tx chunk
+            b = self.all_tx_cw[key]    # Extract respective Tx chunk
+            a = self.xor_two_str(val,b)     # Compare with Rx chunk
+            ##########################################
+            # Most important metric
+            self.sum_errors_msg += sum(map(int,a))
+            # print "A MSG SUM OF ERRORS : " + str(self.sum_errors_msg)
+            ##########################################
 
-                # self.MSG_BER = self.sum_errors_msg/float((self.cnt_msg*self.size_msg))  # Message Bit Error Rate, updated every iteration
-                self.MSG_BER = self.sum_errors_msg/float((self.cnt_msg*self.size_cw))  # Message Bit Error Rate, updated every iteration
-                # print "MSG BER (decoded only): " + str(self.MSG_BER)
+            # self.MSG_BER = self.sum_errors_msg/float((self.cnt_msg*self.size_msg))  # Message Bit Error Rate, updated every iteration
+            self.MSG_BER = self.sum_errors_msg/float((self.cnt_msg*self.size_cw))  # Message Bit Error Rate, updated every iteration
+            # print "MSG BER (decoded only): " + str(self.MSG_BER)
 
-                with open(self.filename,"r") as f:
-                    lines = f.readlines()
-                    for i in range(len(lines)):
-                        if 'MSG Bit' in lines[i]:
-                            # lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.MSG_BER)+ " " +'\n'
-                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.MSG_BER)+ " " +'\n'
-                        if 'MSG Error' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_msg)+ " " +'\n'
-                with open(self.filename,"w") as f:
-                    f.write(''.join(lines))
-            except :
-                    print "MSG Invalid Rx chunk ID. Considered erroneous."
+            with open(self.filename,"r") as f:
+                lines = f.readlines()
+                for i in range(len(lines)):
+                    if 'MSG Bit' in lines[i]:
+                        # lines[i+1] = lines[i+1][:-1] + '['+str(key)+'] ' + str(self.MSG_BER)+ " " +'\n'
+                        lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.MSG_BER)+ " " +'\n'
+                    if 'MSG Error' in lines[i]:
+                        lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_msg)+ " " +'\n'
+            with open(self.filename,"w") as f:
+                f.write(''.join(lines))
+            # except :
+            #         print "A MSG Invalid Rx chunk ID. Considered erroneous."
                     # self.sum_errors_msg += self.size_msg  # all bits are considered erroneous
 
 
     def handle_rx_cw(self, msg_pmt):
         with self.lock :
             self.RX_CW = pmt.to_python(msg_pmt)
-            key, val = self.RX_CW.items()[0]
+            # key, val = self.RX_CW.items()[0]
+            key, val = self.RX_CW[1][0],self.RX_CW[1][1:]
+            val = map(chr,val)
+            val = ''.join(val)
             self.all_rx_cw[key] = val
-            try :
-                self.cnt_cw += 1
-                b = self.all_tx_cw[key]    # Extract respective Tx chunk
-                a = self.xor_two_str(val,b)     # Compare with Rx chunk
-                ##########################################
-                # Most important metric
-                self.sum_errors_cw += sum(map(int,a))
-                # print "CW SUM OF ERRORS : " + str(self.sum_errors_cw)
-                ##########################################
-                self.CW_BER = self.sum_errors_cw/float((self.cnt_cw*self.size_cw))  # Message Bit Error Rate, updated every iteration
-                # print "CW BER (decoded only): " + str(self.CW_BER)
+            # try :
+            self.cnt_cw += 1
+            b = self.all_tx_cw[key]    # Extract respective Tx chunk
+            a = self.xor_two_str(val,b)     # Compare with Rx chunk
+            ##########################################
+            # Most important metric
+            self.sum_errors_cw += sum(map(int,a))
+            # print "A CW SUM OF ERRORS : " + str(self.sum_errors_cw)
+            ##########################################
+            self.CW_BER = self.sum_errors_cw/float(self.cnt_cw*self.size_cw)  # Message Bit Error Rate, updated every iteration
+            # print "CW BER (decoded only): " + str(self.CW_BER)
 
-                with open(self.filename,"r") as f:
-                    lines = f.readlines()
-                    for i in range(len(lines)):
-                        if 'bits decoded:' in lines[i]:
-                            lines[i+1] = str(self.cnt_cw) + " | " + str(self.cnt_cw*self.size_cw) +'\n'
-                        if 'CW Bit' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.CW_BER)+ " " +'\n'
-                        if 'CW Error' in lines[i]:
-                            lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_cw)+ " " +'\n'
-                with open(self.filename,"w") as f:
-                    f.write(''.join(lines))
+            with open(self.filename,"r") as f:
+                lines = f.readlines()
+                for i in range(len(lines)):
+                    if 'bits decoded:' in lines[i]:
+                        lines[i+1] = str(self.cnt_cw) + " | " + str(self.cnt_cw*self.size_cw) +'\n'
+                    if 'CW Bit' in lines[i]:
+                        lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.CW_BER)+ " " +'\n'
+                    if 'CW Error' in lines[i]:
+                        lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.sum_errors_cw)+ " " +'\n'
+            with open(self.filename,"w") as f:
+                f.write(''.join(lines))
 
-            except :
-                print "CW Invalid Rx chunk ID. Considered erroneous."
+            # except :
+            #     print "A CW Invalid Rx chunk ID. Considered erroneous."
                 # self.sum_errors_cw += self.size_cw  # all bits are considered erroneous
 
 

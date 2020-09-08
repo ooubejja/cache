@@ -315,6 +315,7 @@ namespace gr {
                 pmt::pmt_t dict_cw(pmt::make_dict());
                 stringstream str_msg, str_cw;
                 int strg_ind;
+                // cout << endl << "AAA" << endl;
 
                 if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
                   int n = d_hX[k].id_chunks.size();
@@ -330,14 +331,50 @@ namespace gr {
                     str_msg << sentMessages_all[k][i] ;
                 }
 
-                dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
-                dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+                // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
+                // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+                // vector<uint8_t> vec(str_msg.str().begin(), str_msg.str().end());
+
+                string str_msg_str = str_msg.str();
+                string str_cw_str = str_cw.str();
+
+                std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
+
+                vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
+                vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
+
+                vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
+                vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
+
+                pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
+                pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
+                // cout << endl << "BBB" << endl;
+                // cout << endl << "OTHMANE :" << strg_ind << endl;
+
+                dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
+                dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
+
                 message_port_pub(msg_port, dict_msg);
                 message_port_pub(cw_port, dict_cw);
+
+                // intrusive_ptr_release(dict_msg);
+                // intrusive_ptr_release(dict_cw);
+                // cout << endl << "CCC" << endl;
+
+                vec_dict_msg.clear();
+                vec_dict_cw.clear();
+                // cout << endl << "DDD" << endl;
+
               }
             }
-            pmt::pmt_t dict_msg = pmt::dict_add(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
-            message_port_pub(msg_port, dict_msg);
+            // cout << endl << "EEE" << endl;
+            vector<uint8_t> V_TMP{0};
+            pmt::pmt_t dict_msg_end = pmt::cons(pmt::make_dict(), pmt::init_u8vector(1,V_TMP));
+            // pmt::pmt_t dict_msg = pmt::cons(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
+            // cout << endl << "FFF" << endl;
+
+            message_port_pub(msg_port, dict_msg_end);
+            // cout << endl << "GGG" << endl;
 
             // exit(0);
 

@@ -166,11 +166,11 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         char my_crc = compute_CRC8(tx_data);
         tx_data.insert(tx_data.end(), my_crc);
 
-        for(unsigned int r=0; r<tx_data.size(); r++)
-          cout << endl << "CRC TX DATA : " << int(tx_data[r]) ;
-
-        cout << endl << " CRC GEN : " << int(my_crc) << endl;
-        cout << endl << " CRC CHECK : " << int(compute_CRC8(tx_data)) << endl;
+        // for(unsigned int r=0; r<tx_data.size(); r++)
+        //   cout << endl << "CRC TX DATA : " << int(tx_data[r]) ;
+        //
+        // cout << endl << " CRC GEN : " << int(my_crc) << endl;
+        // cout << endl << " CRC CHECK : " << int(compute_CRC8(tx_data)) << endl;
 
 
         //write the two byte that mentions if the packet contains weak and/or strong
