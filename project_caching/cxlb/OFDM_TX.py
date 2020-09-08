@@ -85,7 +85,6 @@ class OFDM_TX(gr.top_block):
         self.digital_ofdm_cyclic_prefixer_0 = digital.ofdm_cyclic_prefixer(fft_len, fft_len+fft_len/4, 0, packet_length_tag_key)
         self.digital_ofdm_carrier_allocator_cvc_0 = digital.ofdm_carrier_allocator_cvc(fft_len, occupied_carriers, pilot_carriers, pilot_symbols, (sync_word1,sync_word2), packet_length_tag_key)
         self.digital_chunks_to_symbols_xx_0_1 = digital.chunks_to_symbols_bc((header_mod.points()), 1)
-        self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, packet_length_tag_key, 0)
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
@@ -99,10 +98,9 @@ class OFDM_TX(gr.top_block):
         ##################################################
         self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.zeromq_pub_msg_sink_0, 'in'))
         self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.zeromq_pub_msg_sink_0_0, 'in'))
-        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.uhd_usrp_sink_0_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_tagged_stream_mux_0, 0), (self.digital_ofdm_carrier_allocator_cvc_0, 0))
-        self.connect((self.blocks_throttle_0_0, 0), (self.uhd_usrp_sink_0_0, 0))
         self.connect((self.digital_chunks_to_symbols_xx_0_1, 0), (self.blocks_tagged_stream_mux_0, 0))
         self.connect((self.digital_ofdm_carrier_allocator_cvc_0, 0), (self.fft_vxx_0_0, 0))
         self.connect((self.digital_ofdm_cyclic_prefixer_0, 0), (self.blocks_tag_gate_0, 0))
@@ -202,7 +200,6 @@ class OFDM_TX(gr.top_block):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.uhd_usrp_sink_0_0.set_samp_rate(self.samp_rate)
-        self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
 
     def get_payload_equalizer(self):
         return self.payload_equalizer

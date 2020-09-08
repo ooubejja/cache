@@ -27,10 +27,10 @@ class OFDM_SINK(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_sub_msg_source_0_2 = zeromq.sub_msg_source('tcp://*:5556', 100)
-        self.zeromq_sub_msg_source_0_1 = zeromq.sub_msg_source('tcp://*:5557', 100)
-        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://*:5558', 100)
-        self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://*:5555', 100)
+        self.zeromq_sub_msg_source_0_2 = zeromq.sub_msg_source('tcp://mnode13:5556', 100)
+        self.zeromq_sub_msg_source_0_1 = zeromq.sub_msg_source('tcp://mnode14:5557', 100)
+        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode14:5558', 100)
+        self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://mnode13:5555', 100)
         self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
 
 

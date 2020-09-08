@@ -217,7 +217,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5555</value>
+      <value>tcp://mnode13:5555</value>
     </param>
     <param>
       <key>alias</key>
@@ -264,7 +264,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5558</value>
+      <value>tcp://mnode14:5558</value>
     </param>
     <param>
       <key>alias</key>
@@ -311,7 +311,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5557</value>
+      <value>tcp://mnode14:5557</value>
     </param>
     <param>
       <key>alias</key>
@@ -358,7 +358,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5556</value>
+      <value>tcp://mnode13:5556</value>
     </param>
     <param>
       <key>alias</key>
