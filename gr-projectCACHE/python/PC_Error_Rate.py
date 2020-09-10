@@ -65,7 +65,7 @@ class PC_Error_Rate(gr.basic_block):
         self.cnt_msg = 0
         self.cnt_cw = 0
         self.total_chunks = 0
-        self.size_cw = 0
+        self.size_cw = 1
 
         self.all_tx_msg = {}
         self.all_tx_cw = {}
@@ -112,23 +112,23 @@ class PC_Error_Rate(gr.basic_block):
             self.all_tx_msg[key] = val  # Append new chunk
             # except :
             if len(self.TX_MSG[1]) == 1 :  # TX_MSG PDUs were all transmitted
-                try :
-                    # print "A FINISH : "
-                    # Compute final metrics (total sent chunks, sizes, etc)
-                    self.total_chunks = len(self.all_tx_msg)
-                    self.size_msg = len(self.all_tx_msg.items()[0][1])
-                    self.size_cw = len(self.all_tx_cw.items()[0][1])
+                # try :
+                # print "A FINISH : "
+                # Compute final metrics (total sent chunks, sizes, etc)
+                self.total_chunks = len(self.all_tx_msg)
+                self.size_msg = len(self.all_tx_msg.items()[0][1])
+                self.size_cw = len(self.all_tx_cw.items()[0][1])
 
-                    with open(self.filename,"r") as f:
-                        lines = f.readlines()
-                        for i in range(len(lines)):
-                            if 'bits sent:' in lines[i]:
-                                lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
-                    with open(self.filename,"w") as f:
-                        f.write(''.join(lines))
+                with open(self.filename,"r") as f:
+                    lines = f.readlines()
+                    for i in range(len(lines)):
+                        if 'bits sent:' in lines[i]:
+                            lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
+                with open(self.filename,"w") as f:
+                    f.write(''.join(lines))
 
-                except :
-                    pass
+                # except :
+                #     pass
                     # print "Error rate : Couldn't determine CW or MSG size, check inputs"
 
     def handle_tx_cw(self, msg_pmt):
