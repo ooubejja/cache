@@ -202,7 +202,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(664, 280)</value>
+      <value>(552, 280)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -217,7 +217,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5555</value>
+      <value>tcp://localhost:5555</value>
     </param>
     <param>
       <key>alias</key>
@@ -237,7 +237,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 228)</value>
+      <value>(88, 228)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -264,7 +264,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5558</value>
+      <value>tcp://localhost:5558</value>
     </param>
     <param>
       <key>alias</key>
@@ -284,7 +284,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 396)</value>
+      <value>(88, 396)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -311,7 +311,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5557</value>
+      <value>tcp://localhost:5557</value>
     </param>
     <param>
       <key>alias</key>
@@ -331,7 +331,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 340)</value>
+      <value>(88, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -358,7 +358,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5556</value>
+      <value>tcp://localhost:5556</value>
     </param>
     <param>
       <key>alias</key>
@@ -378,7 +378,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 284)</value>
+      <value>(88, 284)</value>
     </param>
     <param>
       <key>_rotation</key>

@@ -865,7 +865,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(544, 988)</value>
+      <value>(680, 980)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1061,7 +1061,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 1091)</value>
+      <value>(432, 1084)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1561,6 +1561,61 @@
     <param>
       <key>id</key>
       <value>blocks_throttle_0_0</value>
+    </param>
+    <param>
+      <key>ignoretag</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>samples_per_second</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_throttle</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(944, 1708)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_throttle_0_0_0</value>
     </param>
     <param>
       <key>ignoretag</key>
@@ -2493,7 +2548,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 992)</value>
+      <value>(424, 988)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2889,7 +2944,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(0, 92)</value>
+      <value>(0, 108)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2920,7 +2975,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(96, 92)</value>
+      <value>(96, 108)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3017,7 +3072,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(784, 2032)</value>
+      <value>(792, 2120)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -5674,7 +5729,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -5953,7 +6008,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(992, 1708)</value>
+      <value>(1152, 1708)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6034,7 +6089,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 1956)</value>
+      <value>(8, 2068)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6286,7 +6341,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 2020)</value>
+      <value>(576, 1916)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6325,7 +6380,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 2092)</value>
+      <value>(576, 1972)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6385,6 +6440,69 @@
     <param>
       <key>timeout</key>
       <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_sub_source</key>
+    <param>
+      <key>address</key>
+      <value>tcp://localhost:5565</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(40, 1036)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>hwm</key>
+      <value>-1</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_sub_source_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>pass_tags</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
     </param>
   </block>
   <connection>
@@ -6468,6 +6586,12 @@
   <connection>
     <source_block_id>blocks_throttle_0_0</source_block_id>
     <sink_block_id>uhd_usrp_sink_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_throttle_0_0_0</source_block_id>
+    <sink_block_id>virtual_sink_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -6563,7 +6687,7 @@
   </connection>
   <connection>
     <source_block_id>digital_ofdm_serializer_vcc_payload</source_block_id>
-    <sink_block_id>virtual_sink_1_0</sink_block_id>
+    <sink_block_id>blocks_throttle_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -6755,6 +6879,18 @@
   </connection>
   <connection>
     <source_block_id>virtual_source_2</source_block_id>
+    <sink_block_id>digital_ofdm_sync_sc_cfb_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_source_0</source_block_id>
+    <sink_block_id>blocks_delay_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_source_0</source_block_id>
     <sink_block_id>digital_ofdm_sync_sc_cfb_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>

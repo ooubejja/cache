@@ -865,7 +865,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 980)</value>
+      <value>(544, 988)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1061,7 +1061,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(432, 1084)</value>
+      <value>(296, 1091)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1561,61 +1561,6 @@
     <param>
       <key>id</key>
       <value>blocks_throttle_0_0</value>
-    </param>
-    <param>
-      <key>ignoretag</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>samples_per_second</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_throttle</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(944, 1708)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_throttle_0_0_0</value>
     </param>
     <param>
       <key>ignoretag</key>
@@ -2548,7 +2493,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(424, 988)</value>
+      <value>(288, 992)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2944,7 +2889,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(0, 108)</value>
+      <value>(0, 92)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2975,7 +2920,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(96, 108)</value>
+      <value>(96, 92)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3072,7 +3017,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(792, 2120)</value>
+      <value>(784, 2032)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6008,7 +5953,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1152, 1708)</value>
+      <value>(992, 1708)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6089,7 +6034,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 2068)</value>
+      <value>(8, 1956)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6341,7 +6286,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 1916)</value>
+      <value>(576, 2020)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6380,7 +6325,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 1972)</value>
+      <value>(576, 2092)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6446,7 +6391,7 @@
     <key>zeromq_sub_source</key>
     <param>
       <key>address</key>
-      <value>tcp://localhost:5565</value>
+      <value>tcp://mnode13:5565</value>
     </param>
     <param>
       <key>alias</key>
@@ -6466,7 +6411,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(40, 1036)</value>
+      <value>(32, 988)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6590,12 +6535,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>blocks_throttle_0_0_0</source_block_id>
-    <sink_block_id>virtual_sink_1_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
     <source_block_id>channels_channel_model_1</source_block_id>
     <sink_block_id>virtual_sink_2_0</sink_block_id>
     <source_key>0</source_key>
@@ -6687,7 +6626,7 @@
   </connection>
   <connection>
     <source_block_id>digital_ofdm_serializer_vcc_payload</source_block_id>
-    <sink_block_id>blocks_throttle_0_0_0</sink_block_id>
+    <sink_block_id>virtual_sink_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

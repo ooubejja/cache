@@ -61,7 +61,7 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://localhost:5565', 100, False, -1)
+        self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://mnode13:5565', 100, False, -1)
         self.zeromq_pub_msg_sink_0_1 = zeromq.pub_msg_sink('tcp://*:5558', 100)
         self.zeromq_pub_msg_sink_0_0_0 = zeromq.pub_msg_sink('tcp://*:5557', 100)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
@@ -88,7 +88,6 @@ class OFDM_RX(gr.top_block):
                   0,
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
-        self.blocks_throttle_0_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
@@ -104,14 +103,13 @@ class OFDM_RX(gr.top_block):
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
-        self.connect((self.blocks_throttle_0_0_0, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_header_payload_demux_0, 0), (self.fft_vxx_0, 0))
         self.connect((self.digital_header_payload_demux_0, 1), (self.fft_vxx_1, 0))
         self.connect((self.digital_ofdm_chanest_vcvc_0, 0), (self.digital_ofdm_frame_equalizer_vcvc_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_throttle_0_0_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))
         self.connect((self.fft_vxx_0, 0), (self.digital_ofdm_chanest_vcvc_0, 0))
@@ -211,7 +209,6 @@ class OFDM_RX(gr.top_block):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.blocks_throttle_0_0_0.set_sample_rate(self.samp_rate)
 
     def get_payload_equalizer(self):
         return self.payload_equalizer

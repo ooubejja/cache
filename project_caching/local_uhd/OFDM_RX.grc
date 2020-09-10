@@ -2076,7 +2076,7 @@
     </param>
     <param>
       <key>trigger_tag_key</key>
-      <value>"rx_time"</value>
+      <value></value>
     </param>
   </block>
   <block>
