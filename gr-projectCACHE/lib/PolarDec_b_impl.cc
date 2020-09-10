@@ -710,6 +710,8 @@ namespace gr {
 
       if(d_packet_remain <5){
         cout << "Remaining packets: " << d_packet_remain << endl;
+        if(d_packet_remain==0)
+          return -1;
       }
       d_k++;
 
