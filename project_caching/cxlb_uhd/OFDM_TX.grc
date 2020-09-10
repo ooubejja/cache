@@ -317,7 +317,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1184, 156)</value>
+      <value>(840, 668)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -330,33 +330,6 @@
     <param>
       <key>value</key>
       <value>2450e6</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1272, 156)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>5</value>
     </param>
   </block>
   <block>
@@ -1104,7 +1077,7 @@
     </param>
     <param>
       <key>const</key>
-      <value>1</value>
+      <value>1/16.0</value>
     </param>
     <param>
       <key>affinity</key>
@@ -2844,6 +2817,53 @@
     <param>
       <key>window</key>
       <value></value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1000, 644)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>gain</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Gain</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value>G</value>
+    </param>
+    <param>
+      <key>hide</key>
+      <value>none</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>intx</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>5</value>
     </param>
   </block>
   <block>

@@ -27,8 +27,13 @@ import time
 
 class OFDM_TX(gr.top_block):
 
-    def __init__(self):
+    def __init__(self, gain=5):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
+
+        ##################################################
+        # Parameters
+        ##################################################
+        self.gain = gain
 
         ##################################################
         # Variables
@@ -50,7 +55,6 @@ class OFDM_TX(gr.top_block):
         self.id_user = id_user = 5
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.gain = gain = 25
         self.freq = freq = 2450e6
         self.Users = Users = 5
         self.Nbfiles = Nbfiles = 20
@@ -86,7 +90,7 @@ class OFDM_TX(gr.top_block):
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1, ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/16.0, ))
 
 
 
@@ -106,6 +110,14 @@ class OFDM_TX(gr.top_block):
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_tagged_stream_mux_0, 1))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
+
+    def get_gain(self):
+        return self.gain
+
+    def set_gain(self, gain):
+        self.gain = gain
+        self.uhd_usrp_sink_0_0.set_gain(self.gain, 0)
+
 
     def get_pilot_symbols(self):
         return self.pilot_symbols
@@ -222,14 +234,6 @@ class OFDM_TX(gr.top_block):
     def set_header_equalizer(self, header_equalizer):
         self.header_equalizer = header_equalizer
 
-    def get_gain(self):
-        return self.gain
-
-    def set_gain(self, gain):
-        self.gain = gain
-        self.uhd_usrp_sink_0_0.set_gain(self.gain, 0)
-
-
     def get_freq(self):
         return self.freq
 
@@ -274,9 +278,19 @@ class OFDM_TX(gr.top_block):
         self.Ks = Ks
 
 
-def main(top_block_cls=OFDM_TX, options=None):
+def argument_parser():
+    parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
+    parser.add_option(
+        "-G", "--gain", dest="gain", type="intx", default=5,
+        help="Set Gain [default=%default]")
+    return parser
 
-    tb = top_block_cls()
+
+def main(top_block_cls=OFDM_TX, options=None):
+    if options is None:
+        options, _ = argument_parser().parse_args()
+
+    tb = top_block_cls(gain=options.gain)
     tb.start()
     tb.wait()
 

@@ -27,13 +27,14 @@ import time
 
 class ofdm_uhd(gr.top_block):
 
-    def __init__(self, fD=10):
+    def __init__(self, fD=10, gain=5):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
         # Parameters
         ##################################################
         self.fD = fD
+        self.gain = gain
 
         ##################################################
         # Variables
@@ -57,7 +58,6 @@ class ofdm_uhd(gr.top_block):
         self.id_user = id_user = 5
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.gain = gain = 15
         self.freq = freq = 2450e6
         self.Users = Users = 5
         self.Nbfiles = Nbfiles = 20
@@ -180,6 +180,16 @@ class ofdm_uhd(gr.top_block):
 
     def set_fD(self, fD):
         self.fD = fD
+
+    def get_gain(self):
+        return self.gain
+
+    def set_gain(self, gain):
+        self.gain = gain
+        self.uhd_usrp_source_0_0.set_gain(self.gain, 0)
+
+        self.uhd_usrp_sink_0_0.set_gain(self.gain, 0)
+
 
     def get_snr(self):
         return self.snr
@@ -312,16 +322,6 @@ class ofdm_uhd(gr.top_block):
     def set_header_equalizer(self, header_equalizer):
         self.header_equalizer = header_equalizer
 
-    def get_gain(self):
-        return self.gain
-
-    def set_gain(self, gain):
-        self.gain = gain
-        self.uhd_usrp_source_0_0.set_gain(self.gain, 0)
-
-        self.uhd_usrp_sink_0_0.set_gain(self.gain, 0)
-
-
     def get_freq(self):
         return self.freq
 
@@ -372,6 +372,9 @@ def argument_parser():
     parser.add_option(
         "", "--fD", dest="fD", type="intx", default=10,
         help="Set Max Doppler Frequency (Hz) [default=%default]")
+    parser.add_option(
+        "-G", "--gain", dest="gain", type="intx", default=5,
+        help="Set Gain [default=%default]")
     return parser
 
 
@@ -379,7 +382,7 @@ def main(top_block_cls=ofdm_uhd, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls(fD=options.fD)
+    tb = top_block_cls(fD=options.fD, gain=options.gain)
     tb.start()
     tb.wait()
 

@@ -317,7 +317,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1184, 156)</value>
+      <value>(16, 884)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -330,33 +330,6 @@
     <param>
       <key>value</key>
       <value>2450e6</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1272, 156)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>25</value>
     </param>
   </block>
   <block>
@@ -865,7 +838,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(544, 988)</value>
+      <value>(856, 972)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1061,7 +1034,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 1091)</value>
+      <value>(608, 1076)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1163,7 +1136,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 1064)</value>
+      <value>(1128, 1048)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1438,7 +1411,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1943,6 +1916,57 @@
     <param>
       <key>minoutbuf</key>
       <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>digital_costas_loop_cc</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(304, 992)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>digital_costas_loop_cc_0</value>
+    </param>
+    <param>
+      <key>w</key>
+      <value>2*3.14/100</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>order</key>
+      <value>2</value>
+    </param>
+    <param>
+      <key>use_snr</key>
+      <value>False</value>
     </param>
   </block>
   <block>
@@ -2548,7 +2572,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 992)</value>
+      <value>(600, 972)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2899,6 +2923,53 @@
     <param>
       <key>window</key>
       <value></value>
+    </param>
+  </block>
+  <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(112, 876)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>gain</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Gain</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value>G</value>
+    </param>
+    <param>
+      <key>hide</key>
+      <value>none</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>intx</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>5</value>
     </param>
   </block>
   <block>
@@ -6563,6 +6634,18 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>digital_costas_loop_cc_0</source_block_id>
+    <sink_block_id>blocks_delay_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_costas_loop_cc_0</source_block_id>
+    <sink_block_id>digital_ofdm_sync_sc_cfb_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>digital_crc32_bb_1</source_block_id>
     <sink_block_id>blocks_tag_debug_1</sink_block_id>
     <source_key>0</source_key>
@@ -6744,13 +6827,7 @@
   </connection>
   <connection>
     <source_block_id>uhd_usrp_source_0_0</source_block_id>
-    <sink_block_id>blocks_delay_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>uhd_usrp_source_0_0</source_block_id>
-    <sink_block_id>digital_ofdm_sync_sc_cfb_0</sink_block_id>
+    <sink_block_id>digital_costas_loop_cc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
