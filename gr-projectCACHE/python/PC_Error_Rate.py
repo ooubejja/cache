@@ -71,6 +71,7 @@ class PC_Error_Rate(gr.basic_block):
         self.all_tx_cw = {}
         self.all_rx_msg = {}
         self.all_rx_cw = {}
+        self.not_ready = True
 
         # self.filename = "../trasmissioni/ERROR_RATE_"+time.strftime("%d%m%Y-%H%M%S")+".txt"
         self.filename = "../trasmissioni/ERROR_RATE.txt"
@@ -96,56 +97,50 @@ class PC_Error_Rate(gr.basic_block):
     def handle_tx_msg(self, msg_pmt):
         with self.lock :
             self.TX_MSG = pmt.to_python(msg_pmt)
-            # print "OLE MSG : " + str(type(self.TX_MSG))
-            # print "OLE MSG  : " + str(self.TX_MSG[1])
 
-            # self.TX_MSG =
+            # Compute final metrics (total sent chunks, sizes, etc)
+            if len(self.TX_MSG[1]) == 1 :  # TX_MSG PDUs were all transmitted
+                while self.not_ready :
+                    try :
+                        self.total_chunks = len(self.all_tx_msg)
+                        self.size_msg = len(self.all_tx_msg.items()[0][1])
+                        self.size_cw = len(self.all_tx_cw.items()[0][1])
+                        self.not_ready = False
+                        break
+                        # print "A FINISH : "  + str(self.size_msg)
+                        # print "A A FINISH : " + str(self.size_cw)
+                    except :
+                        pass
+                with open(self.filename,"r") as f:
+                    lines = f.readlines()
+                    for i in range(len(lines)):
+                        if 'bits sent:' in lines[i]:
+                            lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
+                            with open(self.filename,"w") as f:
+                                f.write(''.join(lines))
+                # except :
+                #     pass
+                # print "Error rate : Couldn't determine CW or MSG size, check inputs"
 
-            # exit(1)
-            # try :
             key, val = self.TX_MSG[1][0],self.TX_MSG[1][1:]
-
             val = map(chr,val)
             val = ''.join(val)
-            # print "A MSG KEY : " + str(key)
-            # print "A MSG VAL : " + str(len(val))
             self.all_tx_msg[key] = val  # Append new chunk
-            # except :
-            if len(self.TX_MSG[1]) == 1 :  # TX_MSG PDUs were all transmitted
-                try :
-                    # print "A FINISH : "
-                    # Compute final metrics (total sent chunks, sizes, etc)
-                    self.total_chunks = len(self.all_tx_msg)
-                    self.size_msg = len(self.all_tx_msg.items()[0][1])
-                    self.size_cw = len(self.all_tx_cw.items()[0][1])
-
-                    with open(self.filename,"r") as f:
-                        lines = f.readlines()
-                        for i in range(len(lines)):
-                            if 'bits sent:' in lines[i]:
-                                lines[i+1] = str(self.total_chunks) + " | " + str(self.total_chunks*self.size_cw) +'\n'
-                    with open(self.filename,"w") as f:
-                        f.write(''.join(lines))
-
-                except :
-                    pass
-                    print "Error rate : Couldn't determine CW or MSG size, check inputs"
 
     def handle_tx_cw(self, msg_pmt):
         with self.lock :
             self.TX_CW = pmt.to_python(msg_pmt)
-            # print "OLE CW  : " + str(self.TX_CW[1])
-            # print "OLE OLE : " + str(self.TX_CW)
-            # print "OLE OLE OLE" + str(self.TX_MSG.items()[0])
-            # exit(1)
             key, val = self.TX_CW[1][0],self.TX_CW[1][1:]
             val = map(chr,val)
             val = ''.join(val)
-            # print "CW KEY : " + str(key)
-            # print "CW VAL : " + str(val)
 
             self.all_tx_cw[key] = val
 
+            # if len(self.TX_CW[1]) == 1 :
+            # #     self.not_ready = False
+
+            # print "CW KEY : " + str(key)
+            # print "CW VAL : " + str(val)
 
 
 

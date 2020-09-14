@@ -374,6 +374,7 @@ namespace gr {
             // cout << endl << "FFF" << endl;
 
             message_port_pub(msg_port, dict_msg_end);
+            // message_port_pub(cw_port, dict_msg_end);
             // cout << endl << "GGG" << endl;
 
             // exit(0);
