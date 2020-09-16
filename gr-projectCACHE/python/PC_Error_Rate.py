@@ -214,7 +214,7 @@ class PC_Error_Rate(gr.basic_block):
                     lines = f.readlines()
                     for i in range(len(lines)):
                         if 'bits decoded:' in lines[i]:
-                            lines[i+1] = str(self.cnt_cw) + " | " + str(self.cnt_cw*self.size_cw) +'\n'
+                            lines[i+1] = str(self.cnt_cw) + " | " + str(self.cnt_cw*self.size_cw) + " | Packet loss rate: " + str(self.cnt_cw)/float(self.total_chunks) + '\n'
                         if 'CW Bit' in lines[i]:
                             lines[i+1] = lines[i+1][:-1] + '['+ "%02d"%key +'] ' + str(self.CW_BER)+ " " +'\n'
                         if 'CW Error' in lines[i]:
