@@ -637,8 +637,10 @@ namespace gr {
           debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
           /***************************************************************************/
           debug_file_coded << endl << "RECEIVED MESSAGE : " << d_header.id_chunks.at(index) << endl;
-          for (int i = 0; i < d_K_s; i++)
-              debug_file_coded << recMessage_s[i] << "";
+          for (int i = 0; i < d_K_s; i++){
+            debug_file_coded << recMessage_s[i] << "";
+            str_msg << recMessage_s[i];
+          }
           /***************************************************************************/
           debug_file_coded << endl << "----------------------------" << endl ;
           debug_file_coded << endl << "RECEIVED CW : " << d_header.id_chunks.at(index) << endl;
@@ -648,11 +650,11 @@ namespace gr {
             str_cw << cw_raw[i] ;
             if (recCodeword_s[i]!=0 && recCodeword_s[i]!=1){
               debug_file_coded << "X" ;
-              str_msg << "X" ;
+              // str_msg << "X" ;
             }
             else{
               debug_file_coded << recCodeword_s[i];
-              str_msg << recCodeword_s[i];
+              // str_msg << recCodeword_s[i];
             }
           }
           /***************************************************************************/
