@@ -51,21 +51,24 @@ class polarcode_complete(gr.top_block):
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.projectCACHE_PolarDec_b_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, n_users, small_packet_len, packetlength)
         self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
+        self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
         self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance)*0, numpy.random.randint(0,500,None))
+        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 
 
 
         ##################################################
         # Connections
         ##################################################
+        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
         self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
         self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
         self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
         self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0_0, 0))
+        self.connect((self.blocks_add_xx_0, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.blocks_throttle_0_0, 0), (self.projectCACHE_PolarDec_b_0, 0))
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_add_xx_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
@@ -96,7 +99,7 @@ class polarcode_complete(gr.top_block):
 
     def set_variance(self, variance):
         self.variance = variance
-        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance)*0)
+        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance))
 
     def get_small_packet_len(self):
         return self.small_packet_len

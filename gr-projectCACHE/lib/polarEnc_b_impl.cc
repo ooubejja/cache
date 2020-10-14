@@ -242,39 +242,42 @@ namespace gr {
             d_PC_data = codingDataPolar(d_coded_data, d_strg_data, d_bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N, sentCodewords_all, sentMessages_all);
 
             /////////////////////////////////////////////////// OTHMANE Error rate debug
-            ofstream debug_file_coded;
-            debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
-            debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
-            debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
-            debug_file_coded << " sentCodewords_all.size() : "<< sentCodewords_all.size() << endl;
-            debug_file_coded << "==================================" << endl;
-
-            for (int k = 0; k < d_hX.size(); k++){
-              if(d_hX[k].strong){
-                int id_pos = 0;
-                if(d_hX[k].weak){   // If Polar header concerns combined packet (weak+strong)
-                  int n = d_hX[k].id_chunks.size();
-                  id_pos = d_hX[k].id_chunks[n-1];
-                }
-                else    // Polar header concerns Strictly Strong Packet
-                  id_pos = d_hX[k].id_chunks[0];
-
-                debug_file_coded  << "SENT MESSAGE : " << id_pos << endl;
-                for (int i=0; i<d_K_s; i++){
-                  debug_file_coded << sentMessages_all[k][i] ;
-                }
-                debug_file_coded << endl << "----------------------------" << endl ;
-
-                debug_file_coded  << "SENT CW : " << id_pos << endl;
-                for (int i=0; i<d_N; i++){
-                  debug_file_coded << sentCodewords_all[k][i] ;
-                }
-                debug_file_coded << endl << "----------------------------" << endl ;
-
-              }
-            }
-            debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
-            debug_file_coded.close();
+            // ofstream debug_file_coded;
+            // string file_name_debug = "../trasmissioni/debug_file_coded";
+            // file_name_debug = file_name_debug.append(to_string(d_id_user));
+            //
+            // debug_file_coded.open(file_name_debug,ios::trunc);
+            // debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
+            // debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
+            // debug_file_coded << " sentCodewords_all.size() : "<< sentCodewords_all.size() << endl;
+            // debug_file_coded << "==================================" << endl;
+            //
+            // for (int k = 0; k < d_hX.size(); k++){
+            //   if(d_hX[k].strong){
+            //     int id_pos = 0;
+            //     if(d_hX[k].weak){   // If Polar header concerns combined packet (weak+strong)
+            //       int n = d_hX[k].id_chunks.size();
+            //       id_pos = d_hX[k].id_chunks[n-1];
+            //     }
+            //     else    // Polar header concerns Strictly Strong Packet
+            //       id_pos = d_hX[k].id_chunks[0];
+            //
+            //     debug_file_coded  << "SENT MESSAGE : " << id_pos << endl;
+            //     for (int i=0; i<d_K_s; i++){
+            //       debug_file_coded << sentMessages_all[k][i] ;
+            //     }
+            //     debug_file_coded << endl << "----------------------------" << endl ;
+            //
+            //     debug_file_coded  << "SENT CW : " << id_pos << endl;
+            //     for (int i=0; i<d_N; i++){
+            //       debug_file_coded << sentCodewords_all[k][i] ;
+            //     }
+            //     debug_file_coded << endl << "----------------------------" << endl ;
+            //
+            //   }
+            // }
+            // debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
+            // debug_file_coded.close();
 
             // /////////////////////////////////////////////////////
             //

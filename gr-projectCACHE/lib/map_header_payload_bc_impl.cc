@@ -136,7 +136,7 @@ namespace gr {
           // if((length_subpacket-6)%7 != 0){
           if((length_subpacket)%7 != 0){
             if(i>=8)  // boost small packet id too
-              out[i] /= 4 ;  // 20log10(8) = 18 dB (difference between hdr and pld)
+              out[i] /= 4 ;  // 20log10(4) = 12,04 dB (difference between hdr and pld)
           }
       }
 

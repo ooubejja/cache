@@ -633,43 +633,59 @@ namespace gr {
           // }
 
           ///////////////////////////////////////////////////////////////
-          ofstream debug_file_coded;
-          debug_file_coded.open("../trasmissioni/debug_file_coded",ios::app);
           /***************************************************************************/
-          debug_file_coded << endl << "RECEIVED MESSAGE : " << d_header.id_chunks.at(index) << endl;
-          for (int i = 0; i < d_K_s; i++){
-            debug_file_coded << recMessage_s[i] << "";
-            str_msg << recMessage_s[i];
-          }
-          /***************************************************************************/
-          debug_file_coded << endl << "----------------------------" << endl ;
-          debug_file_coded << endl << "RECEIVED CW : " << d_header.id_chunks.at(index) << endl;
+          // for (int i = 0; i < d_K_s; i++){
+          //   str_msg << recMessage_s[i];
+          // }
           for (int i = 0; i < d_N; i++){
-            // Correcting a bug where some walues are corrupt :
-            // It is a bug in PC.cpp, recCodeword is sometimes different than 0 or 1
             str_cw << cw_raw[i] ;
-            if (recCodeword_s[i]!=0 && recCodeword_s[i]!=1){
-              debug_file_coded << "X" ;
-              // str_msg << "X" ;
-            }
-            else{
-              debug_file_coded << recCodeword_s[i];
-              // str_msg << recCodeword_s[i];
-            }
+
+            if (d_isStr && i<d_K_s)
+              str_msg << recMessage_s[i];
+            else if (!d_isStr && i<d_K_w)
+              str_msg << recMessage_s[i];
           }
           /***************************************************************************/
-          debug_file_coded << endl << "----------------------------" << endl ;
-          debug_file_coded << endl << "RECEIVED SYMBOLS : " << d_header.id_chunks.at(index) << endl;
-          for (int i = 0; i < d_N; i++){
-            debug_file_coded << cw_raw[i];
-          }
-          debug_file_coded << endl << "----------------------------" << endl ;
-          debug_file_coded.close();
           /***************************************************************************/
-          // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
-          // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
-          // message_port_pub(msg_port, dict_msg);
-          // message_port_pub(cw_port, dict_cw);
+          // ///////////////////////////////////////////////////////////////
+          // ofstream debug_file_coded;
+          // string file_name_debug = "../trasmissioni/debug_file_coded";
+          // file_name_debug = file_name_debug.append(to_string(d_id_user));
+          //
+          // debug_file_coded.open(file_name_debug,ios::app);
+          //
+          // /***************************************************************************/
+          // debug_file_coded << endl << "RECEIVED MESSAGE : " << d_header.id_chunks.at(index) << endl;
+          // for (int i = 0; i < d_K_s; i++){
+          //   debug_file_coded << recMessage_s[i] << "";
+          //   str_msg << recMessage_s[i];
+          // }
+          // /***************************************************************************/
+          // debug_file_coded << endl << "----------------------------" << endl ;
+          // debug_file_coded << endl << "RECEIVED CW : " << d_header.id_chunks.at(index) << endl;
+          // for (int i = 0; i < d_N; i++){
+          //   // Correcting a bug where some walues are corrupt :
+          //   // It is a bug in PC.cpp, recCodeword is sometimes different than 0 or 1
+          //   str_cw << cw_raw[i] ;
+          //   if (recCodeword_s[i]!=0 && recCodeword_s[i]!=1){
+          //     debug_file_coded << "X" ;
+          //     // str_msg << "X" ;
+          //   }
+          //   else{
+          //     debug_file_coded << recCodeword_s[i];
+          //     // str_msg << recCodeword_s[i];
+          //   }
+          // }
+          // /***************************************************************************/
+          // debug_file_coded << endl << "----------------------------" << endl ;
+          // debug_file_coded << endl << "RECEIVED SYMBOLS : " << d_header.id_chunks.at(index) << endl;
+          // for (int i = 0; i < d_N; i++){
+          //   debug_file_coded << cw_raw[i];
+          // }
+          // debug_file_coded << endl << "----------------------------" << endl ;
+          // debug_file_coded.close();
+          // /***************************************************************************/
+
 
           string str_msg_str = str_msg.str();
           string str_cw_str = str_cw.str();

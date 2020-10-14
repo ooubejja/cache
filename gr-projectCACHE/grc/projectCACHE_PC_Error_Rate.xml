@@ -4,8 +4,23 @@
   <key>projectCACHE_PC_Error_Rate</key>
   <category>[projectCACHE]</category>
   <import>import projectCACHE</import>
-  <make>projectCACHE.PC_Error_Rate()</make>
+  <make>projectCACHE.PC_Error_Rate($usr_id,$is_strong)</make>
 
+
+  <param>
+    <name>User ID</name>
+    <key>usr_id</key>
+    <value>5</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Strong User</name>
+    <key>is_strong</key>
+    <value>True</value>
+    <type>bool</type>
+  </param>
+  
 
   <sink>
     <name>TX_MSG</name>
@@ -31,16 +46,18 @@
     <optional>1</optional>
   </sink>
 
-  <!-- <source>
-    <name>ERROR_MSG</name>
+  <sink>
+    <name>SNR</name>
     <type>message</type>
     <optional>1</optional>
-  </source>
+  </sink>
 
-  <source>
-    <name>ERROR_CW</name>
+  <sink>
+    <name>CH_USE</name>
     <type>message</type>
     <optional>1</optional>
-  </source> -->
+  </sink>
+
+
 
 </block>

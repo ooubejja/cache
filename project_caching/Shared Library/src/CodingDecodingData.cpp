@@ -565,7 +565,8 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
                 tmp[j] = strg_data.at(i).at(j);
             vd.push_back(tmp);
             cc++;
-            //cl++;//Count the packets non combined
+            cl++; //Count the packets non combined
+            
             //header addition part
             hd.id_utenti.push_back(hdr_strg[i].id_utenti[0]);
             hd.id_files.push_back(hdr_strg[i].id_files[0]);
@@ -577,6 +578,7 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
         if(cc == 2 || cl==RemainStrgPack){//
             //Add counter to debug
             ct++;
+
             //This is the case if one packet for a strong user remains alone
             if(cl==RemainStrgPack && cc!=2)
             {
