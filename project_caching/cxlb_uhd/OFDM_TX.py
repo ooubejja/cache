@@ -93,7 +93,7 @@ class OFDM_TX(gr.top_block):
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/16.0, ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/34.0, ))
 
 
 

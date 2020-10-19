@@ -62,12 +62,15 @@ class OFDM_RX(gr.top_block):
         # Blocks
         ##################################################
         self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://mnode13:5565', 100, False, -1)
+        self.zeromq_pub_msg_sink_0_1_0 = zeromq.pub_msg_sink('tcp://*:5559', 100)
         self.zeromq_pub_msg_sink_0_1 = zeromq.pub_msg_sink('tcp://*:5558', 100)
+        self.zeromq_pub_msg_sink_0_0_0_0 = zeromq.pub_msg_sink('tcp://*:5560', 100)
         self.zeromq_pub_msg_sink_0_0_0 = zeromq.pub_msg_sink('tcp://*:5557', 100)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
+        self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
         self.digital_packet_headerparser_b_0 = digital.packet_headerparser_b(header_formatter.base())
         self.digital_ofdm_sync_sc_cfb_0 = digital.ofdm_sync_sc_cfb(fft_len, fft_len/4, False, 0.9)
         self.digital_ofdm_serializer_vcc_payload = digital.ofdm_serializer_vcc(fft_len, occupied_carriers, length_tag_key, packet_length_tag_key, 1, '', True)
@@ -88,6 +91,7 @@ class OFDM_RX(gr.top_block):
                   0,
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
+        self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.complex_t, 'packet_len')
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
@@ -97,7 +101,9 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Connections
         ##################################################
+        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.zeromq_pub_msg_sink_0_0_0_0, 'in'))
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
+        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.zeromq_pub_msg_sink_0_1_0, 'in'))
         self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_MSG'), (self.zeromq_pub_msg_sink_0_0_0, 'in'))
         self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_CW'), (self.zeromq_pub_msg_sink_0_1, 'in'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
@@ -109,6 +115,8 @@ class OFDM_RX(gr.top_block):
         self.connect((self.digital_ofdm_chanest_vcvc_0, 0), (self.digital_ofdm_frame_equalizer_vcvc_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))

@@ -212,6 +212,14 @@
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0</value>
     </param>
+    <param>
+      <key>is_strong</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>usr_id</key>
+      <value>5</value>
+    </param>
   </block>
   <block>
     <key>zeromq_sub_msg_source</key>
@@ -237,7 +245,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 228)</value>
+      <value>(304, 180)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -284,7 +292,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 396)</value>
+      <value>(304, 348)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -293,6 +301,100 @@
     <param>
       <key>id</key>
       <value>zeromq_sub_msg_source_0_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_sub_msg_source</key>
+    <param>
+      <key>address</key>
+      <value>tcp://localhost:5560</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(368, 540)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_sub_msg_source_0_0_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_sub_msg_source</key>
+    <param>
+      <key>address</key>
+      <value>tcp://localhost:5559</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(304, 460)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_sub_msg_source_0_0_1</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -331,7 +433,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 340)</value>
+      <value>(304, 292)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -378,7 +480,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 284)</value>
+      <value>(304, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -412,6 +514,18 @@
     <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
     <source_key>out</source_key>
     <sink_key>RX_CW</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_msg_source_0_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>out</source_key>
+    <sink_key>CH_USE</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_msg_source_0_0_1</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>out</source_key>
+    <sink_key>SNR</sink_key>
   </connection>
   <connection>
     <source_block_id>zeromq_sub_msg_source_0_1</source_block_id>

@@ -29,9 +29,11 @@ class OFDM_SINK(gr.top_block):
         ##################################################
         self.zeromq_sub_msg_source_0_2 = zeromq.sub_msg_source('tcp://localhost:5556', 100)
         self.zeromq_sub_msg_source_0_1 = zeromq.sub_msg_source('tcp://localhost:5557', 100)
+        self.zeromq_sub_msg_source_0_0_1 = zeromq.sub_msg_source('tcp://localhost:5559', 100)
+        self.zeromq_sub_msg_source_0_0_0 = zeromq.sub_msg_source('tcp://localhost:5560', 100)
         self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://localhost:5558', 100)
         self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://localhost:5555', 100)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
+        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(5,True)
 
 
 
@@ -40,6 +42,8 @@ class OFDM_SINK(gr.top_block):
         ##################################################
         self.msg_connect((self.zeromq_sub_msg_source_0, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
         self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
+        self.msg_connect((self.zeromq_sub_msg_source_0_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'CH_USE'))
+        self.msg_connect((self.zeromq_sub_msg_source_0_0_1, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
         self.msg_connect((self.zeromq_sub_msg_source_0_1, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
         self.msg_connect((self.zeromq_sub_msg_source_0_2, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
 

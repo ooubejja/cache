@@ -1533,6 +1533,53 @@
     </param>
   </block>
   <block>
+    <key>blocks_tagged_stream_to_pdu</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(968, 1844)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_tagged_stream_to_pdu_0</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
+    </param>
+    <param>
+      <key>tag</key>
+      <value>packet_len</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>blocks_throttle</key>
     <param>
       <key>alias</key>
@@ -2662,6 +2709,57 @@
     </param>
   </block>
   <block>
+    <key>digital_probe_mpsk_snr_est_c</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>alpha</key>
+      <value>0.00001</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(304, 2208)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>digital_probe_mpsk_snr_est_c_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>msg_nsamples</key>
+      <value>2000</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>3</value>
+    </param>
+  </block>
+  <block>
     <key>parameter</key>
     <param>
       <key>alias</key>
@@ -3124,6 +3222,14 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0</value>
+    </param>
+    <param>
+      <key>is_strong</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>usr_id</key>
+      <value>5</value>
     </param>
   </block>
   <block>
@@ -6403,6 +6509,45 @@
     <key>zeromq_pub_msg_sink</key>
     <param>
       <key>address</key>
+      <value>tcp://*:5560</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1288, 1900)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_pub_msg_sink_0_0_0_0</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_pub_msg_sink</key>
+    <param>
+      <key>address</key>
       <value>tcp://*:5558</value>
     </param>
     <param>
@@ -6432,6 +6577,45 @@
     <param>
       <key>id</key>
       <value>zeromq_pub_msg_sink_0_1</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_pub_msg_sink</key>
+    <param>
+      <key>address</key>
+      <value>tcp://*:5559</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(640, 2196)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_pub_msg_sink_0_1_0</value>
     </param>
     <param>
       <key>timeout</key>
@@ -6544,6 +6728,12 @@
     <sink_block_id>virtual_sink_0_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_tagged_stream_to_pdu_0</source_block_id>
+    <sink_block_id>zeromq_pub_msg_sink_0_0_0_0</sink_block_id>
+    <source_key>pdus</source_key>
+    <sink_key>in</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_throttle_0_0</source_block_id>
@@ -6673,6 +6863,12 @@
   </connection>
   <connection>
     <source_block_id>digital_ofdm_serializer_vcc_payload</source_block_id>
+    <sink_block_id>blocks_tagged_stream_to_pdu_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_ofdm_serializer_vcc_payload</source_block_id>
     <sink_block_id>virtual_sink_1_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -6700,6 +6896,12 @@
     <sink_block_id>digital_header_payload_demux_0</sink_block_id>
     <source_key>header_data</source_key>
     <sink_key>header_data</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_probe_mpsk_snr_est_c_0</source_block_id>
+    <sink_block_id>zeromq_pub_msg_sink_0_1_0</sink_block_id>
+    <source_key>snr</source_key>
+    <sink_key>in</sink_key>
   </connection>
   <connection>
     <source_block_id>fft_vxx_0</source_block_id>
@@ -6812,6 +7014,12 @@
   <connection>
     <source_block_id>virtual_source_0_0</source_block_id>
     <sink_block_id>digital_constellation_decoder_cb_1</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>virtual_source_0_0</source_block_id>
+    <sink_block_id>digital_probe_mpsk_snr_est_c_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
