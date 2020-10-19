@@ -319,7 +319,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://localhost:5560</value>
+      <value>tcp://mnode14:5560</value>
     </param>
     <param>
       <key>alias</key>
@@ -366,7 +366,7 @@
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
-      <value>tcp://localhost:5559</value>
+      <value>tcp://mnode14:5559</value>
     </param>
     <param>
       <key>alias</key>
