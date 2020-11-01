@@ -2798,7 +2798,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(280, 2232)</value>
+      <value>(304, 2344)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3252,6 +3252,84 @@
     </param>
   </block>
   <block>
+    <key>projectCACHE_PC_Error_Rate</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1344, 1984)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>projectCACHE_PC_Error_Rate_0_0</value>
+    </param>
+    <param>
+      <key>is_strong</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>usr_id</key>
+      <value>5</value>
+    </param>
+  </block>
+  <block>
+    <key>projectCACHE_PC_Error_Rate</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1344, 2224)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>projectCACHE_PC_Error_Rate_0_0_0</value>
+    </param>
+    <param>
+      <key>is_strong</key>
+      <value>False</value>
+    </param>
+    <param>
+      <key>usr_id</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>projectCACHE_PolarDec_b</key>
     <param>
       <key>alias</key>
@@ -3316,6 +3394,81 @@
     <param>
       <key>id_user</key>
       <value>id_user</value>
+    </param>
+    <param>
+      <key>K_w</key>
+      <value>Kw</value>
+    </param>
+    <param>
+      <key>spack_len</key>
+      <value>small_packet_len</value>
+    </param>
+  </block>
+  <block>
+    <key>projectCACHE_PolarDec_b</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>N</key>
+      <value>N</value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(304, 2172)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>projectCACHE_PolarDec_b_0_0_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>b_chunks</key>
+      <value>NbChuncks</value>
+    </param>
+    <param>
+      <key>m_files</key>
+      <value>Nbfiles</value>
+    </param>
+    <param>
+      <key>n_users</key>
+      <value>Users</value>
+    </param>
+    <param>
+      <key>lengthtagname</key>
+      <value>packet_length_tag_key</value>
+    </param>
+    <param>
+      <key>K_s</key>
+      <value>Ks</value>
+    </param>
+    <param>
+      <key>id_user</key>
+      <value>0</value>
     </param>
     <param>
       <key>K_w</key>
@@ -6853,162 +7006,6 @@
     </param>
   </block>
   <block>
-    <key>zeromq_pub_msg_sink</key>
-    <param>
-      <key>address</key>
-      <value>tcp://*:5557</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(576, 1988)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_msg_sink_0_0_0</value>
-    </param>
-    <param>
-      <key>timeout</key>
-      <value>100</value>
-    </param>
-  </block>
-  <block>
-    <key>zeromq_pub_msg_sink</key>
-    <param>
-      <key>address</key>
-      <value>tcp://*:5560</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1208, 1900)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_msg_sink_0_0_0_0</value>
-    </param>
-    <param>
-      <key>timeout</key>
-      <value>100</value>
-    </param>
-  </block>
-  <block>
-    <key>zeromq_pub_msg_sink</key>
-    <param>
-      <key>address</key>
-      <value>tcp://*:5558</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(576, 2116)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_msg_sink_0_1</value>
-    </param>
-    <param>
-      <key>timeout</key>
-      <value>100</value>
-    </param>
-  </block>
-  <block>
-    <key>zeromq_pub_msg_sink</key>
-    <param>
-      <key>address</key>
-      <value>tcp://*:5559</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(576, 2220)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_msg_sink_0_1_0</value>
-    </param>
-    <param>
-      <key>timeout</key>
-      <value>100</value>
-    </param>
-  </block>
-  <block>
     <key>zeromq_sub_msg_source</key>
     <param>
       <key>address</key>
@@ -7041,6 +7038,53 @@
     <param>
       <key>id</key>
       <value>zeromq_sub_msg_source_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>timeout</key>
+      <value>100</value>
+    </param>
+  </block>
+  <block>
+    <key>zeromq_sub_msg_source</key>
+    <param>
+      <key>address</key>
+      <value>tcp://localhost:5555</value>
+    </param>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1064, 2116)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>zeromq_sub_msg_source_0_0</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -7180,9 +7224,15 @@
   </connection>
   <connection>
     <source_block_id>blocks_tagged_stream_to_pdu_0</source_block_id>
-    <sink_block_id>zeromq_pub_msg_sink_0_0_0_0</sink_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0</sink_block_id>
     <source_key>pdus</source_key>
-    <sink_key>in</sink_key>
+    <sink_key>CH_USE</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>blocks_tagged_stream_to_pdu_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0_0</sink_block_id>
+    <source_key>pdus</source_key>
+    <sink_key>CH_USE</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_throttle_0_0</source_block_id>
@@ -7372,9 +7422,15 @@
   </connection>
   <connection>
     <source_block_id>digital_probe_mpsk_snr_est_c_0</source_block_id>
-    <sink_block_id>zeromq_pub_msg_sink_0_1_0</sink_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0</sink_block_id>
     <source_key>snr</source_key>
-    <sink_key>in</sink_key>
+    <sink_key>SNR</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>digital_probe_mpsk_snr_est_c_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0_0</sink_block_id>
+    <source_key>snr</source_key>
+    <sink_key>SNR</sink_key>
   </connection>
   <connection>
     <source_block_id>fft_vxx_0</source_block_id>
@@ -7401,30 +7457,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
-    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
-    <source_key>RX_CW</source_key>
-    <sink_key>RX_CW</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
-    <sink_block_id>zeromq_pub_msg_sink_0_1</sink_block_id>
-    <source_key>RX_CW</source_key>
-    <sink_key>in</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
-    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
-    <source_key>RX_MSG</source_key>
-    <sink_key>RX_MSG</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
-    <sink_block_id>zeromq_pub_msg_sink_0_0_0</sink_block_id>
-    <source_key>RX_MSG</source_key>
-    <sink_key>in</sink_key>
-  </connection>
-  <connection>
     <source_block_id>projectCACHE_map_header_payload_bc_0</source_block_id>
     <sink_block_id>blocks_tagged_stream_mux_0</sink_block_id>
     <source_key>0</source_key>
@@ -7441,12 +7473,6 @@
     <sink_block_id>zeromq_pub_msg_sink_0</sink_block_id>
     <source_key>TX_CW</source_key>
     <sink_key>in</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>
-    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
-    <source_key>TX_MSG</source_key>
-    <sink_key>TX_MSG</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>
@@ -7509,6 +7535,12 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>virtual_source_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PolarDec_b_0_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>virtual_source_0_0_0</source_block_id>
     <sink_block_id>digital_ofdm_carrier_allocator_cvc_0</sink_block_id>
     <source_key>0</source_key>
@@ -7549,6 +7581,18 @@
     <sink_block_id>digital_ofdm_sync_sc_cfb_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_msg_source_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0</sink_block_id>
+    <source_key>out</source_key>
+    <sink_key>BER_INFO</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>zeromq_sub_msg_source_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0_0</sink_block_id>
+    <source_key>out</source_key>
+    <sink_key>BER_INFO</sink_key>
   </connection>
   <connection>
     <source_block_id>zeromq_sub_source_0</source_block_id>

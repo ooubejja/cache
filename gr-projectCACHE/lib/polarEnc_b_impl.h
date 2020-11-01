@@ -31,7 +31,7 @@ namespace gr {
     class polarEnc_b_impl : public polarEnc_b
     {
      private:
-      const pmt::pmt_t msg_port, cw_port;
+      const pmt::pmt_t ber_info, msg_port, cw_port;
 
      public:
       polarEnc_b_impl(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);

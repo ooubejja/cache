@@ -67,7 +67,6 @@ class OFDM_TX(gr.top_block):
         # Blocks
         ##################################################
         self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 100)
-        self.zeromq_pub_msg_sink_0 = zeromq.pub_msg_sink('tcp://*:5556', 100)
         self.uhd_usrp_sink_0_0 = uhd.usrp_sink(
         	",".join(('', "")),
         	uhd.stream_args(
@@ -100,8 +99,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.zeromq_pub_msg_sink_0, 'in'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.zeromq_pub_msg_sink_0_0, 'in'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.zeromq_pub_msg_sink_0_0, 'in'))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.uhd_usrp_sink_0_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_tagged_stream_mux_0, 0), (self.digital_ofdm_carrier_allocator_cvc_0, 0))

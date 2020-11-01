@@ -37,7 +37,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 25 + 20*numpy.log10(4)
+        self.snr = snr = 18 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -70,6 +70,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         self.zeromq_pub_sink_0 = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://*:5565', 100, False, -1)
         self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 100)
+        self.zeromq_pub_msg_sink_0 = zeromq.pub_msg_sink('tcp://*:5556', 100)
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
@@ -91,7 +92,8 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.zeromq_pub_msg_sink_0_0, 'in'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.zeromq_pub_msg_sink_0, 'in'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.zeromq_pub_msg_sink_0_0, 'in'))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_xx_0, 0), (self.zeromq_pub_sink_0, 0))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0_0, 0))

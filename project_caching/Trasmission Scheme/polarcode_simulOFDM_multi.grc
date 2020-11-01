@@ -1202,11 +1202,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1120, 2144)</value>
+      <value>(400, 352)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6024,12 +6024,6 @@
   </connection>
   <connection>
     <source_block_id>digital_probe_mpsk_snr_est_c_0</source_block_id>
-    <sink_block_id>blocks_message_debug_0</sink_block_id>
-    <source_key>snr</source_key>
-    <sink_key>print</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>digital_probe_mpsk_snr_est_c_0</source_block_id>
     <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
     <source_key>snr</source_key>
     <sink_key>SNR</sink_key>
@@ -6099,6 +6093,12 @@
     <sink_block_id>digital_ofdm_serializer_vcc_payload</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>
+    <sink_block_id>blocks_message_debug_0</sink_block_id>
+    <source_key>BER_INFO</source_key>
+    <sink_key>print</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>

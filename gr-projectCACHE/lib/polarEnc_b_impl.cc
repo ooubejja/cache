@@ -58,9 +58,11 @@ namespace gr {
       d_offset(0),
       d_spack_len(spack_len),
       d_len_tag_key(pmt::string_to_symbol(len_tag_key)),
+      ber_info(pmt::mp("BER_INFO")),
       msg_port(pmt::mp("TX_MSG")),
       cw_port(pmt::mp("TX_CW"))
     {
+      message_port_register_out(ber_info);
       message_port_register_out(msg_port);
       message_port_register_out(cw_port);
       d_gen = true; d_stop = false;
@@ -206,6 +208,7 @@ namespace gr {
 
         d_data = generateData(d_m_files, d_b_chunks, d_id_demand);
 
+
         cout << endl << "Conflict-Graph generator process" << endl << "-------------" << endl << endl;
         d_outputForColoring = conflictGraphGenerator(d_data);
         cout << endl << "Numero nodi del grafo: " << d_outputForColoring.n_nodi << endl << endl;
@@ -233,151 +236,28 @@ namespace gr {
             //Coding data for transmission
             d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
 
+
             //Coding strong and weak data
             d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes,
                 d_outputForColoring.n_nodi, d_nb_strg, d_data, &d_hdr_sdata, G_edges);
+
+
+
+
+
 
             vector<vector<int>> sentCodewords_all, sentMessages_all;
             //Polar codes the weak and strong packets
             d_PC_data = codingDataPolar(d_coded_data, d_strg_data, d_bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N, sentCodewords_all, sentMessages_all);
 
-            /////////////////////////////////////////////////// OTHMANE Error rate debug
-            // ofstream debug_file_coded;
-            // string file_name_debug = "../trasmissioni/debug_file_coded";
-            // file_name_debug = file_name_debug.append(to_string(d_id_user));
-            //
-            // debug_file_coded.open(file_name_debug,ios::trunc);
-            // debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
-            // debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
-            // debug_file_coded << " sentCodewords_all.size() : "<< sentCodewords_all.size() << endl;
-            // debug_file_coded << "==================================" << endl;
-            //
-            // for (int k = 0; k < d_hX.size(); k++){
-            //   if(d_hX[k].strong){
-            //     int id_pos = 0;
-            //     if(d_hX[k].weak){   // If Polar header concerns combined packet (weak+strong)
-            //       int n = d_hX[k].id_chunks.size();
-            //       id_pos = d_hX[k].id_chunks[n-1];
-            //     }
-            //     else    // Polar header concerns Strictly Strong Packet
-            //       id_pos = d_hX[k].id_chunks[0];
-            //
-            //     debug_file_coded  << "SENT MESSAGE : " << id_pos << endl;
-            //     for (int i=0; i<d_K_s; i++){
-            //       debug_file_coded << sentMessages_all[k][i] ;
-            //     }
-            //     debug_file_coded << endl << "----------------------------" << endl ;
-            //
-            //     debug_file_coded  << "SENT CW : " << id_pos << endl;
-            //     for (int i=0; i<d_N; i++){
-            //       debug_file_coded << sentCodewords_all[k][i] ;
-            //     }
-            //     debug_file_coded << endl << "----------------------------" << endl ;
-            //
-            //   }
-            // }
-            // debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
-            // debug_file_coded.close();
+            cout << endl << "EEE" << endl;
 
-            // /////////////////////////////////////////////////////
-            //
-            //
-            // /////////////////////////////////////////////////// OTHMANE Error rate debug
-            // ofstream debug_file_coded;
-            // debug_file_coded.open("../trasmissioni/debug_file_coded",ios::trunc);
-            // debug_file_coded <<  endl << "==============  TX  ===============" << endl ;
-            // debug_file_coded << " d_hX size : "<< d_hX.size() << endl;
-            // debug_file_coded << " sentMessages_all.size() : "<< sentMessages_all.size() << endl;
-            // debug_file_coded << "==================================" << endl;
-
-            // for (int k = 0; k < d_hX.size(); k++){
-            //   if(d_hX[k].strong){
-            //     if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
-            //       int n = d_hX[k].id_chunks.size();
-            //       debug_file_coded  << "SENT MESSAGE : " << d_hX[k].id_chunks[n-1] << endl;
-            //     }
-            //     else    // Polar header concerns Strictly Strong Packet
-            //       debug_file_coded  << "SENT MESSAGE : " << d_hX[k].id_chunks[0] << endl;
-            //     for (int i=0; i<d_K_s; i++){
-            //       debug_file_coded << sentMessages_all[k][i] << "" ;
-            //     }
-            //     debug_file_coded << endl << "----------------------------" << endl ;
-            //   }
-            // }
-            // debug_file_coded <<  endl << "==================================" << endl << " RX " << endl << "==================================" << endl << endl;
-            // debug_file_coded.close();
-            /////////////////////////////////////////////////////
+            // vector<uint8_t> vec_dict_msg;
 
 
-            // OTHMANE
-            // Create and Send PDU message with sent messages and CWs
 
-            for (int k = 0; k < d_hX.size(); k++){
-              if(d_hX[k].strong){
-                pmt::pmt_t dict_msg(pmt::make_dict());
-                pmt::pmt_t dict_cw(pmt::make_dict());
-                stringstream str_msg, str_cw;
-                int strg_ind;
-                // cout << endl << "AAA" << endl;
-
-                if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
-                  int n = d_hX[k].id_chunks.size();
-                  strg_ind = d_hX[k].id_chunks[n-1];
-                }
-                else    // Polar header concerns Strictly Strong Packet
-                  strg_ind = d_hX[k].id_chunks[0];
-
-                // Fill Tx CWs and Msgs in the same loop to optimize runtime
-                for (int i=0; i<d_N; i++){
-                  str_cw << sentCodewords_all[k][i] ;
-                  if(i<d_K_s)
-                    str_msg << sentMessages_all[k][i] ;
-                }
-
-                // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
-                // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
-                // vector<uint8_t> vec(str_msg.str().begin(), str_msg.str().end());
-
-                string str_msg_str = str_msg.str();
-                string str_cw_str = str_cw.str();
-
-                std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
-
-                vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
-                vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
-
-                vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
-                vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
-
-                pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
-                pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
-                // cout << endl << "BBB" << endl;
-                // cout << endl << "OTHMANE :" << strg_ind << endl;
-
-                dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
-                dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
-
-                message_port_pub(msg_port, dict_msg);
-                message_port_pub(cw_port, dict_cw);
-
-                // intrusive_ptr_release(dict_msg);
-                // intrusive_ptr_release(dict_cw);
-                // cout << endl << "CCC" << endl;
-
-                vec_dict_msg.clear();
-                vec_dict_cw.clear();
-                // cout << endl << "DDD" << endl;
-
-              }
-            }
-            // cout << endl << "EEE" << endl;
-            vector<uint8_t> V_TMP{0};
-            pmt::pmt_t dict_msg_end = pmt::cons(pmt::make_dict(), pmt::init_u8vector(1,V_TMP));
-            // pmt::pmt_t dict_msg = pmt::cons(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
-            // cout << endl << "FFF" << endl;
-
-            message_port_pub(msg_port, dict_msg_end);
-            message_port_pub(cw_port, dict_msg_end);
+            // message_port_pub(msg_port, dict_msg_end);
+            // message_port_pub(cw_port, dict_msg_end);
             // cout << endl << "GGG" << endl;
 
             // exit(0);
@@ -431,6 +311,53 @@ namespace gr {
 
 
       if(d_offset >= d_transmission1.size() ){
+
+          /************************** OTHMANE : BER INFO ********************************/
+          // Last is for strong, rest is weak
+          // Each row has 3 elements: user_id | file id | chunks matrix (0 isn't cached, 1 is cached)
+          vector<string> normal;
+          string tmp_str;
+          // Add Weak Info
+          for(int i=0; i<d_data.n_utenti; i++)
+          {
+            tmp_str = to_string(i) + " " + to_string(d_data.Q[i]) + " ";
+            for (int k=0; k<d_b_chunks; k++)
+              tmp_str += to_string(d_data.Q_chuncks[i][k]);  // requested chunks matrix
+            normal.push_back(tmp_str); // weak user ID
+          }
+
+          // Add Strong Info
+          for(int i=0; i<d_nb_strg; i++)
+          {
+            tmp_str = to_string(d_hdr_sdata[i].id_utenti[i]) + " " + to_string(d_hdr_sdata[i].id_files[i]) + " ";
+            for (int k=0; k<d_b_chunks; k++)
+              tmp_str += to_string(1);  // adds 100 zeros because strong has no cache
+            normal.push_back(tmp_str);
+          }
+
+          // Debug for Tx BER 
+          cout << endl << "BER VECTOR DEBUG : " << endl ;
+          for(int i=0; i<normal.size(); i++)
+            cout << normal[i] << endl;
+
+          for (int k = 0; k < normal.size(); k++)
+          {
+            vector<uint8_t> vec_dict_msg(normal[k].begin(), normal[k].end());
+            pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
+
+            pmt::pmt_t dict_pdu(pmt::make_dict());
+            dict_pdu = pmt::cons(pmt::make_dict(), TEST_msg);
+
+            message_port_pub(ber_info, dict_pdu);
+            vec_dict_msg.clear();
+          }
+
+          vector<uint8_t> V_TMP{0};
+          pmt::pmt_t dict_msg_end = pmt::cons(pmt::make_dict(), pmt::init_u8vector(1,V_TMP));
+          // pmt::pmt_t dict_msg = pmt::cons(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
+          cout << endl << "FFF" << endl;
+
+
           cout << "Done!" << endl;
           cleanVar();
           return -1;  // Done!
@@ -458,3 +385,69 @@ namespace gr {
     }/* work function */
   } /* namespace projectCACHE */
 } /* namespace gr */
+
+
+
+
+
+
+            // // OTHMANE
+            // // Create and Send PDU message with sent messages and CWs
+            // for (int k = 0; k < d_hX.size(); k++){
+            //   if(d_hX[k].strong){
+            //     pmt::pmt_t dict_msg(pmt::make_dict());
+            //     pmt::pmt_t dict_cw(pmt::make_dict());
+            //     stringstream str_msg, str_cw;
+            //     int strg_ind;
+            //     // cout << endl << "AAA" << endl;
+            //
+            //     if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
+            //       int n = d_hX[k].id_chunks.size();
+            //       strg_ind = d_hX[k].id_chunks[n-1];
+            //     }
+            //     else    // Polar header concerns Strictly Strong Packet
+            //       strg_ind = d_hX[k].id_chunks[0];
+            //
+            //     // Fill Tx CWs and Msgs in the same loop to optimize runtime
+            //     for (int i=0; i<d_N; i++){
+            //       str_cw << sentCodewords_all[k][i] ;
+            //       if(i<d_K_s)
+            //         str_msg << sentMessages_all[k][i] ;
+            //     }
+            //
+            //     // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
+            //     // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
+            //     // vector<uint8_t> vec(str_msg.str().begin(), str_msg.str().end());
+            //
+            //     string str_msg_str = str_msg.str();
+            //     string str_cw_str = str_cw.str();
+            //
+            //     std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
+            //
+            //     vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
+            //     vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
+            //
+            //     vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
+            //     vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
+            //
+            //     pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
+            //     pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
+            //     // cout << endl << "BBB" << endl;
+            //     // cout << endl << "OTHMANE :" << strg_ind << endl;
+            //
+            //     dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
+            //     dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
+            //
+            //     message_port_pub(msg_port, dict_msg);
+            //     message_port_pub(cw_port, dict_cw);
+            //
+            //     // intrusive_ptr_release(dict_msg);
+            //     // intrusive_ptr_release(dict_cw);
+            //     // cout << endl << "CCC" << endl;
+            //
+            //     vec_dict_msg.clear();
+            //     vec_dict_cw.clear();
+            //     // cout << endl << "DDD" << endl;
+            //
+            //   }
+            // }

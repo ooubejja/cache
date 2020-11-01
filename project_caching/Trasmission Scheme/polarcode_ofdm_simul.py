@@ -7,24 +7,12 @@
 # GNU Radio version: 3.7.14.0
 ##################################################
 
-if __name__ == '__main__':
-    import ctypes
-    import sys
-    if sys.platform.startswith('linux'):
-        try:
-            x11 = ctypes.cdll.LoadLibrary('libX11.so')
-            x11.XInitThreads()
-        except:
-            print "Warning: failed to XInitThreads()"
-
-from PyQt4 import Qt
 from gnuradio import analog
 from gnuradio import blocks
 from gnuradio import digital
 from gnuradio import eng_notation
 from gnuradio import fft
 from gnuradio import gr
-from gnuradio import qtgui
 from gnuradio.digital.utils import tagged_streams
 from gnuradio.eng_option import eng_option
 from gnuradio.fft import window
@@ -33,37 +21,12 @@ from optparse import OptionParser
 import numpy
 import projectCACHE
 import random
-import sip
-import sys
-from gnuradio import qtgui
 
 
-class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
+class polarcode_ofdm_simul(gr.top_block):
 
     def __init__(self, fD=10):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
-        Qt.QWidget.__init__(self)
-        self.setWindowTitle("Polar Coding with Coded Caching")
-        qtgui.util.check_set_qss()
-        try:
-            self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
-        except:
-            pass
-        self.top_scroll_layout = Qt.QVBoxLayout()
-        self.setLayout(self.top_scroll_layout)
-        self.top_scroll = Qt.QScrollArea()
-        self.top_scroll.setFrameStyle(Qt.QFrame.NoFrame)
-        self.top_scroll_layout.addWidget(self.top_scroll)
-        self.top_scroll.setWidgetResizable(True)
-        self.top_widget = Qt.QWidget()
-        self.top_scroll.setWidget(self.top_widget)
-        self.top_layout = Qt.QVBoxLayout(self.top_widget)
-        self.top_grid_layout = Qt.QGridLayout()
-        self.top_layout.addLayout(self.top_grid_layout)
-
-        self.settings = Qt.QSettings("GNU Radio", "polarcode_ofdm_simul")
-        self.restoreGeometry(self.settings.value("geometry").toByteArray())
-
 
         ##################################################
         # Parameters
@@ -73,7 +36,7 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.snr_pld = snr_pld = 20
+        self.snr_pld = snr_pld = 11
         self.snr = snr = snr_pld+ 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
@@ -104,58 +67,12 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self.qtgui_time_sink_x_1 = qtgui.time_sink_f(
-        	1000000, #size
-        	samp_rate, #samp_rate
-        	'SNR Tx', #name
-        	1 #number of inputs
-        )
-        self.qtgui_time_sink_x_1.set_update_time(0.10)
-        self.qtgui_time_sink_x_1.set_y_axis(-1, 1)
-
-        self.qtgui_time_sink_x_1.set_y_label('Amplitude', "")
-
-        self.qtgui_time_sink_x_1.enable_tags(-1, False)
-        self.qtgui_time_sink_x_1.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 0, "")
-        self.qtgui_time_sink_x_1.enable_autoscale(False)
-        self.qtgui_time_sink_x_1.enable_grid(True)
-        self.qtgui_time_sink_x_1.enable_axis_labels(True)
-        self.qtgui_time_sink_x_1.enable_control_panel(False)
-        self.qtgui_time_sink_x_1.enable_stem_plot(False)
-
-        if not True:
-          self.qtgui_time_sink_x_1.disable_legend()
-
-        labels = ['', '', '', '', '',
-                  '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
-                  1, 1, 1, 1, 1]
-        colors = ["blue", "red", "green", "black", "cyan",
-                  "magenta", "yellow", "dark red", "dark green", "blue"]
-        styles = [1, 1, 1, 1, 1,
-                  1, 1, 1, 1, 1]
-        markers = [-1, -1, -1, -1, -1,
-                   -1, -1, -1, -1, -1]
-        alphas = [1.0, 1.0, 1.0, 1.0, 1.0,
-                  1.0, 1.0, 1.0, 1.0, 1.0]
-
-        for i in xrange(1):
-            if len(labels[i]) == 0:
-                self.qtgui_time_sink_x_1.set_line_label(i, "Data {0}".format(i))
-            else:
-                self.qtgui_time_sink_x_1.set_line_label(i, labels[i])
-            self.qtgui_time_sink_x_1.set_line_width(i, widths[i])
-            self.qtgui_time_sink_x_1.set_line_color(i, colors[i])
-            self.qtgui_time_sink_x_1.set_line_style(i, styles[i])
-            self.qtgui_time_sink_x_1.set_line_marker(i, markers[i])
-            self.qtgui_time_sink_x_1.set_line_alpha(i, alphas[i])
-
-        self._qtgui_time_sink_x_1_win = sip.wrapinstance(self.qtgui_time_sink_x_1.pyqwidget(), Qt.QWidget)
-        self.top_grid_layout.addWidget(self._qtgui_time_sink_x_1_win)
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
-        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
+        self.projectCACHE_PolarDec_b_0_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 0, Users, small_packet_len, packet_length_tag_key)
+        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 5, Users, small_packet_len, packet_length_tag_key)
+        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(0,False)
         self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(5,True)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
@@ -191,10 +108,10 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
-        self.blocks_tag_debug_0 = blocks.tag_debug(gr.sizeof_gr_complex*1, 'TEST', "packet_num"); self.blocks_tag_debug_0.set_display(True)
+        self.blocks_null_sink_1 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_nlog10_ff_0 = blocks.nlog10_ff(10, 1, 0)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/34.0, ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((0.1, ))
         self.blocks_moving_average_xx_0 = blocks.moving_average_ff(int(avg), 1/avg, int(avg), 1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(1)
@@ -209,12 +126,12 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         # Connections
         ##################################################
         self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0, 'CH_USE'))
+        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
+        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0, 'SNR'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.projectCACHE_PC_Error_Rate_0, 'BER_INFO'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.projectCACHE_PC_Error_Rate_0_0, 'BER_INFO'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.blocks_add_const_vxx_0, 0), (self.blocks_moving_average_xx_0, 0))
@@ -223,7 +140,7 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_add_xx_0, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
         self.connect((self.blocks_complex_to_mag_squared_0, 0), (self.blocks_nlog10_ff_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
-        self.connect((self.blocks_moving_average_xx_0, 0), (self.qtgui_time_sink_x_1, 0))
+        self.connect((self.blocks_moving_average_xx_0, 0), (self.blocks_null_sink_1, 0))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0_0, 0))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
         self.connect((self.blocks_nlog10_ff_0, 0), (self.blocks_add_const_vxx_0, 0))
@@ -239,10 +156,10 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         self.connect((self.digital_ofdm_cyclic_prefixer_0, 0), (self.blocks_tag_gate_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tag_debug_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))
         self.connect((self.digital_packet_headergenerator_bb_0, 0), (self.digital_chunks_to_symbols_xx_0_1, 0))
@@ -253,11 +170,6 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
-
-    def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "polarcode_ofdm_simul")
-        self.settings.setValue("geometry", self.saveGeometry())
-        event.accept()
 
     def get_fD(self):
         return self.fD
@@ -377,7 +289,6 @@ class polarcode_ofdm_simul(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.qtgui_time_sink_x_1.set_samp_rate(self.samp_rate)
         self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
 
     def get_payload_equalizer(self):
@@ -460,21 +371,9 @@ def main(top_block_cls=polarcode_ofdm_simul, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
-    from distutils.version import StrictVersion
-    if StrictVersion(Qt.qVersion()) >= StrictVersion("4.5.0"):
-        style = gr.prefs().get_string('qtgui', 'style', 'raster')
-        Qt.QApplication.setGraphicsSystem(style)
-    qapp = Qt.QApplication(sys.argv)
-
     tb = top_block_cls(fD=options.fD)
     tb.start()
-    tb.show()
-
-    def quitting():
-        tb.stop()
-        tb.wait()
-    qapp.connect(qapp, Qt.SIGNAL("aboutToQuit()"), quitting)
-    qapp.exec_()
+    tb.wait()
 
 
 if __name__ == '__main__':

@@ -20,9 +20,9 @@
     <value>True</value>
     <type>bool</type>
   </param>
-  
 
-  <sink>
+
+  <!-- <sink>
     <name>TX_MSG</name>
     <type>message</type>
     <optional>1</optional>
@@ -44,20 +44,25 @@
     <name>RX_CW</name>
     <type>message</type>
     <optional>1</optional>
-  </sink>
-
-  <sink>
-    <name>SNR</name>
-    <type>message</type>
-    <optional>1</optional>
-  </sink>
+  </sink> -->
 
   <sink>
     <name>CH_USE</name>
     <type>message</type>
     <optional>1</optional>
   </sink>
+  
+  <sink>
+    <name>SNR</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
 
 
+  <sink>
+    <name>BER_INFO</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
 
 </block>

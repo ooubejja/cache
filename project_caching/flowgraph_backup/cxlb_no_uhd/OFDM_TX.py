@@ -7,7 +7,6 @@
 # GNU Radio version: 3.7.14.0
 ##################################################
 
-from gnuradio import analog
 from gnuradio import blocks
 from gnuradio import digital
 from gnuradio import eng_notation
@@ -26,18 +25,12 @@ import random
 
 class OFDM_TX(gr.top_block):
 
-    def __init__(self, fD=10):
+    def __init__(self):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
-
-        ##################################################
-        # Parameters
-        ##################################################
-        self.fD = fD
 
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 25 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -47,7 +40,6 @@ class OFDM_TX(gr.top_block):
         self.header_mod = header_mod = digital.constellation_bpsk()
         self.fft_len = fft_len = 64
         self.Kw = Kw = 70*8
-        self.variance = variance = 1/pow(10,snr/10.0)
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
         self.small_packet_len = small_packet_len = 52
@@ -70,6 +62,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         self.zeromq_pub_sink_0 = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://*:5565', 100, False, -1)
         self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 100)
+        self.zeromq_pub_msg_sink_0 = zeromq.pub_msg_sink('tcp://*:5556', 100)
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
@@ -83,21 +76,18 @@ class OFDM_TX(gr.top_block):
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/34.0, ))
-        self.blocks_add_xx_0 = blocks.add_vcc(1)
-        self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 
 
 
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.zeromq_pub_msg_sink_0_0, 'in'))
-        self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
-        self.connect((self.blocks_add_xx_0, 0), (self.zeromq_pub_sink_0, 0))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_CW'), (self.zeromq_pub_msg_sink_0, 'in'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'TX_MSG'), (self.zeromq_pub_msg_sink_0_0, 'in'))
         self.connect((self.blocks_multiply_const_vxx_1, 0), (self.blocks_throttle_0_0, 0))
         self.connect((self.blocks_tag_gate_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_tagged_stream_mux_0, 0), (self.digital_ofdm_carrier_allocator_cvc_0, 0))
-        self.connect((self.blocks_throttle_0_0, 0), (self.blocks_add_xx_0, 0))
+        self.connect((self.blocks_throttle_0_0, 0), (self.zeromq_pub_sink_0, 0))
         self.connect((self.digital_chunks_to_symbols_xx_0_1, 0), (self.blocks_tagged_stream_mux_0, 0))
         self.connect((self.digital_ofdm_carrier_allocator_cvc_0, 0), (self.fft_vxx_0_0, 0))
         self.connect((self.digital_ofdm_cyclic_prefixer_0, 0), (self.blocks_tag_gate_0, 0))
@@ -106,19 +96,6 @@ class OFDM_TX(gr.top_block):
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_tagged_stream_mux_0, 1))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
-
-    def get_fD(self):
-        return self.fD
-
-    def set_fD(self, fD):
-        self.fD = fD
-
-    def get_snr(self):
-        return self.snr
-
-    def set_snr(self, snr):
-        self.snr = snr
-        self.set_variance(1/pow(10,self.snr/10.0))
 
     def get_pilot_symbols(self):
         return self.pilot_symbols
@@ -185,13 +162,6 @@ class OFDM_TX(gr.top_block):
     def set_Kw(self, Kw):
         self.Kw = Kw
         self.set_Ks(2*self.Kw)
-
-    def get_variance(self):
-        return self.variance
-
-    def set_variance(self, variance):
-        self.variance = variance
-        self.analog_noise_source_x_0.set_amplitude(numpy.sqrt(self.variance))
 
     def get_sync_word2(self):
         return self.sync_word2
@@ -291,19 +261,9 @@ class OFDM_TX(gr.top_block):
         self.Ks = Ks
 
 
-def argument_parser():
-    parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
-    parser.add_option(
-        "", "--fD", dest="fD", type="intx", default=10,
-        help="Set Max Doppler Frequency (Hz) [default=%default]")
-    return parser
-
-
 def main(top_block_cls=OFDM_TX, options=None):
-    if options is None:
-        options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls(fD=options.fD)
+    tb = top_block_cls()
     tb.start()
     tb.wait()
 
