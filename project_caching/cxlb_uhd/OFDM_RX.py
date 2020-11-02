@@ -28,13 +28,14 @@ import time
 
 class OFDM_RX(gr.top_block):
 
-    def __init__(self, gain=5):
+    def __init__(self, gain=5, id_user=5):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
         # Parameters
         ##################################################
         self.gain = gain
+        self.id_user = id_user
 
         ##################################################
         # Variables
@@ -53,7 +54,6 @@ class OFDM_RX(gr.top_block):
         self.small_packet_len = small_packet_len = 52
         self.samp_rate = samp_rate = int(1e6)
         self.payload_equalizer = payload_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, payload_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.id_user = id_user = 5
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.freq = freq = 2450e6
@@ -67,7 +67,7 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode3:5555', 100)
+        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode13:5555', 100)
         self.uhd_usrp_source_0_0 = uhd.usrp_source(
         	",".join(('', "")),
         	uhd.stream_args(
@@ -85,10 +85,8 @@ class OFDM_RX(gr.top_block):
         self.uhd_usrp_source_0_0.set_auto_dc_offset(True, 0)
         self.uhd_usrp_source_0_0.set_auto_iq_balance(True, 0)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
-        self.projectCACHE_PolarDec_b_0_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 0, Users, small_packet_len, packet_length_tag_key)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0_0_0 = projectCACHE.PC_Error_Rate(0,False)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(5,True)
+        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(id_user,True)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
         self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
@@ -124,12 +122,9 @@ class OFDM_RX(gr.top_block):
         # Connections
         ##################################################
         self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0, 'CH_USE'))
-        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'CH_USE'))
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
-        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'SNR'))
         self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0, 'BER_INFO'))
-        self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'BER_INFO'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
@@ -144,7 +139,6 @@ class OFDM_RX(gr.top_block):
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))
         self.connect((self.fft_vxx_0, 0), (self.digital_ofdm_chanest_vcvc_0, 0))
@@ -159,6 +153,12 @@ class OFDM_RX(gr.top_block):
         self.gain = gain
         self.uhd_usrp_source_0_0.set_gain(self.gain, 0)
 
+
+    def get_id_user(self):
+        return self.id_user
+
+    def set_id_user(self, id_user):
+        self.id_user = id_user
 
     def get_pilot_symbols(self):
         return self.pilot_symbols
@@ -259,12 +259,6 @@ class OFDM_RX(gr.top_block):
     def set_payload_equalizer(self, payload_equalizer):
         self.payload_equalizer = payload_equalizer
 
-    def get_id_user(self):
-        return self.id_user
-
-    def set_id_user(self, id_user):
-        self.id_user = id_user
-
     def get_header_formatter(self):
         return self.header_formatter
 
@@ -326,6 +320,9 @@ def argument_parser():
     parser.add_option(
         "-G", "--gain", dest="gain", type="intx", default=5,
         help="Set Gain [default=%default]")
+    parser.add_option(
+        "-U", "--id-user", dest="id_user", type="intx", default=5,
+        help="Set User [default=%default]")
     return parser
 
 
@@ -333,7 +330,7 @@ def main(top_block_cls=OFDM_RX, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls(gain=options.gain)
+    tb = top_block_cls(gain=options.gain, id_user=options.id_user)
     tb.start()
     tb.wait()
 

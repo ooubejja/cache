@@ -36,7 +36,7 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr_pld = snr_pld = 11
+        self.snr_pld = snr_pld = 17
         self.snr = snr = snr_pld+ 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
@@ -71,9 +71,7 @@ class polarcode_ofdm_simul(gr.top_block):
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.projectCACHE_PolarDec_b_0_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 0, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 5, Users, small_packet_len, packet_length_tag_key)
         self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(0,False)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(5,True)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
@@ -125,12 +123,9 @@ class polarcode_ofdm_simul(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0, 'CH_USE'))
         self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
-        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0, 'SNR'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.projectCACHE_PC_Error_Rate_0, 'BER_INFO'))
         self.msg_connect((self.projectCACHE_polarEnc_b_0_0, 'BER_INFO'), (self.projectCACHE_PC_Error_Rate_0_0, 'BER_INFO'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
@@ -158,7 +153,6 @@ class polarcode_ofdm_simul(gr.top_block):
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))

@@ -374,7 +374,8 @@ class PC_Error_Rate(gr.basic_block):
 
                         ##########################################
                         # Most important metric
-                        self.sum_errors_cw += sum(map(int,a))
+                        if sum(map(int,a)) > 1 :
+                            self.sum_errors_cw += sum(map(int,a))
                         ##########################################
                         self.CW_BER = self.sum_errors_cw/float(total_bits_tx)  # Message Bit Error Rate, updated every iteration
                         # self.CW_BER = self.sum_errors_cw/float(self.cnt_rx_chnk*len(tx_chunk))  # Message Bit Error Rate, updated every iteration
