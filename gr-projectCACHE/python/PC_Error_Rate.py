@@ -316,16 +316,15 @@ class PC_Error_Rate(gr.basic_block):
                 rx_chunk = ""
                 total_bits_tx = -1
 
-                rnd_delay = round(random.uniform(1, 2), 2)
-                time.sleep(rnd_delay)
-                # time.sleep(3)
+                # rnd_delay = round(random.uniform(2, 3), 2)
+                # time.sleep(rnd_delay)
+                time.sleep(5)
 
                 nb_tx_chunk = sum([int(digit) for digit in chunks_mx])
 
                 for i in range(len(chunks_mx)):
                     ## if current chunk is not in cache, compute error rate
                     ## Get Tx bits size and write it once for all to avoid reading last chunk (smaller)
-                    # print "AZAZ" + str(i)
                     if i == 0 :
                         with open(self.filename,"r") as f:
                             lines = f.readlines()
