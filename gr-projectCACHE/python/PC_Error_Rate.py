@@ -318,7 +318,7 @@ class PC_Error_Rate(gr.basic_block):
 
                 # rnd_delay = round(random.uniform(2, 3), 2)
                 # time.sleep(rnd_delay)
-                time.sleep(5)
+                time.sleep(2)
 
                 nb_tx_chunk = sum([int(digit) for digit in chunks_mx])
 
