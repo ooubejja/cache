@@ -288,7 +288,12 @@ class PC_Error_Rate(gr.basic_block):
 
     def handle_ch_use(self, msg_pmt):
         with self.lock :
-            self.cnt_ch_use += 1
+            tmp = pmt.to_python(msg_pmt)[0]
+            if 'packet_num' in tmp.keys() :
+                # print "AZAZ"
+                # print tmp['packet_num']
+                self.cnt_ch_use = int(tmp['packet_num'])
+            # self.cnt_ch_use += 1
             # print "Channel" + str(self.cnt_ch_use)
 
     def handle_ber_info(self, msg_pmt):
