@@ -277,13 +277,13 @@ class PC_Error_Rate(gr.basic_block):
             tmp = pmt.to_python(msg_pmt)
             self.SNR += [float(tmp)]
 
-            with open(self.filename,"r") as f:
-                lines = f.readlines()
-                for i in range(len(lines)):
-                    if 'SNR' in lines[i]:
-                        lines[i+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
-            with open(self.filename,"w") as f:
-                f.write(''.join(lines))
+            # with open(self.filename,"r") as f:
+            #     lines = f.readlines()
+            #     for i in range(len(lines)):
+                    # if 'SNR' in lines[i]:
+                    #     lines[i+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
+            # with open(self.filename,"w") as f:
+            #     f.write(''.join(lines))
 
 
     def handle_ch_use(self, msg_pmt):
@@ -400,24 +400,35 @@ class PC_Error_Rate(gr.basic_block):
                                     lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.CW_BER)+ " " + '\n'
                                 if 'Error sum' in lines[j]:
                                     lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.sum_errors_cw)+ " " + '\n'
+                                if 'SNR' in lines[j] and self.cnt_snr > 0:
+                                    lines[j+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
+                                if 'Channel' in lines[j] and self.cnt_ch_use > 0:
+                                    total_bits_rx = self.cnt_rx_chnk*chunk_size*8
+                                    total_errors = self.sum_errors_cw
+                                    successful_bits = total_bits_rx - total_errors
+
+                                    lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+
+
+
                         with open(self.filename,"w") as f:
                             f.write(''.join(lines))
 
                         # except :
                         #     print "Chunk " + str(i) + " not found. Ignored for BER"
 
-                if self.cnt_ch_use > 0 :
-                    total_bits_rx = self.cnt_rx_chnk*chunk_size*8
-                    total_errors = self.sum_errors_cw
-                    successful_bits = total_bits_rx - total_errors
-
-                    with open(self.filename,"r") as f:
-                        lines = f.readlines()
-                        for i in range(len(lines)):
-                            if 'Channel' in lines[i]:
-                                lines[i+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
-                    with open(self.filename,"w") as f:
-                        f.write(''.join(lines))
+                # if self.cnt_ch_use > 0 :
+                #     total_bits_rx = self.cnt_rx_chnk*chunk_size*8
+                #     total_errors = self.sum_errors_cw
+                #     successful_bits = total_bits_rx - total_errors
+                #
+                #     with open(self.filename,"r") as f:
+                #         lines = f.readlines()
+                #         for i in range(len(lines)):
+                #             if 'Channel' in lines[i]:
+                #                 lines[i+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+                #     with open(self.filename,"w") as f:
+                #         f.write(''.join(lines))
 
                 # except :
                 #     pass

@@ -66,7 +66,7 @@ class OFDM_RX(gr.top_block):
         # Blocks
         ##################################################
         self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://mnode16:5565', 100, False, -1)
-        self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 10)
+        self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 100)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
         self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user,True)

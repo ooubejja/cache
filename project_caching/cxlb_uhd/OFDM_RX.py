@@ -67,7 +67,7 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 10)
+        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 100)
         self.uhd_usrp_source_0_0 = uhd.usrp_source(
         	",".join(('', "")),
         	uhd.stream_args(
