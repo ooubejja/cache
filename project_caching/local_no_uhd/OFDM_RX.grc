@@ -1552,7 +1552,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2791,7 +2791,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 2344)</value>
+      <value>(304, 2432)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3097,7 +3097,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1360, 2100)</value>
+      <value>(880, 2180)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3272,7 +3272,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1344, 1984)</value>
+      <value>(872, 2072)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3281,10 +3281,6 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0_0</value>
-    </param>
-    <param>
-      <key>is_strong</key>
-      <value>True</value>
     </param>
     <param>
       <key>usr_id</key>
@@ -3311,7 +3307,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1344, 2224)</value>
+      <value>(872, 2312)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3320,10 +3316,6 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0_0_0</value>
-    </param>
-    <param>
-      <key>is_strong</key>
-      <value>False</value>
     </param>
     <param>
       <key>usr_id</key>
@@ -3429,7 +3421,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 2172)</value>
+      <value>(304, 2244)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -7444,7 +7436,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(976, 2116)</value>
+      <value>(304, 2180)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -7829,6 +7821,18 @@
     <sink_block_id>projectCACHE_ofdm_frame_equalizer1_vcvc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0</sink_block_id>
+    <source_key>CH_USE</source_key>
+    <sink_key>CH_USE</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_PolarDec_b_0_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0_0_0</sink_block_id>
+    <source_key>CH_USE</source_key>
+    <sink_key>CH_USE</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_map_header_payload_bc_0</source_block_id>

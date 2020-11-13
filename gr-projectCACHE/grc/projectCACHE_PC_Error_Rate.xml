@@ -4,7 +4,7 @@
   <key>projectCACHE_PC_Error_Rate</key>
   <category>[projectCACHE]</category>
   <import>import projectCACHE</import>
-  <make>projectCACHE.PC_Error_Rate($usr_id,$is_strong)</make>
+  <make>projectCACHE.PC_Error_Rate($usr_id)</make>
 
 
   <param>
@@ -14,12 +14,12 @@
     <type>int</type>
   </param>
 
-  <param>
+  <!-- <param>
     <name>Strong User</name>
     <key>is_strong</key>
     <value>True</value>
     <type>bool</type>
-  </param>
+  </param> -->
 
 
   <!-- <sink>
@@ -51,7 +51,7 @@
     <type>message</type>
     <optional>1</optional>
   </sink>
-  
+
   <sink>
     <name>SNR</name>
     <type>message</type>

@@ -35,7 +35,8 @@ namespace gr {
     class PolarDec_b_impl : public PolarDec_b
     {
      private:
-      const pmt::pmt_t msg_port, cw_port;
+       // const pmt::pmt_t msg_port, cw_port;
+       const pmt::pmt_t ch_use_port;
 
      protected:
       int calculate_output_stream_length(const gr_vector_int &ninput_items);

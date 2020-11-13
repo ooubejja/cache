@@ -59,11 +59,12 @@ namespace gr {
       d_n_users(n_users),
       d_spack_len(spack_len),
       d_m_files(m_files),
-      msg_port(pmt::mp("RX_MSG")),
-      cw_port(pmt::mp("RX_CW"))
+      ch_use_port(pmt::mp("CH_USE"))
+      // cw_port(pmt::mp("RX_CW"))
     {
-      message_port_register_out(msg_port);
-      message_port_register_out(cw_port);
+      message_port_register_out(ch_use_port);
+      // message_port_register_out(msg_port);
+      // message_port_register_out(cw_port);
       d_stop = false;
       designSNRdb = 0;
       d_k=0;
@@ -157,10 +158,10 @@ namespace gr {
 
 
         /*****STUPID TEST ONLY****/
-        cout << endl << "Hello" << endl;
-        cout << "Hello" << endl;
-        cout << "Hello" << endl;
-        cout << "Hello" << endl;
+        // cout << endl << "Hello" << endl;
+        // cout << "Hello" << endl;
+        // cout << "Hello" << endl;
+        // cout << "Hello" << endl;
 
         for(int k=0; k<4; k++)
             buff_4qpsk[k] = in[i++];
@@ -560,9 +561,6 @@ namespace gr {
                   //Proceed to decoding of the whole packet
                   decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s, recMessage_s, cw_raw);
 
-                  // reinitialize(); //Restore the header and the global main variables
-
-
               }else if(d_id_spack != d_id_last_spack) //If receive a generic small packet
               {
                   if(DEBUG)
@@ -591,13 +589,6 @@ namespace gr {
 
               decoded_data = Process_Data(d_coded_packet,d_id_user,d_packet_remain,d_m_files,d_b_chunks,d_isStr,d_N,d_K_s,d_K_w,snr_avg,PC_w,PC_s,d_header,recCodeword_s,recMessage_s, cw_raw);
 
-              // string mystr(decoded_data.begin(), decoded_data.end());
-              // cout << endl << "OTHMANE DECODED DATA (Case :"<< d_case << ") :" << endl;
-              // cout << mystr ;
-              // cout << endl << "OTHMANE END " << endl;
-
-              // reinitialize(); //Restore the header and the global main variables
-
               if(d_id_spack == 0)
               {
                   decode_header(in);
@@ -611,14 +602,57 @@ namespace gr {
               break;
       }
 
-      if(d_case == 3 || d_case == 4 || d_case == 5){
-      // if(d_case == 3 || d_case == 4 ){
-        int index = find_index(d_header.id_utenti, d_id_user);
-        if(index != -1 ) {
-          pmt::pmt_t dict_msg(pmt::make_dict());
-          pmt::pmt_t dict_cw(pmt::make_dict());
-          stringstream str_msg, str_cw;
-          int strg_ind = d_header.id_chunks.at(index);
+      if(d_case >= 3){
+        // cw_raw.clear();
+        reinitialize();
+      }
+
+
+
+      std::vector<uint8_t> vec_dict_ch_use;
+      string str_msg = to_string(d_k);
+      // cout << "AZAZ: " << str_msg << endl;
+      vec_dict_ch_use.assign(str_msg.begin(), str_msg.end());
+
+      pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_ch_use.size(), vec_dict_ch_use);
+      pmt::pmt_t dict_msg(pmt::make_dict());
+
+      dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
+
+      message_port_pub(ch_use_port, dict_msg);
+
+      vec_dict_ch_use.clear();
+
+
+
+      if(d_packet_remain <5){
+        cout << "Remaining packets: " << d_packet_remain << endl;
+        if(d_packet_remain==0)
+          return -1;
+      }
+      d_k++;
+
+
+
+      // Tell runtime system how many output items we produced.
+      return noutput_items;
+    }
+
+  } /* namespace projectCACHE */
+} /* namespace gr */
+
+
+
+
+
+      // if(d_case == 3 || d_case == 4 || d_case == 5){
+      // // if(d_case == 3 || d_case == 4 ){
+      //   int index = find_index(d_header.id_utenti, d_id_user);
+      //   if(index != -1 ) {
+          // pmt::pmt_t dict_msg(pmt::make_dict());
+          // pmt::pmt_t dict_cw(pmt::make_dict());
+          // stringstream str_msg, str_cw;
+          // int strg_ind = d_header.id_chunks.at(index);
 
           // Fill Rx CWs and Msgs in the same loop to optimize runtime
           // for (int i=0; i<d_N; i++){
@@ -637,14 +671,14 @@ namespace gr {
           // for (int i = 0; i < d_K_s; i++){
           //   str_msg << recMessage_s[i];
           // }
-          for (int i = 0; i < d_N; i++){
-            str_cw << cw_raw[i] ;
-
-            if (d_isStr && i<d_K_s)
-              str_msg << recMessage_s[i];
-            else if (!d_isStr && i<d_K_w)
-              str_msg << recMessage_s[i];
-          }
+          // for (int i = 0; i < d_N; i++){
+          //   str_cw << cw_raw[i] ;
+          //
+          //   if (d_isStr && i<d_K_s)
+          //     str_msg << recMessage_s[i];
+          //   else if (!d_isStr && i<d_K_w)
+          //     str_msg << recMessage_s[i];
+          // }
           /***************************************************************************/
           /***************************************************************************/
           // ///////////////////////////////////////////////////////////////
@@ -687,56 +721,37 @@ namespace gr {
           // /***************************************************************************/
 
 
-          string str_msg_str = str_msg.str();
-          string str_cw_str = str_cw.str();
-
-          std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
-
-          vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
-          vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
-
-          vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
-          vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
-
-          pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
-          pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
-          // cout << endl << "BBB" << endl;
-          // cout << endl << "OTHMANE :" << strg_ind << endl;
-
-          dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
-          dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
-
-          message_port_pub(msg_port, dict_msg);
-          message_port_pub(cw_port, dict_cw);
+          // string str_msg_str = str_msg.str();
+          // string str_cw_str = str_cw.str();
+          //
+          // std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
+          //
+          // vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
+          // vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
+          //
+          // vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
+          // vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
+          //
+          // pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
+          // pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
+          // // cout << endl << "BBB" << endl;
+          // // cout << endl << "OTHMANE :" << strg_ind << endl;
+          //
+          // dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
+          // dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
+          //
+          // message_port_pub(msg_port, dict_msg);
+          // message_port_pub(cw_port, dict_cw);
 
           // intrusive_ptr_release(dict_msg);
           // intrusive_ptr_release(dict_cw);
           // cout << endl << "CCC" << endl;
+          //
+          // vec_dict_msg.clear();
+          // vec_dict_cw.clear();
 
-          vec_dict_msg.clear();
-          vec_dict_cw.clear();
-
-        }
+        // }
 
         // cw_raw.clear();
         // reinitialize();
-      }
-      if(d_case >= 3){
-        cw_raw.clear();
-        reinitialize();
-      }
-
-      if(d_packet_remain <5){
-        cout << "Remaining packets: " << d_packet_remain << endl;
-        if(d_packet_remain==0)
-          return -1;
-      }
-      d_k++;
-
-
-      // Tell runtime system how many output items we produced.
-      return noutput_items;
-    }
-
-  } /* namespace projectCACHE */
-} /* namespace gr */
+      // }
