@@ -61,7 +61,7 @@ class OFDM_TX(gr.top_block):
         # Blocks
         ##################################################
         self.zeromq_pub_sink_0 = zeromq.pub_sink(gr.sizeof_gr_complex, 1, 'tcp://*:5565', 100, False, -1)
-        self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 1)
+        self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 10)
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)

@@ -66,7 +66,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 1)
+        self.zeromq_pub_msg_sink_0_0 = zeromq.pub_msg_sink('tcp://*:5555', 10)
         self.uhd_usrp_sink_0_0 = uhd.usrp_sink(
         	",".join(('', "")),
         	uhd.stream_args(

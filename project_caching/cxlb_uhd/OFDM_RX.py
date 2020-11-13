@@ -67,7 +67,7 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Blocks
         ##################################################
-        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 1)
+        self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 10)
         self.uhd_usrp_source_0_0 = uhd.usrp_source(
         	",".join(('', "")),
         	uhd.stream_args(
@@ -112,6 +112,7 @@ class OFDM_RX(gr.top_block):
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(2*3.14/100, 2, False)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
         self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.complex_t, 'packet_len')
+        self.blocks_tag_debug_0 = blocks.tag_debug(gr.sizeof_gr_complex*1, 'TEST', "packet_len"); self.blocks_tag_debug_0.set_display(False)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
@@ -136,6 +137,7 @@ class OFDM_RX(gr.top_block):
         self.connect((self.digital_ofdm_chanest_vcvc_0, 0), (self.digital_ofdm_frame_equalizer_vcvc_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tag_debug_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
