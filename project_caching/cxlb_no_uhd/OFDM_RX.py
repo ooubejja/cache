@@ -69,7 +69,7 @@ class OFDM_RX(gr.top_block):
         self.zeromq_sub_msg_source_0 = zeromq.sub_msg_source('tcp://mnode16:5555', 100)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user,True)
+        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
         self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
@@ -94,7 +94,6 @@ class OFDM_RX(gr.top_block):
             )
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
         self.blocks_throttle_0_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
-        self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.complex_t, 'packet_len')
         self.blocks_tag_debug_0 = blocks.tag_debug(gr.sizeof_gr_complex*1, 'TEST', "packet_len"); self.blocks_tag_debug_0.set_display(False)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
@@ -105,9 +104,9 @@ class OFDM_RX(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0, 'SNR'))
+        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'CH_USE'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.msg_connect((self.zeromq_sub_msg_source_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0, 'BER_INFO'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
@@ -119,7 +118,6 @@ class OFDM_RX(gr.top_block):
         self.connect((self.digital_ofdm_chanest_vcvc_0, 0), (self.digital_ofdm_frame_equalizer_vcvc_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.blocks_throttle_0_0_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))

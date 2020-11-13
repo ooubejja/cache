@@ -1603,7 +1603,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -3140,7 +3140,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1280, 2132)</value>
+      <value>(1184, 2140)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3315,7 +3315,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1272, 2024)</value>
+      <value>(1168, 2032)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3324,10 +3324,6 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0</value>
-    </param>
-    <param>
-      <key>is_strong</key>
-      <value>True</value>
     </param>
     <param>
       <key>usr_id</key>
@@ -3365,10 +3361,6 @@
       <value>projectCACHE_PC_Error_Rate_0_0_0</value>
     </param>
     <param>
-      <key>is_strong</key>
-      <value>False</value>
-    </param>
-    <param>
       <key>usr_id</key>
       <value>0</value>
     </param>
@@ -3397,7 +3389,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 2004)</value>
+      <value>(440, 1948)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6792,7 +6784,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(936, 2148)</value>
+      <value>(880, 2196)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -7096,6 +7088,12 @@
     <sink_block_id>projectCACHE_ofdm_frame_equalizer1_vcvc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_PolarDec_b_0_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>CH_USE</source_key>
+    <sink_key>CH_USE</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_map_header_payload_bc_0</source_block_id>
