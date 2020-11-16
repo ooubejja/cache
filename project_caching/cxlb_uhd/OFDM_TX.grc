@@ -2859,7 +2859,7 @@
     </param>
     <param>
       <key>type</key>
-      <value>intx</value>
+      <value>eng_float</value>
     </param>
     <param>
       <key>value</key>
@@ -3046,10 +3046,6 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0</value>
-    </param>
-    <param>
-      <key>is_strong</key>
-      <value>True</value>
     </param>
     <param>
       <key>usr_id</key>
