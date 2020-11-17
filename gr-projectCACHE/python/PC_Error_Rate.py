@@ -377,7 +377,7 @@ class PC_Error_Rate(gr.basic_block):
 
                         except :
                             print "RX Chunk Not Found: " + rx_filename
-                            break
+                            # break
 
                         #
                         # print "BER FILE"
