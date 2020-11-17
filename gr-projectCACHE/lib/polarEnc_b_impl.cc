@@ -335,7 +335,8 @@ namespace gr {
             normal.push_back(tmp_str);
           }
 
-          // Debug for Tx BER 
+          // Debug for Tx BER
+          sleep(6);
           cout << endl << "BER VECTOR DEBUG : " << endl ;
           for(int i=0; i<normal.size(); i++)
             cout << normal[i] << endl;
@@ -347,7 +348,6 @@ namespace gr {
 
             pmt::pmt_t dict_pdu(pmt::make_dict());
             dict_pdu = pmt::cons(pmt::make_dict(), TEST_msg);
-
             message_port_pub(ber_info, dict_pdu);
             vec_dict_msg.clear();
           }
@@ -355,7 +355,7 @@ namespace gr {
           vector<uint8_t> V_TMP{0};
           pmt::pmt_t dict_msg_end = pmt::cons(pmt::make_dict(), pmt::init_u8vector(1,V_TMP));
           // pmt::pmt_t dict_msg = pmt::cons(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
-          cout << endl << "FFF" << endl;
+          // cout << endl << "FFF" << endl;
 
 
           cout << "Done!" << endl;

@@ -734,7 +734,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>25 + 20*numpy.log10(4)</value>
+      <value>15 + 20*numpy.log10(4)</value>
     </param>
   </block>
   <block>
@@ -3026,10 +3026,6 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PC_Error_Rate_0</value>
-    </param>
-    <param>
-      <key>is_strong</key>
-      <value>True</value>
     </param>
     <param>
       <key>usr_id</key>

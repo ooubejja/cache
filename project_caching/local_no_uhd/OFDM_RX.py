@@ -26,7 +26,7 @@ import random
 
 class OFDM_RX(gr.top_block):
 
-    def __init__(self, fD=10, id_user=5):
+    def __init__(self, fD=10, id_user=0):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
@@ -71,9 +71,7 @@ class OFDM_RX(gr.top_block):
         self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://localhost:5565', 100, False, -1)
         self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://localhost:5555', 10)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
-        self.projectCACHE_PolarDec_b_0_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 0, Users, small_packet_len, packet_length_tag_key)
         self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0_0_0 = projectCACHE.PC_Error_Rate(0)
         self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
@@ -110,17 +108,13 @@ class OFDM_RX(gr.top_block):
         ##################################################
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0, 'SNR'))
-        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'SNR'))
         self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'CH_USE'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0_0, 'CH_USE'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'CH_USE'))
         self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0, 'BER_INFO'))
-        self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0_0, 'BER_INFO'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
         self.connect((self.blocks_throttle_0_0_0, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.blocks_throttle_0_0_0, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
-        self.connect((self.blocks_throttle_0_0_0, 0), (self.projectCACHE_PolarDec_b_0_0_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_header_payload_demux_0, 0), (self.fft_vxx_0, 0))
         self.connect((self.digital_header_payload_demux_0, 1), (self.fft_vxx_1, 0))
@@ -327,7 +321,7 @@ def argument_parser():
         "", "--fD", dest="fD", type="intx", default=10,
         help="Set Max Doppler Frequency (Hz) [default=%default]")
     parser.add_option(
-        "-U", "--id-user", dest="id_user", type="intx", default=5,
+        "-U", "--id-user", dest="id_user", type="intx", default=0,
         help="Set User [default=%default]")
     return parser
 

@@ -297,20 +297,20 @@ class PC_Error_Rate(gr.basic_block):
             # print "AZAZ"
             # print self.cnt_ch_use
 
-            if self.chunk_size > 0 and self.cnt_ch_use > 0 :
-                with open(self.filename,"r") as f:
-                    lines = f.readlines()
-                    for j in range(len(lines)):
-
-                        if 'Channel' in lines[j] :
-                            total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
-                            total_errors = self.sum_errors_cw
-                            successful_bits = total_bits_rx - total_errors
-
-                            lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
-
-                with open(self.filename,"w") as f:
-                    f.write(''.join(lines))
+            # if self.chunk_size > 0 and self.cnt_ch_use > 0 :
+            #     with open(self.filename,"r") as f:
+            #         lines = f.readlines()
+            #         for j in range(len(lines)):
+            #
+            #             if 'Channel' in lines[j] :
+            #                 total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
+            #                 total_errors = self.sum_errors_cw
+            #                 successful_bits = total_bits_rx - total_errors
+            #
+            #                 lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+            #
+            #     with open(self.filename,"w") as f:
+            #         f.write(''.join(lines))
 
     def handle_ber_info(self, msg_pmt):
         with self.lock :
@@ -339,7 +339,7 @@ class PC_Error_Rate(gr.basic_block):
 
                 # rnd_delay = round(random.uniform(2, 3), 2)
                 # time.sleep(rnd_delay)
-                time.sleep(5)
+                # time.sleep(2)
 
                 nb_tx_chunk = sum([int(digit) for digit in chunks_mx])
 
@@ -367,14 +367,16 @@ class PC_Error_Rate(gr.basic_block):
 
                         ## Get Rx chunk :
                         ## Looks like this : ../cache/UserCache/user_XX/YY_ZZ.cache
+                        rx_filename = "../cache/UserCache/user_" + usr_id + "/" + file_id + "_" + str(i) + ".cache"
                         try :
                             ## SUCCESSFULLY Decoded chunk counter
-                            rx_filename = "../cache/UserCache/user_" + usr_id + "/" + file_id + "_" + str(i) + ".cache"
+                            print "Found Valid RX Chunk : " + rx_filename
                             self.cnt_rx_chnk += 1
                             with open(rx_filename,"r") as f:
                                 rx_chunk = f.read()
 
                         except :
+                            print "RX Chunk Not Found: " + rx_filename
                             break
 
                         #
@@ -418,13 +420,13 @@ class PC_Error_Rate(gr.basic_block):
                                     lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.sum_errors_cw)+ " " + '\n'
                                 if 'SNR' in lines[j] and self.cnt_snr > 0:
                                     lines[j+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
-                                # if 'Channel' in lines[j] and self.cnt_ch_use > 0:
-                                #     total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
-                                #     total_errors = self.sum_errors_cw
-                                #     successful_bits = total_bits_rx - total_errors
-                                #
-                                #     lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+                                if 'Channel' in lines[j] and self.cnt_ch_use > 0 and self.chunk_size > 0:
+                                    # print "HERE HERE"
+                                    total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
+                                    total_errors = self.sum_errors_cw
+                                    successful_bits = total_bits_rx - total_errors
 
+                                    lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
 
 
                         with open(self.filename,"w") as f:
@@ -448,16 +450,21 @@ class PC_Error_Rate(gr.basic_block):
 
                 # except :
                 #     pass
+                exit(1)
 
 
 
     def xor_two_str(self,a,b):
         xored = []
+        tmp = ''
         for i in range(max(len(a), len(b))):
-            xored_value = ord(a[i%len(a)]) ^ ord(b[i%len(b)])
-            tmp = hex(xored_value)[2:]
-            if tmp not in ['0','1'] :   # Bug : In polardec, recCodeword is sometimes different than 0 or 1
-                 tmp = '1'
+            try :
+                xored_value = ord(a[i%len(a)]) ^ ord(b[i%len(b)])
+                tmp = hex(xored_value)[2:]
+                if tmp not in ['0','1'] :   # Bug : In polardec, recCodeword is sometimes different than 0 or 1
+                     tmp = '1'
+            except:
+                tmp = '1'
             xored.append(tmp)
         return xored
 
