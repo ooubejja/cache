@@ -58,7 +58,7 @@ class OFDM_RX(gr.top_block):
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.gain = gain = 25
         self.freq = freq = 2450e6
-        self.Users = Users = 5
+        self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 100

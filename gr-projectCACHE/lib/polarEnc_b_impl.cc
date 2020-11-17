@@ -329,7 +329,8 @@ namespace gr {
           // Add Strong Info
           for(int i=0; i<d_nb_strg; i++)
           {
-            tmp_str = to_string(d_hdr_sdata[i].id_utenti[i]) + " " + to_string(d_hdr_sdata[i].id_files[i]) + " ";
+            tmp_str = to_string(d_hdr_sdata[i*d_b_chunks].id_utenti[0]) + " " + to_string(d_hdr_sdata[i*d_b_chunks].id_files[0]) + " ";
+            cout << endl << tmp_str << endl ;
             for (int k=0; k<d_b_chunks; k++)
               tmp_str += to_string(1);  // adds 100 zeros because strong has no cache
             normal.push_back(tmp_str);

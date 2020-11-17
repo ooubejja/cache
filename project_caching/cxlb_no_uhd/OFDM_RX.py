@@ -26,7 +26,7 @@ import random
 
 class OFDM_RX(gr.top_block):
 
-    def __init__(self, id_user=5):
+    def __init__(self, id_user=4):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
@@ -55,7 +55,7 @@ class OFDM_RX(gr.top_block):
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.gain = gain = 25
         self.freq = freq = 2450e6
-        self.Users = Users = 5
+        self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 100
@@ -298,7 +298,7 @@ class OFDM_RX(gr.top_block):
 def argument_parser():
     parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
     parser.add_option(
-        "-U", "--id-user", dest="id_user", type="intx", default=5,
+        "-U", "--id-user", dest="id_user", type="intx", default=4,
         help="Set User [default=%default]")
     return parser
 

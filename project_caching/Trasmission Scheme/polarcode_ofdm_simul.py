@@ -25,13 +25,14 @@ import random
 
 class polarcode_ofdm_simul(gr.top_block):
 
-    def __init__(self, fD=10):
+    def __init__(self, fD=10, id_user=4):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
         # Parameters
         ##################################################
         self.fD = fD
+        self.id_user = id_user
 
         ##################################################
         # Variables
@@ -53,11 +54,10 @@ class polarcode_ofdm_simul(gr.top_block):
         self.small_packet_len = small_packet_len = 52
         self.samp_rate = samp_rate = int(1e6)
         self.payload_equalizer = payload_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, payload_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.id_user = id_user = 5
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.avg = avg = 10000.0
-        self.Users = Users = 5
+        self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 100
@@ -70,8 +70,8 @@ class polarcode_ofdm_simul(gr.top_block):
         self.projectCACHE_polarEnc_b_0_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, packet_length_tag_key)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
         self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
-        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, 5, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(5)
+        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
+        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(id_user)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0_0 = fft.fft_vcc(fft_len, False, (()), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
@@ -105,7 +105,6 @@ class polarcode_ofdm_simul(gr.top_block):
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
-        self.blocks_tag_debug_0_0 = blocks.tag_debug(gr.sizeof_char*1, 'HERE', "packet_len"); self.blocks_tag_debug_0_0.set_display(False)
         self.blocks_null_sink_1 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_nlog10_ff_0 = blocks.nlog10_ff(10, 1, 0)
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
@@ -162,7 +161,6 @@ class polarcode_ofdm_simul(gr.top_block):
         self.connect((self.fft_vxx_1, 0), (self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0))
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_tagged_stream_mux_0, 1))
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
-        self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.blocks_tag_debug_0_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
 
@@ -171,6 +169,12 @@ class polarcode_ofdm_simul(gr.top_block):
 
     def set_fD(self, fD):
         self.fD = fD
+
+    def get_id_user(self):
+        return self.id_user
+
+    def set_id_user(self, id_user):
+        self.id_user = id_user
 
     def get_snr_pld(self):
         return self.snr_pld
@@ -292,12 +296,6 @@ class polarcode_ofdm_simul(gr.top_block):
     def set_payload_equalizer(self, payload_equalizer):
         self.payload_equalizer = payload_equalizer
 
-    def get_id_user(self):
-        return self.id_user
-
-    def set_id_user(self, id_user):
-        self.id_user = id_user
-
     def get_header_formatter(self):
         return self.header_formatter
 
@@ -359,6 +357,9 @@ def argument_parser():
     parser.add_option(
         "", "--fD", dest="fD", type="intx", default=10,
         help="Set Max Doppler Frequency (Hz) [default=%default]")
+    parser.add_option(
+        "-U", "--id-user", dest="id_user", type="intx", default=4,
+        help="Set User [default=%default]")
     return parser
 
 
@@ -366,7 +367,7 @@ def main(top_block_cls=polarcode_ofdm_simul, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls(fD=options.fD)
+    tb = top_block_cls(fD=options.fD, id_user=options.id_user)
     tb.start()
     tb.wait()
 

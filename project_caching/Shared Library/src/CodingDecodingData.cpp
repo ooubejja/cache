@@ -215,14 +215,14 @@ vector<vector<char>> MaxBipartiteGraph(int *coloring, int n_col, nodo *nodi, int
     size_strg = node_s.size();
     size_weak = node_w.size();
 
-    /*if(debug){
-        cout << "Strong node size = " << size_strg << endl;
-        cout << "Weak node size = "   << size_weak << endl;
-        for (int i = 0; i < size_strg; i++)
-            cout << "id: " << node_s[i].id << ", idUser: " << node_s[i].id_utente
-                << ", idFile: " << node_s[i].id_file << ", idChunk: " << node_s[i].id_chunck << endl;
-
-    }*/
+    // if(debug){
+    //     cout << "Strong node size = " << size_strg << endl;
+    //     cout << "Weak node size = "   << size_weak << endl;
+    //     for (int i = 0; i < size_strg; i++)
+    //         cout << "id: " << node_s[i].id << ", idUser: " << node_s[i].id_utente
+    //             << ", idFile: " << node_s[i].id_file << ", idChunk: " << node_s[i].id_chunck << endl;
+    //
+    // }
 
     /**********Build the Bipartite graph****************/
 
@@ -388,6 +388,7 @@ vector<vector<char>> MaxBipartiteGraph(int *coloring, int n_col, nodo *nodi, int
         userid = strg_node.id_utente;
         fileid = strg_node.id_file;
         chunkid = strg_node.id_chunck;
+        // cout << endl << "HERE : " <<  userid  << endl ;
 
         header[i].id_utenti.push_back(userid);
         header[i].id_files.push_back(fileid);
@@ -566,7 +567,7 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
             vd.push_back(tmp);
             cc++;
             cl++; //Count the packets non combined
-            
+
             //header addition part
             hd.id_utenti.push_back(hdr_strg[i].id_utenti[0]);
             hd.id_files.push_back(hdr_strg[i].id_files[0]);

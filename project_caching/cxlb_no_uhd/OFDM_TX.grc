@@ -3028,10 +3028,6 @@
       <value>projectCACHE_PC_Error_Rate_0</value>
     </param>
     <param>
-      <key>is_strong</key>
-      <value>True</value>
-    </param>
-    <param>
       <key>usr_id</key>
       <value>5</value>
     </param>
@@ -6196,45 +6192,6 @@
     <key>zeromq_pub_msg_sink</key>
     <param>
       <key>address</key>
-      <value>tcp://*:5556</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(272, 348)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_msg_sink_0</value>
-    </param>
-    <param>
-      <key>timeout</key>
-      <value>100</value>
-    </param>
-  </block>
-  <block>
-    <key>zeromq_pub_msg_sink</key>
-    <param>
-      <key>address</key>
       <value>tcp://*:5555</value>
     </param>
     <param>
@@ -6622,12 +6579,6 @@
     <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>
     <sink_block_id>zeromq_pub_msg_sink_0_0</sink_block_id>
     <source_key>BER_INFO</source_key>
-    <sink_key>in</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>projectCACHE_polarEnc_b_0_0</source_block_id>
-    <sink_block_id>zeromq_pub_msg_sink_0</sink_block_id>
-    <source_key>TX_CW</source_key>
     <sink_key>in</sink_key>
   </connection>
   <connection>
