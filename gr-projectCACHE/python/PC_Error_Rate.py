@@ -368,10 +368,10 @@ class PC_Error_Rate(gr.basic_block):
                         rx_filename = "../cache/UserCache/user_" + usr_id + "/" + file_id + "_" + str(i) + ".cache"
                         try :
                             ## SUCCESSFULLY Decoded chunk counter
-                            self.cnt_rx_chnk += 1
                             with open(rx_filename,"r") as f:
-                                print "Found Valid RX Chunk : " + rx_filename
                                 rx_chunk = f.read()
+                                print "Found Valid RX Chunk : " + rx_filename
+                                self.cnt_rx_chnk += 1
 
                             tx_chunk = ''.join(format(ord(x), 'b') for x in tx_chunk)
                             rx_chunk = ''.join(format(ord(x), 'b') for x in rx_chunk)
