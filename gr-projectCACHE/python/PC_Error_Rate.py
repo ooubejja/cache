@@ -363,94 +363,67 @@ class PC_Error_Rate(gr.basic_block):
                         except :
                             tx_chunk = text[self.chunk_size*i:-1]
 
-
-
                         ## Get Rx chunk :
                         ## Looks like this : ../cache/UserCache/user_XX/YY_ZZ.cache
                         rx_filename = "../cache/UserCache/user_" + usr_id + "/" + file_id + "_" + str(i) + ".cache"
                         try :
                             ## SUCCESSFULLY Decoded chunk counter
-                            print "Found Valid RX Chunk : " + rx_filename
                             self.cnt_rx_chnk += 1
                             with open(rx_filename,"r") as f:
+                                print "Found Valid RX Chunk : " + rx_filename
                                 rx_chunk = f.read()
+
+                            tx_chunk = ''.join(format(ord(x), 'b') for x in tx_chunk)
+                            rx_chunk = ''.join(format(ord(x), 'b') for x in rx_chunk)
+                            rx_chunk = rx_chunk[:len(tx_chunk)]
+
+                            a = self.xor_two_str(tx_chunk,rx_chunk)     # Compare with Rx chunk
+                            # print "BER XOR"
+                            # print a
+
+                            ##########################################
+                            # Most important metric
+                            if sum(map(int,a)) > 1 :
+                                self.sum_errors_cw += sum(map(int,a))
+                            ##########################################
+                            self.CW_BER = self.sum_errors_cw/float(total_bits_tx)  # Message Bit Error Rate, updated every iteration
+
+
+                            with open(self.filename,"r") as f:
+                                lines = f.readlines()
+                                for j in range(len(lines)):
+
+                                    if 'bits decoded:' in lines[j]:
+                                        try :
+                                            lines[j+1] = str(self.cnt_rx_chnk) + " | " + str(self.cnt_rx_chnk*self.chunk_size*8) + '\n'
+                                        except :
+                                            pass
+                                    if 'Bit Error Rate' in lines[j]:
+                                        lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.CW_BER)+ " " + '\n'
+                                    if 'Error sum' in lines[j]:
+                                        lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.sum_errors_cw)+ " " + '\n'
+                                    if 'SNR' in lines[j] and self.cnt_snr > 0:
+                                        lines[j+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
+                                    if 'Channel' in lines[j] and self.cnt_ch_use > 0 and self.chunk_size > 0:
+                                        # print "HERE HERE"
+                                        total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
+                                        total_errors = self.sum_errors_cw
+                                        successful_bits = total_bits_rx - total_errors
+
+                                        lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+
+
+                            with open(self.filename,"w") as f:
+                                f.write(''.join(lines))
+
 
                         except :
                             print "RX Chunk Not Found: " + rx_filename
                             # break
 
-                        #
-                        # print "BER FILE"
-                        # print rx_filename
-                        # print "BER TX"
-                        # print tx_chunk
-                        # print "BER RX"
-                        # print rx_chunk
-                        tx_chunk = ''.join(format(ord(x), 'b') for x in tx_chunk)
-                        rx_chunk = ''.join(format(ord(x), 'b') for x in rx_chunk)
-                        rx_chunk = rx_chunk[:len(tx_chunk)]
-
-                        a = self.xor_two_str(tx_chunk,rx_chunk)     # Compare with Rx chunk
-                        # print "BER XOR"
-                        # print a
-
-                        ##########################################
-                        # Most important metric
-                        if sum(map(int,a)) > 1 :
-                            self.sum_errors_cw += sum(map(int,a))
-                        ##########################################
-                        self.CW_BER = self.sum_errors_cw/float(total_bits_tx)  # Message Bit Error Rate, updated every iteration
-                        # self.CW_BER = self.sum_errors_cw/float(self.cnt_rx_chnk*len(tx_chunk))  # Message Bit Error Rate, updated every iteration
-                        # print "BER FILE"
-                        # print self.sum_errors_cw
-                        # print self.CW_BER
-
-                        with open(self.filename,"r") as f:
-                            lines = f.readlines()
-                            for j in range(len(lines)):
-
-                                if 'bits decoded:' in lines[j]:
-                                    try :
-                                        lines[j+1] = str(self.cnt_rx_chnk) + " | " + str(self.cnt_rx_chnk*self.chunk_size*8) + '\n'
-                                    except :
-                                        pass
-                                if 'Bit Error Rate' in lines[j]:
-                                    lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.CW_BER)+ " " + '\n'
-                                if 'Error sum' in lines[j]:
-                                    lines[j+1] = lines[j+1][:-1] + '[' + "%02d"%i + '] ' + str(self.sum_errors_cw)+ " " + '\n'
-                                if 'SNR' in lines[j] and self.cnt_snr > 0:
-                                    lines[j+1] = str(sum(self.SNR)/float(self.cnt_snr)) + '\n'
-                                if 'Channel' in lines[j] and self.cnt_ch_use > 0 and self.chunk_size > 0:
-                                    # print "HERE HERE"
-                                    total_bits_rx = self.cnt_rx_chnk*self.chunk_size*8
-                                    total_errors = self.sum_errors_cw
-                                    successful_bits = total_bits_rx - total_errors
-
-                                    lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
 
 
-                        with open(self.filename,"w") as f:
-                            f.write(''.join(lines))
-
-                        # except :
-                        #     print "Chunk " + str(i) + " not found. Ignored for BER"
-
-                # if self.cnt_ch_use > 0 :
-                #     total_bits_rx = self.cnt_rx_chnk*chunk_size*8
-                #     total_errors = self.sum_errors_cw
-                #     successful_bits = total_bits_rx - total_errors
-                #
-                #     with open(self.filename,"r") as f:
-                #         lines = f.readlines()
-                #         for i in range(len(lines)):
-                #             if 'Channel' in lines[i]:
-                #                 lines[i+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
-                #     with open(self.filename,"w") as f:
-                #         f.write(''.join(lines))
-
-                # except :
-                #     pass
-                exit(1)
+                # exit(1)
 
 
 
