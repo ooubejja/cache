@@ -221,7 +221,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1</value>
+      <value>2</value>
     </param>
   </block>
   <block>
@@ -275,7 +275,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>4</value>
+      <value>3</value>
     </param>
   </block>
   <block>
@@ -317,7 +317,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1184, 156)</value>
+      <value>(840, 668)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -330,33 +330,6 @@
     <param>
       <key>value</key>
       <value>2450e6</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1272, 156)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>25</value>
     </param>
   </block>
   <block>
@@ -718,7 +691,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -734,7 +707,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>24 + 20*numpy.log10(4)</value>
+      <value>-5 + 20*numpy.log10(4)</value>
     </param>
   </block>
   <block>
@@ -826,7 +799,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -908,7 +881,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -959,7 +932,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -1116,7 +1089,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(416, 764)</value>
+      <value>(416, 796)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1438,7 +1411,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(208, 756)</value>
+      <value>(200, 796)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1548,11 +1521,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>2</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 764)</value>
+      <value>(576, 796)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2544,7 +2517,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(464, 244)</value>
+      <value>(464, 212)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2622,7 +2595,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -2847,6 +2820,53 @@
     </param>
   </block>
   <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1000, 644)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>gain</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>Gain</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value>G</value>
+    </param>
+    <param>
+      <key>hide</key>
+      <value>none</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>eng_float</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>5</value>
+    </param>
+  </block>
+  <block>
     <key>virtual_sink</key>
     <param>
       <key>comment</key>
@@ -2858,7 +2878,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(712, 252)</value>
+      <value>(744, 220)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3257,7 +3277,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 220)</value>
+      <value>(16, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4343,7 +4363,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -5682,7 +5702,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(992, 276)</value>
+      <value>(1032, 276)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6092,7 +6112,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 764)</value>
+      <value>(8, 796)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6212,7 +6232,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 348)</value>
+      <value>(272, 316)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6247,11 +6267,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>1</value>
+      <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(272, 324)</value>
+      <value>(272, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -6263,62 +6283,7 @@
     </param>
     <param>
       <key>timeout</key>
-      <value>10</value>
-    </param>
-  </block>
-  <block>
-    <key>zeromq_pub_sink</key>
-    <param>
-      <key>address</key>
-      <value>tcp://*:5565</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(1368, 804)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>hwm</key>
-      <value>-1</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>zeromq_pub_sink_0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>pass_tags</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>timeout</key>
       <value>100</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
     </param>
   </block>
   <block>
@@ -6383,12 +6348,6 @@
   <connection>
     <source_block_id>blocks_add_xx_0</source_block_id>
     <sink_block_id>virtual_sink_2_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>blocks_add_xx_0</source_block_id>
-    <sink_block_id>zeromq_pub_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -6467,12 +6426,6 @@
   <connection>
     <source_block_id>channels_dynamic_channel_model_0</source_block_id>
     <sink_block_id>virtual_sink_2_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>channels_dynamic_channel_model_0</source_block_id>
-    <sink_block_id>zeromq_pub_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

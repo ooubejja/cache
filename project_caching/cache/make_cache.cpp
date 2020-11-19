@@ -120,7 +120,7 @@ int main(){
 
     unsigned int n_utenti, m_files, b_chuncks, id_utente, L_request;
 
-	n_utenti = 4;
+	n_utenti = 3;
     m_files = 20;
     b_chuncks = 100;
     L_request = 1;

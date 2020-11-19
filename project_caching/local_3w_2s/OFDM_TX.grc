@@ -707,7 +707,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>18 + 20*numpy.log10(4)</value>
+      <value>22 + 20*numpy.log10(4)</value>
     </param>
   </block>
   <block>
