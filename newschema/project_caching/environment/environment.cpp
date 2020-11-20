@@ -19,7 +19,7 @@ int main(){
 
 
 
-    unsigned int n_utenti = 3;                                                 //number of user
+    unsigned int n_utenti = 4;                                                 //number of user
     unsigned int n_user_s = 0;
     unsigned int m_files = 20;                                                  //number of file
     unsigned int b_chunks = 200;                                                //number of chunks

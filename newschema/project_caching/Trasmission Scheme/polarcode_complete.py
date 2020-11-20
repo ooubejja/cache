@@ -36,8 +36,8 @@ class polarcode_complete(gr.top_block):
         self.small_packet_len = small_packet_len = 52
         self.samp_rate = samp_rate = 1e6
         self.packetlength = packetlength = "packet_len"
-        self.n_users = n_users = 3
-        self.coderate = coderate = [3,3,3,4]
+        self.n_users = n_users = 4
+        self.coderate = coderate = [3,3,3,3,4]
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 200
