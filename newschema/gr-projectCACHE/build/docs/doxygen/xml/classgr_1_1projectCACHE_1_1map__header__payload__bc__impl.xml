@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::projectCACHE::map_header_payload_bc_impl</compoundname>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1map__header__payload__bc" prot="public" virt="non-virtual">gr::projectCACHE::map_header_payload_bc</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1map__header__payload__bc" prot="public" virt="non-virtual">gr::projectCACHE::map_header_payload_bc</basecompoundref>
+    <includes refid="garbage_2lib__new_2map__header__payload__bc__impl_8h" local="no">map_header_payload_bc_impl.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ae897c3b54cb8f5385085d8e20c47c2dd" prot="public" static="no" mutable="no">
+        <type><ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref></type>
+        <definition>gr_complex gr::projectCACHE::map_header_payload_bc_impl::d_constellation</definition>
+        <argsstring>[4]</argsstring>
+        <name>d_constellation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="43" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a0c0d926956f184b1d58ce1f2e4bb4354" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::d_k</definition>
+        <argsstring></argsstring>
+        <name>d_k</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="44" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9021746aa439bac68ff3f8a8439f4091" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::d_payloadmod</definition>
+        <argsstring></argsstring>
+        <name>d_payloadmod</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="45" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ae7caecaef5a7f36ecdb31873db4a8722" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::d_hxmod</definition>
+        <argsstring></argsstring>
+        <name>d_hxmod</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="45" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1af9defc90c0bc9f2941963317f8e91573" prot="public" static="no" mutable="no">
+        <type>pmt::pmt_t</type>
+        <definition>pmt::pmt_t gr::projectCACHE::map_header_payload_bc_impl::d_packet_len_pmt</definition>
+        <argsstring></argsstring>
+        <name>d_packet_len_pmt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1aab7302b58a892145bda8dce55eb26fdf" prot="public" static="no" mutable="no">
+        <type>const pmt::pmt_t</type>
+        <definition>const pmt::pmt_t gr::projectCACHE::map_header_payload_bc_impl::d_len_tag_key</definition>
+        <argsstring></argsstring>
+        <name>d_len_tag_key</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="47" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ad6646845510cb8e61d968edcfce87238" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::d_hxgain</definition>
+        <argsstring></argsstring>
+        <name>d_hxgain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" line="45" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a4b5d0d8741aaa114a6f6f8680aac4750" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a4b5d0d8741aaa114a6f6f8680aac4750" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" line="37" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a6daee0ebf449eff69b2c92b6c4946ac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::map_header_payload_bc_impl::map_header_payload_bc_impl</definition>
+        <argsstring>(int hx_maptype, int payload_maptype, const std::string &amp;lengthtagname)</argsstring>
+        <name>map_header_payload_bc_impl</name>
+        <param>
+          <type>int</type>
+          <declname>hx_maptype</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>payload_maptype</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a753524cfdf1cb0388267421b68824886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::map_header_payload_bc_impl::~map_header_payload_bc_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~map_header_payload_bc_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9f3fcb19cee96d1c977726aa68dbc250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="50" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a77f7837eb79d306ca67eaf4a0691d5f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::map_header_payload_bc_impl::map_header_payload_bc_impl</definition>
+        <argsstring>(int, int, const std::string &amp;lengthtagname)</argsstring>
+        <name>map_header_payload_bc_impl</name>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a753524cfdf1cb0388267421b68824886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::map_header_payload_bc_impl::~map_header_payload_bc_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~map_header_payload_bc_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9f3fcb19cee96d1c977726aa68dbc250" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::map_header_payload_bc_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/map_header_payload_bc_impl.h" line="50" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="27">
+        <label>gr::projectCACHE::map_header_payload_bc_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl"/>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+        <childnode refid="28" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="28">
+        <label>gr::projectCACHE::map_header_payload_bc</label>
+        <link refid="classgr_1_1projectCACHE_1_1map__header__payload__bc"/>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+        <childnode refid="29" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="30">
+        <label>gr::projectCACHE::map_header_payload_bc_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl"/>
+        <childnode refid="31" relation="public-inheritance">
+        </childnode>
+        <childnode refid="31" relation="public-inheritance">
+        </childnode>
+        <childnode refid="33" relation="usage">
+          <edgelabel>d_constellation</edgelabel>
+        </childnode>
+      </node>
+      <node id="32">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="33">
+        <label>std::complex&lt; float &gt;</label>
+      </node>
+      <node id="31">
+        <label>gr::projectCACHE::map_header_payload_bc</label>
+        <link refid="classgr_1_1projectCACHE_1_1map__header__payload__bc"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" line="32" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/map_header_payload_bc_impl.h" bodystart="31" bodyend="54"/>
+    <listofallmembers>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a4b5d0d8741aaa114a6f6f8680aac4750" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a4b5d0d8741aaa114a6f6f8680aac4750" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ae897c3b54cb8f5385085d8e20c47c2dd" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_constellation</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ad6646845510cb8e61d968edcfce87238" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_hxgain</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1ae7caecaef5a7f36ecdb31873db4a8722" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_hxmod</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a0c0d926956f184b1d58ce1f2e4bb4354" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_k</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1aab7302b58a892145bda8dce55eb26fdf" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_len_tag_key</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1af9defc90c0bc9f2941963317f8e91573" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_packet_len_pmt</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9021746aa439bac68ff3f8a8439f4091" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>d_payloadmod</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc_1a50c2eae4c5ef9ea2f97d7c398a6cea51" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc_1a310789ff044a2c3ea42c2b8c4f2545ae" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a6daee0ebf449eff69b2c92b6c4946ac2" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>map_header_payload_bc_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a77f7837eb79d306ca67eaf4a0691d5f0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>map_header_payload_bc_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc_1acf928f03f34284618b6bc5c13e819fe7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc_1acf928f03f34284618b6bc5c13e819fe7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9f3fcb19cee96d1c977726aa68dbc250" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a9f3fcb19cee96d1c977726aa68dbc250" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a753524cfdf1cb0388267421b68824886" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>~map_header_payload_bc_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1map__header__payload__bc__impl_1a753524cfdf1cb0388267421b68824886" prot="public" virt="non-virtual"><scope>gr::projectCACHE::map_header_payload_bc_impl</scope><name>~map_header_payload_bc_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

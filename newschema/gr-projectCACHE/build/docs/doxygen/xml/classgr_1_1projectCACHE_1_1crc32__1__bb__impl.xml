@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::projectCACHE::crc32_1_bb_impl</compoundname>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1crc32__1__bb" prot="public" virt="non-virtual">gr::projectCACHE::crc32_1_bb</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1crc32__1__bb" prot="public" virt="non-virtual">gr::projectCACHE::crc32_1_bb</basecompoundref>
+    <includes refid="garbage_2lib__new_2crc32__1__bb__impl_8h" local="no">crc32_1_bb_impl.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abbeb6721dc93f178a91ebaf516281f44" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gr::projectCACHE::crc32_1_bb_impl::d_check</definition>
+        <argsstring></argsstring>
+        <name>d_check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="33" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1afdf4b262b9e3582ae940fd9257718d7b" prot="private" static="no" mutable="no">
+        <type>boost::crc_optimal&lt; 32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, true, true &gt;</type>
+        <definition>boost::crc_optimal&lt; 32, 0x04C11DB7, 0xFFFFFFFF, 0xFFFFFFFF, true, true &gt; gr::projectCACHE::crc32_1_bb_impl::d_crc_impl</definition>
+        <argsstring></argsstring>
+        <name>d_crc_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="34" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ae2a65788a3a3d56a4980f72c80903724" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t gr::projectCACHE::crc32_1_bb_impl::d_npass</definition>
+        <argsstring></argsstring>
+        <name>d_npass</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abc28cf1c1664f6b41909c260e9d08b7d" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t gr::projectCACHE::crc32_1_bb_impl::d_nfail</definition>
+        <argsstring></argsstring>
+        <name>d_nfail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="47" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abfb82b96d1cd04160d108ba2666178e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::crc32_1_bb_impl::crc32_1_bb_impl</definition>
+        <argsstring>(bool check, const std::string &amp;lengthtagname)</argsstring>
+        <name>crc32_1_bb_impl</name>
+        <param>
+          <type>bool</type>
+          <declname>check</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1a9727c9339c7784e0a12edfda2de5cce8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::crc32_1_bb_impl::~crc32_1_bb_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~crc32_1_bb_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1aff06d1818f22f84cd1ef3eb62a1e0ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::crc32_1_bb_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ace0134a2a604fb652d14a1607820054a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::crc32_1_bb_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abfb82b96d1cd04160d108ba2666178e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::crc32_1_bb_impl::crc32_1_bb_impl</definition>
+        <argsstring>(bool check, const std::string &amp;lengthtagname)</argsstring>
+        <name>crc32_1_bb_impl</name>
+        <param>
+          <type>bool</type>
+          <declname>check</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/crc32_1_bb_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1a9727c9339c7784e0a12edfda2de5cce8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::crc32_1_bb_impl::~crc32_1_bb_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~crc32_1_bb_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/crc32_1_bb_impl.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1aff06d1818f22f84cd1ef3eb62a1e0ef2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::crc32_1_bb_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/crc32_1_bb_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ace0134a2a604fb652d14a1607820054a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::crc32_1_bb_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/crc32_1_bb_impl.h" line="41" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="5">
+        <label>gr::projectCACHE::crc32_1_bb_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>gr::projectCACHE::crc32_1_bb</label>
+        <link refid="classgr_1_1projectCACHE_1_1crc32__1__bb"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="8">
+        <label>gr::projectCACHE::crc32_1_bb_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>gr::projectCACHE::crc32_1_bb</label>
+        <link refid="classgr_1_1projectCACHE_1_1crc32__1__bb"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" line="31" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/crc32_1_bb_impl.h" bodystart="30" bodyend="48"/>
+    <listofallmembers>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1aff06d1818f22f84cd1ef3eb62a1e0ef2" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1aff06d1818f22f84cd1ef3eb62a1e0ef2" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abfb82b96d1cd04160d108ba2666178e3" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>crc32_1_bb_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abfb82b96d1cd04160d108ba2666178e3" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>crc32_1_bb_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abbeb6721dc93f178a91ebaf516281f44" prot="private" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>d_check</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1afdf4b262b9e3582ae940fd9257718d7b" prot="private" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>d_crc_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1abc28cf1c1664f6b41909c260e9d08b7d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>d_nfail</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ae2a65788a3a3d56a4980f72c80903724" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>d_npass</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb_1a2cd77479f8d4d29b6356a60257438999" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb_1a2cd77479f8d4d29b6356a60257438999" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb_1a5da9f1cd2b73d3ee770fbb81d383c030" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb_1a5da9f1cd2b73d3ee770fbb81d383c030" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ace0134a2a604fb652d14a1607820054a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1ace0134a2a604fb652d14a1607820054a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1a9727c9339c7784e0a12edfda2de5cce8" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>~crc32_1_bb_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl_1a9727c9339c7784e0a12edfda2de5cce8" prot="public" virt="non-virtual"><scope>gr::projectCACHE::crc32_1_bb_impl</scope><name>~crc32_1_bb_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1projectCACHE_1_1Rx__1P__b" kind="class" language="C++" prot="public">
+    <compoundname>gr::projectCACHE::Rx_1P_b</compoundname>
+    <basecompoundref prot="public" virt="virtual">tagged_stream_block</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tagged_stream_block</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tagged_stream_block</basecompoundref>
+    <basecompoundref prot="public" virt="virtual">tagged_stream_block</basecompoundref>
+    <derivedcompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b_impl</derivedcompoundref>
+    <derivedcompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b_impl</derivedcompoundref>
+    <derivedcompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b_impl</derivedcompoundref>
+    <includes refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2Rx__1P__b_8h" local="no">Rx_1P_b.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">Rx_1P_b</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;Rx_1P_b&gt; gr::projectCACHE::Rx_1P_b::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">Rx_1P_b</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;Rx_1P_b&gt; gr::projectCACHE::Rx_1P_b::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/Rx_1P_b.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/Rx_1P_b.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">Rx_1P_b</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;Rx_1P_b&gt; gr::projectCACHE::Rx_1P_b::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">Rx_1P_b</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;Rx_1P_b&gt; gr::projectCACHE::Rx_1P_b::sptr</definition>
+        <argsstring></argsstring>
+        <name>sptr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/Rx_1P_b.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/Rx_1P_b.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::projectCACHE::Rx_1P_b::make</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" kindref="member">projectCACHE::Rx_1P_b::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::projectCACHE::Rx_1P_b::make</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" kindref="member">projectCACHE::Rx_1P_b::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/Rx_1P_b.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::projectCACHE::Rx_1P_b::make</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" kindref="member">projectCACHE::Rx_1P_b::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" kindref="member">sptr</ref></type>
+        <definition>static sptr gr::projectCACHE::Rx_1P_b::make</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>make</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+<para>Return a shared_ptr to a new instance of <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>To avoid accidental use of raw pointers, <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" kindref="compound">projectCACHE::Rx_1P_b</ref>&apos;s constructor is in a private implementation class. <ref refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" kindref="member">projectCACHE::Rx_1P_b::make</ref> is the public interface for creating new instances. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/Rx_1P_b.h" line="65" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>&lt;+description of block+&gt; </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="82">
+        <label>gr::projectCACHE::Rx_1P_b_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl"/>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+        <childnode refid="80" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="80">
+        <label>gr::projectCACHE::Rx_1P_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b"/>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+        <childnode refid="81" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="84">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="83">
+        <label>gr::projectCACHE::Rx_1P_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b"/>
+        <childnode refid="84" relation="public-inheritance">
+        </childnode>
+        <childnode refid="84" relation="public-inheritance">
+        </childnode>
+        <childnode refid="84" relation="public-inheritance">
+        </childnode>
+        <childnode refid="84" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" line="53" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/PolarCodingWithoutCaching/Rx_1P_b.h" bodystart="52" bodyend="66"/>
+    <listofallmembers>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b</scope><name>sptr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

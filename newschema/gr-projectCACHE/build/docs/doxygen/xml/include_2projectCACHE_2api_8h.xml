@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="include_2projectCACHE_2api_8h" kind="file" language="C++">
+    <compoundname>include/projectCACHE/api.h</compoundname>
+    <includes local="no">gnuradio/attributes.h</includes>
+    <includedby refid="garbage_2include__new_2projectCACHE_2crc32__1__bb_8h" local="no">crc32_1_bb.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2gain__bf_8h" local="no">gain_bf.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2map__header__payload__bc_8h" local="no">map_header_payload_bc.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2ofdm__frame__equalizer1__vcvc_8h" local="no">ofdm_frame_equalizer1_vcvc.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gain__bf_8h" local="no">gain_bf.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2PolarDec__b_8h" local="no">PolarDec_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2PolarDecStrong__b_8h" local="no">PolarDecStrong_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2polarEnc__b_8h" local="no">polarEnc_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2Rx__1P__b_8h" local="no">Rx_1P_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2Tx__1P__b_8h" local="no">Tx_1P_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2PolarDec__b_8h" local="no">PolarDec_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2polarEnc__b_8h" local="no">polarEnc_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2Rx__1P__b_8h" local="no">Rx_1P_b.h</includedby>
+    <includedby refid="garbage_2include__new_2projectCACHE_2Tx__1P__b_8h" local="no">Tx_1P_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2crc32__1__bb_8h" local="no">crc32_1_bb.h</includedby>
+    <includedby refid="include_2projectCACHE_2gain__bf_8h" local="no">gain_bf.h</includedby>
+    <includedby refid="include_2projectCACHE_2map__header__payload__bc_8h" local="no">map_header_payload_bc.h</includedby>
+    <includedby refid="include_2projectCACHE_2ofdm__frame__equalizer1__vcvc_8h" local="no">ofdm_frame_equalizer1_vcvc.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2gain__bf_8h" local="no">gain_bf.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2PolarDec__b_8h" local="no">PolarDec_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2PolarDecStrong__b_8h" local="no">PolarDecStrong_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2polarEnc__b_8h" local="no">polarEnc_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2Rx__1P__b_8h" local="no">Rx_1P_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarCodingWithoutCaching_2Tx__1P__b_8h" local="no">Tx_1P_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2PolarDec__b_8h" local="no">PolarDec_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2polarEnc__b_8h" local="no">polarEnc_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2Rx__1P__b_8h" local="no">Rx_1P_b.h</includedby>
+    <includedby refid="include_2projectCACHE_2Tx__1P__b_8h" local="no">Tx_1P_b.h</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>api.h</label>
+        <link refid="include_2projectCACHE_2api_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>gnuradio/attributes.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="51">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2testing_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="52">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="lib_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="26">
+        <label>gain_bf.h</label>
+        <link refid="include_2projectCACHE_2gain__bf_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>gain_bf.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2gain__bf_8h"/>
+      </node>
+      <node id="41">
+        <label>Tx_1P_b.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2Tx__1P__b_8h"/>
+      </node>
+      <node id="30">
+        <label>map_header_payload_bc.h</label>
+        <link refid="include_2projectCACHE_2map__header__payload__bc_8h"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>PolarDec_b_impl.h</label>
+        <link refid="garbage_2lib__new_2PolarDec__b__impl_8h"/>
+      </node>
+      <node id="24">
+        <label>crc32_1_bb_impl.h</label>
+        <link refid="garbage_2lib__new_2crc32__1__bb__impl_8h"/>
+      </node>
+      <node id="13">
+        <label>gain_bf.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gain__bf_8h"/>
+      </node>
+      <node id="38">
+        <label>PolarDecStrong_b.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2PolarDecStrong__b_8h"/>
+      </node>
+      <node id="53">
+        <label>Rx_1P_b.h</label>
+        <link refid="include_2projectCACHE_2Rx__1P__b_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>api.h</label>
+        <link refid="include_2projectCACHE_2api_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+      </node>
+      <node id="47">
+        <label>PolarDec_b_impl_original.h</label>
+        <link refid="PolarDec__b__impl__original_8h"/>
+      </node>
+      <node id="21">
+        <label>Rx_1P_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2Rx__1P__b_8h"/>
+      </node>
+      <node id="28">
+        <label>gain_bf_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2gain__bf__impl_8h"/>
+      </node>
+      <node id="16">
+        <label>polarEnc_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2polarEnc__b_8h"/>
+      </node>
+      <node id="15">
+        <label>PolarDecStrong_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2PolarDecStrong__b_8h"/>
+      </node>
+      <node id="19">
+        <label>PolarDec_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarDec__b_8h"/>
+      </node>
+      <node id="37">
+        <label>PolarDec_b.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2PolarDec__b_8h"/>
+      </node>
+      <node id="18">
+        <label>Tx_1P_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2Tx__1P__b_8h"/>
+      </node>
+      <node id="39">
+        <label>polarEnc_b.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2polarEnc__b_8h"/>
+      </node>
+      <node id="45">
+        <label>PolarDecStrong_b_impl.h</label>
+        <link refid="PolarDecStrong__b__impl_8h"/>
+      </node>
+      <node id="42">
+        <label>PolarDec_b.h</label>
+        <link refid="include_2projectCACHE_2PolarDec__b_8h"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>gain_bf.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2gain__bf_8h"/>
+      </node>
+      <node id="49">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2lib__new_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="12">
+        <label>ofdm_frame_equalizer1_vcvc.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2ofdm__frame__equalizer1__vcvc_8h"/>
+      </node>
+      <node id="35">
+        <label>ofdm_frame_equalizer1_vcvc_impl.h</label>
+        <link refid="lib_2ofdm__frame__equalizer1__vcvc__impl_8h"/>
+      </node>
+      <node id="54">
+        <label>Rx_1P_b_impl.h</label>
+        <link refid="garbage_2lib__new_2Rx__1P__b__impl_8h"/>
+      </node>
+      <node id="55">
+        <label>Rx_1P_b_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2Rx__1P__b__impl_8h"/>
+      </node>
+      <node id="60">
+        <label>Tx_1P_b_impl.h</label>
+        <link refid="lib_2Tx__1P__b__impl_8h"/>
+      </node>
+      <node id="58">
+        <label>Tx_1P_b_impl.h</label>
+        <link refid="garbage_2lib__new_2Tx__1P__b__impl_8h"/>
+      </node>
+      <node id="25">
+        <label>crc32_1_bb_impl.h</label>
+        <link refid="lib_2crc32__1__bb__impl_8h"/>
+      </node>
+      <node id="59">
+        <label>Tx_1P_b_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2Tx__1P__b__impl_8h"/>
+      </node>
+      <node id="56">
+        <label>Rx_1P_b_impl.h</label>
+        <link refid="lib_2Rx__1P__b__impl_8h"/>
+      </node>
+      <node id="40">
+        <label>Rx_1P_b.h</label>
+        <link refid="include_2projectCACHE_2PolarCodingWithoutCaching_2Rx__1P__b_8h"/>
+      </node>
+      <node id="11">
+        <label>map_header_payload_bc.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2map__header__payload__bc_8h"/>
+      </node>
+      <node id="33">
+        <label>ofdm_frame_equalizer1_vcvc.h</label>
+        <link refid="include_2projectCACHE_2ofdm__frame__equalizer1__vcvc_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>map_header_payload_bc_impl.h</label>
+        <link refid="lib_2map__header__payload__bc__impl_8h"/>
+      </node>
+      <node id="23">
+        <label>crc32_1_bb.h</label>
+        <link refid="include_2projectCACHE_2crc32__1__bb_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>gain_bf_impl.h</label>
+        <link refid="lib_2gain__bf__impl_8h"/>
+      </node>
+      <node id="44">
+        <label>PolarDec_b_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2PolarDec__b__impl_8h"/>
+      </node>
+      <node id="57">
+        <label>Tx_1P_b.h</label>
+        <link refid="include_2projectCACHE_2Tx__1P__b_8h"/>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>map_header_payload_bc_impl.h</label>
+        <link refid="garbage_2lib__new_2map__header__payload__bc__impl_8h"/>
+      </node>
+      <node id="22">
+        <label>Tx_1P_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2Tx__1P__b_8h"/>
+      </node>
+      <node id="48">
+        <label>polarEnc_b.h</label>
+        <link refid="include_2projectCACHE_2polarEnc__b_8h"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>ofdm_frame_equalizer1_vcvc_impl.h</label>
+        <link refid="garbage_2lib__new_2ofdm__frame__equalizer1__vcvc__impl_8h"/>
+      </node>
+      <node id="20">
+        <label>polarEnc_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2polarEnc__b_8h"/>
+      </node>
+      <node id="9">
+        <label>crc32_1_bb.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2crc32__1__bb_8h"/>
+      </node>
+      <node id="17">
+        <label>Rx_1P_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2Rx__1P__b_8h"/>
+      </node>
+      <node id="50">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="46">
+        <label>PolarDec_b_impl.h</label>
+        <link refid="lib_2PolarDec__b__impl_8h"/>
+      </node>
+      <node id="27">
+        <label>gain_bf_impl.h</label>
+        <link refid="garbage_2lib__new_2gain__bf__impl_8h"/>
+      </node>
+      <node id="14">
+        <label>PolarDec_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2PolarDec__b_8h"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="include_2projectCACHE_2api_8h_1a29c4c49363ddff66a362e0336120e14f" prot="public" static="no">
+        <name>PROJECTCACHE_API</name>
+        <initializer>__GR_ATTR_IMPORT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/api.h" line="30" column="12" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/api.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/api.h"/>
+  </compounddef>
+</doxygen>

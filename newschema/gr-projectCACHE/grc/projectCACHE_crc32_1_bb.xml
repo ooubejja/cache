@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<block>
+  <name>CRC Module</name>
+  <key>projectCACHE_crc32_1_bb</key>
+  <category>projectCACHE</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.crc32_1_bb($check, $lengthtagname)</make>
+  <param>
+	  <name>Mode</name>
+	  <key>check</key>
+	  <type>enum</type>
+	  <option>
+		  <name>Generate CRC</name>
+		  <key>False</key>
+	  </option>
+	  <option>
+		  <name>Check CRC</name>
+		  <key>True</key>
+	  </option>
+  </param>
+  <param>
+    <name>Length tag name</name>
+    <key>lengthtagname</key>
+    <value>"packet_len"</value>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

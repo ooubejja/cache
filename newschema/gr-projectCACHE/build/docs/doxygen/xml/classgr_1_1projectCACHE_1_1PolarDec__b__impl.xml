@@ -1,0 +1,1616 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1projectCACHE_1_1PolarDec__b__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::projectCACHE::PolarDec_b_impl</compoundname>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1PolarDec__b" prot="public" virt="non-virtual">gr::projectCACHE::PolarDec_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1PolarDec__b" prot="public" virt="non-virtual">gr::projectCACHE::PolarDec_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1PolarDec__b" prot="public" virt="non-virtual">gr::projectCACHE::PolarDec_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1PolarDec__b" prot="public" virt="non-virtual">gr::projectCACHE::PolarDec_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1PolarDec__b" prot="public" virt="non-virtual">gr::projectCACHE::PolarDec_b</basecompoundref>
+    <includes refid="garbage_2lib__new_2PolarDec__b__impl_8h" local="no">PolarDec_b_impl.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aef538d62a962dca12b7f003a763d5f0f" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::d_y1</definition>
+        <argsstring></argsstring>
+        <name>d_y1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af0349d298f3163462ae6b69ff580b835" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::d_y2</definition>
+        <argsstring></argsstring>
+        <name>d_y2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a86c6c2ccb325d4a88249b8ef4a63591f" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::d_alpha</definition>
+        <argsstring></argsstring>
+        <name>d_alpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="47" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af77a07712cff4d6162d3454df572b66c" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::d_beta</definition>
+        <argsstring></argsstring>
+        <name>d_beta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="47" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0f1c5b6c9afd3e56e62567a84b5e0156" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt; double &gt; gr::projectCACHE::PolarDec_b_impl::d_snr</definition>
+        <argsstring></argsstring>
+        <name>d_snr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="48" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a7a9da0224b68e342c39c255d63b8b8ad" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt; int &gt; gr::projectCACHE::PolarDec_b_impl::d_size</definition>
+        <argsstring></argsstring>
+        <name>d_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="49" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a25081ea9aa2bcfd4b0b5ed11eccbb093" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_N</definition>
+        <argsstring></argsstring>
+        <name>d_N</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="51" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0814c84939392f6efe18928f781fd389" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_K_w</definition>
+        <argsstring></argsstring>
+        <name>d_K_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="51" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4cadf11e212121d823c65ccdb3cde9c2" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_K_s</definition>
+        <argsstring></argsstring>
+        <name>d_K_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="51" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a25e490dd8ae56f152709f9fac7871b4e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::d_SNR</definition>
+        <argsstring></argsstring>
+        <name>d_SNR</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="52" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2c1ece58c276d1192fa7350b5718d2db" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gr::projectCACHE::PolarDec_b_impl::d_stop</definition>
+        <argsstring></argsstring>
+        <name>d_stop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="53" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af16f57417c066db81dc0c1771f1348e4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gr::projectCACHE::PolarDec_b_impl::d_isStr</definition>
+        <argsstring></argsstring>
+        <name>d_isStr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="53" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a1eecaafa7a382554e2a0dec4fa777199" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_m_files</definition>
+        <argsstring></argsstring>
+        <name>d_m_files</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac8fc69209c7d3b1646e5f9d191cd0199" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_b_chunks</definition>
+        <argsstring></argsstring>
+        <name>d_b_chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2ea2733125862ead4aaf874da6b5f4f0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_n_users</definition>
+        <argsstring></argsstring>
+        <name>d_n_users</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a764d70e6f67f8c3a3033687f016bde4b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_id_user</definition>
+        <argsstring></argsstring>
+        <name>d_id_user</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ad48072fdae8eb34d47b7a9d13b4aa61f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_k</definition>
+        <argsstring></argsstring>
+        <name>d_k</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a48cdf15f3689973b4ae6836d295ba10d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_packet_remain</definition>
+        <argsstring></argsstring>
+        <name>d_packet_remain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4cb7563aee273dfbdd5bfbd53d00dd92" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_payload_len</definition>
+        <argsstring></argsstring>
+        <name>d_payload_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="56" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa33c456013b5055cb609e56f852e3cb0" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_last_spack_len</definition>
+        <argsstring></argsstring>
+        <name>d_last_spack_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a845f7cb7ff9c91fdf493b8329d953add" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_id_last_spack</definition>
+        <argsstring></argsstring>
+        <name>d_id_last_spack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac1a69247060d9b82fec6357a1b3ce708" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_spack_len</definition>
+        <argsstring></argsstring>
+        <name>d_spack_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa0b092ef3f672b059c25825908d16f6c" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_id_spack</definition>
+        <argsstring></argsstring>
+        <name>d_id_spack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ad72296a20072a8645ddc87a40928ed72" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_nb_spack</definition>
+        <argsstring></argsstring>
+        <name>d_nb_spack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a99870d60ee289552604cb439f3c2a10e" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::PolarDec_b_impl::d_id_expected</definition>
+        <argsstring></argsstring>
+        <name>d_id_expected</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="58" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abfea7812a7b8d95ef0c9320c53cb5f06" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gr::projectCACHE::PolarDec_b_impl::d_crc</definition>
+        <argsstring></argsstring>
+        <name>d_crc</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="59" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aceb121fc3803374745c81e3ab8e00566" prot="public" static="no" mutable="no">
+        <type>header_polar</type>
+        <definition>header_polar gr::projectCACHE::PolarDec_b_impl::d_header</definition>
+        <argsstring></argsstring>
+        <name>d_header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="62" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a901f803820e2196693e049d3e4a01b5b" prot="public" static="no" mutable="no">
+        <type>PC</type>
+        <definition>PC gr::projectCACHE::PolarDec_b_impl::PC_w</definition>
+        <argsstring></argsstring>
+        <name>PC_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="63" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa52da7675d65031bac63cad937ef9c40" prot="public" static="no" mutable="no">
+        <type>PC</type>
+        <definition>PC gr::projectCACHE::PolarDec_b_impl::PC_s</definition>
+        <argsstring></argsstring>
+        <name>PC_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="63" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a97e0269b4aa7819f7573ebd85d738e05" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::designSNRdb</definition>
+        <argsstring></argsstring>
+        <name>designSNRdb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="64" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1add191ab2f77c9b3134fbdf5a3baca081" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::variance_w</definition>
+        <argsstring></argsstring>
+        <name>variance_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="65" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a79b310641e979f933b0b7418015eb523" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::variance_s</definition>
+        <argsstring></argsstring>
+        <name>variance_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="65" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a41002879d457ef4d6562694120d57bd1" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::sqrtVariance_w</definition>
+        <argsstring></argsstring>
+        <name>sqrtVariance_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="66" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a94e31e49e7554417c6948c555fe4cf98" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::sqrtVariance_s</definition>
+        <argsstring></argsstring>
+        <name>sqrtVariance_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="66" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac14b37034c487cc1cf9327a0361620f4" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::frozen_s</definition>
+        <argsstring></argsstring>
+        <name>frozen_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="67" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0811be0c9086a8ccb7e07e986197704c" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::frozen_w</definition>
+        <argsstring></argsstring>
+        <name>frozen_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="67" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2defbeade27a128b306cbfc5b991a446" prot="public" static="no" mutable="no">
+        <type>vector&lt; <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> &gt;</type>
+        <definition>vector&lt; gr_complex &gt; gr::projectCACHE::PolarDec_b_impl::d_coded_packet</definition>
+        <argsstring></argsstring>
+        <name>d_coded_packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="68" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4c79ddc193ddf4daac6a22166785c00d" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double * gr::projectCACHE::PolarDec_b_impl::llr_w</definition>
+        <argsstring></argsstring>
+        <name>llr_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="70" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4b622387eebd1381f6dd34aab8d26dec" prot="public" static="no" mutable="no">
+        <type><ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        <definition>gr_complex * gr::projectCACHE::PolarDec_b_impl::recSymbol_w</definition>
+        <argsstring></argsstring>
+        <name>recSymbol_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="72" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac7c334e1e8b218ebb300139b9ec8c81d" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::recMessage_w</definition>
+        <argsstring></argsstring>
+        <name>recMessage_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="73" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5598f22a5b0acf98e531a513dd0a7e7f" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::recCodeword_w</definition>
+        <argsstring></argsstring>
+        <name>recCodeword_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="74" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a9480546c1aa9e4bab5276eccc8d6e895" prot="public" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double * gr::projectCACHE::PolarDec_b_impl::llr_s</definition>
+        <argsstring></argsstring>
+        <name>llr_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="76" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ae5484ce393be0f7af29761666ba3a611" prot="public" static="no" mutable="no">
+        <type><ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        <definition>gr_complex * gr::projectCACHE::PolarDec_b_impl::recSymbol_s</definition>
+        <argsstring></argsstring>
+        <name>recSymbol_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="78" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac8701a53b5a4a5545ac67040ab93f017" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::recMessage_s</definition>
+        <argsstring></argsstring>
+        <name>recMessage_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="79" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a36004360a822fd2084d00f8d6691c52b" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int * gr::projectCACHE::PolarDec_b_impl::recCodeword_s</definition>
+        <argsstring></argsstring>
+        <name>recCodeword_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="80" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a9bfe4ab8dd612fa60ed1b26ef0e0b351" prot="public" static="no" mutable="no">
+        <type><ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        <definition>gr_complex * gr::projectCACHE::PolarDec_b_impl::sentSymbol</definition>
+        <argsstring></argsstring>
+        <name>sentSymbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="84" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a704033acdf39eca019cc47c9512a62b6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::d_SNR_s</definition>
+        <argsstring></argsstring>
+        <name>d_SNR_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="45" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af99cdb03898421afc55376f2c819b718" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float gr::projectCACHE::PolarDec_b_impl::d_SNR_w</definition>
+        <argsstring></argsstring>
+        <name>d_SNR_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1afad5c5e9a3ab52af3f982f36215fb1de" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* gr::projectCACHE::PolarDec_b_impl::recSymbol_w</definition>
+        <argsstring></argsstring>
+        <name>recSymbol_w</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="52" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a325735c0e6056d76cf447624ad971fb5" prot="public" static="no" mutable="no">
+        <type>float *</type>
+        <definition>float* gr::projectCACHE::PolarDec_b_impl::recSymbol_s</definition>
+        <argsstring></argsstring>
+        <name>recSymbol_s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ae64431fb53c7f7eca685c407e093d095" prot="public" static="no" mutable="no">
+        <type>int *</type>
+        <definition>int* gr::projectCACHE::PolarDec_b_impl::sentSymbol</definition>
+        <argsstring></argsstring>
+        <name>sentSymbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="62" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a8643dff6d21eb2c922c586db87beda41" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_size_chunk</definition>
+        <argsstring></argsstring>
+        <name>d_size_chunk</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1afe5a1302c3b3ae5cfd0417e552ab0c84" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::d_code_rate</definition>
+        <argsstring></argsstring>
+        <name>d_code_rate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="54" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a1f393eb30d71bb9b6ac62cb8425afd91" prot="private" static="no" mutable="no">
+        <type>const pmt::pmt_t</type>
+        <definition>const pmt::pmt_t gr::projectCACHE::PolarDec_b_impl::ch_use_port</definition>
+        <argsstring></argsstring>
+        <name>ch_use_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="38" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="32" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="38" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0503a86d661828026b178b9a63325214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::PolarDec_b_impl</definition>
+        <argsstring>(const int, const int, const int, int, int, int, int, unsigned int, bool, const std::string &amp;)</argsstring>
+        <name>PolarDec_b_impl</name>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>int</declname>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::~PolarDec_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~PolarDec_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::PolarDec_b_impl::reinitialize</definition>
+        <argsstring>()</argsstring>
+        <name>reinitialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::update</definition>
+        <argsstring>(int, const gr_complex *)</argsstring>
+        <name>update</name>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::snr</definition>
+        <argsstring>()</argsstring>
+        <name>snr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::decode_header</definition>
+        <argsstring>(const gr_complex *in)</argsstring>
+        <name>decode_header</name>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abc810a8fc15ca2dfd8a2b5123b1154e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::PolarDec_b_impl</definition>
+        <argsstring>(const int N, const int K_w, const int K_s, float SNR_w, float SNR_s, const std::string &amp;lengthtagname)</argsstring>
+        <name>PolarDec_b_impl</name>
+        <param>
+          <type>const int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>K_w</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>K_s</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>SNR_w</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>SNR_s</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="39" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::~PolarDec_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~PolarDec_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDec_b_impl.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abc810a8fc15ca2dfd8a2b5123b1154e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::PolarDec_b_impl</definition>
+        <argsstring>(const int N, const int K_w, const int K_s, float SNR_w, float SNR_s, const std::string &amp;lengthtagname)</argsstring>
+        <name>PolarDec_b_impl</name>
+        <param>
+          <type>const int</type>
+          <declname>N</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>K_w</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>K_s</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>SNR_w</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>SNR_s</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>lengthtagname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="35" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::~PolarDec_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~PolarDec_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="36" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/PolarDecStrong_b_impl.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb44c2ce696b50aa3c410b9f6db8e2c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::PolarDec_b_impl</definition>
+        <argsstring>(const int, int, int, int, int, unsigned int, int, int, const std::string &amp;)</argsstring>
+        <name>PolarDec_b_impl</name>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>int</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::~PolarDec_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~PolarDec_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="46" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::PolarDec_b_impl::reinitialize</definition>
+        <argsstring>()</argsstring>
+        <name>reinitialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::update</definition>
+        <argsstring>(int, const gr_complex *)</argsstring>
+        <name>update</name>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::snr</definition>
+        <argsstring>()</argsstring>
+        <name>snr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="91" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::decode_header</definition>
+        <argsstring>(const gr_complex *in)</argsstring>
+        <name>decode_header</name>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl.h" line="95" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0503a86d661828026b178b9a63325214" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::PolarDec_b_impl</definition>
+        <argsstring>(const int, const int, const int, int, int, int, int, unsigned int, bool, const std::string &amp;)</argsstring>
+        <name>PolarDec_b_impl</name>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>const int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>unsigned</type>
+          <declname>int</declname>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="42" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::PolarDec_b_impl::~PolarDec_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~PolarDec_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::PolarDec_b_impl::reinitialize</definition>
+        <argsstring>()</argsstring>
+        <name>reinitialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::update</definition>
+        <argsstring>(int, const gr_complex *)</argsstring>
+        <name>update</name>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double gr::projectCACHE::PolarDec_b_impl::snr</definition>
+        <argsstring>()</argsstring>
+        <name>snr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::decode_header</definition>
+        <argsstring>(const gr_complex *in)</argsstring>
+        <name>decode_header</name>
+        <param>
+          <type>const <ref refid="garbage_2include__new_2projectCACHE_2PolarCodingWithoutCaching_2gr__complex_8h_1aec4bfe41433369afae9327f1b0bc9109" kindref="member">gr_complex</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="89" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::PolarDec_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/PolarDec_b_impl_original.h" line="92" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="55">
+        <label>gr::projectCACHE::PolarDec_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1PolarDec__b"/>
+        <childnode refid="56" relation="public-inheritance">
+        </childnode>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+        <childnode refid="57" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="54">
+        <label>gr::projectCACHE::PolarDec_b_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl"/>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+        <childnode refid="55" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>gr::tagged_stream_block</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="65">
+        <label>std::vector&lt; double &gt;</label>
+      </node>
+      <node id="59">
+        <label>gr::projectCACHE::PolarDec_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1PolarDec__b"/>
+        <childnode refid="60" relation="public-inheritance">
+        </childnode>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+        <childnode refid="61" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="61">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="64">
+        <label>std::vector&lt; gr_complex &gt;</label>
+        <childnode refid="62" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="58">
+        <label>gr::projectCACHE::PolarDec_b_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl"/>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+        <childnode refid="59" relation="public-inheritance">
+        </childnode>
+        <childnode refid="62" relation="usage">
+          <edgelabel>recSymbol_w</edgelabel>
+          <edgelabel>sentSymbol</edgelabel>
+          <edgelabel>recSymbol_s</edgelabel>
+        </childnode>
+        <childnode refid="63" relation="usage">
+          <edgelabel>d_size</edgelabel>
+        </childnode>
+        <childnode refid="64" relation="usage">
+          <edgelabel>d_coded_packet</edgelabel>
+        </childnode>
+        <childnode refid="65" relation="usage">
+          <edgelabel>d_snr</edgelabel>
+        </childnode>
+      </node>
+      <node id="60">
+        <label>gr::tagged_stream_block</label>
+      </node>
+      <node id="62">
+        <label>std::complex</label>
+      </node>
+      <node id="63">
+        <label>std::vector&lt; int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" line="36" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/PolarDec_b_impl.h" bodystart="35" bodyend="96"/>
+    <listofallmembers>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5ba360bd867aed82fef655a292c7c755" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a1f393eb30d71bb9b6ac62cb8425afd91" prot="private" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>ch_use_port</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a86c6c2ccb325d4a88249b8ef4a63591f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_alpha</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac8fc69209c7d3b1646e5f9d191cd0199" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_b_chunks</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af77a07712cff4d6162d3454df572b66c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_beta</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1afe5a1302c3b3ae5cfd0417e552ab0c84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_code_rate</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2defbeade27a128b306cbfc5b991a446" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_coded_packet</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abfea7812a7b8d95ef0c9320c53cb5f06" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_crc</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aceb121fc3803374745c81e3ab8e00566" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_header</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a99870d60ee289552604cb439f3c2a10e" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_id_expected</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a845f7cb7ff9c91fdf493b8329d953add" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_id_last_spack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa0b092ef3f672b059c25825908d16f6c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_id_spack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a764d70e6f67f8c3a3033687f016bde4b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_id_user</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af16f57417c066db81dc0c1771f1348e4" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_isStr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ad48072fdae8eb34d47b7a9d13b4aa61f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_k</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4cadf11e212121d823c65ccdb3cde9c2" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_K_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0814c84939392f6efe18928f781fd389" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_K_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa33c456013b5055cb609e56f852e3cb0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_last_spack_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a1eecaafa7a382554e2a0dec4fa777199" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_m_files</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a25081ea9aa2bcfd4b0b5ed11eccbb093" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_N</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2ea2733125862ead4aaf874da6b5f4f0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_n_users</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ad72296a20072a8645ddc87a40928ed72" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_nb_spack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a48cdf15f3689973b4ae6836d295ba10d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_packet_remain</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4cb7563aee273dfbdd5bfbd53d00dd92" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_payload_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a7a9da0224b68e342c39c255d63b8b8ad" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_size</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a8643dff6d21eb2c922c586db87beda41" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_size_chunk</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a25e490dd8ae56f152709f9fac7871b4e" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_SNR</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0f1c5b6c9afd3e56e62567a84b5e0156" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_snr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a704033acdf39eca019cc47c9512a62b6" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_SNR_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af99cdb03898421afc55376f2c819b718" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_SNR_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac1a69247060d9b82fec6357a1b3ce708" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_spack_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a2c1ece58c276d1192fa7350b5718d2db" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_stop</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aef538d62a962dca12b7f003a763d5f0f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_y1</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1af0349d298f3163462ae6b69ff580b835" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>d_y2</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>decode_header</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>decode_header</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aaac96cfc9996611948b03f68220fde1b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>decode_header</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a97e0269b4aa7819f7573ebd85d738e05" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>designSNRdb</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac14b37034c487cc1cf9327a0361620f4" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>frozen_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0811be0c9086a8ccb7e07e986197704c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>frozen_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a9480546c1aa9e4bab5276eccc8d6e895" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>llr_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4c79ddc193ddf4daac6a22166785c00d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>llr_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a0fc94f4a32c6bac9e7684ee7be34c5af" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a0fc94f4a32c6bac9e7684ee7be34c5af" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a877b72b77383cc736eea4ea22401853b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a0fc94f4a32c6bac9e7684ee7be34c5af" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a0fc94f4a32c6bac9e7684ee7be34c5af" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a99fa195b2646a4459941c0f5da97d205" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1aa52da7675d65031bac63cad937ef9c40" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PC_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a901f803820e2196693e049d3e4a01b5b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PC_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0503a86d661828026b178b9a63325214" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abc810a8fc15ca2dfd8a2b5123b1154e7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abc810a8fc15ca2dfd8a2b5123b1154e7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb44c2ce696b50aa3c410b9f6db8e2c0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a0503a86d661828026b178b9a63325214" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a36004360a822fd2084d00f8d6691c52b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recCodeword_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a5598f22a5b0acf98e531a513dd0a7e7f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recCodeword_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac8701a53b5a4a5545ac67040ab93f017" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recMessage_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ac7c334e1e8b218ebb300139b9ec8c81d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recMessage_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ae5484ce393be0f7af29761666ba3a611" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recSymbol_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a325735c0e6056d76cf447624ad971fb5" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recSymbol_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a4b622387eebd1381f6dd34aab8d26dec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recSymbol_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1afad5c5e9a3ab52af3f982f36215fb1de" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>recSymbol_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>reinitialize</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>reinitialize</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abdf4c75a8e0ff13451f7041a262eef67" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>reinitialize</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a9bfe4ab8dd612fa60ed1b26ef0e0b351" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sentSymbol</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1ae64431fb53c7f7eca685c407e093d095" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sentSymbol</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>snr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>snr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1adf67005a8d508a37fec1811c02340cab" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>snr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b_1a562f91d4e244336eb9583f5a13468a77" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a94e31e49e7554417c6948c555fe4cf98" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sqrtVariance_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a41002879d457ef4d6562694120d57bd1" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>sqrtVariance_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>update</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>update</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a022fedb5fcff7539358cc3db66fdb545" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>update</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a79b310641e979f933b0b7418015eb523" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>variance_s</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1add191ab2f77c9b3134fbdf5a3baca081" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>variance_w</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1a215c60d4871c5ec7066073165b4c4e84" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>~PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>~PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>~PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>~PolarDec_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1PolarDec__b__impl_1abb02664f1e739b0e12a49e1fefb15221" prot="public" virt="non-virtual"><scope>gr::projectCACHE::PolarDec_b_impl</scope><name>~PolarDec_b_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

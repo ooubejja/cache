@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<block>
+  <name>PC Error Rate</name>
+  <key>projectCACHE_PC_Error_Rate</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.PC_Error_Rate($usr_id, $nb_chunks)</make>
+
+
+  <param>
+    <name>User ID</name>
+    <key>usr_id</key>
+    <value>5</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Nb of Chunks</name>
+    <key>nb_chunks</key>
+    <value>200</value>
+    <type>int</type>
+  </param>
+
+  
+  <sink>
+    <name>CH_USE</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+  <sink>
+    <name>SNR</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+
+  <sink>
+    <name>BER_INFO</name>
+    <type>message</type>
+    <optional>1</optional>
+  </sink>
+
+</block>

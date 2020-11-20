@@ -49,7 +49,7 @@ ylabel (hax(2), "Throughput (bits/channel use)");
 
 xlabel('TX GAIN');
 hleg1 = legend('Weak User BER','Strong User BER','Weak User Throughput','Strong User Throughput',"location", "southeast");
-title (hax(2), 'BER vs Throughput | 5 Users | 4 Weak + 1 Strong | Rw = 1/3 | Rs = 2/3');
+title (hax(2), 'BER vs Throughput | 5 Users | 4 Weak + 1 Strong | Rw = 1/4 | Rs = 1/2');
 
 
 

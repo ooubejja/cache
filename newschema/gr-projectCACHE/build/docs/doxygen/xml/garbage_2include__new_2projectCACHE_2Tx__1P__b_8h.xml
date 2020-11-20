@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="garbage_2include__new_2projectCACHE_2Tx__1P__b_8h" kind="file" language="C++">
+    <compoundname>garbage/include_new/projectCACHE/Tx_1P_b.h</compoundname>
+    <includes local="no">projectCACHE/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">caching/CheckFunction.h</includes>
+    <includes local="no">caching/EnvironmentSetup.h</includes>
+    <includes local="no">caching/DecodingInput.h</includes>
+    <includes local="no">caching/ConflictGraph.h</includes>
+    <includes local="no">caching/randomHandler.h</includes>
+    <includes local="no">caching/DataDefinition.h</includes>
+    <includes local="no">caching/grasp.h</includes>
+    <includes local="no">caching/hgcc.h</includes>
+    <includes local="no">caching/CodingDecodingData.h</includes>
+    <includes local="no">caching/FuncsFromMain.h</includes>
+    <includes local="no">caching/Conversions.h</includes>
+    <includes local="no">caching/TxRx.h</includes>
+    <incdepgraph>
+      <node id="448">
+        <label>caching/ConflictGraph.h</label>
+      </node>
+      <node id="444">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="452">
+        <label>caching/hgcc.h</label>
+      </node>
+      <node id="446">
+        <label>caching/EnvironmentSetup.h</label>
+      </node>
+      <node id="449">
+        <label>caching/randomHandler.h</label>
+      </node>
+      <node id="450">
+        <label>caching/DataDefinition.h</label>
+      </node>
+      <node id="455">
+        <label>caching/Conversions.h</label>
+      </node>
+      <node id="451">
+        <label>caching/grasp.h</label>
+      </node>
+      <node id="442">
+        <label>Tx_1P_b.h</label>
+        <link refid="garbage_2include__new_2projectCACHE_2Tx__1P__b_8h"/>
+        <childnode refid="443" relation="include">
+        </childnode>
+        <childnode refid="444" relation="include">
+        </childnode>
+        <childnode refid="445" relation="include">
+        </childnode>
+        <childnode refid="446" relation="include">
+        </childnode>
+        <childnode refid="447" relation="include">
+        </childnode>
+        <childnode refid="448" relation="include">
+        </childnode>
+        <childnode refid="449" relation="include">
+        </childnode>
+        <childnode refid="450" relation="include">
+        </childnode>
+        <childnode refid="451" relation="include">
+        </childnode>
+        <childnode refid="452" relation="include">
+        </childnode>
+        <childnode refid="453" relation="include">
+        </childnode>
+        <childnode refid="454" relation="include">
+        </childnode>
+        <childnode refid="455" relation="include">
+        </childnode>
+        <childnode refid="456" relation="include">
+        </childnode>
+      </node>
+      <node id="445">
+        <label>caching/CheckFunction.h</label>
+      </node>
+      <node id="443">
+        <label>projectCACHE/api.h</label>
+      </node>
+      <node id="454">
+        <label>caching/FuncsFromMain.h</label>
+      </node>
+      <node id="453">
+        <label>caching/CodingDecodingData.h</label>
+      </node>
+      <node id="456">
+        <label>caching/TxRx.h</label>
+      </node>
+      <node id="447">
+        <label>caching/DecodingInput.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1projectCACHE_1_1Tx__1P__b" prot="public">gr::projectCACHE::Tx_1P_b</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1projectCACHE">gr::projectCACHE</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/Tx_1P_b.h"/>
+  </compounddef>
+</doxygen>

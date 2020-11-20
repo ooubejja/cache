@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="lib_2crc32__1__bb__impl_8h" kind="file" language="C++">
+    <compoundname>lib/crc32_1_bb_impl.h</compoundname>
+    <includes local="no">projectCACHE/crc32_1_bb.h</includes>
+    <includes local="no">boost/crc.hpp</includes>
+    <incdepgraph>
+      <node id="82">
+        <label>boost/crc.hpp</label>
+      </node>
+      <node id="80">
+        <label>crc32_1_bb_impl.h</label>
+        <link refid="lib_2crc32__1__bb__impl_8h"/>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
+        <label>projectCACHE/crc32_1_bb.h</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1projectCACHE_1_1crc32__1__bb__impl" prot="public">gr::projectCACHE::crc32_1_bb_impl</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1projectCACHE">gr::projectCACHE</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/crc32_1_bb_impl.h"/>
+  </compounddef>
+</doxygen>

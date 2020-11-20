@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_07959549c5e69f52d03c1f1c83d17723" kind="dir">
+    <compoundname>/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/PolarCodingWithoutCaching</compoundname>
+    <innerfile refid="PolarCodingWithoutCaching_2api_8h">api.h</innerfile>
+    <innerfile refid="PolarCodingWithoutCaching_2gain__bf_8h">gain_bf.h</innerfile>
+    <innerfile refid="gr__complex_8h">gr_complex.h</innerfile>
+    <innerfile refid="PolarCodingWithoutCaching_2PolarDec__b_8h">PolarDec_b.h</innerfile>
+    <innerfile refid="PolarDecStrong__b_8h">PolarDecStrong_b.h</innerfile>
+    <innerfile refid="PolarCodingWithoutCaching_2polarEnc__b_8h">polarEnc_b.h</innerfile>
+    <innerfile refid="PolarCodingWithoutCaching_2Rx__1P__b_8h">Rx_1P_b.h</innerfile>
+    <innerfile refid="PolarCodingWithoutCaching_2Tx__1P__b_8h">Tx_1P_b.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/PolarCodingWithoutCaching/"/>
+  </compounddef>
+</doxygen>

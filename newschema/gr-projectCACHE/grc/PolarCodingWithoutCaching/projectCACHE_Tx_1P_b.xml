@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<block>
+  <name>Source</name>
+  <key>projectCACHE_Tx_1P_b</key>
+  <category>projectCACHE</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.Tx_1P_b($GRASP, $n_utenti, $m_files, $b_chunks, $L_demands, $small_packet_len, $len_tag_key)</make>
+  <param>
+    <name>Graph Coloring</name>
+    <key>GRASP</key>
+    <value>True</value>
+    <type>bool</type>
+    <option>
+      <name>GRASP</name>
+      <key>True</key>
+    </option>
+    <option>
+      <name>HGC</name>
+      <key>False</key>
+    </option>
+  </param>
+  <param>
+    <name>Users</name>
+    <key>n_utenti</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Files</name>
+    <key>m_files</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Chunks</name>
+    <key>b_chunks</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Demands</name>
+    <key>L_demands</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Small Packet Length</name>
+    <key>small_packet_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Key</name>
+    <key>len_tag_key</key>
+    <value>"packet_len"</value>
+    <type>string</type>
+  </param>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

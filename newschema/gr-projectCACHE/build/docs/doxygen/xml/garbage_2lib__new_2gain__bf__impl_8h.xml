@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="garbage_2lib__new_2gain__bf__impl_8h" kind="file" language="C++">
+    <compoundname>garbage/lib_new/gain_bf_impl.h</compoundname>
+    <includes local="no">projectCACHE/gain_bf.h</includes>
+    <incdepgraph>
+      <node id="152">
+        <label>projectCACHE/gain_bf.h</label>
+      </node>
+      <node id="151">
+        <label>gain_bf_impl.h</label>
+        <link refid="garbage_2lib__new_2gain__bf__impl_8h"/>
+        <childnode refid="152" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classgr_1_1projectCACHE_1_1gain__bf__impl" prot="public">gr::projectCACHE::gain_bf_impl</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1projectCACHE">gr::projectCACHE</innernamespace>
+    <innernamespace refid="namespacecaching">caching</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/gain_bf_impl.h"/>
+  </compounddef>
+</doxygen>

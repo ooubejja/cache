@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="include_2projectCACHE_2polarEnc__b_8h" kind="file" language="C++">
+    <compoundname>include/projectCACHE/polarEnc_b.h</compoundname>
+    <includes local="no">projectCACHE/api.h</includes>
+    <includes local="no">gnuradio/sync_block.h</includes>
+    <includes local="no">caching/CheckFunction.h</includes>
+    <includes local="no">caching/EnvironmentSetup.h</includes>
+    <includes local="no">caching/DecodingInput.h</includes>
+    <includes local="no">caching/ConflictGraph.h</includes>
+    <includes local="no">caching/randomHandler.h</includes>
+    <includes local="no">caching/DataDefinition.h</includes>
+    <includes local="no">caching/grasp.h</includes>
+    <includes local="no">caching/CodingDecodingData.h</includes>
+    <includes local="no">caching/FuncsFromMain.h</includes>
+    <includes local="no">caching/Conversions.h</includes>
+    <includes local="no">caching/TxRx.h</includes>
+    <includes local="no">caching/PC.h</includes>
+    <includes local="no">string</includes>
+    <includedby refid="garbage_2lib__new_2polarEnc__b__impl_8h" local="no">polarEnc_b_impl.h</includedby>
+    <includedby refid="garbage_2PolarCodingWithoutCaching_2polarEnc__b__impl_8h" local="no">polarEnc_b_impl.h</includedby>
+    <includedby refid="garbage_2testing_2polarEnc__b__impl_8h" local="no">polarEnc_b_impl.h</includedby>
+    <includedby refid="lib_2polarEnc__b__impl_8h" local="no">polarEnc_b_impl.h</includedby>
+    <incdepgraph>
+      <node id="319">
+        <label>caching/ConflictGraph.h</label>
+      </node>
+      <node id="315">
+        <label>gnuradio/sync_block.h</label>
+      </node>
+      <node id="328">
+        <label>string</label>
+      </node>
+      <node id="317">
+        <label>caching/EnvironmentSetup.h</label>
+      </node>
+      <node id="320">
+        <label>caching/randomHandler.h</label>
+      </node>
+      <node id="321">
+        <label>caching/DataDefinition.h</label>
+      </node>
+      <node id="325">
+        <label>caching/Conversions.h</label>
+      </node>
+      <node id="322">
+        <label>caching/grasp.h</label>
+      </node>
+      <node id="313">
+        <label>polarEnc_b.h</label>
+        <link refid="include_2projectCACHE_2polarEnc__b_8h"/>
+        <childnode refid="314" relation="include">
+        </childnode>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="324" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="327" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+      </node>
+      <node id="316">
+        <label>caching/CheckFunction.h</label>
+      </node>
+      <node id="314">
+        <label>projectCACHE/api.h</label>
+      </node>
+      <node id="327">
+        <label>caching/PC.h</label>
+      </node>
+      <node id="324">
+        <label>caching/FuncsFromMain.h</label>
+      </node>
+      <node id="323">
+        <label>caching/CodingDecodingData.h</label>
+      </node>
+      <node id="326">
+        <label>caching/TxRx.h</label>
+      </node>
+      <node id="318">
+        <label>caching/DecodingInput.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="332">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2testing_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="333">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="lib_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="330">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2lib__new_2polarEnc__b__impl_8h"/>
+      </node>
+      <node id="329">
+        <label>polarEnc_b.h</label>
+        <link refid="include_2projectCACHE_2polarEnc__b_8h"/>
+        <childnode refid="330" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="332" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+      </node>
+      <node id="331">
+        <label>polarEnc_b_impl.h</label>
+        <link refid="garbage_2PolarCodingWithoutCaching_2polarEnc__b__impl_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classgr_1_1projectCACHE_1_1polarEnc__b" prot="public">gr::projectCACHE::polarEnc_b</innerclass>
+    <innernamespace refid="namespacegr">gr</innernamespace>
+    <innernamespace refid="namespacegr_1_1projectCACHE">gr::projectCACHE</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/include/projectCACHE/polarEnc_b.h"/>
+  </compounddef>
+</doxygen>

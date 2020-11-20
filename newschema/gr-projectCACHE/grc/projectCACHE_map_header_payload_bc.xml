@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<block>
+  <name>Map Header_Payload</name>
+  <key>projectCACHE_map_header_payload_bc</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.map_header_payload_bc($hx_gain, $payload_maptype, $lengthtagname)</make>
+  <param>
+    <name>Header gain</name>
+    <key>hx_gain</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Payload Modulation</name>
+    <key>payload_maptype</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Key</name>
+    <key>lengthtagname</key>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>complex</type>
+  </source>
+</block>

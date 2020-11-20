@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<block>
+  <name>Gain</name>
+  <key>projectCACHE_gain_bf</key>
+  <category>projectCACHE</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.gain_bf($L_demands, $small_packet_len, $len_tag_key, $DEBUG)</make>
+  <param>
+    <name>Demands</name>
+    <key>L_demands</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Small Packet Length</name>
+    <key>small_packet_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Key</name>
+    <key>len_tag_key</key>
+    <value>"packet_len"</value>
+    <type>string</type>
+  </param>
+  <param>
+    <name>Debug</name>
+    <key>DEBUG</key>
+    <value>False</value>
+    <type>bool</type>
+    <option>
+      <name>Yes</name>
+      <key>True</key>
+    </option>
+    <option>
+      <name>No</name>
+      <key>False</key>
+    </option>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+  <source>
+    <name>out_payload_gain</name>
+    <type>float</type>
+  </source>
+  <source>
+    <name>out_header_gain</name>
+    <type>float</type>
+  </source>
+  <source>
+    <name>out_small_pck_gain</name>
+    <type>float</type>
+  </source>
+</block>

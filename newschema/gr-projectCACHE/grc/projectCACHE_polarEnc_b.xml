@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<block>
+  <name>Polar Encoder</name>
+  <key>projectCACHE_polarEnc_b</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.polarEnc_b($N, $files, $chuncks, $NbStrg, $id_user, $spack_len, $len_tag_key)</make>
+  <param>
+    <name>CodeWord Length</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb of files</name>
+    <key>files</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb of chuncks</name>
+    <key>chuncks</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Nb of Strong Users</name>
+    <key>NbStrg</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>User ID</name>
+    <key>id_user</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Small Pack Length</name>
+    <key>spack_len</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Length Tag Key</name>
+    <key>len_tag_key</key>
+    <type>string</type>
+  </param>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+
+  <source>
+    <name>BER_INFO</name>
+    <type>message</type>
+    <optional>1</optional>
+  </source>
+
+</block>

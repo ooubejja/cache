@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/build/swig/_projectCACHE_swig_swig_tag.cpp
+

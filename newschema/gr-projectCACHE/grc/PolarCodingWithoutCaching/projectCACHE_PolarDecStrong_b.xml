@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<block>
+  <name>Polar Decoder</name>
+  <key>projectCACHE_PolarDec_b</key>
+  <category>[projectCACHE]</category>
+  <import>import projectCACHE</import>
+  <make>projectCACHE.PolarDec_b($N, $K_w, $K_s, $SNR_w, $SNR_s, $lengthtagname)</make>
+  <param>
+    <name>CodeWord Length</name>
+    <key>N</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Weak Msg Length</name>
+    <key>K_w</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>Strong Msg Length</name>
+    <key>K_s</key>
+    <type>int</type>
+  </param>
+  <param>
+    <name>SNR weak</name>
+    <key>SNR_w</key>
+    <type>float</type>
+  </param>
+  <param>
+    <name>SNR Strong</name>
+    <key>SNR_s</key>
+    <type>float</type>
+  </param>
+  <param>
+    <name>Packet Length Name</name>
+    <key>lengthtagname</key>
+    <type>string</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+</block>

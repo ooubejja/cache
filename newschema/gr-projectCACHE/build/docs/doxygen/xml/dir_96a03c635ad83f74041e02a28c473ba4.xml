@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="dir_96a03c635ad83f74041e02a28c473ba4" kind="dir">
+    <compoundname>projectCACHE</compoundname>
+    <innerdir refid="dir_061b14074dadaa4aae465bf5fdbf871f">PolarCodingWithoutCaching</innerdir>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2api_8h">garbage/include_new/projectCACHE/api.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2crc32__1__bb_8h">garbage/include_new/projectCACHE/crc32_1_bb.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2gain__bf_8h">garbage/include_new/projectCACHE/gain_bf.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2map__header__payload__bc_8h">garbage/include_new/projectCACHE/map_header_payload_bc.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2ofdm__frame__equalizer1__vcvc_8h">garbage/include_new/projectCACHE/ofdm_frame_equalizer1_vcvc.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2PolarDec__b_8h">garbage/include_new/projectCACHE/PolarDec_b.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2polarEnc__b_8h">garbage/include_new/projectCACHE/polarEnc_b.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2Rx__1P__b_8h">garbage/include_new/projectCACHE/Rx_1P_b.h</innerfile>
+    <innerfile refid="garbage_2include__new_2projectCACHE_2Tx__1P__b_8h">garbage/include_new/projectCACHE/Tx_1P_b.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/include_new/projectCACHE/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1045 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl" kind="class" language="C++" prot="public">
+    <compoundname>gr::projectCACHE::Rx_1P_b_impl</compoundname>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b</basecompoundref>
+    <basecompoundref refid="classgr_1_1projectCACHE_1_1Rx__1P__b" prot="public" virt="non-virtual">gr::projectCACHE::Rx_1P_b</basecompoundref>
+    <includes refid="garbage_2lib__new_2Rx__1P__b__impl_8h" local="no">Rx_1P_b_impl.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8ad82175b65a8f62102543d4a4515fa7" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_id_utente</definition>
+        <argsstring></argsstring>
+        <name>d_id_utente</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="43" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab66d74206e70ddd87b2ef466ca8ca79a" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_n_utenti</definition>
+        <argsstring></argsstring>
+        <name>d_n_utenti</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="44" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af553967c6318474c636ada30747ec93a" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_m_files</definition>
+        <argsstring></argsstring>
+        <name>d_m_files</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="45" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1afa7729f9bd61ffef7ed4cb8fcc0c27a1" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_b_chunks</definition>
+        <argsstring></argsstring>
+        <name>d_b_chunks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="46" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a39f5fbe3d9c19e94a3a13e68c55820d0" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_L_demands</definition>
+        <argsstring></argsstring>
+        <name>d_L_demands</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="47" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a32d71f476aabef30dd9d2e9ccc671114" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_small_packet_len</definition>
+        <argsstring></argsstring>
+        <name>d_small_packet_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="48" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aeff64e21e038ed5696ee05d70df2bbc1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool gr::projectCACHE::Rx_1P_b_impl::d_DEBUG</definition>
+        <argsstring></argsstring>
+        <name>d_DEBUG</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="49" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a37272ae4fbb800bc52520b958ec20feb" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_id_demand</definition>
+        <argsstring></argsstring>
+        <name>d_id_demand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="51" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af3fc0c1ccf147089d35aced2476a06e0" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_next_id_demand</definition>
+        <argsstring></argsstring>
+        <name>d_next_id_demand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="52" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae226572d55215f92953e5a4a7af41cb4" prot="public" static="no" mutable="no">
+        <type>data_matrix</type>
+        <definition>data_matrix gr::projectCACHE::Rx_1P_b_impl::d_data</definition>
+        <argsstring></argsstring>
+        <name>d_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="55" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8c2b637af8edb952349d298b796f2b88" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_id_requested_file</definition>
+        <argsstring></argsstring>
+        <name>d_id_requested_file</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="56" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a288afd38e38a0680b0da3f9a6d68b796" prot="public" static="no" mutable="no">
+        <type>vector&lt; unsigned int &gt;</type>
+        <definition>vector&lt; unsigned int &gt; gr::projectCACHE::Rx_1P_b_impl::d_files_requested</definition>
+        <argsstring></argsstring>
+        <name>d_files_requested</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="57" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a9f0bacaeb74fd20ace48aac576bfd395" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_n_package_remains</definition>
+        <argsstring></argsstring>
+        <name>d_n_package_remains</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="58" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a20c1ec106e9632af5e8f1fd0b51c881d" prot="public" static="no" mutable="no">
+        <type>header_transmission</type>
+        <definition>header_transmission gr::projectCACHE::Rx_1P_b_impl::d_header</definition>
+        <argsstring></argsstring>
+        <name>d_header</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="60" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab22b7eb49eff0ee7dcb2f762ba7e6bae" prot="public" static="no" mutable="no">
+        <type>vector&lt; char &gt;</type>
+        <definition>vector&lt; char &gt; gr::projectCACHE::Rx_1P_b_impl::d_coded_data</definition>
+        <argsstring></argsstring>
+        <name>d_coded_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="61" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a53cf4a1b847d74c14f45226e7706392f" prot="public" static="no" mutable="no">
+        <type>unsigned short int</type>
+        <definition>unsigned short int gr::projectCACHE::Rx_1P_b_impl::d_id_small_packet</definition>
+        <argsstring></argsstring>
+        <name>d_id_small_packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="63" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a338fb2acc4d9b269fee14c081cad363c" prot="public" static="no" mutable="no">
+        <type>unsigned short int</type>
+        <definition>unsigned short int gr::projectCACHE::Rx_1P_b_impl::d_id_expected</definition>
+        <argsstring></argsstring>
+        <name>d_id_expected</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="64" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8256453ec8e263df8d2eee0fdb350a8d" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_payload_len</definition>
+        <argsstring></argsstring>
+        <name>d_payload_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="66" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1c98a161b19db1cf7f5658c7c16ae3cb" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_number_small_packet</definition>
+        <argsstring></argsstring>
+        <name>d_number_small_packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="67" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a4bd12f9b35245c99570902bb03493de7" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_last_small_packet_len</definition>
+        <argsstring></argsstring>
+        <name>d_last_small_packet_len</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="68" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a926b65932115ced5b7172221c81cc754" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_id_last_small_packet</definition>
+        <argsstring></argsstring>
+        <name>d_id_last_small_packet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="69" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a87c8cca0cbc2ef6d5816a2986a8d558c" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_dummy_bytes</definition>
+        <argsstring></argsstring>
+        <name>d_dummy_bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="70" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6dffc0dfcd33a6dccf44bf6e5750011e" prot="public" static="no" mutable="no">
+        <type>double</type>
+        <definition>double gr::projectCACHE::Rx_1P_b_impl::d_time_sum</definition>
+        <argsstring></argsstring>
+        <name>d_time_sum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="72" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a87e8d10e64224369f394c6ba73a42c" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int gr::projectCACHE::Rx_1P_b_impl::d_case</definition>
+        <argsstring></argsstring>
+        <name>d_case</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="74" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="37" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::calculate_output_stream_length</definition>
+        <argsstring>(const gr_vector_int &amp;ninput_items)</argsstring>
+        <name>calculate_output_stream_length</name>
+        <param>
+          <type>const gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="37" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::Rx_1P_b_impl</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>Rx_1P_b_impl</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::~Rx_1P_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~Rx_1P_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeHeader</definition>
+        <argsstring>(const char *in)</argsstring>
+        <name>decodeHeader</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::changeRequest</definition>
+        <argsstring>()</argsstring>
+        <name>changeRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeSmallPack</definition>
+        <argsstring>(const char *in, unsigned int small_pack_len)</argsstring>
+        <name>decodeSmallPack</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_pack_len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::fill_lacks</definition>
+        <argsstring>()</argsstring>
+        <name>fill_lacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeLargePack</definition>
+        <argsstring>()</argsstring>
+        <name>decodeLargePack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::computeGain</definition>
+        <argsstring>()</argsstring>
+        <name>computeGain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::Rx_1P_b_impl</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>Rx_1P_b_impl</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::~Rx_1P_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~Rx_1P_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeHeader</definition>
+        <argsstring>(const char *in)</argsstring>
+        <name>decodeHeader</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::changeRequest</definition>
+        <argsstring>()</argsstring>
+        <name>changeRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeSmallPack</definition>
+        <argsstring>(const char *in, unsigned int small_pack_len)</argsstring>
+        <name>decodeSmallPack</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_pack_len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::fill_lacks</definition>
+        <argsstring>()</argsstring>
+        <name>fill_lacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeLargePack</definition>
+        <argsstring>()</argsstring>
+        <name>decodeLargePack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::computeGain</definition>
+        <argsstring>()</argsstring>
+        <name>computeGain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/PolarCodingWithoutCaching/Rx_1P_b_impl.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::Rx_1P_b_impl</definition>
+        <argsstring>(unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chunks, unsigned int L_demands, unsigned int small_packet_len, const std::string &amp;len_tag_key, bool DEBUG)</argsstring>
+        <name>Rx_1P_b_impl</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>id_utente</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>n_utenti</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>m_files</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>b_chunks</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>L_demands</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_packet_len</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>len_tag_key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>DEBUG</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>gr::projectCACHE::Rx_1P_b_impl::~Rx_1P_b_impl</definition>
+        <argsstring>()</argsstring>
+        <name>~Rx_1P_b_impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="41" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int gr::projectCACHE::Rx_1P_b_impl::work</definition>
+        <argsstring>(int noutput_items, gr_vector_int &amp;ninput_items, gr_vector_const_void_star &amp;input_items, gr_vector_void_star &amp;output_items)</argsstring>
+        <name>work</name>
+        <param>
+          <type>int</type>
+          <declname>noutput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_int &amp;</type>
+          <declname>ninput_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_const_void_star &amp;</type>
+          <declname>input_items</declname>
+        </param>
+        <param>
+          <type>gr_vector_void_star &amp;</type>
+          <declname>output_items</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="80" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeHeader</definition>
+        <argsstring>(const char *in)</argsstring>
+        <name>decodeHeader</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::changeRequest</definition>
+        <argsstring>()</argsstring>
+        <name>changeRequest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeSmallPack</definition>
+        <argsstring>(const char *in, unsigned int small_pack_len)</argsstring>
+        <name>decodeSmallPack</name>
+        <param>
+          <type>const char *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>small_pack_len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="90" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::fill_lacks</definition>
+        <argsstring>()</argsstring>
+        <name>fill_lacks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::decodeLargePack</definition>
+        <argsstring>()</argsstring>
+        <name>decodeLargePack</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void gr::projectCACHE::Rx_1P_b_impl::computeGain</definition>
+        <argsstring>()</argsstring>
+        <name>computeGain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/lib/Rx_1P_b_impl.h" line="96" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="85">
+        <label>gr::projectCACHE::Rx_1P_b_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="86">
+        <label>gr::projectCACHE::Rx_1P_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b"/>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="91">
+        <label>std::vector&lt; char &gt;</label>
+      </node>
+      <node id="88">
+        <label>gr::projectCACHE::Rx_1P_b_impl</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+        <childnode refid="91" relation="usage">
+          <edgelabel>d_coded_data</edgelabel>
+        </childnode>
+        <childnode refid="92" relation="usage">
+          <edgelabel>d_files_requested</edgelabel>
+        </childnode>
+      </node>
+      <node id="90">
+        <label>tagged_stream_block</label>
+      </node>
+      <node id="89">
+        <label>gr::projectCACHE::Rx_1P_b</label>
+        <link refid="classgr_1_1projectCACHE_1_1Rx__1P__b"/>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="92">
+        <label>std::vector&lt; unsigned int &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" line="35" column="1" bodyfile="/home/othmane/Documents/imt/source_code/newschema/gr-projectCACHE/garbage/lib_new/Rx_1P_b_impl.h" bodystart="34" bodyend="98"/>
+    <listofallmembers>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a06571d975300e963678459e019a6a6b5" prot="protected" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>calculate_output_stream_length</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>changeRequest</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>changeRequest</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a5892bc33f4a61baa3d94fdc5278a90fc" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>changeRequest</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>computeGain</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>computeGain</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af9c706a16f066a921c3d01f460258520" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>computeGain</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1afa7729f9bd61ffef7ed4cb8fcc0c27a1" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_b_chunks</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a87e8d10e64224369f394c6ba73a42c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_case</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab22b7eb49eff0ee7dcb2f762ba7e6bae" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_coded_data</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae226572d55215f92953e5a4a7af41cb4" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_data</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aeff64e21e038ed5696ee05d70df2bbc1" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_DEBUG</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a87c8cca0cbc2ef6d5816a2986a8d558c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_dummy_bytes</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a288afd38e38a0680b0da3f9a6d68b796" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_files_requested</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a20c1ec106e9632af5e8f1fd0b51c881d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_header</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a37272ae4fbb800bc52520b958ec20feb" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_demand</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a338fb2acc4d9b269fee14c081cad363c" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_expected</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a926b65932115ced5b7172221c81cc754" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_last_small_packet</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8c2b637af8edb952349d298b796f2b88" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_requested_file</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a53cf4a1b847d74c14f45226e7706392f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_small_packet</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8ad82175b65a8f62102543d4a4515fa7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_id_utente</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a39f5fbe3d9c19e94a3a13e68c55820d0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_L_demands</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a4bd12f9b35245c99570902bb03493de7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_last_small_packet_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af553967c6318474c636ada30747ec93a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_m_files</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a9f0bacaeb74fd20ace48aac576bfd395" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_n_package_remains</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab66d74206e70ddd87b2ef466ca8ca79a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_n_utenti</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1af3fc0c1ccf147089d35aced2476a06e0" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_next_id_demand</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1c98a161b19db1cf7f5658c7c16ae3cb" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_number_small_packet</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a8256453ec8e263df8d2eee0fdb350a8d" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_payload_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a32d71f476aabef30dd9d2e9ccc671114" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_small_packet_len</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6dffc0dfcd33a6dccf44bf6e5750011e" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>d_time_sum</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeHeader</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeHeader</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ad6836848dff4a1666ef73fccfc7e948b" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeHeader</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeLargePack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeLargePack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1aaa0f017292394bb1c260d9996ca8f1da" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeLargePack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeSmallPack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeSmallPack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ab70cb06a91315ffc90a036b56ef22700" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>decodeSmallPack</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>fill_lacks</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>fill_lacks</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a97d613aa0014e33996b65396bbdecf07" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>fill_lacks</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1abb1c23895ee1b921714675c3e3a722ec" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>make</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>Rx_1P_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>Rx_1P_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a1a9c9b11fec35bc96b51ec072f488022" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>Rx_1P_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b_1ab3222718674c72dcf9d9e24d426ec8b7" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>sptr</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1a6aa848186092e7024adef73f793f6b2f" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>work</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>~Rx_1P_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>~Rx_1P_b_impl</name></member>
+      <member refid="classgr_1_1projectCACHE_1_1Rx__1P__b__impl_1ae424dffe1623849893a5ee1fe243af5a" prot="public" virt="non-virtual"><scope>gr::projectCACHE::Rx_1P_b_impl</scope><name>~Rx_1P_b_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
