@@ -38,3 +38,7 @@
 *.exe
 *.out
 *.app
+
+*.cache
+*.png
+*.jpg
