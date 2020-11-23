@@ -14,7 +14,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include <vector>
+#include <vector>	
 
 #include "utilityForTesting.h"
 #include "DataDefinition.h"
@@ -25,39 +25,17 @@
 
 #include <complex.h>
 
-#include <cstdlib>
-#include <iterator>
-#include <sstream>
-
-
 typedef std::complex<float> gr_complex;
 
 namespace caching{
 
 void TX_PC_Pack(vector<header_polar> &, vector< vector<char> > coded_data, unsigned int , vector<vector<char> > &, int, vector<int> &);//vector<char> &
 
-
-vector<char> Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , int , int , double , PC, PC, header_polar, int *, int *, vector<unsigned int> &cw_raw);
+void Process_Data(vector<gr_complex> , int , unsigned int &, int , int , bool , int , double , PC, PC, header_polar,int, int);
 
 vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> >);
 
-/*
-// othmane :
-*/
-
-char compute_CRC8(vector<char> input);
-
-std::string execute( std::string cmd );
-
-std::string LoadFile(const char* FileLocation);
-
-int find_index(vector<unsigned int>, int);
-
-void mycompare(string, string, int);
-
-// othmane
-// void decodeDataStrong(int N,int K_w,int K_s,double d_SNR, gr_complex* coded_symb,string ,PC ,PC, bool ,unsigned int & );
-vector<char> decodeDataStrong(int N,int K_w,int K_s,double d_SNR, vector<gr_complex> coded_symb,string ,PC ,PC, bool ,unsigned int &, int *, int *);
+void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string ,PC ,PC, bool ,unsigned int & ,header_polar , int, int);
 
 void toHeaderWeak(header_polar , header_transmission &header);
 

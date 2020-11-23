@@ -25,7 +25,7 @@
 #include <gnuradio/io_signature.h>
 #include "map_header_payload_bc_impl.h"
 
-#define SQRT_TWO 0.707107
+#define SQRT_TWO 0.707107/2
 
 using namespace std;
 using namespace caching;
@@ -34,20 +34,20 @@ namespace gr {
   namespace projectCACHE {
 
     map_header_payload_bc::sptr
-    map_header_payload_bc::make(int hx_maptype, int payload_maptype, const std::string &lengthtagname)
+    map_header_payload_bc::make(int hx_gain, int payload_maptype, const std::string &lengthtagname)
     {
       return gnuradio::get_initial_sptr
-        (new map_header_payload_bc_impl(hx_maptype, payload_maptype, lengthtagname));
+        (new map_header_payload_bc_impl(hx_gain, payload_maptype, lengthtagname));
     }
 
     /*
      * The private constructor
      */
-    map_header_payload_bc_impl::map_header_payload_bc_impl(int hx_maptype, int payload_maptype, const std::string &lengthtagname)
+    map_header_payload_bc_impl::map_header_payload_bc_impl(int hx_gain, int payload_maptype, const std::string &lengthtagname)
       : gr::tagged_stream_block("map_header_payload_bc",
               gr::io_signature::make(1, 1, sizeof(char)),
               gr::io_signature::make(1, 1, sizeof(gr_complex)), lengthtagname),
-      d_hxmod(hx_maptype),
+      d_hxgain(hx_gain),
       d_payloadmod(payload_maptype),
       d_len_tag_key(pmt::string_to_symbol(lengthtagname))
     {
@@ -60,7 +60,7 @@ namespace gr {
       d_constellation[2] = gr_complex(-SQRT_TWO, SQRT_TWO);
       d_constellation[3] = gr_complex(SQRT_TWO, SQRT_TWO);
 
-      // set_tag_propagation_policy(TPP_DONT);
+      set_tag_propagation_policy(TPP_DONT);
 
     }
 
@@ -105,6 +105,7 @@ namespace gr {
       vector<unsigned int> data_bits;
       vector<unsigned int> data_symb;
       int out_len;
+      int sum;
 
       //cout << d_k << ", " << length_subpacket << endl;
 
@@ -114,7 +115,7 @@ namespace gr {
       //2. Convert to QPSK modulation
       out_len = 4*length_subpacket;
       for(int i=0; i<out_len; i++){
-        data_symb.push_back(0);
+          data_symb.push_back(0);
           for (int k = 0; k < 2; k++){
               data_symb[i] += data_bits[2*i+k]*pow(2,k);
           }
@@ -133,16 +134,19 @@ namespace gr {
                   out[i] = d_constellation[3];
                   break;
           }
-          // if((length_subpacket-6)%7 != 0){
-          if((length_subpacket)%7 != 0){
-            if(i>=8)  // boost small packet id too
-              out[i] /= 4 ;  // 20log10(4) = 12,04 dB (difference between hdr and pld)
+          sum=0;
+          for(int k=0; k<8; k++)
+            sum+=data_bits[k];
+
+          if(sum != 0){
+            if(i >= 8)
+               out[i] /=d_hxgain;
           }
       }
 
 
 /*********************THIS PART SUPPORT MULTIPLE MODULATION FOR THE DIFFERENT PACKET***********************/
-      // 2. Convert the first two bytes that contains the packet ID to BPSK
+      //2. Convert the first two bytes that contains the packet ID to BPSK
       /*int twoByteLen = 8;
       for (int i = 0; i < twoByteLen; ++i){
         out[i] = data_bits[i]? gr_complex(1,0): gr_complex(-1,0);

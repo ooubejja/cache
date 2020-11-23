@@ -41,7 +41,7 @@ typedef struct NODO{
     int degree;   //number of edges connection
     int id_utente;
     int id_file;
-    int id_chunck;
+    vector<int> id_chunck;
 }nodo;
 
 typedef struct ARC_STRUCT{
@@ -84,6 +84,7 @@ typedef struct HEADER_TRANSMISSION{
     vector<unsigned int> id_files;
     vector<unsigned int> id_chunks;
     vector<unsigned int> size_package;
+    vector<unsigned int> nb_chunks;
 }header_transmission;
 
 typedef struct HEADER_POLAR{
@@ -91,6 +92,7 @@ typedef struct HEADER_POLAR{
     vector<unsigned int> id_files;
     vector<unsigned int> id_chunks;
     vector<unsigned int> size_package;
+    vector<unsigned int> nb_chunks;
     bool strong;
     bool weak;
 }header_polar;

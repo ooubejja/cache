@@ -1,7 +1,7 @@
 /*
  * PC.h
  *
- *  Created on: 6 fï¿½vr. 2018
+ *  Created on: 6 févr. 2018
  *  Modified on: 23 jul. 2018
  *      Author: KAMEL
  */
@@ -66,7 +66,7 @@ public:
 	void noise(int * sentSymbol, float * receivedSymbol, float variance);
 	void noise_c(gr_complex * sentSymbol, gr_complex * receivedSymbol, float variance);
 	void computeLLR(double * llr, float * receivedSymbol, float variance); // BPSK modulation where 0 -> 1 and 1 -> -1
-	void computeLLR_qpsk(double * llr, vector<gr_complex> receivedSymbol, float variance); // QPSK modulation where -1-i -> 0, -1+i -> 1, 1-i -> 2, 1+i -> 3
+	void computeLLR_qpsk(double * llr, gr_complex * receivedSymbol, float variance); // QPSK modulation where -1-i -> 0, -1+i -> 1, 1-i -> 2, 1+i -> 3
 	void SC(int * recMessage, int * recCodeword, double * llr, int * sentFrozen);
 	void recursiveSC(int m, int N, int p, int * sentMessage);
 

@@ -18,14 +18,14 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-#    projectCACHE_Tx_1P_b.xml
-#    projectCACHE_Rx_1P_b.xml
-    projectCACHE_gain_bf.xml
+    #projectCACHE_Tx_1P_b.xml
+    #projectCACHE_Rx_1P_b.xml
+    #projectCACHE_gain_bf.xml
     projectCACHE_polarEnc_b.xml
     projectCACHE_PolarDec_b.xml
     #projectCACHE_PolarDecStrong_b.xml
     projectCACHE_crc32_1_bb.xml
     projectCACHE_ofdm_frame_equalizer1_vcvc.xml
-    projectCACHE_PC_Error_Rate.xml
-    projectCACHE_map_header_payload_bc.xml DESTINATION share/gnuradio/grc/blocks
+    projectCACHE_map_header_payload_bc.xml
+    projectCACHE_PC_Error_Rate.xml DESTINATION share/gnuradio/grc/blocks
 )

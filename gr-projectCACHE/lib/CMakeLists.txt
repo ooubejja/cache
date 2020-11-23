@@ -24,8 +24,11 @@ include(GrPlatform) #define LIB_SUFFIX
 
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
+
 list(APPEND projectCACHE_sources
-    gain_bf_impl.cc
+    #Tx_1P_b_impl.cc
+    #Rx_1P_b_impl.cc
+    #gain_bf_impl.cc
     polarEnc_b_impl.cc
     PolarDec_b_impl.cc
     ofdm_frame_equalizer1_vcvc_impl.cc

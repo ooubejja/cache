@@ -22,9 +22,9 @@
 ########################################################################
 install(FILES
     api.h
-#    Tx_1P_b.h
-#    Rx_1P_b.h
-    gain_bf.h
+    #Tx_1P_b.h
+    #Rx_1P_b.h
+    #gain_bf.h
     polarEnc_b.h
     PolarDec_b.h
     #PolarDecStrong_b.h

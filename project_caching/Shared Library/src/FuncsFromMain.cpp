@@ -28,7 +28,8 @@ int checkTransmission(string original_file, string decoded_file){
     return ritorno;
 }
 
-void makeCache(unsigned int id_utente, int **Ind, vector<string> files, unsigned int b_chuncks, unsigned int m_files, unsigned int *n_package_remains, unsigned int id_requested_file, string pathFolder){
+void makeCache(unsigned int id_utente, int **Ind, vector<string> files, unsigned int b_chuncks, 
+    unsigned int m_files, unsigned int *n_package_remains, unsigned int id_requested_file, string pathFolder){
     //string pathFolder = "/CachingFile/cache/UserCache/user_" + to_string(id_utente);
     pathFolder = "UserCache/user_" + to_string(id_utente);
     if (mkdir(pathFolder.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) == -1) {
@@ -177,18 +178,18 @@ data_matrix generateData(unsigned int m_files, unsigned int b_chuncks, unsigned 
     //Read environment file
     FILE *env_file;
     env_file = fopen("../environment/environment_file","rb"); //"/CachingFile/environment/environment_file"
-    cout << "Hello" << endl;
+    //cout << "Hello" << endl;
     fread(&input_size,sizeof(int),1,env_file);
-    cout << "Hello" << endl;
+    //cout << "Hello" << endl;
 
     offset = id_demand * (input_size + 1) * sizeof(int);
-    cout << "Hello" << endl;
+    //cout << "Hello" << endl;
 
     fseek(env_file, offset, SEEK_SET);
-    cout << "Hello" << endl;
+    //cout << "Hello" << endl;
 
     fread(&input_size,sizeof(int),1,env_file);
-    cout << "Hello" << endl;
+    //cout << "Hello" << endl;
 
     for(unsigned int i=0; i<input_size; i++)
     {
@@ -239,5 +240,16 @@ string my_to_string(int a)
     
     return b;
 }
+
+int index_find(vector<unsigned int> v, unsigned int value) 
+{
+    for (unsigned int i = 0; i < v.size(); ++i)
+    {
+        if(v[i] == value)
+            return i;
+    }
+    return -1;
+}
+
 
 }//end namespace caching

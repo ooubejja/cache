@@ -1,7 +1,7 @@
 /*
  * PC.cpp
  *
- *  Created on: 6 fï¿½vr. 2018
+ *  Created on: 6 févr. 2018
  *  Modified on: 23 jul. 2018
  *      Author: KAMEL
  */
@@ -699,30 +699,24 @@ void PC::encode(int * sentInfo, int * sentFrozen, int * sentMessage, int * sentC
 {
 
 	int i,j;
-	// cout << endl << "C0" << endl;
 	for (i = 0; i<dimension; i++)
 		sentMessage[infoBits[i]] = sentInfo[i];
 	for (i = 0; i<(length-dimension); i++)
 		sentMessage[frozenBits[i]] = sentFrozen[i];
 
-	// cout << "C1" << endl;
-
 	for (j=0; j<length; j++)
 	{
-		// cout << "C10";
 		sentCodeword[j] = sentMessage[0]*genMatrix[0][j];
-		// cout << "C11";
 		for(i=1; i<length; i++)
 			sentCodeword[j] = sentCodeword[j] + sentMessage[i]*genMatrix[i][j];
 		sentCodeword[j] = sentCodeword[j]%2;
-		// cout << "C12";
+
 		if (sentCodeword[j] == 0)
 			sentSymbol[j] = 1;
 		else
 			sentSymbol[j] = -1;
-		// cout << "C13";
 	}
-	// cout << endl << "C2";
+
 }
 
 void PC::noise(int * sentSymbol, float * receivedSymbol, float sqrtVariance)
@@ -762,7 +756,7 @@ void PC::computeLLR(double * llr, float * receivedSymbol, float variance)
 	}
 }
 
-void PC::computeLLR_qpsk(double * llr, vector<gr_complex> receivedSymbol, float variance)
+void PC::computeLLR_qpsk(double * llr, gr_complex* receivedSymbol, float variance)
 {
 	int j=0;
 	float p0,p1;
@@ -1017,3 +1011,4 @@ PC::PC()
 PC::~PC() {
 	// TODO Auto-generated destructor stub
 }
+

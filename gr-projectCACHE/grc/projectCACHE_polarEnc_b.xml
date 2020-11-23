@@ -4,20 +4,10 @@
   <key>projectCACHE_polarEnc_b</key>
   <category>[projectCACHE]</category>
   <import>import projectCACHE</import>
-  <make>projectCACHE.polarEnc_b($N, $K_w, $K_s, $files, $chuncks, $NbStrg, $id_user, $spack_len, $len_tag_key)</make>
+  <make>projectCACHE.polarEnc_b($N, $files, $chuncks, $NbStrg, $id_user, $spack_len, $len_tag_key)</make>
   <param>
     <name>CodeWord Length</name>
     <key>N</key>
-    <type>int</type>
-  </param>
-  <param>
-    <name>Weak Msg Length</name>
-    <key>K_w</key>
-    <type>int</type>
-  </param>
-  <param>
-    <name>Strong Msg Length</name>
-    <key>K_s</key>
     <type>int</type>
   </param>
   <param>
@@ -53,16 +43,6 @@
   <source>
     <name>out</name>
     <type>byte</type>
-  </source>
-  <source>
-    <name>TX_MSG</name>
-    <type>message</type>
-    <optional>1</optional>
-  </source>
-  <source>
-    <name>TX_CW</name>
-    <type>message</type>
-    <optional>1</optional>
   </source>
 
   <source>

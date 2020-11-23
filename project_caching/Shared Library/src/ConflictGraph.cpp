@@ -4,118 +4,233 @@ namespace caching{
 
 /* Variables declaration */
 int n_utenti;
+vector<int> chunks_Node; //Nb chunks per packet/node per user
 int m_files;
-int b_chuncks;
-int n_nodi;
+int b_chunks;
+vector<int> nodi_user; //Nb nodes per user
 int m_archi;
+int sizenodes;
 
 int ***Ind = NULL;
 int *Q = NULL;
 int **Q_chuncks = NULL;
 
-int **Matrix_Adj = NULL;
-nodo *nodes = NULL;
 
-/******************************************************************************************************************************************/
+vector<nodo> nodes; //The vector (structure) of nodes
+int **Matrix_Adj = NULL;
+nodo *node_list = NULL;
+
+/*************************************************************************************************************/
 void computeNumberOfNodes(){
     int i, k, id_file;
-    n_nodi = 0;
 
+    cout << "--- Compute Nodes ---" << endl;
     /*For each user ...*/
     for (i=0; i<n_utenti; i++){
+        //nodi_user[i] will contain at the end the number of chunks requested by (not in the cache of) user i 
+        nodi_user.push_back(0);
+        /*The file that the user 'i' request*/
+        id_file = Q[i];
         /*For each chunk ...*/
-        for (k=0; k<b_chuncks; k++){
-            /*The file that the user 'i' request*/
-            id_file = Q[i];
-            /*Checvk if user 'i' have in cache the chunk 'k' related to files 'id_file'*/
+        for (k=0; k<b_chunks; k++){
+            
+            /*Check if user 'i' have in its cache the chunk 'k' related to files 'id_file'*/
             if (Ind[i][id_file][k] == 1){
                 Q_chuncks[i][k] = 0;
             }else{
                 Q_chuncks[i][k] = 1;
-                n_nodi++;
+                nodi_user[i]++;
             }
+            //nodi_user[i] = ceil(nodi_user[i]/chunks_Node[i]);
         }
+        cout << nodi_user[i] << ", ";
     }
+    cout << endl;
 }
 
-/*This is a function that provide to make a nodes of the conflict information graph*/
+/*This is a function that builds the nodes of the conflict information graph*/
 void makeNodes(){
-    int i, j, k, id;
+    int i, j, k, l, id, nb_pck;
+    id = 0; nb_pck = 0;
+    nodo n1;
 
-    nodes = (nodo *) malloc (n_nodi * sizeof(nodo));
-    if (!nodes){
-        printf("\nError: Allocation Nodes.\n");
-		exit(0);
-    }
+    cout << "--- Make Nodes ---" << endl;
 
-    Matrix_Adj = (int **) malloc (n_nodi * sizeof(int *));
-    check_memory_allocation_2D(Matrix_Adj, "Allocation 2D Adj Matrix.");
-
-    for (i=0; i<n_nodi; i++){
-        Matrix_Adj[i] = (int *) malloc (n_nodi * sizeof(int));
-        check_memory_allocation_1D(Matrix_Adj[i], "Allocation 1D Adj Matrix.");
-    }
-
-    for (i=0; i<n_nodi; i++){
-        Matrix_Adj[i][i] = 0;
-    }
-
-    id =0;
-    /*For each user and for each chunk related to requested file that the user not have in cache will be created a node*/
+    /*For each user and for each chunk related to the requested file 
+    that the user do not have in cache will be created a node*/
     for (i=0; i<n_utenti; i++){
-        j = Q[i];
-        for (k=0; k<b_chuncks; k++){
-            if (Q_chuncks[i][k] == 1){
-                nodes[id].id = id;
-                nodes[id].degree = 0;
-                nodes[id].id_utente = i;
-                nodes[id].id_chunck = k;
-                nodes[id].id_file = j;
-                id++;
+        //nb_pck will contain the number of packets required given the code rate (chunks_Node)
+        nb_pck += ceil(nodi_user[i]/chunks_Node[i]);
+        //cout << nb_pck << ", ";
+        vector<unsigned int> chunks_f;
+        j = Q[i]; l  = 0; k=0;
+        cout << chunks_Node[i] << endl;
+        if(chunks_Node[i]==3){
+            //Added new w.r.t. the section below
+            /*for (int k = 0; k < b_chunks; k += 3)
+            {
+                //Q_chuncks[i][k] == 1 means that the k, k+1, k+2, and k+3, k+4, k+5 chunks are not cached 
+                //(due to the caching policy), therefore the codeword should be k, k+1, and k+2
+                if(Q_chuncks[i][k] == 1){
+                    n1.id = id;
+                    n1.degree = 0;
+                    n1.id_utente = i;
+                    n1.id_file = j;
+                    n1.id_chunck.push_back(k); n1.id_chunck.push_back(k+1); n1.id_chunck.push_back(k+2);
+                    chunks_f.push_back(k); chunks_f.push_back(k+1); chunks_f.push_back(k+2);
+                    nodes.push_back(n1);
+                    id++;
+                    n1.id_chunck = vector<int> ();
+                }
             }
+            cout << chunks_f.size() << ", " << nodes.size() << endl;
+            while(chunks_f[chunks_f.size()-1] >= b_chunks){
+                nodes[nodes.size()-1].id_chunck.pop_back();
+                chunks_f.pop_back();
+                //ccc++;
+            }*/
+            /*cout << chunks_f.size() << ", " << nodes[nodes.size()-1].id_chunck.size() << endl;
+            cout << "Nb of removed chunks: " << ccc << endl;*/
+            //Add the remaining packets to the vector of packets
+            for (int k = 0; k < b_chunks; k++){
+                //int index = index_find(chunks_f, k);
+                if (Q_chuncks[i][k] == 1){ //index == -1 && 
+                    if(l==0){
+                        n1.id = id;
+                        n1.degree = 0;
+                        n1.id_utente = i;
+                        n1.id_file = j;
+                        n1.id_chunck.push_back(k);
+                        chunks_f.push_back(k);
+                        l++;
+                    }else if(l==1){
+                       n1.id_chunck.push_back(k);
+                       l++;
+                    } else if (l==2){
+                        n1.id_chunck.push_back(k);
+                        nodes.push_back(n1);
+                        n1.id_chunck = vector<int> ();
+                        l=0;
+                        id++; 
+                    }
+                }
+            }
+            /*for(int cc=0; cc< nodes.size(); cc++)
+                for(int ccc=0; ccc<nodes[cc].id_chunck.size(); ccc++)
+                    cout << nodes[cc].id_chunck[ccc] << ", ";*/
+
+        } else if (chunks_Node[i] < 3){
+            while(k < b_chunks){
+                if(Q_chuncks[i][k] == 1){
+                    if(l==0 || chunks_Node[i] == 1){
+                        n1.id = id;
+                        n1.degree = 0;
+                        n1.id_utente = i;
+                        n1.id_file = j;
+                        n1.id_chunck.push_back(k);
+                        l++;
+                        if(l == chunks_Node[i] || k == (b_chunks-1)){//here l==chunks_Node[i] means chunks_Node[i] =1
+                            nodes.push_back(n1);
+                            n1.id_chunck = vector<int> ();
+                            l=0;
+                            id++;
+                        }
+                    }
+                    else if (l < chunks_Node[i]){
+                        n1.id_chunck.push_back(k);
+                        l++;
+                        if(l == chunks_Node[i] || k == (b_chunks-1)){
+                            nodes.push_back(n1);
+                            n1.id_chunck = vector<int> ();
+                            l=0;
+                            id++;
+                        }
+                    }
+                }      
+                k++;   
+            }
+        } else {
+            cout << "Case NOT Suported!" << endl;
+            exit(0);
+        }
+        cout << "\nNb of nodes: " << nodes.size() << endl;
+        
+        if (id != nb_pck){
+            cout << "\nError: Create Nodes Number Dismatch With The Aspected Nodes Number.\n";
+            cout << id << "!=" << nb_pck << endl;
+            exit(0);
         }
     }
-
-    if (id != n_nodi){
-        printf("\nError: Create Nodes Number Dismatch With The Aspected Nodes Number.\n");
-		exit(0);
-    }
+    
+    sizenodes = nodes.size();
+    cout << "Number of node: " << sizenodes << endl;
+    cout << "--- Make Nodes Completed ---" << endl;
+    
 }
 
 /*This is a function that provide to make a edges of the conflict information graph*/
 void makeEdges(){
-    int i_1, j_1, k_1, i_2, j_2, k_2, id1, id2;
-
+    int i_1, j_1, i_2, j_2, id1, id2;
+    unsigned int i, cc;
+    cc=0;
+    
+    vector<int> c1;
+    vector<int> c2;
+    bool edge;
     m_archi = 0;
 
-    /*For each pair of nodes of the conflict information graph ...*/
-    for (id1=0; id1<n_nodi-1; id1++){
-        for (id2=(id1+1); id2<n_nodi; id2++){
+    cout << "--- Make Edges ---" << endl;
+
+    Matrix_Adj = (int **) malloc (sizenodes * sizeof(int *));
+    check_memory_allocation_2D(Matrix_Adj, "Allocation 2D Adj Matrix.");
+
+    for (int j=0; j<sizenodes; j++){
+        Matrix_Adj[j] = (int *) malloc (sizenodes * sizeof(int));
+        check_memory_allocation_1D(Matrix_Adj[j], "Allocation 1D Adj Matrix.");
+    }
+
+    for (int j=0; j<sizenodes; j++){
+        Matrix_Adj[j][j] = 0;
+    }
+
+    for (id1 = 0; id1 < sizenodes-1; ++id1){
+        for (id2 = (id1+1); id2 < sizenodes; ++id2){
             i_1 = nodes[id1].id_utente;
             j_1 = nodes[id1].id_file;
-            k_1 = nodes[id1].id_chunck;
+            c1 = nodes[id1].id_chunck;
 
             i_2 = nodes[id2].id_utente;
             j_2 = nodes[id2].id_file;
-            k_2 = nodes[id2].id_chunck;
-            /*If the files requests by user 'i_1' and user 'i_2' are different or, the chunk requests by user 'i_1' and user 'i_2' are different and
-            the user 'i_2' not have in cache the chunk requests by user 'i_1' or the user 'i_1' not have in cache the chunk requests by user 'i_2' then will be created an edges between the two nodes
-            of the conflict information graph*/
-            if ( ( ( k_1 != k_2 ) || ( j_1 != j_2) ) && ( ( Ind[i_2][j_1][k_1] == 0 ) || ( Ind[i_1][j_2][k_2] == 0 ) ) ){
+            c2 = nodes[id2].id_chunck;
+
+            //Check if all chunks associated to node id1 are in the cache of the user associated with node id2
+            edge = false;
+            for(i=0; i<c1.size(); i++){
+                if(Ind[i_2][j_1][c1[i]] == 0 )
+                    edge = true;
+            }
+            for(i=0; i<c2.size(); i++){
+                if(Ind[i_1][j_2][c2[i]] == 0 )
+                    edge = true;
+            }
+            if(edge){
                 Matrix_Adj[id1][id2] = 1;
                 Matrix_Adj[id2][id1] = 1;
                 nodes[id1].degree++;
                 nodes[id2].degree++;
                 m_archi += 2;
-            }else{
+            } else{
                 Matrix_Adj[id1][id2] = 0;
                 Matrix_Adj[id2][id1] = 0;
+                cc++;
             }
+            
         }
     }
+    cout << cc << endl;
 }
 
-/******************************************************************************************************************************************/
+/****************************************************************************************************************/
 void _dealloc(){
     int i;
 
@@ -129,26 +244,31 @@ void _dealloc(){
 
     free(Q_chuncks);
     Q_chuncks = NULL;
+
+    nodes = vector<nodo> ();
+
 }
 
-/******************************************************************************************************************************************/
+/*****************************************************************************************************************/
 
 /*This is a main function*/
-cf_data conflictGraphGenerator(data_matrix data){
+cf_data conflictGraphGenerator(data_matrix data, vector<int> coderate){
     m_files = data.m_files;
-    b_chuncks = data.b_chunks;
+    b_chunks = data.b_chunks;
     n_utenti = data.n_utenti;
     Ind = data.Ind;
     Q = data.Q;
     Q_chuncks = data.Q_chuncks;
-
     cf_data output;
+    unsigned int i;
 
+    chunks_Node = coderate;//6 because we assume the chunk size is 1/6 of the packet size
+    cout << "--- Conflict Graph ---" << endl;
     if (Ind != NULL && Q != NULL && Q_chuncks != NULL){
         /*Bulding a conflict information graph*/
         computeNumberOfNodes();
 
-        if (n_nodi > 0){
+        if (nodi_user[0] > 0){
             makeNodes();
             makeEdges();
         }else{
@@ -156,8 +276,19 @@ cf_data conflictGraphGenerator(data_matrix data){
         }
 
         output.Matrix_Adj = Matrix_Adj;
-        output.n_nodi = n_nodi;
-        output.nodes = nodes;
+        output.n_nodi = sizenodes;
+        //Copy the nodes into the array node_list for compatibility with the functions in other files
+        node_list = (nodo *) malloc (sizenodes * sizeof(nodo));
+        if (!node_list){
+            printf("\nError: Allocation Nodes.\n");
+            exit(0);
+        }
+        for (i = 0; i < sizenodes; ++i){
+            node_list[i] = nodes.at(i);
+            cout << nodes.at(i).id_chunck.size() << ",";
+        }
+        cout << endl;
+        output.nodes = node_list;
         output.Ind = Ind;
 
         //_dealloc();

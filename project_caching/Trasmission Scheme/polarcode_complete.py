@@ -8,7 +8,6 @@
 
 from gnuradio import analog
 from gnuradio import blocks
-from gnuradio import digital
 from gnuradio import eng_notation
 from gnuradio import gr
 from gnuradio.digital.utils import tagged_streams
@@ -21,38 +20,38 @@ import projectCACHE
 
 class polarcode_complete(gr.top_block):
 
-    def __init__(self):
+    def __init__(self, id_user=0):
         gr.top_block.__init__(self, "Polarcode Complete")
+
+        ##################################################
+        # Parameters
+        ##################################################
+        self.id_user = id_user
 
         ##################################################
         # Variables
         ##################################################
-        self.boost = boost = 20*numpy.log10(4)
-        self.snr = snr = boost + 15
-        self.Kw = Kw = 70*8
+        self.snr = snr = 25
         self.variance = variance = 1/pow(10,snr/10.0)
         self.small_packet_len = small_packet_len = 52
         self.samp_rate = samp_rate = 1e6
-        self.payload_mod = payload_mod = digital.constellation_qpsk()
         self.packetlength = packetlength = "packet_len"
-        self.n_users = n_users = 5
-        self.id_user = id_user = 5
-        self.header_mod = header_mod = digital.constellation_bpsk()
+        self.n_users = n_users = 4
+        self.coderate = coderate = [3,3,3,3,4]
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
-        self.NbChuncks = NbChuncks = 100
+        self.NbChuncks = NbChuncks = 200
         self.N = N = 2048
-        self.Ks = Ks = 2*Kw
 
         ##################################################
         # Blocks
         ##################################################
-        self.projectCACHE_polarEnc_b_0 = projectCACHE.polarEnc_b(N, Kw, Ks, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, "packet_len")
-        self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(0, 0, 'packet_len')
-        self.projectCACHE_PolarDec_b_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, n_users, small_packet_len, packetlength)
-        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate()
-        self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
-        self.blocks_throttle_0_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
+        self.projectCACHE_polarEnc_b_0 = projectCACHE.polarEnc_b(N, Nbfiles, NbChuncks, NbStrgUsers, id_user, small_packet_len, "packet_len")
+        self.projectCACHE_map_header_payload_bc_0 = projectCACHE.map_header_payload_bc(4, 2, packetlength)
+        self.projectCACHE_PolarDec_b_0 = projectCACHE.PolarDec_b(N, Nbfiles, NbChuncks, id_user, n_users, small_packet_len, 42, coderate[id_user], packetlength)
+        self.projectCACHE_PC_Error_Rate_0 = projectCACHE.PC_Error_Rate(id_user, NbChuncks)
+        self.blocks_throttle_0 = blocks.throttle(gr.sizeof_gr_complex*1, samp_rate,True)
+        self.blocks_tag_debug_0_0 = blocks.tag_debug(gr.sizeof_char*1, '', ""); self.blocks_tag_debug_0_0.set_display(False)
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 
@@ -61,24 +60,20 @@ class polarcode_complete(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0, 'SNR'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'RX_CW'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0, 'RX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'RX_MSG'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_CW'), (self.projectCACHE_PC_Error_Rate_0, 'TX_CW'))
-        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'TX_MSG'), (self.projectCACHE_PC_Error_Rate_0, 'TX_MSG'))
-        self.connect((self.analog_noise_source_x_0, 0), (self.blocks_add_xx_0, 1))
-        self.connect((self.blocks_add_xx_0, 0), (self.blocks_throttle_0_0, 0))
-        self.connect((self.blocks_add_xx_0, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
-        self.connect((self.blocks_throttle_0_0, 0), (self.projectCACHE_PolarDec_b_0, 0))
+        self.msg_connect((self.projectCACHE_PolarDec_b_0, 'CH_USE'), (self.projectCACHE_PC_Error_Rate_0, 'CH_USE'))
+        self.msg_connect((self.projectCACHE_polarEnc_b_0, 'BER_INFO'), (self.projectCACHE_PC_Error_Rate_0, 'BER_INFO'))
+        self.connect((self.analog_noise_source_x_0, 0), (self.blocks_throttle_0, 0))
+        self.connect((self.blocks_add_xx_0, 0), (self.projectCACHE_PolarDec_b_0, 0))
+        self.connect((self.blocks_throttle_0, 0), (self.blocks_add_xx_0, 1))
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_add_xx_0, 0))
+        self.connect((self.projectCACHE_polarEnc_b_0, 0), (self.blocks_tag_debug_0_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
 
-    def get_boost(self):
-        return self.boost
+    def get_id_user(self):
+        return self.id_user
 
-    def set_boost(self, boost):
-        self.boost = boost
-        self.set_snr(self.boost + 15)
+    def set_id_user(self, id_user):
+        self.id_user = id_user
 
     def get_snr(self):
         return self.snr
@@ -86,13 +81,6 @@ class polarcode_complete(gr.top_block):
     def set_snr(self, snr):
         self.snr = snr
         self.set_variance(1/pow(10,self.snr/10.0))
-
-    def get_Kw(self):
-        return self.Kw
-
-    def set_Kw(self, Kw):
-        self.Kw = Kw
-        self.set_Ks(2*self.Kw)
 
     def get_variance(self):
         return self.variance
@@ -112,13 +100,7 @@ class polarcode_complete(gr.top_block):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
-        self.blocks_throttle_0_0.set_sample_rate(self.samp_rate)
-
-    def get_payload_mod(self):
-        return self.payload_mod
-
-    def set_payload_mod(self, payload_mod):
-        self.payload_mod = payload_mod
+        self.blocks_throttle_0.set_sample_rate(self.samp_rate)
 
     def get_packetlength(self):
         return self.packetlength
@@ -132,17 +114,11 @@ class polarcode_complete(gr.top_block):
     def set_n_users(self, n_users):
         self.n_users = n_users
 
-    def get_id_user(self):
-        return self.id_user
+    def get_coderate(self):
+        return self.coderate
 
-    def set_id_user(self, id_user):
-        self.id_user = id_user
-
-    def get_header_mod(self):
-        return self.header_mod
-
-    def set_header_mod(self, header_mod):
-        self.header_mod = header_mod
+    def set_coderate(self, coderate):
+        self.coderate = coderate
 
     def get_Nbfiles(self):
         return self.Nbfiles
@@ -168,16 +144,20 @@ class polarcode_complete(gr.top_block):
     def set_N(self, N):
         self.N = N
 
-    def get_Ks(self):
-        return self.Ks
 
-    def set_Ks(self, Ks):
-        self.Ks = Ks
+def argument_parser():
+    parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
+    parser.add_option(
+        "-U", "--id-user", dest="id_user", type="intx", default=0,
+        help="Set User [default=%default]")
+    return parser
 
 
 def main(top_block_cls=polarcode_complete, options=None):
+    if options is None:
+        options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls()
+    tb = top_block_cls(id_user=options.id_user)
     tb.start()
     tb.wait()
 

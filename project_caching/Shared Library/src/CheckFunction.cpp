@@ -1,6 +1,9 @@
 #include "CheckFunction.h"
 
+
 namespace caching{
+
+using namespace std;
 
 static const char memory_erro[] = "\nError: Memory Allocation :";
 

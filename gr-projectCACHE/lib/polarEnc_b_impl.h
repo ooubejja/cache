@@ -31,10 +31,10 @@ namespace gr {
     class polarEnc_b_impl : public polarEnc_b
     {
      private:
-      const pmt::pmt_t ber_info, msg_port, cw_port;
+       const pmt::pmt_t ber_info;
 
      public:
-      polarEnc_b_impl(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);
+      polarEnc_b_impl(const int N, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);
       ~polarEnc_b_impl();
 
       //polar code parameters
@@ -47,6 +47,7 @@ namespace gr {
       PC PC_w, PC_s;
       float designSNRdb,variance_w, variance_s;
       float sqrtVariance_w, sqrtVariance_s;
+      vector<int> d_coderate;
 
       int * info_w;
       int * frozen_w;
@@ -78,7 +79,7 @@ namespace gr {
       vector<vector<char> > d_transmission;
       vector<char> d_transmission1;
       vector<vector<bool> > G_edges;
-      vector<vector<int> >  d_bits_coded;
+      vector<vector<int> >  bits_coded;
       vector<int> d_spack_size;
 
       pmt::pmt_t d_packet_len_pmt;

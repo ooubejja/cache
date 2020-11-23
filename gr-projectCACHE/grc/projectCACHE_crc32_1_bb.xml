@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <block>
-  <name>CRC Moule</name>
+  <name>CRC Module</name>
   <key>projectCACHE_crc32_1_bb</key>
   <category>projectCACHE</category>
   <import>import projectCACHE</import>

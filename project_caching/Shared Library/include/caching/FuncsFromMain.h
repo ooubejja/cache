@@ -38,6 +38,8 @@ unsigned int readCacheInfo(unsigned int id_utente, unsigned int id_demand);
 
 string my_to_string(int a);
 
+int index_find(vector<unsigned int>, unsigned int);
+
 }//end namespace caching
 
 #endif // FUNCSFROMMAIN_H_INCLUDED

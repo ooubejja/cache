@@ -47,7 +47,6 @@ class OFDM_RX(gr.top_block):
         self.length_tag_key = length_tag_key = "frame_len"
         self.header_mod = header_mod = digital.constellation_bpsk()
         self.fft_len = fft_len = 64
-        self.Kw = Kw = 70*8
         self.variance = variance = 1/pow(10,snr/10.0)
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
@@ -58,24 +57,25 @@ class OFDM_RX(gr.top_block):
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.gain = gain = 25
         self.freq = freq = 2450e6
+        self.coderate = coderate = [3,3,3,3,4]
         self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
-        self.NbChuncks = NbChuncks = 100
+        self.NbChuncks = NbChuncks = 200
         self.N = N = 2048
-        self.Ks = Ks = 2*Kw
 
         ##################################################
         # Blocks
         ##################################################
         self.zeromq_sub_source_0 = zeromq.sub_source(gr.sizeof_gr_complex, 1, 'tcp://localhost:5565', 100, False, -1)
+        self.zeromq_sub_msg_source_0_0_0 = zeromq.sub_msg_source('tcp://localhost:5575', 10)
         self.zeromq_sub_msg_source_0_0 = zeromq.sub_msg_source('tcp://localhost:5555', 10)
         self.projectCACHE_ofdm_frame_equalizer1_vcvc_0 = projectCACHE.ofdm_frame_equalizer1_vcvc(fft_len, fft_len/4, length_tag_key, True, occupied_carriers, pilot_carriers, pilot_symbols, 0, True)
-        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Kw, Ks, Nbfiles, NbChuncks, id_user, Users, small_packet_len, packet_length_tag_key)
-        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user)
+        self.projectCACHE_PolarDec_b_0_0 = projectCACHE.PolarDec_b(N, Nbfiles, NbChuncks, id_user, Users, small_packet_len, 42, coderate[id_user], packet_length_tag_key)
+        self.projectCACHE_PC_Error_Rate_0_0 = projectCACHE.PC_Error_Rate(id_user, 200)
         self.fft_vxx_1 = fft.fft_vcc(fft_len, True, (), True, 1)
         self.fft_vxx_0 = fft.fft_vcc(fft_len, True, (()), True, 1)
-        self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 2000, 0.00001)
+        self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 1000, 0.001)
         self.digital_packet_headerparser_b_0 = digital.packet_headerparser_b(header_formatter.base())
         self.digital_ofdm_sync_sc_cfb_0 = digital.ofdm_sync_sc_cfb(fft_len, fft_len/4, False, 0.9)
         self.digital_ofdm_serializer_vcc_payload = digital.ofdm_serializer_vcc(fft_len, occupied_carriers, length_tag_key, packet_length_tag_key, 1, '', True)
@@ -108,8 +108,8 @@ class OFDM_RX(gr.top_block):
         ##################################################
         self.msg_connect((self.digital_packet_headerparser_b_0, 'header_data'), (self.digital_header_payload_demux_0, 'header_data'))
         self.msg_connect((self.digital_probe_mpsk_snr_est_c_0, 'snr'), (self.projectCACHE_PC_Error_Rate_0_0, 'SNR'))
-        self.msg_connect((self.projectCACHE_PolarDec_b_0_0, 'CH_USE'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.msg_connect((self.zeromq_sub_msg_source_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0, 'BER_INFO'))
+        self.msg_connect((self.zeromq_sub_msg_source_0_0_0, 'out'), (self.projectCACHE_PC_Error_Rate_0_0, 'CH_USE'))
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
@@ -210,13 +210,6 @@ class OFDM_RX(gr.top_block):
         self.blocks_delay_0.set_dly(self.fft_len+self.fft_len/4)
         self.analog_frequency_modulator_fc_0.set_sensitivity(-2.0/self.fft_len)
 
-    def get_Kw(self):
-        return self.Kw
-
-    def set_Kw(self, Kw):
-        self.Kw = Kw
-        self.set_Ks(2*self.Kw)
-
     def get_variance(self):
         return self.variance
 
@@ -278,6 +271,12 @@ class OFDM_RX(gr.top_block):
     def set_freq(self, freq):
         self.freq = freq
 
+    def get_coderate(self):
+        return self.coderate
+
+    def set_coderate(self, coderate):
+        self.coderate = coderate
+
     def get_Users(self):
         return self.Users
 
@@ -307,12 +306,6 @@ class OFDM_RX(gr.top_block):
 
     def set_N(self, N):
         self.N = N
-
-    def get_Ks(self):
-        return self.Ks
-
-    def set_Ks(self, Ks):
-        self.Ks = Ks
 
 
 def argument_parser():

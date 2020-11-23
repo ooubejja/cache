@@ -47,7 +47,7 @@ namespace gr {
        * class. projectCACHE::map_header_payload_bc::make is the public interface for
        * creating new instances.
        */
-      static sptr make(int hx_maptype, int payload_maptype, const std::string &lengthtagname);
+      static sptr make(int , int , const std::string &lengthtagname);
     };
 
   } // namespace projectCACHE

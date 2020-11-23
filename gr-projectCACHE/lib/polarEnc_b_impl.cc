@@ -35,36 +35,30 @@ namespace gr {
   namespace projectCACHE {
 
     polarEnc_b::sptr
-    polarEnc_b::make(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key)//
+    polarEnc_b::make(const int N, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key)//
     {
       return gnuradio::get_initial_sptr
-        (new polarEnc_b_impl(N, K_w, K_s, m_files, b_chunks, nb_strg, id_user, spack_len, len_tag_key));
+        (new polarEnc_b_impl(N, m_files, b_chunks, nb_strg, id_user, spack_len, len_tag_key));
     }
 
     /*
      * The private constructor
      */
-    polarEnc_b_impl::polarEnc_b_impl(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key)
+    polarEnc_b_impl::polarEnc_b_impl(const int N, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key)
       : gr::sync_block("polarEnc_b",
               gr::io_signature::make(0,0,0),
               gr::io_signature::make(1, 1, sizeof(unsigned char))),
       d_N(N),
-      d_K_w(K_w),
-      d_K_s(K_s),
       d_m_files(m_files),
       d_b_chunks(b_chunks),
       d_nb_strg(nb_strg),
       d_id_user(id_user),
       d_offset(0),
       d_spack_len(spack_len),
-      d_len_tag_key(pmt::string_to_symbol(len_tag_key)),
       ber_info(pmt::mp("BER_INFO")),
-      msg_port(pmt::mp("TX_MSG")),
-      cw_port(pmt::mp("TX_CW"))
+      d_len_tag_key(pmt::string_to_symbol(len_tag_key))
     {
       message_port_register_out(ber_info);
-      message_port_register_out(msg_port);
-      message_port_register_out(cw_port);
       d_gen = true; d_stop = false;
       d_t = 0; d_r = N; d_i = 0; d_k=0; // d_r is the nb of remaning symbols to send by the grc block
       d_id_demand = 0;
@@ -76,12 +70,13 @@ namespace gr {
 
       d_next_tag_pos = 0;
       d_k=0; // counter on the packet
-
+      //The code rate to be given later on as a parameter
+      d_coderate = {3, 3, 3, 3, 4}; //{3, 2, 2, 2, 3, 4};
       // Weak user
       /*variance_w = pow(10,-(d_SNR_w/10));
       sqrtVariance_w = sqrt(variance_w);*/
 
-      PC_w.constructPC(d_N, d_K_w, designSNRdb);
+      /*PC_w.constructPC(d_N, d_K_w, designSNRdb);
 
       info_w = new int[d_K_w];
       frozen_w = new int[d_N-d_K_w];
@@ -91,7 +86,7 @@ namespace gr {
       sqrtVariance_s = sqrt(variance_s);*/
 
       //PC_s.constructPC(d_N, d_K_s, designSNRdb);
-      PC_s.initPC(d_N, d_K_s, designSNRdb);
+      /*PC_s.initPC(d_N, d_K_s, designSNRdb);
       PC_s.setGenMatrix(PC_w.genMatrix);
       PC_s.setRn(PC_w.Rn);
       PC_s.setArrangedBits(PC_w.arragedBits);
@@ -105,7 +100,7 @@ namespace gr {
       sentMessage = new int[d_N];
       initialMessage = new int[d_N];
       sentCodeword = new int[d_N];
-      sentSymbol = new int[d_N];
+      sentSymbol = new int[d_N];*/
 
     }
 
@@ -118,18 +113,12 @@ namespace gr {
 
     void polarEnc_b_impl::cleanVar()
     {
-        cout << endl << "START CLEANVAR()" << endl;
         int data_size;
         //Free coded_data
-
         for (unsigned int q = 0; q < d_coded_data.size(); q++)
             d_coded_data.at(q).clear();
 
-        cout << endl << "A" << endl;
         d_coded_data.clear();
-
-        // OTHMANE
-        d_offset=0;
 
         //Free header
         for (unsigned int q = 0; q < d_n_col; q++)
@@ -140,11 +129,10 @@ namespace gr {
             d_header_data[q].id_chunks.clear();
             d_header_data[q].size_package.clear();
 
-            // OTHMANE : Core dump bug comes from here
-            // d_hdr_sdata[q].id_utenti.clear();
-            // d_hdr_sdata[q].id_files.clear();
-            // d_hdr_sdata[q].id_chunks.clear();
-            // d_hdr_sdata[q].size_package.clear();
+            d_hdr_sdata[q].id_utenti.clear();
+            d_hdr_sdata[q].id_files.clear();
+            d_hdr_sdata[q].id_chunks.clear();
+            d_hdr_sdata[q].size_package.clear();
 
         }
 
@@ -165,7 +153,6 @@ namespace gr {
         }
         d_hX.clear();
 
-        cout << endl << "B" << endl;
 
         data_size = d_strg_data.size();
         for(int i=0; i<data_size; i++)
@@ -175,9 +162,9 @@ namespace gr {
         for(int i=0; i<data_size; i++)
             G_edges.at(i).clear();
 
-        data_size = d_bits_coded.size();
+        data_size = bits_coded.size();
         for(int i=0; i<data_size; i++)
-            d_bits_coded.at(i).clear();
+            bits_coded.at(i).clear();
 
         //free transmission vector
         d_transmission1.clear();
@@ -186,7 +173,6 @@ namespace gr {
         d_spack_size.clear();
 
         deallocationAllVariables(&d_outputForColoring, d_data, d_coloring);
-        cout << endl << "C" << endl;
 
     }/*end cleanVar()*/
 
@@ -201,16 +187,16 @@ namespace gr {
 
       if(d_gen){
 
-        // cout << "Polar codes" << endl; // prints Polar codes
+        cout << "Polar codes" << endl; // prints Polar codes
         d_gen = false;
 
         cout << endl << "Data generation process" << endl << "-------------" << endl << endl;
 
+
         d_data = generateData(d_m_files, d_b_chunks, d_id_demand);
 
-
         cout << endl << "Conflict-Graph generator process" << endl << "-------------" << endl << endl;
-        d_outputForColoring = conflictGraphGenerator(d_data);
+        d_outputForColoring = conflictGraphGenerator(d_data, d_coderate);
         cout << endl << "Numero nodi del grafo: " << d_outputForColoring.n_nodi << endl << endl;
 
         if (d_outputForColoring.n_nodi > 0)
@@ -226,6 +212,7 @@ namespace gr {
 
             cout << endl << "La colorazione e' stata effettuata con successo!" << endl;
             cout << endl << "Numero di colori utilizzati: " << d_n_col << endl;
+            cout << "The expected gain is: " << (100*(d_outputForColoring.n_nodi-d_n_col)/d_outputForColoring.n_nodi) << "%" << endl;
 
         }/*end if (d_outputForColoring.n_nodi > 0)*/
 
@@ -234,57 +221,49 @@ namespace gr {
         {
             cout << endl << "Coding data process" << endl << "-------------" << endl << endl;
             //Coding data for transmission
-            d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
-
+            //d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
+            d_coded_data = codingVarCodeRate(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data,d_coderate);
 
             //Coding strong and weak data
             d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes,
                 d_outputForColoring.n_nodi, d_nb_strg, d_data, &d_hdr_sdata, G_edges);
 
-
-
-
-
-
-            vector<vector<int>> sentCodewords_all, sentMessages_all;
             //Polar codes the weak and strong packets
-            d_PC_data = codingDataPolar(d_coded_data, d_strg_data, d_bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N, sentCodewords_all, sentMessages_all);
+            d_PC_data = codingDataPolar(d_coded_data, d_strg_data, bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N);
+            //cout << "The total number of transmitted packet is: " << d_PC_data.size() << endl;
 
-            cout << endl << "EEE" << endl;
-
-            // vector<uint8_t> vec_dict_msg;
-
-
-
-            // message_port_pub(msg_port, dict_msg_end);
-            // message_port_pub(cw_port, dict_msg_end);
-            // cout << endl << "GGG" << endl;
-
-            // exit(0);
-
-            /////////////////////////////////////////////////////
 
             TX_PC_Pack(d_hX, d_PC_data, d_id_demand, d_transmission, d_spack_len, d_spack_size);
 
+            /*int TXdata_size = d_transmission.size();
+
+            for(int i=0; i<TXdata_size; i++){
+              d_packet_size.push_back(d_transmission[i].size());
+            }*/
 
         }/* end if (d_n_col > 0) */
 
+        //d_transmission1 is the vector stream whereas d_transmission is the matrix with all data
         int TXdata_size = d_transmission.size();
-        cout << endl;
+        //cout << endl;
         for(int i=0; i<TXdata_size; i++){
           int ss = d_transmission.at(i).size();
-          cout << ss << ", ";
+          //cout << ss << ", ";
           for(int j=0; j<ss; j++)
             d_transmission1.push_back(d_transmission[i][j]);
         }
-        cout << endl;
+        //cout << endl;
 
         /*------------------------TO LOOK INTO LATER - SHOULD BE ADAPTED TO THE NEW MODIFICATIONS-----------------------*/
 
-        //Repeat the last packet for many times to resolve hardware problem
-        int k=0;
+        /*-----------------------CORTEXLAB -- MUST BE ADDED------------*/
+
+        //Repeat the last packet for many times to resolve some hardware problem
+        //Because witout doing that, the x last packets are not received for unknown
+        //reasons (maybe stuck inside the buffer)
+        /*int k=0;
         char buff_short[2];
-        while(k<300){
+        while(k<0){
           conv_short_int_to_char(20, buff_short);
           for(int j=0; j<2; j++)
               d_transmission1.push_back(buff_short[j]);
@@ -292,7 +271,7 @@ namespace gr {
               d_transmission1.push_back(0);
           d_spack_size.push_back(d_spack_len+2);
           k++;
-        }
+        }*/
         /*---------------------------------------------------*/
 
 
@@ -301,7 +280,7 @@ namespace gr {
         while(d_k<totSize)
         {
             d_packet_len_pmt = pmt::from_long(d_spack_size.at(d_k));
-            add_item_tag(0, d_next_tag_pos, d_len_tag_key, d_packet_len_pmt, pmt::string_to_symbol("TX"));//d_next_tag_pos
+            add_item_tag(0, d_next_tag_pos, d_len_tag_key, d_packet_len_pmt, pmt::string_to_symbol("TX"));
             add_item_tag(0, d_next_tag_pos, pmt::string_to_symbol("packet num"), pmt::from_long(d_k), pmt::string_to_symbol("TX"));
             d_next_tag_pos += d_spack_size.at(d_k);
             d_k ++;
@@ -355,20 +334,12 @@ namespace gr {
 
           vector<uint8_t> V_TMP{0};
           pmt::pmt_t dict_msg_end = pmt::cons(pmt::make_dict(), pmt::init_u8vector(1,V_TMP));
-          // pmt::pmt_t dict_msg = pmt::cons(dict_msg, pmt::from_long(-1), pmt::intern("TX MSG END"));
-          // cout << endl << "FFF" << endl;
+          /**********************************************************************/
 
 
           cout << "Done!" << endl;
-          cleanVar();
+          //cleanVar();
           return -1;  // Done!
-
-          // string repo_file, name_file;
-          // repo_file = "../repository/file_0.xml";
-          // name_file = "../trasmissioni/User_" + to_string(d_id_user) + "/decoded_file_" + to_string(d_id_demand) + ".xml";
-          // // name_file = "../trasmissioni/User_" + my_to_string(d_id_user) + "/decoded_file_0.xml";
-          // mycompare(repo_file, name_file, d_b_chunks);
-          // cout << endl << "OTHMANE END :" << endl;
       }
 
       unsigned int n = std::min((unsigned)d_transmission1.size() - d_offset,
@@ -377,78 +348,10 @@ namespace gr {
         out[i] = d_transmission1[d_offset + i];
       }
 
-      // vector<unsigned int> TMP;
-      // conv_char_to_bitsInt
-
       d_offset += n;
+
       return n;
 
     }/* work function */
   } /* namespace projectCACHE */
 } /* namespace gr */
-
-
-
-
-
-
-            // // OTHMANE
-            // // Create and Send PDU message with sent messages and CWs
-            // for (int k = 0; k < d_hX.size(); k++){
-            //   if(d_hX[k].strong){
-            //     pmt::pmt_t dict_msg(pmt::make_dict());
-            //     pmt::pmt_t dict_cw(pmt::make_dict());
-            //     stringstream str_msg, str_cw;
-            //     int strg_ind;
-            //     // cout << endl << "AAA" << endl;
-            //
-            //     if(d_hX[k].weak){   // If Polar header concerns hybrid packet (weak+strong)
-            //       int n = d_hX[k].id_chunks.size();
-            //       strg_ind = d_hX[k].id_chunks[n-1];
-            //     }
-            //     else    // Polar header concerns Strictly Strong Packet
-            //       strg_ind = d_hX[k].id_chunks[0];
-            //
-            //     // Fill Tx CWs and Msgs in the same loop to optimize runtime
-            //     for (int i=0; i<d_N; i++){
-            //       str_cw << sentCodewords_all[k][i] ;
-            //       if(i<d_K_s)
-            //         str_msg << sentMessages_all[k][i] ;
-            //     }
-            //
-            //     // dict_msg = pmt::dict_add(dict_msg, pmt::from_long(strg_ind), pmt::intern(str_msg.str()));
-            //     // dict_cw = pmt::dict_add(dict_cw, pmt::from_long(strg_ind), pmt::intern(str_cw.str()));
-            //     // vector<uint8_t> vec(str_msg.str().begin(), str_msg.str().end());
-            //
-            //     string str_msg_str = str_msg.str();
-            //     string str_cw_str = str_cw.str();
-            //
-            //     std::vector<uint8_t> vec_dict_msg, vec_dict_cw;
-            //
-            //     vec_dict_msg.assign(str_msg_str.begin(), str_msg_str.end());
-            //     vec_dict_cw.assign(str_cw_str.begin(), str_cw_str.end());
-            //
-            //     vec_dict_msg.insert(vec_dict_msg.begin(), strg_ind);
-            //     vec_dict_cw.insert(vec_dict_cw.begin(), strg_ind);
-            //
-            //     pmt::pmt_t TEST_msg = pmt::init_u8vector(vec_dict_msg.size(), vec_dict_msg);
-            //     pmt::pmt_t TEST_cw = pmt::init_u8vector(vec_dict_cw.size(), vec_dict_cw);
-            //     // cout << endl << "BBB" << endl;
-            //     // cout << endl << "OTHMANE :" << strg_ind << endl;
-            //
-            //     dict_msg = pmt::cons(pmt::make_dict(), TEST_msg);
-            //     dict_cw = pmt::cons(pmt::make_dict(), TEST_cw);
-            //
-            //     message_port_pub(msg_port, dict_msg);
-            //     message_port_pub(cw_port, dict_cw);
-            //
-            //     // intrusive_ptr_release(dict_msg);
-            //     // intrusive_ptr_release(dict_cw);
-            //     // cout << endl << "CCC" << endl;
-            //
-            //     vec_dict_msg.clear();
-            //     vec_dict_cw.clear();
-            //     // cout << endl << "DDD" << endl;
-            //
-            //   }
-            // }

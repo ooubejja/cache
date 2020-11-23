@@ -32,7 +32,6 @@
 #include <caching/randomHandler.h>
 #include <caching/DataDefinition.h>
 #include <caching/grasp.h>
-#include <caching/hgcc.h>
 #include <caching/CodingDecodingData.h>
 #include <caching/FuncsFromMain.h>
 #include <caching/Conversions.h>
@@ -62,7 +61,7 @@ namespace gr {
        * creating new instances.
        */
       //static sptr make(const int N, const int K_w, const int K_s, float SNR_w, float SNR_s,const std::string &lengthtagname);
-      static sptr make(const int , const int , const int , int , int  , int , int , unsigned int , const std::string &);
+      static sptr make(const int , int , int  , int , int , unsigned int , int, int, const std::string &);
     };
 
   } // namespace projectCACHE

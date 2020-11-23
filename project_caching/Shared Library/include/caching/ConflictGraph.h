@@ -23,7 +23,7 @@ void computeNumberOfNodes();
 void makeNodes();
 void makeEdges();
 
-cf_data conflictGraphGenerator(data_matrix data);
+cf_data conflictGraphGenerator(data_matrix data, vector<int>);
 
 }//end namespace caching
 

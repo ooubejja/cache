@@ -4,7 +4,7 @@
   <key>projectCACHE_PC_Error_Rate</key>
   <category>[projectCACHE]</category>
   <import>import projectCACHE</import>
-  <make>projectCACHE.PC_Error_Rate($usr_id)</make>
+  <make>projectCACHE.PC_Error_Rate($usr_id, $nb_chunks)</make>
 
 
   <param>
@@ -14,38 +14,14 @@
     <type>int</type>
   </param>
 
-  <!-- <param>
-    <name>Strong User</name>
-    <key>is_strong</key>
-    <value>True</value>
-    <type>bool</type>
-  </param> -->
+  <param>
+    <name>Nb of Chunks</name>
+    <key>nb_chunks</key>
+    <value>200</value>
+    <type>int</type>
+  </param>
 
-
-  <!-- <sink>
-    <name>TX_MSG</name>
-    <type>message</type>
-    <optional>1</optional>
-  </sink>
-
-  <sink>
-    <name>TX_CW</name>
-    <type>message</type>
-    <optional>1</optional>
-  </sink>
-
-  <sink>
-    <name>RX_MSG</name>
-    <type>message</type>
-    <optional>1</optional>
-  </sink>
-
-  <sink>
-    <name>RX_CW</name>
-    <type>message</type>
-    <optional>1</optional>
-  </sink> -->
-
+  
   <sink>
     <name>CH_USE</name>
     <type>message</type>

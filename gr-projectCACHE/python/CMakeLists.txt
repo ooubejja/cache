@@ -41,5 +41,3 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-projectCACHE)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_PC_Error_Rate ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_PC_Error_Rate.py)
-GR_ADD_TEST(qa_map_header_payload_bc ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_map_header_payload_bc.py)

@@ -35,15 +35,14 @@ namespace gr {
     class PolarDec_b_impl : public PolarDec_b
     {
      private:
-       // const pmt::pmt_t msg_port, cw_port;
-       const pmt::pmt_t ch_use_port;
+      const pmt::pmt_t ch_use_port;
 
      protected:
       int calculate_output_stream_length(const gr_vector_int &ninput_items);
 
      public:
       //PolarDec_b_impl(const int N, const int K_w, const int K_s, float SNR_w, float SNR_s,const std::string &lengthtagname);
-      PolarDec_b_impl(const int , const int , const int , int , int  , int , int , unsigned int , const std::string &);
+      PolarDec_b_impl(const int , int , int  , int , int , unsigned int , int, int, const std::string &);
       ~PolarDec_b_impl();
 
       //Values to calculate the SNR
@@ -52,7 +51,7 @@ namespace gr {
       std::vector<double> d_snr;
       std::vector<int> d_size;
 
-      int d_N, d_K_w, d_K_s;
+      int d_N, d_K_w, d_K_s, d_size_chunk, d_code_rate;
       float d_SNR;
       bool d_stop, d_isStr;
       int d_m_files, d_b_chunks, d_n_users, d_id_user, d_k;
@@ -60,7 +59,7 @@ namespace gr {
       int d_payload_len;
       unsigned int d_last_spack_len, d_id_last_spack, d_spack_len, d_id_spack, d_nb_spack;
       unsigned int d_id_expected;
-      bool d_crc;
+      //bool d_crc;
 
       //Data for polar code
       header_polar d_header;
@@ -70,7 +69,6 @@ namespace gr {
       float sqrtVariance_w, sqrtVariance_s;
       int * frozen_s, * frozen_w;
       vector<gr_complex> d_coded_packet;
-      vector<char> decoded_data;
 
       double * llr_w;
       //float * recSymbol_w;
@@ -84,8 +82,6 @@ namespace gr {
       int * recMessage_s;
       int * recCodeword_s;
 
-      // othmane
-      int cnt ;
 
       //int * sentSymbol;
       gr_complex * sentSymbol;

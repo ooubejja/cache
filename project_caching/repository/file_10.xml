@@ -1,7 +1,3 @@
-      <node id="21049">
-        <label>depuncture_bb.h</label>
-        <link refid="depuncture__bb_8h"/>
-      </node>
       <node id="20820">
         <label>multiply_const_cc.h</label>
         <link refid="multiply__const__cc_8h"/>
@@ -28,7 +24,6 @@
       </node>
       <node id="20864">
         <label>binary_slicer_fb.h</label>
-        <link refid="binary__slicer__fb_8h"/>
       </node>
       <node id="20928">
         <label>number_sink.h</label>
@@ -201,6 +196,54 @@
       <node id="21048">
         <label>tpc_decoder.h</label>
         <link refid="tpc__decoder_8h"/>
+      </node>
+      <node id="20973">
+        <label>ofdm_frame_equalizer_vcvc.h</label>
+        <link refid="ofdm__frame__equalizer__vcvc_8h"/>
+      </node>
+      <node id="20921">
+        <label>hrpt_pll_cf.h</label>
+        <link refid="hrpt__pll__cf_8h"/>
+      </node>
+      <node id="21124">
+        <label>ofdm_equalizer_static.h</label>
+        <link refid="ofdm__equalizer__static_8h"/>
+      </node>
+      <node id="20743">
+        <label>gsm_fr_decode_ps.h</label>
+        <link refid="gsm__fr__decode__ps_8h"/>
+      </node>
+      <node id="21060">
+        <label>filterbank_vcvcf.h</label>
+        <link refid="filterbank__vcvcf_8h"/>
+      </node>
+      <node id="20864">
+        <label>binary_slicer_fb.h</label>
+        <link refid="binary__slicer__fb_8h"/>
+      </node>
+      <node id="20928">
+        <label>number_sink.h</label>
+        <link refid="number__sink_8h"/>
+      </node>
+      <node id="20778">
+        <label>add_ff.h</label>
+        <link refid="add__ff_8h"/>
+      </node>
+      <node id="20973">
+        <label>ofdm_frame_equalizer_vcvc.h</label>
+        <link refid="ofdm__frame__equalizer__vcvc_8h"/>
+      </node>
+      <node id="20921">
+        <label>hrpt_pll_cf.h</label>
+        <link refid="hrpt__pll__cf_8h"/>
+      </node>
+      <node id="21124">
+        <label>ofdm_equalizer_static.h</label>
+        <link refid="ofdm__equalizer__static_8h"/>
+      </node>
+      <node id="20743">
+        <label>gsm_fr_decode_ps.h</label>
+        <link refid="gsm__fr__decode__ps_8h"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacepmt">pmt</innernamespace>

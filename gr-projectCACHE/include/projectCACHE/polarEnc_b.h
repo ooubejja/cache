@@ -32,7 +32,6 @@
 #include <caching/randomHandler.h>
 #include <caching/DataDefinition.h>
 #include <caching/grasp.h>
-#include <caching/hgcc.h>
 #include <caching/CodingDecodingData.h>
 #include <caching/FuncsFromMain.h>
 #include <caching/Conversions.h>
@@ -61,7 +60,7 @@ namespace gr {
        * class. projectCACHE::polarEnc_b::make is the public interface for
        * creating new instances.
        */
-      static sptr make(const int N, const int K_w, const int K_s, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);
+      static sptr make(const int N, int m_files, int b_chunks, int nb_strg, int id_user, int spack_len, const std::string &len_tag_key);
     };
 
   } // namespace projectCACHE

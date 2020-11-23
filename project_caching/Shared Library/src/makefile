@@ -17,18 +17,18 @@ CC = g++
 CFLAGS = -O3 -Wall -std=c++11 -g -lgsl -lgslcblas -lm -fPIC -c
 EFLAGS = -I$(HDIR)
 
-_DEPS_H = CheckFunction.h CodingDecodingData.h ConflictGraph.h Conversions.h DataDefinition.h DecodingInput.h EnvironmentSetup.h PC.h FuncsFromMain.h grasp.h heapSort.h hgcc.h psdes.h randomHandler.h randomUniform.h TxRx.h utilityForTesting.h gr_complex.h
-
+_DEPS_H = CheckFunction.h CodingDecodingData.h ConflictGraph.h Conversions.h DataDefinition.h DecodingInput.h EnvironmentSetup.h PC.h FuncsFromMain.h grasp.h heapSort.h psdes.h randomHandler.h randomUniform.h TxRx.h utilityForTesting.h gr_complex.h
 DEPS_H = $(patsubst %,$(HDIR)/%,$(_DEPS_H))
+#hgcc.h
 
 DEPS_H_STD = $(patsubst %,$(STD_HDIR)/%,$(_DEPS_H))
 
 PCFILE = ../pkgconfig/caching.pc
 
 
-_OBJ = psdes.o CheckFunction.o heapSort.o randomUniform.o randomHandler.o DecodingInput.o EnvironmentSetup.o FuncsFromMain.o ConflictGraph.o grasp.o hgcc.o CodingDecodingData.o utilityForTesting.o Conversions.o TxRx.o PC.o
+_OBJ = psdes.o CheckFunction.o heapSort.o randomUniform.o randomHandler.o DecodingInput.o EnvironmentSetup.o FuncsFromMain.o ConflictGraph.o grasp.o  CodingDecodingData.o utilityForTesting.o Conversions.o TxRx.o PC.o 
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
+#hgcc.o
 
 
 
@@ -109,8 +109,8 @@ $(ODIR)/ConflictGraph.o : $(ODIR)/CheckFunction.o $(ODIR)/randomHandler.o $(DEPS
 $(ODIR)/grasp.o : $(ODIR)/randomHandler.o $(ODIR)/heapSort.o $(DEPS_H)
 	$(CC) $(CFLAGS) -o $@ grasp.cpp $(EFLAGS)
 
-$(ODIR)/hgcc.o : $(DEPS_H)
-	$(CC) $(CFLAGS) -o $@ hgcc.cpp $(EFLAGS)
+#$(ODIR)/hgcc.o : $(DEPS_H)
+#	$(CC) $(CFLAGS) -o $@ hgcc.cpp $(EFLAGS)
 
 $(ODIR)/utilityForTesting.o : $(DEPS_H)
 	$(CC) $(CFLAGS) -o $@ utilityForTesting.cpp $(EFLAGS)

@@ -37,12 +37,12 @@ namespace gr {
       int calculate_output_stream_length(const gr_vector_int &ninput_items);
 
      public:
-      map_header_payload_bc_impl(int hx_maptype, int payload_maptype, const std::string &lengthtagname);
+      map_header_payload_bc_impl(int , int , const std::string &lengthtagname);
       ~map_header_payload_bc_impl();
       
       gr_complex d_constellation[4];
       int d_k;
-      int d_payloadmod, d_hxmod;
+      int d_payloadmod, d_hxgain;
       pmt::pmt_t d_packet_len_pmt;      
       const pmt::pmt_t d_len_tag_key;
       

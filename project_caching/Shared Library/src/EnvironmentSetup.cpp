@@ -1,4 +1,5 @@
 #include "EnvironmentSetup.h"
+#include <vector>
 
 namespace caching{
 
@@ -45,10 +46,12 @@ void randomQVector(double **probs){
 /*This is a function that generates a binary random cache matrix*/
 void randomIndMatrix(float memory_discretizzata, int **M, vector<int> &input, int number_of_request, vector<int> memory_per_user){
     int i, j, k, n_list, idx_rand, x, idx_sel;
-    random_list *l = NULL, *temp = NULL, *h = NULL;
+    //random_list *l = NULL, *temp = NULL, *h = NULL;
+    int cacheVecLen;
+    cacheVecLen = floor(b_chuncks_env/6);
 
     int index_input = input.size() - 1;
-
+    
     for (i=0; i<n_utenti_env; i++){
         input.at(index_input) = number_of_request;
         index_input--;
@@ -58,74 +61,53 @@ void randomIndMatrix(float memory_discretizzata, int **M, vector<int> &input, in
         index_input--;
 
         for (j=0; j<m_files_env; j++){
-            /*Make the list that contains the chunk's id*/
-            for (k=0; k<b_chuncks_env; k++){
-                if (l == NULL){
-                    l = (random_list *) malloc (1 * sizeof(random_list));
-                    l->idx = k;
-                    l->next = NULL;
-                }else{
-                    temp = (random_list *) malloc (1 * sizeof(random_list));
-                    temp->idx = k;
-                    temp ->next = NULL;
-                    h = l;
-                    l = temp;
-                    temp->next = h;
-                }
-            }
-
-            n_list = b_chuncks_env;
+ 
             /*The matrix M indicates the number of chunks related to files 'j' that user 'i' can memorize*/
-            for (k=0; k<M[i][j]; k++){
-                /*Random index for extract from the id chunks list the id chunk, related to files 'j', that the user 'i' must memorize*/
-                idx_rand = round(randomNumber(0, n_list-1));
+            
+            /*if(b_chuncks_env%4==0){
+                cacheVecLen = (b_chuncks_env/4);
+                //cout << "Vector length of possible cache = " << cacheVecLen << endl;
+            }else{
+                cout << "Chunks per file should be multiple of 4";
+                exit(0);
+            }*/
+            //cout << M[i][j] << endl;
+            /*if(M[i][j]%4 != 0){
+                cout << "Chunks to store should be multiple of 4";
+                exit(0);
+            }*/
 
-                if (idx_rand == 0){
-                    idx_sel = l->idx;
-                    //Ind[i][j][idx_sel] = 1;
+            //Vector that contains the chunks indices for possible caching as package of 4
+            //0...5, 6...11, 12...17, ...
+            //Should be redifined because it is modified for every file
+            vector<int> chunks_vec;
+            for (int i = 0; i < cacheVecLen; ++i)
+                chunks_vec.push_back(6*i);
+
+            //This variable a defines length of the caching vector, 4 chunks per row, the last row might include less 
+            int a =  M[i][j]/6;
+            int f = M[i][j]%6;
+            if(f != 0)
+                a += 1;
+            int lim = 6;
+
+            for (k=0; k< a; k++){
+                /*Random index to extract from the id chunks list the id chunk, related to files 'j', that the user 'i' must memorize*/
+                idx_rand = round(randomNumber(0, chunks_vec.size()-1));
+                //cout << idx_rand << " : ";
+                
+                if(k == a-1)
+                    lim = (f == 0) ? 6: f;
+                    
+                for (int i = 0; i < lim; ++i){
                     input.at(index_input) = j;
                     index_input--;
-                    input.at(index_input) = idx_sel;
+                    input.at(index_input) = chunks_vec[idx_rand]+i;
                     index_input--;
-
-                    h = l;
-                    l = l->next;
-                    free(h);
-                    h = NULL;
-
-                    n_list--;
-                }else{
-                    h = l;
-                    x = 0;
-
-                    while (x<(idx_rand-1)){
-                        h = h->next;
-                        x++;
-                    }
-
-                    temp = h;
-                    h = h->next;
-                    idx_sel = h->idx;
-                    //Ind[i][j][idx_sel] = 1;
-
-                    input.at(index_input) = j;
-                    index_input--;
-                    input.at(index_input) = idx_sel;
-                    index_input--;
-
-                    temp->next = h->next;
-                    free(h);
-                    h = NULL;
-
-                    n_list--;
+                    //cout << chunks_vec[idx_rand]+i << " : ";
                 }
-            }
+                chunks_vec.erase(chunks_vec.begin()+idx_rand);
 
-            while(l != NULL){
-                h = l;
-                l = l->next;
-                free(h);
-                h = NULL;
             }
         }
     }

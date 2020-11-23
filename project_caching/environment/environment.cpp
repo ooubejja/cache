@@ -5,9 +5,8 @@
 #include "randomHandler.h"
 #include "DataDefinition.h"
 #include "grasp.h"
-#include "hgcc.h"
+//#include "hgcc.h"
 #include "CodingDecodingData.h"
-#include "FuncsFromMain.h"
 
 
 using namespace caching;
@@ -20,10 +19,10 @@ int main(){
 
 
 
-    unsigned int n_utenti = 3;                                                 //number of user
+    unsigned int n_utenti = 4;                                                 //number of user
     unsigned int n_user_s = 0;
     unsigned int m_files = 20;                                                  //number of file
-    unsigned int b_chunks = 100;                                                //number of chunks
+    unsigned int b_chunks = 200;                                                //number of chunks
 
     unsigned int L_request = 1;                                                //number of demands for each user
 
@@ -36,7 +35,7 @@ int main(){
     int index_input;
 
     double *probs_vec;
-    double sum;
+    double sum=0;
     double sum_check;
 
     int *M_vec;
@@ -68,7 +67,7 @@ int main(){
     {
         probs_vec[i] = probs_vec[i] / sum;
         sum_check += probs_vec[i];
-        //cout << endl << "Probs at (" << i << ") = " << probs_vec[i] << endl;
+        cout << endl << "Probs at (" << i << ") = " << probs_vec[i] << endl;
     }
     /*if(sum_check != 1)
     {
@@ -139,7 +138,9 @@ int main(){
 
     //Create the "input" vector
     input = setEnvironment(n_utenti, m_files, b_chunks, probs, M, memory_per_user);
-
+    for (int i = 0; i < n_utenti; ++i)
+        cout <<  memory_per_user.at(i) << ", ";
+    cout << endl;
 
     //write the "input" vector in a file
     unsigned int input_dim = input.size();
@@ -219,7 +220,7 @@ int main(){
 
         input_dim = input.size();
         //cout << "Input size : " << input_dim;
-        cout << " The input size is: " << input_dim << endl;
+        cout << "The input size is: " << input_dim << endl;
         cout << "The input vector is: " << endl;
 
         //for strong users with no cache, print: -the nb request -the id file -cache size
