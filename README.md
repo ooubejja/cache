@@ -8,10 +8,6 @@
 
 ## I. Notes related to the source code
 ---
-#### Some italian words :
-- utenti = user
-- trovato = found
-- ...
 
 #### About Custom Software Entities in `project_caching` library:
 - Definitons location:

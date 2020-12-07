@@ -32,7 +32,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 30 + 20*numpy.log10(4)
+        self.snr = snr = 16 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -50,9 +50,9 @@ class OFDM_TX(gr.top_block):
         self.id_user = id_user = 0
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.Users = Users = 4
+        self.Users = Users = 3
         self.Nbfiles = Nbfiles = 20
-        self.NbStrgUsers = NbStrgUsers = 1
+        self.NbStrgUsers = NbStrgUsers = 2
         self.NbChuncks = NbChuncks = 200
         self.N = N = 2048
 
@@ -75,7 +75,7 @@ class OFDM_TX(gr.top_block):
         (self.blocks_tagged_stream_mux_0).set_max_output_buffer(8192)
         self.blocks_tag_gate_0 = blocks.tag_gate(gr.sizeof_gr_complex * 1, False)
         self.blocks_tag_gate_0.set_single_key("")
-        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((1/34.0, ))
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vcc((.05, ))
         self.blocks_add_xx_0 = blocks.add_vcc(1)
         self.analog_noise_source_x_0 = analog.noise_source_c(analog.GR_GAUSSIAN, numpy.sqrt(variance), numpy.random.randint(0,500,None))
 
