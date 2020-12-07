@@ -32,7 +32,9 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.snr = snr = 16 + 20*numpy.log10(4)
+        self.snr_pld = snr_pld = 10
+        self.boost = boost = 15
+        self.snr = snr = snr_pld + boost
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -101,6 +103,20 @@ class OFDM_TX(gr.top_block):
         self.connect((self.projectCACHE_map_header_payload_bc_0, 0), (self.blocks_tagged_stream_mux_0, 1))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.digital_packet_headergenerator_bb_0, 0))
         self.connect((self.projectCACHE_polarEnc_b_0_0, 0), (self.projectCACHE_map_header_payload_bc_0, 0))
+
+    def get_snr_pld(self):
+        return self.snr_pld
+
+    def set_snr_pld(self, snr_pld):
+        self.snr_pld = snr_pld
+        self.set_snr(self.snr_pld + self.boost)
+
+    def get_boost(self):
+        return self.boost
+
+    def set_boost(self, boost):
+        self.boost = boost
+        self.set_snr(self.snr_pld + self.boost)
 
     def get_snr(self):
         return self.snr
