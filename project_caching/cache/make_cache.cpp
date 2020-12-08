@@ -41,7 +41,7 @@ using namespace std;
         input.push_back(0);
         fread(&input.at(i),sizeof(int),1,env_file);
     }
-    
+
     fclose(env_file);
 
     //Generate Data
@@ -58,12 +58,12 @@ using namespace std;
 
 void generateCache (unsigned int id_utente, unsigned int n_utenti, unsigned int m_files, unsigned int b_chuncks, data_matrix &data, FILE *cache_file, string pathFolder)
 {
-    
+
     unsigned int id_requested_file = data.Q[id_utente];
 
     cout << endl << "User id: " << id_utente;
     cout << endl << "Request File id: " << id_requested_file << endl;
-    
+
     /*-------------------------MODIFICATION FOR CORTEXLAB---------------------*/
     string pathFiles = "../repository"; //"/CachingFile/repository"
     vector<string> files;
@@ -119,8 +119,8 @@ void generateCache (unsigned int id_utente, unsigned int n_utenti, unsigned int 
 int main(){
 
     unsigned int n_utenti, m_files, b_chuncks, id_utente, L_request;
-    
-	n_utenti = 3;
+
+	n_utenti = 4;
     m_files = 20;
     b_chuncks = 200;
     L_request = 1;
@@ -128,7 +128,7 @@ int main(){
     FILE *cache_file;
 
 	printf("\n\nNumero Utenti: %d Numero Files: %d Numero Chunks: %d\n", n_utenti, m_files, b_chuncks);
-    
+
     for(unsigned int id_utente=0; id_utente<n_utenti; id_utente++)
     {
 
@@ -139,7 +139,7 @@ int main(){
             exit(0);
         }
 
-        
+
         //env_file = fopen("/CachingFile/environment/environment_file","rb");
 
         string pathFileInfo = "../cache/UserCache/cache_info_" + to_string(id_utente); //"/CachingFile/cache/UserCache/cache_info_"
@@ -157,7 +157,7 @@ int main(){
 
             cout << endl << "Request file " << i << " = " << data.Q[id_utente];
 
-            generateCache(id_utente, n_utenti, m_files, b_chuncks, data, cache_file, pathFolder);   
+            generateCache(id_utente, n_utenti, m_files, b_chuncks, data, cache_file, pathFolder);
         }
 
         fclose(cache_file);

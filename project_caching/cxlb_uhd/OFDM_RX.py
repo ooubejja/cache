@@ -58,9 +58,9 @@ class OFDM_RX(gr.top_block):
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.freq = freq = 2450e6
         self.coderate = coderate = [3,3,3,3,4]
-        self.Users = Users = 3
+        self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
-        self.NbStrgUsers = NbStrgUsers = 2
+        self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 200
         self.N = N = 2048
         self.Ks = Ks = 2*Kw
@@ -94,6 +94,7 @@ class OFDM_RX(gr.top_block):
         self.digital_probe_mpsk_snr_est_c_0 = digital.probe_mpsk_snr_est_c(3, 1000, 0.001)
         self.digital_packet_headerparser_b_0 = digital.packet_headerparser_b(header_formatter.base())
         self.digital_ofdm_sync_sc_cfb_0 = digital.ofdm_sync_sc_cfb(fft_len, fft_len/4, False, 0.9)
+        self.digital_ofdm_serializer_vcc_payload_0 = digital.ofdm_serializer_vcc(fft_len, occupied_carriers, length_tag_key, packet_length_tag_key, 1, '', True)
         self.digital_ofdm_serializer_vcc_payload = digital.ofdm_serializer_vcc(fft_len, occupied_carriers, length_tag_key, packet_length_tag_key, 1, '', True)
         self.digital_ofdm_serializer_vcc_header = digital.ofdm_serializer_vcc(fft_len, occupied_carriers, length_tag_key, '', 0, '', True)
         self.digital_ofdm_frame_equalizer_vcvc_0 = digital.ofdm_frame_equalizer_vcvc(header_equalizer.base(), fft_len/4, length_tag_key, True, 1)
@@ -137,11 +138,12 @@ class OFDM_RX(gr.top_block):
         self.connect((self.digital_ofdm_chanest_vcvc_0, 0), (self.digital_ofdm_frame_equalizer_vcvc_0, 0))
         self.connect((self.digital_ofdm_frame_equalizer_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_header, 0))
         self.connect((self.digital_ofdm_serializer_vcc_header, 0), (self.digital_constellation_decoder_cb_0, 0))
-        self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_serializer_vcc_payload, 0), (self.projectCACHE_PolarDec_b_0_0, 0))
+        self.connect((self.digital_ofdm_serializer_vcc_payload_0, 0), (self.digital_probe_mpsk_snr_est_c_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 0), (self.analog_frequency_modulator_fc_0, 0))
         self.connect((self.digital_ofdm_sync_sc_cfb_0, 1), (self.digital_header_payload_demux_0, 1))
         self.connect((self.fft_vxx_0, 0), (self.digital_ofdm_chanest_vcvc_0, 0))
+        self.connect((self.fft_vxx_1, 0), (self.digital_ofdm_serializer_vcc_payload_0, 0))
         self.connect((self.fft_vxx_1, 0), (self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0))
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
         self.connect((self.uhd_usrp_source_0_0, 0), (self.digital_costas_loop_cc_0, 0))

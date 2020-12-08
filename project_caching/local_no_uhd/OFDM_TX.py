@@ -34,7 +34,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         self.snr_pld = snr_pld = 10
         self.boost = boost = 15
-        self.snr = snr = snr_pld + boost
+        self.snr = snr = 15 + 0*(snr_pld + boost)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -52,9 +52,9 @@ class OFDM_TX(gr.top_block):
         self.id_user = id_user = 0
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
-        self.Users = Users = 3
+        self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
-        self.NbStrgUsers = NbStrgUsers = 2
+        self.NbStrgUsers = NbStrgUsers = 1
         self.NbChuncks = NbChuncks = 200
         self.N = N = 2048
 
@@ -109,14 +109,14 @@ class OFDM_TX(gr.top_block):
 
     def set_snr_pld(self, snr_pld):
         self.snr_pld = snr_pld
-        self.set_snr(self.snr_pld + self.boost)
+        self.set_snr(15 + 0*(self.snr_pld + self.boost))
 
     def get_boost(self):
         return self.boost
 
     def set_boost(self, boost):
         self.boost = boost
-        self.set_snr(self.snr_pld + self.boost)
+        self.set_snr(15 + 0*(self.snr_pld + self.boost))
 
     def get_snr(self):
         return self.snr

@@ -128,7 +128,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 1356)</value>
+      <value>(440, 1404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -155,7 +155,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 1356)</value>
+      <value>(264, 1404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -167,7 +167,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2</value>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -209,7 +209,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(368, 1356)</value>
+      <value>(368, 1404)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -221,7 +221,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>3</value>
+      <value>4</value>
     </param>
   </block>
   <block>
@@ -236,7 +236,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 1708)</value>
+      <value>(872, 1804)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1477,6 +1477,73 @@
     </param>
   </block>
   <block>
+    <key>digital_ofdm_serializer_vcc</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>carr_offset_key</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>fft_len</key>
+      <value>fft_len</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(696, 1260)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>digital_ofdm_serializer_vcc_payload_0</value>
+    </param>
+    <param>
+      <key>input_is_shifted</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>len_tag_key</key>
+      <value>length_tag_key</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>occupied_carriers</key>
+      <value>occupied_carriers</value>
+    </param>
+    <param>
+      <key>packet_len_tag_key</key>
+      <value>packet_length_tag_key</value>
+    </param>
+    <param>
+      <key>symbols_skipped</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
     <key>digital_ofdm_sync_sc_cfb</key>
     <param>
       <key>alias</key>
@@ -1598,7 +1665,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 1600)</value>
+      <value>(312, 1656)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1814,7 +1881,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 1596)</value>
+      <value>(872, 1692)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1989,7 +2056,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(816, 1488)</value>
+      <value>(872, 1584)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2040,7 +2107,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(304, 1420)</value>
+      <value>(336, 1468)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2111,7 +2178,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(456, 1140)</value>
+      <value>(456, 1092)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2240,6 +2307,33 @@
     </param>
   </block>
   <block>
+    <key>virtual_sink</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(1152, 1300)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>virtual_sink_1_0_0</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>No EQ IQ</value>
+    </param>
+  </block>
+  <block>
     <key>virtual_source</key>
     <param>
       <key>comment</key>
@@ -2278,7 +2372,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(0, 1564)</value>
+      <value>(8, 1532)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2291,6 +2385,33 @@
     <param>
       <key>stream_id</key>
       <value>Payload IQ</value>
+    </param>
+  </block>
+  <block>
+    <key>virtual_source</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>1</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(8, 1684)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>virtual_source_0_0_0</value>
+    </param>
+    <param>
+      <key>stream_id</key>
+      <value>No EQ IQ</value>
     </param>
   </block>
   <block>
@@ -2344,7 +2465,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(488, 1732)</value>
+      <value>(544, 1828)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2391,7 +2512,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(568, 1372)</value>
+      <value>(624, 1468)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2556,6 +2677,12 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>digital_ofdm_serializer_vcc_payload_0</source_block_id>
+    <sink_block_id>virtual_sink_1_0_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
     <source_block_id>digital_ofdm_sync_sc_cfb_0</source_block_id>
     <sink_block_id>digital_header_payload_demux_0</sink_block_id>
     <source_key>1</source_key>
@@ -2587,6 +2714,12 @@
   </connection>
   <connection>
     <source_block_id>fft_vxx_1</source_block_id>
+    <sink_block_id>digital_ofdm_serializer_vcc_payload_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>fft_vxx_1</source_block_id>
     <sink_block_id>projectCACHE_ofdm_frame_equalizer1_vcvc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
@@ -2605,13 +2738,13 @@
   </connection>
   <connection>
     <source_block_id>virtual_source_0_0</source_block_id>
-    <sink_block_id>digital_probe_mpsk_snr_est_c_0</sink_block_id>
+    <sink_block_id>projectCACHE_PolarDec_b_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>virtual_source_0_0</source_block_id>
-    <sink_block_id>projectCACHE_PolarDec_b_0_0</sink_block_id>
+    <source_block_id>virtual_source_0_0_0</source_block_id>
+    <sink_block_id>digital_probe_mpsk_snr_est_c_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

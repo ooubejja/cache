@@ -167,7 +167,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2</value>
+      <value>1</value>
     </param>
   </block>
   <block>
@@ -221,7 +221,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>3</value>
+      <value>4</value>
     </param>
   </block>
   <block>
@@ -707,7 +707,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>snr_pld + boost</value>
+      <value>15 + 0*(snr_pld + boost)</value>
     </param>
   </block>
   <block>
