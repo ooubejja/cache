@@ -9,6 +9,7 @@
 
 from gnuradio import analog
 from gnuradio import blocks
+from gnuradio import channels
 from gnuradio import digital
 from gnuradio import eng_notation
 from gnuradio import fft
@@ -28,18 +29,20 @@ import time
 
 class OFDM_RX(gr.top_block):
 
-    def __init__(self, gain=5, id_user=0):
+    def __init__(self, fD=10, gain=5, id_user=0):
         gr.top_block.__init__(self, "Polar Coding with Coded Caching")
 
         ##################################################
         # Parameters
         ##################################################
+        self.fD = fD
         self.gain = gain
         self.id_user = id_user
 
         ##################################################
         # Variables
         ##################################################
+        self.snr = snr = -5 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -49,6 +52,7 @@ class OFDM_RX(gr.top_block):
         self.header_mod = header_mod = digital.constellation_bpsk()
         self.fft_len = fft_len = 64
         self.Kw = Kw = 70*8
+        self.variance = variance = 1/pow(10,snr/10.0)
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
         self.small_packet_len = small_packet_len = 52
@@ -57,7 +61,7 @@ class OFDM_RX(gr.top_block):
         self.header_formatter = header_formatter = digital.packet_header_ofdm(occupied_carriers, n_syms=1, len_tag_key=packet_length_tag_key, frame_len_tag_key=length_tag_key, bits_per_header_sym=header_mod.bits_per_symbol(), bits_per_payload_sym=payload_mod.bits_per_symbol(), scramble_header=False)
         self.header_equalizer = header_equalizer = digital.ofdm_equalizer_simpledfe(fft_len, header_mod.base(), occupied_carriers, pilot_carriers, pilot_symbols, 0, 1)
         self.freq = freq = 2450e6
-        self.coderate = coderate = [3,3,3,3,4]
+        self.coderate = coderate = [1,2,2,3,4]
         self.Users = Users = 4
         self.Nbfiles = Nbfiles = 20
         self.NbStrgUsers = NbStrgUsers = 1
@@ -114,6 +118,7 @@ class OFDM_RX(gr.top_block):
             )
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(2*3.14/100, 2, False)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
+        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 1e-4, 1e2, 1e-4, 1e2, 8, fD, False, 2, (0.0,0.1,1.3), (1,0.99,0.90), 3, numpy.sqrt(variance)*0, numpy.random.randint(0,500,None) )
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
@@ -130,6 +135,7 @@ class OFDM_RX(gr.top_block):
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
+        self.connect((self.channels_dynamic_channel_model_0, 0), (self.digital_costas_loop_cc_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.blocks_delay_0, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
@@ -146,7 +152,14 @@ class OFDM_RX(gr.top_block):
         self.connect((self.fft_vxx_1, 0), (self.digital_ofdm_serializer_vcc_payload_0, 0))
         self.connect((self.fft_vxx_1, 0), (self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0))
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
-        self.connect((self.uhd_usrp_source_0_0, 0), (self.digital_costas_loop_cc_0, 0))
+        self.connect((self.uhd_usrp_source_0_0, 0), (self.channels_dynamic_channel_model_0, 0))
+
+    def get_fD(self):
+        return self.fD
+
+    def set_fD(self, fD):
+        self.fD = fD
+        self.channels_dynamic_channel_model_0.set_doppler_freq(self.fD)
 
     def get_gain(self):
         return self.gain
@@ -161,6 +174,13 @@ class OFDM_RX(gr.top_block):
 
     def set_id_user(self, id_user):
         self.id_user = id_user
+
+    def get_snr(self):
+        return self.snr
+
+    def set_snr(self, snr):
+        self.snr = snr
+        self.set_variance(1/pow(10,self.snr/10.0))
 
     def get_pilot_symbols(self):
         return self.pilot_symbols
@@ -230,6 +250,13 @@ class OFDM_RX(gr.top_block):
         self.Kw = Kw
         self.set_Ks(2*self.Kw)
 
+    def get_variance(self):
+        return self.variance
+
+    def set_variance(self, variance):
+        self.variance = variance
+        self.channels_dynamic_channel_model_0.set_noise_amp(numpy.sqrt(self.variance)*0)
+
     def get_sync_word2(self):
         return self.sync_word2
 
@@ -254,6 +281,7 @@ class OFDM_RX(gr.top_block):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.uhd_usrp_source_0_0.set_samp_rate(self.samp_rate)
+        self.channels_dynamic_channel_model_0.set_samp_rate(self.samp_rate)
 
     def get_payload_equalizer(self):
         return self.payload_equalizer
@@ -326,6 +354,9 @@ class OFDM_RX(gr.top_block):
 def argument_parser():
     parser = OptionParser(usage="%prog: [options]", option_class=eng_option)
     parser.add_option(
+        "", "--fD", dest="fD", type="intx", default=10,
+        help="Set Max Doppler Frequency (Hz) [default=%default]")
+    parser.add_option(
         "-G", "--gain", dest="gain", type="eng_float", default=eng_notation.num_to_str(5),
         help="Set Gain [default=%default]")
     parser.add_option(
@@ -338,7 +369,7 @@ def main(top_block_cls=OFDM_RX, options=None):
     if options is None:
         options, _ = argument_parser().parse_args()
 
-    tb = top_block_cls(gain=options.gain, id_user=options.id_user)
+    tb = top_block_cls(fD=options.fD, gain=options.gain, id_user=options.id_user)
     tb.start()
     tb.wait()
 

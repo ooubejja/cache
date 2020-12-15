@@ -38,6 +38,7 @@ class OFDM_TX(gr.top_block):
         ##################################################
         # Variables
         ##################################################
+        self.snr = snr = -5 + 20*numpy.log10(4)
         self.pilot_symbols = pilot_symbols = ((1, 1, 1, -1,),)
         self.pilot_carriers = pilot_carriers = ((-21, -7, 7, 21,),)
         self.payload_mod = payload_mod = digital.constellation_qpsk()
@@ -47,6 +48,7 @@ class OFDM_TX(gr.top_block):
         self.header_mod = header_mod = digital.constellation_bpsk()
         self.fft_len = fft_len = 64
         self.Kw = Kw = 70*8
+        self.variance = variance = 1/pow(10,snr/10.0)
         self.sync_word2 = sync_word2 = [0, 0, 0, 0, 0, 0, -1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, -1, 1, -1, 0, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 0, 0, 0, 0]
         self.sync_word1 = sync_word1 = [0., 0., 0., 0., 0., 0., 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., -1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., -1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 1.41421356, 0., 0., 0., 0., 0., 0.]
         self.small_packet_len = small_packet_len = 52
@@ -124,6 +126,13 @@ class OFDM_TX(gr.top_block):
         self.uhd_usrp_sink_0_0.set_gain(self.gain, 0)
 
 
+    def get_snr(self):
+        return self.snr
+
+    def set_snr(self, snr):
+        self.snr = snr
+        self.set_variance(1/pow(10,self.snr/10.0))
+
     def get_pilot_symbols(self):
         return self.pilot_symbols
 
@@ -189,6 +198,12 @@ class OFDM_TX(gr.top_block):
     def set_Kw(self, Kw):
         self.Kw = Kw
         self.set_Ks(2*self.Kw)
+
+    def get_variance(self):
+        return self.variance
+
+    def set_variance(self, variance):
+        self.variance = variance
 
     def get_sync_word2(self):
         return self.sync_word2

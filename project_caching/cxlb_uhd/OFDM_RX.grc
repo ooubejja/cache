@@ -155,7 +155,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(872, 148)</value>
+      <value>(744, 148)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -290,7 +290,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1032, 1420)</value>
+      <value>(56, 228)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -302,7 +302,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>[3,3,3,3,4]</value>
+      <value>[1,2,2,3,4]</value>
     </param>
   </block>
   <block>
@@ -344,7 +344,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(32, 276)</value>
+      <value>(24, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -668,7 +668,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(968, 148)</value>
+      <value>(840, 148)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -691,11 +691,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1288, 596)</value>
+      <value>(1160, 156)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -799,11 +799,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(760, 148)</value>
+      <value>(1168, 236)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -838,7 +838,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(832, 348)</value>
+      <value>(1136, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -859,112 +859,6 @@
     <param>
       <key>sensitivity</key>
       <value>-2.0/fft_len</value>
-    </param>
-  </block>
-  <block>
-    <key>analog_noise_source_x</key>
-    <param>
-      <key>amp</key>
-      <value>numpy.sqrt(variance)</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(536, 836)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>analog_noise_source_x_0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>noise_type</key>
-      <value>analog.GR_GAUSSIAN</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>seed</key>
-      <value>numpy.random.randint(0,500,None)</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_add_xx</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(744, 808)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>blocks_add_xx_0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
     </param>
   </block>
   <block>
@@ -991,7 +885,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(584, 452)</value>
+      <value>(872, 452)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1042,7 +936,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1104, 424)</value>
+      <value>(1248, 424)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1129,69 +1023,6 @@
     </param>
   </block>
   <block>
-    <key>channels_channel_model</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>block_tags</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>epsilon</key>
-      <value>1.0</value>
-    </param>
-    <param>
-      <key>freq_offset</key>
-      <value>0.0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(816, 876)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>channels_channel_model_1</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>noise_voltage</key>
-      <value>numpy.sqrt(variance)</value>
-    </param>
-    <param>
-      <key>seed</key>
-      <value>numpy.random.randint(0,500,None)</value>
-    </param>
-    <param>
-      <key>taps</key>
-      <value>taps</value>
-    </param>
-  </block>
-  <block>
     <key>channels_dynamic_channel_model</key>
     <param>
       <key>alias</key>
@@ -1199,7 +1030,7 @@
     </param>
     <param>
       <key>cfo_stdev</key>
-      <value>1e-2</value>
+      <value>1e-4</value>
     </param>
     <param>
       <key>comment</key>
@@ -1211,11 +1042,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1136, 700)</value>
+      <value>(248, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1227,7 +1058,7 @@
     </param>
     <param>
       <key>LOS</key>
-      <value>True</value>
+      <value>False</value>
     </param>
     <param>
       <key>cfo_maxdev</key>
@@ -1235,7 +1066,7 @@
     </param>
     <param>
       <key>fD</key>
-      <value>10</value>
+      <value>fD</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -1267,11 +1098,11 @@
     </param>
     <param>
       <key>K</key>
-      <value>4.0</value>
+      <value>2</value>
     </param>
     <param>
       <key>sro_stdev</key>
-      <value>1e-2</value>
+      <value>1e-4</value>
     </param>
     <param>
       <key>samp_rate</key>
@@ -1283,7 +1114,7 @@
     </param>
     <param>
       <key>noise_amp</key>
-      <value>numpy.sqrt(variance)</value>
+      <value>numpy.sqrt(variance)*0</value>
     </param>
   </block>
   <block>
@@ -1349,7 +1180,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(296, 376)</value>
+      <value>(600, 320)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1818,7 +1649,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(576, 356)</value>
+      <value>(872, 340)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1951,11 +1782,11 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>0</value>
+      <value>1</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(1112, 596)</value>
+      <value>(984, 156)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2128,7 +1959,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(136, 244)</value>
+      <value>(120, 460)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -3703,7 +3534,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 356)</value>
+      <value>(16, 300)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -4175,12 +4006,6 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>analog_noise_source_x_0</source_block_id>
-    <sink_block_id>blocks_add_xx_0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>1</sink_key>
-  </connection>
-  <connection>
     <source_block_id>blocks_delay_0</source_block_id>
     <sink_block_id>blocks_multiply_xx_0</sink_block_id>
     <source_key>0</source_key>
@@ -4189,6 +4014,12 @@
   <connection>
     <source_block_id>blocks_multiply_xx_0</source_block_id>
     <sink_block_id>digital_header_payload_demux_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>channels_dynamic_channel_model_0</source_block_id>
+    <sink_block_id>digital_costas_loop_cc_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
@@ -4308,7 +4139,7 @@
   </connection>
   <connection>
     <source_block_id>uhd_usrp_source_0_0</source_block_id>
-    <sink_block_id>digital_costas_loop_cc_0</sink_block_id>
+    <sink_block_id>channels_dynamic_channel_model_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>

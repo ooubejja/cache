@@ -27,13 +27,13 @@ void computeNumberOfNodes(){
     cout << "--- Compute Nodes ---" << endl;
     /*For each user ...*/
     for (i=0; i<n_utenti; i++){
-        //nodi_user[i] will contain at the end the number of chunks requested by (not in the cache of) user i 
+        //nodi_user[i] will contain at the end the number of chunks requested by (not in the cache of) user i
         nodi_user.push_back(0);
         /*The file that the user 'i' request*/
         id_file = Q[i];
         /*For each chunk ...*/
         for (k=0; k<b_chunks; k++){
-            
+
             /*Check if user 'i' have in its cache the chunk 'k' related to files 'id_file'*/
             if (Ind[i][id_file][k] == 1){
                 Q_chuncks[i][k] = 0;
@@ -56,7 +56,7 @@ void makeNodes(){
 
     cout << "--- Make Nodes ---" << endl;
 
-    /*For each user and for each chunk related to the requested file 
+    /*For each user and for each chunk related to the requested file
     that the user do not have in cache will be created a node*/
     for (i=0; i<n_utenti; i++){
         //nb_pck will contain the number of packets required given the code rate (chunks_Node)
@@ -69,7 +69,7 @@ void makeNodes(){
             //Added new w.r.t. the section below
             /*for (int k = 0; k < b_chunks; k += 3)
             {
-                //Q_chuncks[i][k] == 1 means that the k, k+1, k+2, and k+3, k+4, k+5 chunks are not cached 
+                //Q_chuncks[i][k] == 1 means that the k, k+1, k+2, and k+3, k+4, k+5 chunks are not cached
                 //(due to the caching policy), therefore the codeword should be k, k+1, and k+2
                 if(Q_chuncks[i][k] == 1){
                     n1.id = id;
@@ -94,7 +94,7 @@ void makeNodes(){
             //Add the remaining packets to the vector of packets
             for (int k = 0; k < b_chunks; k++){
                 //int index = index_find(chunks_f, k);
-                if (Q_chuncks[i][k] == 1){ //index == -1 && 
+                if (Q_chuncks[i][k] == 1){ //index == -1 &&
                     if(l==0){
                         n1.id = id;
                         n1.degree = 0;
@@ -111,7 +111,7 @@ void makeNodes(){
                         nodes.push_back(n1);
                         n1.id_chunck = vector<int> ();
                         l=0;
-                        id++; 
+                        id++;
                     }
                 }
             }
@@ -146,26 +146,26 @@ void makeNodes(){
                             id++;
                         }
                     }
-                }      
-                k++;   
+                }
+                k++;
             }
         } else {
             cout << "Case NOT Suported!" << endl;
             exit(0);
         }
         cout << "\nNb of nodes: " << nodes.size() << endl;
-        
-        if (id != nb_pck){
-            cout << "\nError: Create Nodes Number Dismatch With The Aspected Nodes Number.\n";
-            cout << id << "!=" << nb_pck << endl;
-            exit(0);
-        }
+        // 
+        // if (id != nb_pck){
+        //     cout << "\nError: Create Nodes Number Dismatch With The Aspected Nodes Number.\n";
+        //     cout << id << "!=" << nb_pck << endl;
+        //     exit(0);
+        // }
     }
-    
+
     sizenodes = nodes.size();
     cout << "Number of node: " << sizenodes << endl;
     cout << "--- Make Nodes Completed ---" << endl;
-    
+
 }
 
 /*This is a function that provide to make a edges of the conflict information graph*/
@@ -173,7 +173,7 @@ void makeEdges(){
     int i_1, j_1, i_2, j_2, id1, id2;
     unsigned int i, cc;
     cc=0;
-    
+
     vector<int> c1;
     vector<int> c2;
     bool edge;
@@ -224,7 +224,7 @@ void makeEdges(){
                 Matrix_Adj[id2][id1] = 0;
                 cc++;
             }
-            
+
         }
     }
     cout << cc << endl;
