@@ -103,7 +103,7 @@ class PC_Error_Rate(gr.basic_block):
             +"\n\n\n\n"+"============================================"        \
             +"\n"+"Average SNR: "                            \
             +"\n\n\n\n"+"============================================"        \
-            +"\n"+"Channel Use | Correct Bits  | Throughput (Bits/Channel use): "                            \
+            +"\n"+"Number of OFDM symbols | Correct Bits  | Throughput (Bits/Channel use): "                            \
             +"\n\n"+"============================================"        \
 
             f.write(template)
@@ -119,11 +119,13 @@ class PC_Error_Rate(gr.basic_block):
 
     def handle_ch_use(self, msg_pmt):
         with self.lock :
-            # tmp = pmt.to_python(msg_pmt)
+            tmp = pmt.to_python(msg_pmt)
             # tmp = map(chr,map(int,tmp[1]))
+            tmp = tmp[1]
+            # print len(tmp)
             # tmp = ''.join(tmp)
             # self.cnt_ch_use = int(tmp)
-            self.cnt_ch_use += 1
+            self.cnt_ch_use += len(tmp)
 
 
     def handle_ber_info(self, msg_pmt):
@@ -225,7 +227,7 @@ class PC_Error_Rate(gr.basic_block):
                                         total_errors = self.sum_errors_cw
                                         successful_bits = total_bits_rx - total_errors
 
-                                        lines[j+1] = str(self.cnt_ch_use) + "\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
+                                        lines[j+1] = str(self.cnt_ch_use) + "\t\t\t\t\t| " + str(successful_bits) + "\t\t\t| " + str(successful_bits/float(self.cnt_ch_use)) + '\n'
 
 
                             with open(self.filename,"w") as f:
