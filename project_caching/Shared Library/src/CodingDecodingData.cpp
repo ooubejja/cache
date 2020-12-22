@@ -302,7 +302,7 @@ vector<vector<char>> MaxBipartiteGraph(int *coloring, int n_col, nodo *nodi, int
         for (int j = 0; j < G_edges_vec[i].size(); ++j)
         {
             // Othmane : Set all to false for classic scheme -> no pkt combination
-            G_edges_vec[i][j] = false;
+            // G_edges_vec[i][j] = false;
             if(G_edges_vec[i][j]){
                 sum++;
                 //cout << j << ", ";
