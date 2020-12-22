@@ -153,7 +153,7 @@ class PC_Error_Rate(gr.basic_block):
                 rx_chunk = ""
                 total_bits_tx = -1
 
-                time.sleep(2)
+                # time.sleep(1)
 
                 nb_tx_chunk = sum([int(digit) for digit in chunks_mx])
 

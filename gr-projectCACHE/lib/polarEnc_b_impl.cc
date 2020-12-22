@@ -317,7 +317,7 @@ namespace gr {
           }
 
           // Debug for Tx BER
-          sleep(6);
+          sleep(8);
           cout << endl << "BER VECTOR DEBUG : " << endl ;
           for(int i=0; i<normal.size(); i++)
             cout << normal[i] << endl;
