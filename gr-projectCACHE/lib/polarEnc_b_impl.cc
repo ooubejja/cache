@@ -72,7 +72,7 @@ namespace gr {
       d_k=0; // counter on the packet
       //The code rate to be given later on as a parameter
       // d_coderate = {1, 2, 3, 4 , 4}; //{3, 2, 2, 2, 3, 4};
-      d_coderate = {1, 2, 2, 3, 4}; //{3, 2, 2, 2, 3, 4};
+      d_coderate = {1, 2, 3, 4, 4}; //{3, 2, 2, 2, 3, 4};
       // Weak user
       /*variance_w = pow(10,-(d_SNR_w/10));
       sqrtVariance_w = sqrt(variance_w);*/
