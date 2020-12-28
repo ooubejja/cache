@@ -118,7 +118,6 @@ class OFDM_RX(gr.top_block):
             )
         self.digital_costas_loop_cc_0 = digital.costas_loop_cc(2*3.14/100, 2, False)
         self.digital_constellation_decoder_cb_0 = digital.constellation_decoder_cb(header_mod.base())
-        self.channels_dynamic_channel_model_0 = channels.dynamic_channel_model( samp_rate, 1e-4, 1e2, 1e-4, 1e2, 8, fD, False, 2, (0.0,0.1,1.3), (1,0.99,0.90), 3, numpy.sqrt(variance)*0, numpy.random.randint(0,500,None) )
         self.blocks_multiply_xx_0 = blocks.multiply_vcc(1)
         self.blocks_delay_0 = blocks.delay(gr.sizeof_gr_complex*1, fft_len+fft_len/4)
         self.analog_frequency_modulator_fc_0 = analog.frequency_modulator_fc(-2.0/fft_len)
@@ -135,7 +134,6 @@ class OFDM_RX(gr.top_block):
         self.connect((self.analog_frequency_modulator_fc_0, 0), (self.blocks_multiply_xx_0, 0))
         self.connect((self.blocks_delay_0, 0), (self.blocks_multiply_xx_0, 1))
         self.connect((self.blocks_multiply_xx_0, 0), (self.digital_header_payload_demux_0, 0))
-        self.connect((self.channels_dynamic_channel_model_0, 0), (self.digital_costas_loop_cc_0, 0))
         self.connect((self.digital_constellation_decoder_cb_0, 0), (self.digital_packet_headerparser_b_0, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.blocks_delay_0, 0))
         self.connect((self.digital_costas_loop_cc_0, 0), (self.digital_ofdm_sync_sc_cfb_0, 0))
@@ -152,14 +150,13 @@ class OFDM_RX(gr.top_block):
         self.connect((self.fft_vxx_1, 0), (self.digital_ofdm_serializer_vcc_payload_0, 0))
         self.connect((self.fft_vxx_1, 0), (self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0))
         self.connect((self.projectCACHE_ofdm_frame_equalizer1_vcvc_0, 0), (self.digital_ofdm_serializer_vcc_payload, 0))
-        self.connect((self.uhd_usrp_source_0_0, 0), (self.channels_dynamic_channel_model_0, 0))
+        self.connect((self.uhd_usrp_source_0_0, 0), (self.digital_costas_loop_cc_0, 0))
 
     def get_fD(self):
         return self.fD
 
     def set_fD(self, fD):
         self.fD = fD
-        self.channels_dynamic_channel_model_0.set_doppler_freq(self.fD)
 
     def get_gain(self):
         return self.gain
@@ -255,7 +252,6 @@ class OFDM_RX(gr.top_block):
 
     def set_variance(self, variance):
         self.variance = variance
-        self.channels_dynamic_channel_model_0.set_noise_amp(numpy.sqrt(self.variance)*0)
 
     def get_sync_word2(self):
         return self.sync_word2
@@ -281,7 +277,6 @@ class OFDM_RX(gr.top_block):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.uhd_usrp_source_0_0.set_samp_rate(self.samp_rate)
-        self.channels_dynamic_channel_model_0.set_samp_rate(self.samp_rate)
 
     def get_payload_equalizer(self):
         return self.payload_equalizer
