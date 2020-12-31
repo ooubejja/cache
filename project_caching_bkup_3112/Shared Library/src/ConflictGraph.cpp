@@ -60,40 +60,14 @@ void makeNodes(){
     that the user do not have in cache will be created a node*/
     for (i=0; i<n_utenti; i++){
         //nb_pck will contain the number of packets required given the code rate (chunks_Node)
-        nb_pck += ceil(nodi_user[i]/chunks_Node[i]);
-        //cout << nb_pck << ", ";
+        nb_pck += ceil((double)nodi_user[i]/chunks_Node[i]);
+        cout << nb_pck << ", ";
         vector<unsigned int> chunks_f;
         j = Q[i]; l  = 0; k=0;
         cout << chunks_Node[i] << endl;
-        if(chunks_Node[i]==3){
-            //Added new w.r.t. the section below
-            /*for (int k = 0; k < b_chunks; k += 3)
-            {
-                //Q_chuncks[i][k] == 1 means that the k, k+1, k+2, and k+3, k+4, k+5 chunks are not cached 
-                //(due to the caching policy), therefore the codeword should be k, k+1, and k+2
-                if(Q_chuncks[i][k] == 1){
-                    n1.id = id;
-                    n1.degree = 0;
-                    n1.id_utente = i;
-                    n1.id_file = j;
-                    n1.id_chunck.push_back(k); n1.id_chunck.push_back(k+1); n1.id_chunck.push_back(k+2);
-                    chunks_f.push_back(k); chunks_f.push_back(k+1); chunks_f.push_back(k+2);
-                    nodes.push_back(n1);
-                    id++;
-                    n1.id_chunck = vector<int> ();
-                }
-            }
-            cout << chunks_f.size() << ", " << nodes.size() << endl;
-            while(chunks_f[chunks_f.size()-1] >= b_chunks){
-                nodes[nodes.size()-1].id_chunck.pop_back();
-                chunks_f.pop_back();
-                //ccc++;
-            }*/
-            /*cout << chunks_f.size() << ", " << nodes[nodes.size()-1].id_chunck.size() << endl;
-            cout << "Nb of removed chunks: " << ccc << endl;*/
+        if(chunks_Node[i]==3){           
             //Add the remaining packets to the vector of packets
             for (int k = 0; k < b_chunks; k++){
-                //int index = index_find(chunks_f, k);
                 if (Q_chuncks[i][k] == 1){ //index == -1 && 
                     if(l==0){
                         n1.id = id;
@@ -112,7 +86,13 @@ void makeNodes(){
                         n1.id_chunck = vector<int> ();
                         l=0;
                         id++; 
-                    }
+                    }   
+                } 
+
+                if((l==1 || l==2) && (k == (b_chunks-1))) {
+                    nodes.push_back(n1);
+                    n1.id_chunck = vector<int> ();
+                    id++;
                 }
             }
             /*for(int cc=0; cc< nodes.size(); cc++)
@@ -134,9 +114,9 @@ void makeNodes(){
                             n1.id_chunck = vector<int> ();
                             l=0;
                             id++;
+                            cout << k << ", " << id << endl;
                         }
-                    }
-                    else if (l < chunks_Node[i]){
+                    }else if (l < chunks_Node[i]){
                         n1.id_chunck.push_back(k);
                         l++;
                         if(l == chunks_Node[i] || k == (b_chunks-1)){

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.10'?>
+<?grc format='1' created='3.7.14'?>
 <flow_graph>
   <timestamp>Mon Sep 30 14:40:20 2019</timestamp>
   <block>
@@ -73,12 +73,74 @@
       <value>True</value>
     </param>
     <param>
+      <key>sizing_mode</key>
+      <value>fixed</value>
+    </param>
+    <param>
       <key>thread_safe_setters</key>
       <value></value>
     </param>
     <param>
       <key>title</key>
       <value></value>
+    </param>
+    <param>
+      <key>placement</key>
+      <value>(0,0)</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(376, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>Ks</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>2*Kw</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(288, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>Kw</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>70*8</value>
     </param>
   </block>
   <block>
@@ -174,33 +236,6 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(544, 76)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>NbWeakUsers</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>3</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
       <value>(712, 4)</value>
     </param>
     <param>
@@ -228,7 +263,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(288, 76)</value>
+      <value>(864, 308)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -236,11 +271,11 @@
     </param>
     <param>
       <key>id</key>
-      <value>code_rate</value>
+      <value>coderate</value>
     </param>
     <param>
       <key>value</key>
-      <value>3</value>
+      <value>[3,3,3,3,4]</value>
     </param>
   </block>
   <block>
@@ -251,7 +286,7 @@
     </param>
     <param>
       <key>_enabled</key>
-      <value>True</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
@@ -267,7 +302,34 @@
     </param>
     <param>
       <key>value</key>
-      <value>2</value>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
+    <key>variable</key>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(544, 76)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>n_users</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>4</value>
     </param>
   </block>
   <block>
@@ -348,7 +410,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>32000</value>
+      <value>1e6</value>
     </param>
   </block>
   <block>
@@ -363,34 +425,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(376, 76)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>size_chunk</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>42</value>
-    </param>
-  </block>
-  <block>
-    <key>variable</key>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(656, 76)</value>
+      <value>(624, 76)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -429,7 +464,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>20</value>
+      <value>25</value>
     </param>
   </block>
   <block>
@@ -483,7 +518,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(448, 372)</value>
+      <value>(144, 420)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -534,7 +569,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(720, 360)</value>
+      <value>(480, 304)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -754,7 +789,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 364)</value>
+      <value>(264, 164)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -779,6 +814,61 @@
     <param>
       <key>num_inputs</key>
       <value>1</value>
+    </param>
+    <param>
+      <key>vlen</key>
+      <value>1</value>
+    </param>
+  </block>
+  <block>
+    <key>blocks_throttle</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(280, 356)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>blocks_throttle_0</value>
+    </param>
+    <param>
+      <key>ignoretag</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>samples_per_second</key>
+      <value>samp_rate</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>complex</value>
     </param>
     <param>
       <key>vlen</key>
@@ -845,6 +935,53 @@
     </param>
   </block>
   <block>
+    <key>parameter</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(864, 196)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>id_user</value>
+    </param>
+    <param>
+      <key>label</key>
+      <value>User</value>
+    </param>
+    <param>
+      <key>short_id</key>
+      <value>U</value>
+    </param>
+    <param>
+      <key>hide</key>
+      <value>none</value>
+    </param>
+    <param>
+      <key>type</key>
+      <value>intx</value>
+    </param>
+    <param>
+      <key>value</key>
+      <value>0</value>
+    </param>
+  </block>
+  <block>
     <key>import</key>
     <param>
       <key>alias</key>
@@ -907,6 +1044,45 @@
     </param>
   </block>
   <block>
+    <key>projectCACHE_PC_Error_Rate</key>
+    <param>
+      <key>alias</key>
+      <value></value>
+    </param>
+    <param>
+      <key>comment</key>
+      <value></value>
+    </param>
+    <param>
+      <key>affinity</key>
+      <value></value>
+    </param>
+    <param>
+      <key>_enabled</key>
+      <value>True</value>
+    </param>
+    <param>
+      <key>_coordinate</key>
+      <value>(872, 488)</value>
+    </param>
+    <param>
+      <key>_rotation</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>id</key>
+      <value>projectCACHE_PC_Error_Rate_0</value>
+    </param>
+    <param>
+      <key>nb_chunks</key>
+      <value>NbChuncks</value>
+    </param>
+    <param>
+      <key>usr_id</key>
+      <value>id_user</value>
+    </param>
+  </block>
+  <block>
     <key>projectCACHE_PolarDec_b</key>
     <param>
       <key>alias</key>
@@ -914,11 +1090,11 @@
     </param>
     <param>
       <key>size_chunk</key>
-      <value>size_chunk</value>
+      <value>42</value>
     </param>
     <param>
       <key>code_rate</key>
-      <value>code_rate</value>
+      <value>coderate[id_user]</value>
     </param>
     <param>
       <key>N</key>
@@ -938,7 +1114,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(872, 212)</value>
+      <value>(592, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -947,6 +1123,14 @@
     <param>
       <key>id</key>
       <value>projectCACHE_PolarDec_b_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
     </param>
     <param>
       <key>b_chunks</key>
@@ -958,7 +1142,7 @@
     </param>
     <param>
       <key>n_users</key>
-      <value>NbWeakUsers</value>
+      <value>n_users</value>
     </param>
     <param>
       <key>lengthtagname</key>
@@ -993,7 +1177,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(440, 252)</value>
+      <value>(232, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1001,7 +1185,7 @@
     </param>
     <param>
       <key>hx_gain</key>
-      <value>2</value>
+      <value>4</value>
     </param>
     <param>
       <key>id</key>
@@ -1048,7 +1232,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(32, 220)</value>
+      <value>(0, 252)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1093,9 +1277,9 @@
   </block>
   <connection>
     <source_block_id>analog_noise_source_x_0</source_block_id>
-    <sink_block_id>blocks_add_xx_0</sink_block_id>
+    <sink_block_id>blocks_throttle_0</sink_block_id>
     <source_key>0</source_key>
-    <sink_key>1</sink_key>
+    <sink_key>0</sink_key>
   </connection>
   <connection>
     <source_block_id>blocks_add_xx_0</source_block_id>
@@ -1116,10 +1300,22 @@
     <sink_key>0</sink_key>
   </connection>
   <connection>
+    <source_block_id>blocks_throttle_0</source_block_id>
+    <sink_block_id>blocks_add_xx_0</sink_block_id>
+    <source_key>0</source_key>
+    <sink_key>1</sink_key>
+  </connection>
+  <connection>
     <source_block_id>digital_chunks_to_symbols_xx_0_1</source_block_id>
     <sink_block_id>blocks_add_xx_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_PolarDec_b_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>CH_USE</source_key>
+    <sink_key>CH_USE</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_map_header_payload_bc_0</source_block_id>
@@ -1132,6 +1328,12 @@
     <sink_block_id>blocks_tag_debug_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
+  </connection>
+  <connection>
+    <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>
+    <sink_block_id>projectCACHE_PC_Error_Rate_0</sink_block_id>
+    <source_key>BER_INFO</source_key>
+    <sink_key>BER_INFO</sink_key>
   </connection>
   <connection>
     <source_block_id>projectCACHE_polarEnc_b_0</source_block_id>

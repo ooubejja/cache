@@ -15,17 +15,18 @@ using namespace std;
 
 int main(){
 
-     double alpha = 0.0;                                                         //ALPHA PARAMETER for Zipf distribution
+    double alpha = 1.0;     // zipf update
+    // double alpha = 0.0;                                                         //ALPHA PARAMETER for Zipf distribution
 
-    
 
-    unsigned int n_utenti = 3;                                                 //number of user
+
+    unsigned int n_utenti = 4;                                                 //number of user
     unsigned int n_user_s = 0;
     unsigned int m_files = 20;                                                  //number of file
     unsigned int b_chunks = 200;                                                //number of chunks
 
     unsigned int L_request = 1;                                                //number of demands for each user
-    
+
     unsigned int M_cache = (10 * m_files / 100);                                //dimensione della cache 10% del catalogo
     unsigned int B_cache = M_cache * b_chunks;                                  //numero totale di pacchetti int cache
 
@@ -47,12 +48,12 @@ int main(){
 
     vector<int> input;                                                      //vettore prodotto da environment setup
     vector<int> memory_per_user(n_utenti, 0);
-    
+
     FILE *env_file;
 
 	printf("\n\nNumero Utenti: %d Numero Files: %d Numero Chunks: %d\n", n_utenti, m_files, b_chunks);
 
-    
+
     probs_vec = (double *) malloc (m_files * sizeof(double));
     check_memory_double_allocation_1D(probs_vec, "Allocation 1D Probs.");
 
@@ -99,7 +100,7 @@ int main(){
     //ceil() round to next integer
     //floor() round to previous integer
 
-    
+
     M_vec = (int *) malloc (m_files * sizeof(int));
     check_memory_allocation_1D(M_vec, "Allocation 1D M_vec.");
     for (unsigned int i=0; i<m_files; i++)
@@ -146,7 +147,7 @@ int main(){
     unsigned int input_dim = input.size();
 
     //cout << "Input size : " << input_dim;
-    
+
     env_file = fopen("./environment_file","wb");
 
     /*fwrite(&input_dim,sizeof(int),1,env_file);
@@ -216,7 +217,7 @@ int main(){
             index_input --;
             index_input = (index_input - ( memory_per_user.at(i) * 2 ) ) - 1;
         }
-        
+
 
         input_dim = input.size();
         //cout << "Input size : " << input_dim;
@@ -228,8 +229,8 @@ int main(){
             for(int j=0; j<3; j++)
                 cout << input.at(3*i+j) << " ";
         cout << endl << endl;
-        
-        //for weak users, print -the nb request -the id requested file 
+
+        //for weak users, print -the nb request -the id requested file
         //-the memory size in chunks, and -the chunks to cache (file id, chunck id)
         for (int i = 0; i < (n_utenti-n_user_s); i++){
             for (int j = 0; j < (memory_per_user.at(i)*2+3); j++){
@@ -240,7 +241,7 @@ int main(){
 
         /*for(int i=0; i<input_dim; i++)
             cout << input.at(i) << " ";*/
-        
+
         fwrite(&input_dim,sizeof(int),1,env_file);
 
         for(unsigned int i=0; i<input_dim; i++)
@@ -251,10 +252,10 @@ int main(){
     }
     /******************************************************************************************/
     /******************************************************************************************/
-    /******************************************************************************************/                        
+    /******************************************************************************************/
 
     fclose(env_file);
-    
+
     cout<<endl<<"Environment scritto correttamente!!"<<endl<<endl;
 
 

@@ -1,0 +1,82 @@
+=========================
+Bilan de liaison Sig_dB :
+=========================
+Rx_pow : Receiver gain + noise figure (ADC sampling + thermal noise)
+Tx_pow : Transmitter gain + noise figure (DAC clock + thermal noise)
+
+Tx_Pow      + Ant_G(f)  + Path_loss(node3,node4)  + Ant_G(f)  +   Rx_Pow    =
+(Tx_G-11)   + Ant_G(f)  + Path_loss(node3,node4)  + Ant_G(f)  + (Rx_G-33dB) =
+(Tx_G-11dB) +  -6 dB    +    -80 dB               +   -6 dB   +  -33 dB     =
+Sig_dB = Tx_G - 136 dB
+
+Noise_floor(f,BW)~ -140 dBm   
+
+Empirical_SNR = Sig_dB - Noise_Floor
+
+Empirical_SNR = Tx_G + 4 dB
+
+
+RX Gain = 0
+=======================================================================================================
+=======================================================================================================
+
+
+TX Gain = 3 dB
+============================================
+0.117919921875 
+============================================
+Average SNR: 
+10.866779651 | empirical average SNR : 7 dB
+============================================
+Channel Use | Correct Bits  | Throughput (Bits/Channel use): 
+2102            | 42168                 | 20.0608943863
+============================================
+
+
+TX Gain = 5
+============================================
+0.0149639423077 
+============================================
+Average SNR: 
+13.1165152851 | empirical average SNR : 9 dB
+============================================
+Channel Use | Correct Bits  | Throughput (Bits/Channel use): 
+2362            | 70808                 | 29.9779847587
+============================================
+
+
+
+TX Gain = 7
+============================================
+0.0106770833333 
+============================================
+Average SNR: 
+13.6353633146 | empirical average SNR : 11 dB
+============================================
+Channel Use | Correct Bits  | Throughput (Bits/Channel use): 
+2362            | 65888                 | 27.8950042337
+============================================
+
+
+
+TX Gain = 9
+============================================
+0.00373492324561 
+============================================
+Average SNR: 
+14.6552686853 | empirical average SNR : 13 dB
+============================================
+Channel Use | Correct Bits  | Throughput (Bits/Channel use): 
+2345            | 63404                 | 27.0379530917
+
+
+
+TX Gain = 11
+============================================
+0.00249743852459 
+============================================
+Average SNR: 
+15.3051006466 | empirical average SNR : 15 dB
+============================================
+Channel Use | Correct Bits  | Throughput (Bits/Channel use): 
+2352            | 68008                 | 28.9149659864

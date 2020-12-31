@@ -27,7 +27,7 @@ int main()
     int d_b_chunks = 200;
     int d_id_demand = 0;
     int nb_strg = 1;
-    int id_user = 4;
+    int id_user = 2;
     int d_spack_len = 52;
     data_matrix d_data;
     cf_data d_outputForColoring;
@@ -53,7 +53,7 @@ int main()
     //vector<char> d_transmission;
     vector<vector<char> > d_transmission;
     //vector<unsigned int> d_small_packet_size;
-    std::vector<int> coderate {3, 3, 3, 3, 3, 4};
+    std::vector<int> coderate {1, 2, 3, 4};
 
     cout << endl << "Data generation process" << endl << "-------------" << endl << endl;
 
@@ -91,7 +91,7 @@ int main()
     {
         cout << endl << "Coding data process" << endl << "-------------" << endl << endl;
         //Coding data to be transmitted for weak users - xor coding
-        d_coded_data = codingVarCodeRate(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data,coderate);
+        d_coded_data = codingVarCodeRate_Ref(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data,coderate);
         //d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
 
         //Build the schema (graph) packets for strong and weak users
@@ -99,6 +99,13 @@ int main()
         //bool **G_edges;
         d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes, 
             d_outputForColoring.n_nodi, nb_strg, d_data, &d_hdr_sdata, G_edges);
+        
+        G_edges = vector<vector<bool> > ();
+
+        for(int i=0; i<d_coded_data.size(); i++){
+            vector<bool> temp(d_strg_data.size(), false);
+            G_edges.push_back(temp);
+        }
 
         //Coding polarly the weak and strong packets
         vector<vector<int> >  data_bits;

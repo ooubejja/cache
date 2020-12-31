@@ -223,12 +223,17 @@ namespace gr {
             cout << endl << "Coding data process" << endl << "-------------" << endl << endl;
             //Coding data for transmission
             //d_coded_data = codingData(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data);
-            d_coded_data = codingVarCodeRate(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data,d_coderate);
+            d_coded_data = codingVarCodeRate_Ref(d_coloring, d_n_col, d_data, d_outputForColoring, &d_header_data,d_coderate);
 
             //Coding strong and weak data
             d_strg_data = MaxBipartiteGraph(d_coloring, d_n_col, d_outputForColoring.nodes,
                 d_outputForColoring.n_nodi, d_nb_strg, d_data, &d_hdr_sdata, G_edges);
 
+            G_edges = vector<vector<bool> > ();
+            for(int i=0; i<d_coded_data.size(); i++){
+                vector<bool> temp(d_strg_data.size(), false);
+                G_edges.push_back(temp);
+            }
             //Polar codes the weak and strong packets
             d_PC_data = codingDataPolar(d_coded_data, d_strg_data, bits_coded, G_edges, d_header_data, d_hdr_sdata, d_hX, d_N);
             //cout << "The total number of transmitted packet is: " << d_PC_data.size() << endl;

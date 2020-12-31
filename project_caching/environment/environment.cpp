@@ -15,8 +15,7 @@ using namespace std;
 
 int main(){
 
-    double alpha = 1.0;     // zipf update
-    // double alpha = 0.0;                                                         //ALPHA PARAMETER for Zipf distribution
+     double alpha = 1.0;                                                         //ALPHA PARAMETER for Zipf distribution
 
 
 

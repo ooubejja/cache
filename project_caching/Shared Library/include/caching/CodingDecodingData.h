@@ -32,7 +32,10 @@ vector<vector<char> > codingDataPolar(vector<vector<char> > weak_data, vector<ve
 
 PC initialize_PC(int ,int);
 
+bool myfunction (int i,int j);
+
 vector< vector<char> > codingVarCodeRate(int *coloring, int , data_matrix , cf_data , header_transmission **header_data, vector<int>);
+vector< vector<char> > codingVarCodeRate_Ref(int *coloring, int n_, data_matrix , cf_data ,header_transmission **header_data, vector<int>);
 
 void decodingData(header_transmission , vector<char> &coded_data, unsigned int , unsigned int , unsigned int , unsigned int , unsigned int , int, unsigned int *n_package_remains);
 

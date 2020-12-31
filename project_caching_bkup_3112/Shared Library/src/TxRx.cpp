@@ -8,7 +8,7 @@ namespace caching{
 
 
 
-void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, unsigned int id_demand, 
+void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, unsigned int id_demand,
                 vector<vector<char> > &tx, int spack_len, vector<int> &spack_size)//vector<char> &tx_data
 {
     unsigned short int id_header = 0;
@@ -24,7 +24,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
     bool DEBUG = false;
     int nbtest = 5;
     int cc;//, ct;
-    
+
     int n_col = coded_packets.size();
     cout << "The total number of transmitted packets is: " << n_col << endl;
 
@@ -36,12 +36,12 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         cc = 0;
         /* ---------------------------------------------------------- */
 
-        //WRITE THE SMALL PACKET WITH THE HEADER 
+        //WRITE THE SMALL PACKET WITH THE HEADER
 
         //write id packet for the header (is always 0)
         conv_short_int_to_char(id_header, buff_short);
         for(int k=0; k<2; k++)
-        {   
+        {
             tx_data.push_back(buff_short[k]);
             cc++;
         }
@@ -59,7 +59,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         cc++;
 
         // Header length=(1-user,1-files,1-chuncks,4-sizePack)*field_len + 1-Strg,1-Weak,1-requestID,1-hxLength
-        // New Header length = (1-user,1-file,1-NbWeakChunksPerPacket)*field_len + sum_{1}^{K}c_k 
+        // New Header length = (1-user,1-file,1-NbWeakChunksPerPacket)*field_len + sum_{1}^{K}c_k
         //                   + 1-Strg/Weak,1-requestID,1-hxLength; 1-fieldLength
         header_len = (3 * field_len) + 2*hX[id_transmission].id_chunks.size() + 4;
         conv_int_to_byte(header_len, byte);
@@ -97,7 +97,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             conv_int_to_byte(hX[id_transmission].id_utenti[j], byte);
             tx_data.push_back(byte);
             cc++;
-        
+
             if(DEBUG && id_transmission<nbtest)
             {
                 unsigned int x;
@@ -121,7 +121,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
                 cout << endl << " id_files for the header (" << id_transmission << ") = " << x;
             }
         }
-        
+
 
         //write header.nb_chunks
         for(unsigned int j=0; j<field_len; j++)
@@ -180,17 +180,17 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         tx_data.push_back(byte);
         cc++;
 
-        
+
         //store header pack size: +2 is for the header ID
         spack_size.push_back(header_len+2);
 
         if(DEBUG && id_transmission<nbtest)
         {
-            if(byte==0x00) //buff_short[0] == 0x01 && buff_short[1] == 0x01 
+            if(byte==0x00) //buff_short[0] == 0x01 && buff_short[1] == 0x01
                 cout << "\n Strong and Weak users" << endl;
-            else if (byte == 0x11)//buff_short[0] == 0x01 && buff_short[1] == 0x00 
+            else if (byte == 0x11)//buff_short[0] == 0x01 && buff_short[1] == 0x00
                 cout << "\n Strong users only" << endl;
-            else if (byte == 0xFF)//buff_short[0] == 0x00 && buff_short[1] == 0x01 
+            else if (byte == 0xFF)//buff_short[0] == 0x00 && buff_short[1] == 0x01
                 cout << "\n Weak users only" << endl;
 
             cout << "Header len with ID  (" << id_transmission << ") = " << header_len+2 << endl;
@@ -230,7 +230,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
             1 BYTE:  REQUEST ID OR NUMBER
             2 BYTE:  INDICATE IF THERE EXISTS: ONE WEAK, ONE WEAK ONE STRONG, TWO STRONG
             NB_COMBINED_CHUNCKS*3 BYTES: THE CONTENT OF THE HEADER
-            SUM_{k=1}^NB_COMBINED_CHUNCKS(C_k)*2 BYTES : THE IDs OF ALL CHUNKS 
+            SUM_{k=1}^NB_COMBINED_CHUNCKS(C_k)*2 BYTES : THE IDs OF ALL CHUNKS
         */
         for(unsigned short int id_spack = 1; id_spack <= nb_spack; id_spack++)
         {
@@ -249,7 +249,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
                 conv_char_to_short_int(buff_short, y);
                 cout << endl << " ID Small Packet for the small packet (" << id_spack << ") = " << y;
             }
-            
+
             /***********Write the Payload in the i-th Small Packet********/
             for(int k=0; k<spack_len; k++)
             {
@@ -268,7 +268,7 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
 
             conv_short_int_to_char(id_last_spack, buff_short);
             for(int k=0; k<2; k++)
-            {   
+            {
                 tx_data.push_back(buff_short[k]);
             }
             if(DEBUG && id_transmission<nbtest)
@@ -293,19 +293,19 @@ void TX_PC_Pack(vector<header_polar> &hX, vector< vector<char> > coded_packets, 
         }*/
 
     }/* end (for(int id_transmission=0; id_transmission < n_col; id_transmission++)) */
-    
+
     //cout << endl << " Size of Transmission = " << tx_data.size() << endl << endl;
 }
 
 
 
 vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vector<int> data_bits
-  
+
     /*int txBitsSize  = data_bits.size();
     int txSymbSize  = txBitsSize/2;
     vector<int> pack_data_bits(txSymbSize, 0);
     vector<gr_complex> data_qpskSymb(txSymbSize, 0);
-    
+
     //QPSK constellation map
     gr_complex constellation[4];
     constellation[0] = gr_complex(-SQRT_TWO, -SQRT_TWO);
@@ -344,7 +344,7 @@ vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vec
         int txSymbSize  = txBitsSize/2;
         vector<int> pack_data_bits(txSymbSize, 0);
         data_qpskSymb.push_back(vector<gr_complex> (txSymbSize, (0,0)));
-    
+
         //QPSK constellation map
         gr_complex constellation[4];
         constellation[0] = gr_complex(-SQRT_TWO, -SQRT_TWO);
@@ -382,11 +382,11 @@ vector<vector<gr_complex> > BitsToQPSKSymb(vector<vector<int> > data_bits){//vec
 
 
 
-void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remain, int Nbfiles, int NbChunks, 
-    bool isStr, int N, double d_SNR, PC PC_w, PC PC_s, header_polar d_header, int size_chunk, int c_rate){ //int K_s, int K_w, 
-    
+void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remain, int Nbfiles, int NbChunks,
+    bool isStr, int N, double d_SNR, PC PC_w, PC PC_s, header_polar d_header, int size_chunk, int c_rate){ //int K_s, int K_w,
+
     unsigned int field_len = 0;
-    unsigned int SymbPayload_len;//BeginData, payload_len, 
+    unsigned int SymbPayload_len;//BeginData, payload_len,
     int id_strFile, id_strChunk,size_strPck;
     //Size of the chunk is 1/6 the size of the codeword
 	//int size_chunk = N/(8*6);
@@ -420,49 +420,49 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
         for(int j=0; j< (N/2); j++){
             s[j] = 2*(imag(coded_symb[j])>0) + (real(coded_symb[j])>0);
             switch(s[j]){
-                case 0: 
+                case 0:
                     bits[2*j] = 0;
                     bits[2*j+1] = 0;
                     break;
-                case 1: 
+                case 1:
                     bits[2*j] = 1;
                     bits[2*j+1] = 0;
                     break;
-                case 2: 
+                case 2:
                     bits[2*j] = 0;
                     bits[2*j+1] = 1;
                     break;
-                case 3: 
+                case 3:
                     bits[2*j] = 1;
                     bits[2*j+1] = 1;
                     break;
             }
             //cout << bits[2*j] << bits[2*j+1];
 
-        }     
+        }
         for(int j=0; j<N; j++){
             sum = sum+bits[j];
         }
-        cout << sum << ", " ;//"\nsum bits coded: " << endl << endl; 
+        cout << sum << ", " ;//"\nsum bits coded: " << endl << endl;
     }*/
-    
+
     //Read the header to firstly find out the included packets, strong and weak
     //and take the three cases into account: weak - strong, weak, strong - strong
     double llr_w[N];
     //float recSymbol_w[N];
     int recMessage_w[N], recCodeword_w[N];
     //Set Polar Decoding environment
-    
+
 
     //Check if the user is concerned by this packet, if not do nothing
-    int index = index_find(d_header.id_utenti, id_user); 
+    int index = index_find(d_header.id_utenti, id_user);
     if(DEBUG)
         cout << endl << "user index in header = " << index;
-    
+
     //cout << ", Strong and/or Weak? " << d_header.strong << ", " << d_header.weak << endl;
     //index = -1;
     if(index != -1 ) {
-                
+
         int id_file = d_header.id_files.at(index);
         int id_demand = 0;
 
@@ -476,16 +476,16 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 cout << endl;
             }
         }
-        
+
         //This is the directory of the cached files
         string pathFolder = "../cache/UserCache/user_" + to_string(id_user); //"/CachingFile/cache/UserCache/user_"
-        
+
         if(d_header.strong == true && d_header.weak == true)
         {   //If this user is not the strong user:
             if(!isStr){
                 if(DEBUG)
                     cout << "START ---- User is weak in case SW" << endl;
-                //1. Extract the strong packet from the cache 
+                //1. Extract the strong packet from the cache
                 //2. Store in Frozen Bits
                 //3. Proceed to polar decoding
 
@@ -493,7 +493,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 id_strFile  = d_header.id_files.at(d_header.id_files.size()-1);
                 id_strChunk = d_header.id_chunks.at(d_header.id_chunks.size()-1);
                 //size_strPck = d_header.size_package.at(field_len-1);
-                
+
                 //FOR TEST ONLY
                 if(DEBUG){
                     cout << id_strFile << ", " << id_strChunk;
@@ -511,27 +511,28 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                     inFilePackage.close();
                 }else{
                     cout << endl << "Error reading file cache: " << pathFileCache << endl;
-                    exit(0);
+                    return;
+                    // exit(0);
                 }
-                
+
                 /**********FOR TEST ONLY - PRINT DATA IN CACHE****************/
                 /*cout << "Data in weak user's cache are: "<< endl;
                 for(int j=0; j<20; j++)
                     cout << cache_str[j] << ", ";
                 cout << endl;
                 /**********************************************/
-				
+
 				//1.b If the code rate is less than 3, read the xored chunks with higher code rate and add to the frozen_bits
 				//Reconstruct the chunks matrix [users  x chunk ID]
 				vector<char> cache_w;
                 cache_w = cache_weak(d_header, c_rate, size_chunk, id_user, pathFolder);
-				
+
                 //2. Convert the data in cache to bits and store in Frozen bits
                 int lenZeros = N-K_s;
 				int len_cache = (4-c_rate)*size_chunk;
                 int len_cache_w = (3-c_rate)*size_chunk;
 				int frozen_bits [len_cache*8 + lenZeros];//8*size_chunk+lenZeros
-				vector<unsigned int> bb (8,0); //bits vector of each converted char 
+				vector<unsigned int> bb (8,0); //bits vector of each converted char
                 for(int j=0; j<len_cache_w; j++){
                     bb = conv_char_to_bitsInt(cache_w[j]);
                     for(int k=0; k<8; k++)
@@ -546,7 +547,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 for(int j=0; j<lenZeros; j++){
                     frozen_bits[len_cache*8+j] = 0;
                 }
-                
+
                 //3. Proceed to Polar Decoding
                 double variance = pow(10,-(d_SNR/10));
                 //double sqrtVariance = sqrt(variance);
@@ -566,7 +567,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 //Convert Bits to CHAR
                 int abits[8];
                 int packetSizeByte = K_w/8;//N/8
-                
+
                 vector<char> coded_packet;
                 vector<char> conv(packetSizeByte,0);
                 for (int j = 0; j < (packetSizeByte); j++){
@@ -577,7 +578,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                     //conv_err = conv_err + (conv[j]-((int) PC_data[i][j]));
                     coded_packet.push_back(conv[j]);
                 }
-                 
+
                 if(DEBUG && packet_remain > 100){
                     cout << "Weak in Weak and Strong case: ";
                     for (int j = 0; j < coded_packet.size(); ++j)
@@ -596,7 +597,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 if(DEBUG)
                     cout << "Nb Remaining packets: " << packet_remain << endl;
 
-            }else{  
+            }else{
                 if(DEBUG)
                     cout << "START ---- User is strong in case SW" << endl;
                 //Decode the strong user
@@ -604,14 +605,14 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 //string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
 				//decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain,d_header);
 				decodeDataStrong(N,d_SNR,coded_symb,pathFolder,PC_w,PC_s,false,packet_remain,d_header,id_user,size_chunk);
-                
+
             }
         }
         else if(d_header.strong == false && d_header.weak == true){
-            
+
             if(DEBUG)
                 cout << "START ---- User is weak in case W" << endl;
-            
+
             //1. Get the cached chunks of the other weaks - this is the case when the
             //code rate is different at different mutiplexed users in one xored packet
             vector<char> cache_w;
@@ -620,7 +621,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
             int lenZeros = N-K_w;
             int len_cache_w = (3-c_rate)*size_chunk;
             int frozen_bits [len_cache_w*8 + lenZeros];//8*size_chunk+lenZeros
-            vector<unsigned int> bb (8,0); //bits vector of each converted char 
+            vector<unsigned int> bb (8,0); //bits vector of each converted char
             for(int j=0; j<len_cache_w; j++){
                 bb = conv_char_to_bitsInt(cache_w[j]);
                 for(int k=0; k<8; k++)
@@ -634,7 +635,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
             //Proceed to Polar Decoding
             double variance = pow(10,-(d_SNR/10));
             //double sqrtVariance = sqrt(variance);
-            
+
             if(DEBUG)
                 cout << "START THE POLAR DECODING" << endl;
             PC_w.computeLLR_qpsk(llr_w,coded_symb,variance);
@@ -661,7 +662,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
             //Convert bits to char
             int abits[8];
             //int conv_err=0;
-                
+
             vector<char> coded_packet;
             int packetSizeByte = K_w/8;
             vector<char> conv(packetSizeByte,0);
@@ -673,7 +674,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                 //conv_err = conv_err + (conv[j]-((int) PC_data[i][j]));
                 coded_packet.push_back(conv[j]);
             }
-            
+
             if(DEBUG && packet_remain > 160){
                 cout << "Weak only: " ;
                 for (int j = 0; j < coded_packet.size(); ++j)
@@ -692,12 +693,12 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
 
        }
         else if(d_header.strong == true && d_header.weak == false){
-            
+
             if(DEBUG)
                 cout << "START ---- User is strong in case S" << endl;
 
             //Here is the case where two strong packets are in one packet
-            
+
             //In this if clause, the requested packet is the second
             //which means we can directly apply the polar decoding
             /*gr_complex coded_symb_m[SymbPayload_len];
@@ -708,14 +709,14 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
 
             for(int j=0; j<K; j++)
                 coded_symb_m[j] = coded_symb[K + j];*/
-            
+
             /*if(d_header.id_utenti.size() > 1) // ==2
             {
                 if(d_header.id_utenti[1] == id_user){
                     id_chunck = d_header.id_chunks.at(1);
                     string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunck) + ".cache";
                     decodeDataStrong(N,K_w,K_s,d_SNR,coded_symb,pathFileDelivery,PC_w,PC_s,false,packet_remain);
-                    
+
                 }
                 //In this else clause, the requested packet is the first
                 //which meanse the polar decoding cannot applied directly
@@ -756,6 +757,7 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
                         }
                         else{
                             cout << endl << "Error reading package: " << pathFilePackage << endl;
+                            return;
                             exit(0);
                         }
                         /**********************************************************************************/
@@ -768,10 +770,10 @@ void Process_Data(vector<gr_complex> in, int id_user, unsigned int &packet_remai
 
                 outFile.close();
             }
-             
+
        }
    }
-    
+
 }
 
 vector<char> cache_weak(header_polar d_header, int c_rate, int size_chunk, int id_user, string pathFolder){
@@ -779,7 +781,7 @@ vector<char> cache_weak(header_polar d_header, int c_rate, int size_chunk, int i
     vector<char> cache ((3-c_rate)*size_chunk, 0);
     vector<vector<int> > id_chunks;
     int TotalChunks = 0;
-    
+
     for (unsigned int i = 0; i < d_header.id_utenti.size(); i++){
         /*All info for requested package*/
         unsigned int nb_chunks = d_header.nb_chunks.at(i);
@@ -787,9 +789,9 @@ vector<char> cache_weak(header_polar d_header, int c_rate, int size_chunk, int i
         for(unsigned int j=TotalChunks; j< nb_chunks + TotalChunks; j++)
             vd.push_back(d_header.id_chunks.at(j));
         id_chunks.push_back(vd);
-        TotalChunks += nb_chunks;   
+        TotalChunks += nb_chunks;
     }
-                  
+
     for(unsigned int i = 0; i < d_header.id_utenti.size(); i++){
         if((id_user != d_header.id_utenti.at(i)) && (id_chunks.at(i).size() > c_rate)){
             int cc=0;
@@ -807,7 +809,8 @@ vector<char> cache_weak(header_polar d_header, int c_rate, int size_chunk, int i
                     inFilePackage.close();
                 }else{
                     cout << endl << "Error reading file cache: " << pathFileCache << endl;
-                    exit(0);
+                    return cache;
+                    // exit(0);
                 }
                 for(int k=0; k<size_chunk; k++){
                     cache_buff[cc] = cache_chunk[k];
@@ -817,14 +820,14 @@ vector<char> cache_weak(header_polar d_header, int c_rate, int size_chunk, int i
             for (int k = 0; k < size_cache; k++){
                 cache[k] = cache[k] ^ cache_buff[k];
             }
-        }   
+        }
     }
     return cache;
 }
 
-void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFolder, 
+void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFolder,
     PC PC_w, PC PC_s, bool loc, unsigned int &packet_remain, header_polar d_header, int id_user, int size_chunk){
-	
+
     int id_file, id_chunk;
 	//int size_chunk = 42; //SHOULD BE SIZE IN CHARACTERS
     int K_w = 3*size_chunk*8; //SHOULD BE LENGTH IN BTIS
@@ -841,11 +844,11 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
 
     for (int j = 0; j < N-K_s; j++)
         frozen_s[j] = 0;
-                
+
     double variance = pow(10,-(d_SNR/10));
     //double sqrtVariance = sqrt(variance);
 
-                
+
     if(DEBUG)
     {
         //Convert the data in the received packet as symbols to bits
@@ -855,31 +858,31 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
         for(int j=0; j< (N/2); j++){
             s[j] = 2*(imag(coded_symb[j])>0) + (real(coded_symb[j])>0);
             switch(s[j]){
-                case 0: 
+                case 0:
                     bits[2*j] = 0;
                     bits[2*j+1] = 0;
                     break;
-                case 1: 
+                case 1:
                     bits[2*j] = 1;
                     bits[2*j+1] = 0;
                     break;
-                case 2: 
+                case 2:
                     bits[2*j] = 0;
                     bits[2*j+1] = 1;
                     break;
-                case 3: 
+                case 3:
                     bits[2*j] = 1;
                     bits[2*j+1] = 1;
                     break;
             }
             //cout << bits[2*j] << bits[2*j+1];
 
-        }     
+        }
         for(int j=0; j<N; j++){
             sum = sum+bits[j];
         }
         cout <<  sum << ", "; //"\nsum bits coded: " <<
-    }        
+    }
     PC_s.computeLLR_qpsk(llr_s,coded_symb,variance);
     PC_s.SC(recMessage_s, recCodeword_s, llr_s, frozen_s);
 
@@ -892,12 +895,12 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
             //cout << recMessage_s[i];
             sum+=recMessage_s[i];
         }
-        //cout << sum << ","; //"\nsum_bits:" << 
+        //cout << sum << ","; //"\nsum_bits:" <<
     //}
     //Convert bits to char
     int abits[8];
 	int packetSizeByte = K_s/8;
-                
+
     vector<char> coded_packet;
     vector<char> conv(packetSizeByte,0);//
     for (int j = 0; j < packetSizeByte; j++){//
@@ -914,7 +917,7 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
         cout << endl;
     }*/
 
-    
+
     unsigned int lenUncPack2 = (K_s-K_w)/8;//should be equal to size_chunk
     unsigned int lenUncPack1 = K_w/8;
     /*char uncoded_packet[lenUncPack2];
@@ -939,7 +942,8 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
         }
         else{
             cout << endl << "Error writing delivery package: " << pathFileDelivery << endl;
-            exit(0);
+            return;
+            // exit(0);
         }
     }else{
 		for(int j=0; j<d_header.id_utenti.size(); j++){
@@ -947,7 +951,7 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
 				id_file = d_header.id_files[j];
 				id_chunk = d_header.id_chunks[j];
 				pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunk) + ".cache";
-				
+
 			}
 			for(unsigned int k=0; k<size_chunk; k++)
 				uncoded_packet[k] = coded_packet[j*size_chunk+k];
@@ -957,7 +961,7 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
 				outFileDelivery.close();
 				packet_remain--;
                 //cout << packet_remain << ", ";
-			}			
+			}
 		}
         /*char uncoded_packet[lenUncPack1];
         for(unsigned int j=0; j<lenUncPack1; j++)
@@ -974,7 +978,7 @@ void decodeDataStrong(int N,double d_SNR, gr_complex* coded_symb,string pathFold
         }*/
     }
 
-    /********************************** DELIVERY PACKAGE *********************************/                
+    /********************************** DELIVERY PACKAGE *********************************/
     // Open file for write delivery package
     //string pathFileDelivery = pathFolder + "/" + to_string(id_file) + "_" + to_string(id_chunk) + ".cache";
 
@@ -1031,11 +1035,11 @@ void toHeaderWeak(header_polar d_header, header_transmission &d_header_w)
         if(DEBUG)
             cout << endl << "ID chunks = " << d_header.id_chunks[j];
     }
-    
+
 }
 
 
-void Transmit(header_transmission* header_data, vector< vector<char> > coded_data, unsigned int id_demand, 
+void Transmit(header_transmission* header_data, vector< vector<char> > coded_data, unsigned int id_demand,
     int n_col, unsigned int small_packet_len, vector<char> &trasmissione, vector<unsigned int> &small_pack_size)
 {
     unsigned short int id_header = 0;
@@ -1052,19 +1056,19 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
     char buff[4];
 
     bool DEBUG = false;
-    
+
 
     for(int id_transmission=0; id_transmission < n_col; id_transmission++)
     {
-        
+
         /* ---------------------------------------------------------------------------------- */
 
-        //WRITE THE SMALL PACKET WITH THE HEADER 
+        //WRITE THE SMALL PACKET WITH THE HEADER
 
         //write id_small_packet for the header (is always 0)
         conv_short_int_to_char(id_header, buff_short);
         for(int k=0; k<2; k++)
-        {   
+        {
             trasmissione.push_back(buff_short[k]);
         }
         if(DEBUG)
@@ -1110,7 +1114,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
         {
             conv_int_to_byte(header_data[id_transmission].id_utenti[j], byte);
             trasmissione.push_back(byte);
-        
+
             if(DEBUG)
             {
                 unsigned int x;
@@ -1133,7 +1137,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
                 cout << endl << " id_files for the header (" << id_transmission << ") = " << x;
             }
         }
-        
+
 
         //write header.id_chunks
         for(unsigned int j=0; j<field_len; j++)
@@ -1157,7 +1161,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
         {
             conv_int_to_char(header_data[id_transmission].size_package[j], buff);
             for(int k=0; k<4; k++)
-            {   
+            {
                 trasmissione.push_back(buff[k]);
             }
             if(DEBUG)
@@ -1217,7 +1221,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
             cout << endl << "ERROR: number_small_packet = 65535  AND  last_small_packet_len != 0" << endl;
             exit(0);
         }
-        
+
 
 
         unsigned int d_pos = 0;
@@ -1236,7 +1240,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
             //write id of small packet on the top
             conv_short_int_to_char(id_small_packet, buff_short);
             for(int k=0; k<2; k++)
-            {   
+            {
                 trasmissione.push_back(buff_short[k]);
             }
             if(DEBUG)
@@ -1245,7 +1249,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
                 conv_char_to_short_int(buff_short, y);
                 cout << endl << " ID Small Packet for the small packet (" << id_small_packet << ") = " << y;
             }
-            
+
             //write the small packet with payload
             for(unsigned int k=0; k<small_packet_len; k++)
             {
@@ -1269,7 +1273,7 @@ void Transmit(header_transmission* header_data, vector< vector<char> > coded_dat
 
             conv_short_int_to_char(id_last_small_packet, buff_short);
             for(int k=0; k<2; k++)
-            {   
+            {
                 trasmissione.push_back(buff_short[k]);
             }
             if(DEBUG)
@@ -1309,7 +1313,7 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
     char buff[4];
 
     bool DEBUG = 0;
-        
+
     if(DEBUG)
     {
         cout << endl << "HEADER: ";
@@ -1317,7 +1321,7 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
 
     //read id small packet
     for(int k=0; k<2; k++)
-    {   
+    {
         fread(&buff_short[k],sizeof(char),1,RX_file);
     }
     conv_char_to_short_int(buff_short, id_small_packet);
@@ -1358,7 +1362,7 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
             cout << endl << "ID Utenti = " << header.id_utenti[j];
         }
     }
-        
+
 
     //read header.id_files
     for(unsigned int j=0; j<field_len; j++)
@@ -1394,7 +1398,7 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
         header.size_package.push_back(0);
 
         for(int k=0; k<4; k++)
-        {   
+        {
             fread(&buff[k],sizeof(char),1,RX_file);
         }
         conv_char_to_int(buff, header.size_package[j]);
@@ -1431,7 +1435,7 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
     number_small_packet = payload_len / small_packet_len;
     //compute last small packet length
     last_small_packet_len = payload_len % small_packet_len;
-    
+
     if(DEBUG)
     {
         cout << endl << " number_small_packet readed = " << number_small_packet;
@@ -1442,11 +1446,13 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
     if (number_small_packet > 65535)
     {
         cout << endl << "ERROR: number_small_packet > 65535 " << endl;
+        return;
         exit(0);
     }
     else if(number_small_packet == 65535 && last_small_packet_len != 0)
     {
         cout << endl << "ERROR: number_small_packet = 65535  AND  last_small_packet_len != 0" << endl;
+        return;
         exit(0);
     }
 
@@ -1465,10 +1471,10 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
     {
         //read id small packet
         for(int k=0; k<2; k++)
-        {   
+        {
             fread(&buff_short[k],sizeof(char),1,RX_file);
         }
-        
+
         conv_char_to_short_int(buff_short, id_small_packet);
 
         if(DEBUG)
@@ -1488,10 +1494,10 @@ void Receive(header_transmission &header, vector<char> &coded_data, unsigned int
     {
         //read id small packet
         for(int k=0; k<2; k++)
-        {   
+        {
             fread(&buff_short[k],sizeof(char),1,RX_file);
         }
-        
+
         conv_char_to_short_int(buff_short, id_small_packet);
 
         if(DEBUG)

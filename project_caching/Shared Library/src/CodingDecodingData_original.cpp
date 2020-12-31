@@ -649,7 +649,7 @@ vector<vector<char>> codingDataPolar(vector<vector<char>> weak_data, vector<vect
     PC PC_w, PC_s;
     //bits_coded are the bits after being polarly coded
     std::vector<std::vector<int> > bits_coded (data_bits.size(), std::vector<int> (N,0));
-//    bits_coded = vector<vector<int> > (data_bits.size(), std::vector<int> (N,0));
+    //bits_coded = vector<vector<int> > (data_bits.size(), std::vector<int> (N,0));
     const int K_w = 8*PC_data[0].size()/2;
     const int K_s = 8*PC_data[0].size();
       
