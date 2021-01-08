@@ -444,7 +444,7 @@ namespace gr {
               if(d_spack_len != (ninput_items[0]/4 - 2))
               {
                   cout << endl << "ERROR: small_packet_len != input_packet_len" << endl;
-                  exit(0);
+                  // exit(0);
               }
               for(unsigned int k = 8; k < d_sSymb; k++)
                   d_coded_packet.push_back(in[k]);
@@ -460,7 +460,7 @@ namespace gr {
               if(d_last_spack_len != (ninput_items[0]/4 - 2))
               {
                   cout << endl << "ERROR: last_small_packet_len != input_packet_len" << endl;
-                  exit(0);
+                  // exit(0);
               }
 
               for(unsigned int k = 8; k < d_sSymb; k++)
@@ -487,7 +487,7 @@ namespace gr {
                   if(d_last_spack_len != (ninput_items[0]/4 - 2))
                   {
                       cout << endl << "ERROR: last_small_packet_len != input_packet_len" << endl;
-                      exit(0);
+                      // exit(0);
                   }
 
                   for(unsigned int k = 8; k < d_sSymb; k++)
@@ -506,7 +506,7 @@ namespace gr {
                   if(d_spack_len != (ninput_items[0]/4 - 2))
                   {
                       cout << endl << "ERROR: small_packet_len != input_packet_len" << endl;
-                      exit(0);
+                      // exit(0);
                   }
 
                   for(unsigned int k = 8; k < d_sSymb; k++)
